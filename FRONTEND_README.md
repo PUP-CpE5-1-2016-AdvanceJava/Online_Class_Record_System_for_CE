@@ -5,8 +5,8 @@ If ever we need to name our `container`, `ID` is the only CSS Selector we'll use
 
 ```html
 <div class = "container-fluid" id = "footer-wrapper">
-        <div class="row">
-            <div class = "container">
+        <div class = "container">
+            <div class="row">
                 <div class="col-md-2" id = "footer-details">   
                     <a href "https://github.com/CoE-20"><i class = "fa fa-github"></i><span >COE-20</span></a>
                 </div>
