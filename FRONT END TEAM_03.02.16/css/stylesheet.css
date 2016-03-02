@@ -19,8 +19,9 @@
 #navbar-normal{display:block;}
 #navbar-res{display:none; font-size:25px;}
 #navbar-maintabs li, #navbar-subtabs li{text-decoration: none; float: right; display: block; }
-#navbar-maintabs li a, #navbar-subtabs li a{color:#1b1a1a; border-bottom: 2px solid #d69402; }
+#navbar-maintabs li a, #navbar-subtabs li a{color:#1b1a1a; }
 #navbar-maintabs li a:hover, #navbar-subtabs li a:hover{color:#fff; background: #730b0a; border-bottom: 2px solid #fff !important;}
+#navbar-subtabs p{line-height: .75; padding: 0;}
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
 
@@ -59,6 +60,21 @@
 #archives-panel-label{text-decoration: none; font-size:15px; font-weight: bolder;color: #333;}
 #archives-panel-links a{color:#4f9fcf;}
 /*ARCHIVES CONTENT end*/
+
+/*HOME CONTENT*/
+#home-body-wrapper{background: #E4E4E4;}
+#home-wrapper{ margin-bottom: 200px;}
+#home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
+#home-panel{font-family: 'Source Sans Pro', sans-serif; }
+#home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}
+#home-panel-label:hover{color:#0C416F;}
+#home-panel-label:active{color:#0C416F;}
+#home-panel-label span{background:#277FCC; margin-bottom: 2px; font-family:'Source Sans Pro', sans-serif ; font-weight: bold;}
+#home-panel-sublabel {text-decoration: none; font-size:15px; font-weight: bolder; color: #333; }
+#home-panel-links a{text-decoration: none; border-radius: 0; margin-bottom: 0; border: none; }
+#home-panel-links span{float:right; }
+.panel-body{padding-bottom: 0!important;}
+/*HOME CONTENT end*/
 	
 /*SETTINGS CONTENT*/
 #settings-wrapper{background: #E2E2E2; padding: 10px 0;  margin-bottom: 200px;}
@@ -102,11 +118,6 @@
 	/*SETTINGS CONTENT*/
 	#settings-grade-form{padding-left:0px; display: block; text-align: center;}
 
-	/*PRE-SETTINGS CONTENT*/
-	#body-main-title{font-size: 28px; letter-spacing: 25px; }
-	#body-sub-title{font-size: 16px; }
-	#group p{font-size: 16px; }
-
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-details span{display:block;}
@@ -135,16 +146,6 @@
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%; }
 	#settings-upload-button {width:100%;}
-
-
-
-	/*PRE-SETTINGS CONTENT*/
-	#body-main-title{font-size: 22px; letter-spacing: 20px; }
-	#body-sub-title{font-size: 16px; }
-	#group p{font-size: 16px; }
-	#form-grading-s1{text-align: center; }
-	#form-grading-s2{text-align: center; }
-	.module_perc{width:90px;}
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
@@ -178,13 +179,6 @@
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%; }
 	#settings-upload-button {width:100%;}
-
-	/*PRESETTING CONTENT*/
-	#form-module span{font-size: 13px;}
-	#body-main-title{font-size: 22px; letter-spacing: 20px; }
-	#body-sub-title{font-size: 16px; }
-	#group p{font-size: 16px; }
-	.module_perc{width:90px;}
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
@@ -228,16 +222,6 @@
 	#settings-resetpwd-form-button{width:100%;}
 	#settings-upload-button {width:100%;}
 
-	/*PRE-SETTINGS CONTENT*/
-	#body-main-title{font-size: 22px; letter-spacing: 20px; }
-	#body-sub-title{font-size: 14px; }
-	#form-module span{font-size: 12px;}
-	#form-module p#form-module-points{font-size: 14px;}
-	#group p{font-size: 16px; }
-	#form-grading-s1{text-align: center; }
-	#form-grading-s2{text-align: center; }
-	.module_perc{width:90px;}
-	/*#form-prev-btn, #form-next-btn, #form-submit-btn{font-size: 30px;}*/
 
 
 }
