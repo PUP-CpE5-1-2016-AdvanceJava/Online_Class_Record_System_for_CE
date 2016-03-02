@@ -29,13 +29,14 @@ class Calendar_model extends CI_Model {
 		return $data;
 	}
 
-	function delEvent($event_date,$UserId)
+	function delEvent($event_date,$event_name,$UserId)
 	{
 		$date = date('Y-m-d', strtotime($event_date));
-		$this->db->delete('calendar',array('Date' => $date,'UserId' => $UserId));
+		$this->db->delete('calendar',array('Date' => $date,'UserId' => $UserId, 'Event' => $event_name));
 		$data = array(
 			'status' => "OK",
-			'event_date' => $event_date
+			'event_date' => $event_date,
+			'event_name' => $event_name
 			);
 		return $data;
 	}
