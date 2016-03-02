@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 27, 2016 at 03:19 PM
+-- Generation Time: Mar 02, 2016 at 04:35 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -47,6 +47,30 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   `Rating` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calendar`
+--
+
+CREATE TABLE IF NOT EXISTS `calendar` (
+`Id` int(11) NOT NULL,
+  `UserId` int(11) NOT NULL,
+  `Date` date NOT NULL,
+  `Event` varchar(300) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `calendar`
+--
+
+INSERT INTO `calendar` (`Id`, `UserId`, `Date`, `Event`) VALUES
+(59, 2, '2016-03-04', 'Practical #3 on Computer Networks'),
+(60, 2, '2016-03-12', 'Game Dev Project Submission'),
+(61, 2, '2016-03-09', 'TQM Project Submission'),
+(62, 2, '2016-03-21', 'Start of Holy Week'),
+(63, 2, '2016-11-28', 'My Birthdaaaay :D');
 
 -- --------------------------------------------------------
 
@@ -531,6 +555,12 @@ ALTER TABLE `attendance`
  ADD PRIMARY KEY (`Id`);
 
 --
+-- Indexes for table `calendar`
+--
+ALTER TABLE `calendar`
+ ADD PRIMARY KEY (`Id`);
+
+--
 -- Indexes for table `class`
 --
 ALTER TABLE `class`
@@ -652,6 +682,11 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `attendance`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `calendar`
+--
+ALTER TABLE `calendar`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT for table `class`
 --
