@@ -9,12 +9,15 @@
     
     <link type="text/css" href="<?php base_url(); ?>/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" href="<?php base_url(); ?>/plugins/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/css/stylesheet.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/css/prism.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/css/chosen.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/plugins/bootstrap/css/bootstrap-multiselect.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/css/sidebar.css" rel="stylesheet">
     <link type="text/css" href="<?php base_url(); ?>/css/table.css" rel="stylesheet">
+    <link type="text/css" href="<?php base_url(); ?>/css/calendar.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
 
 </head>
 <body>
@@ -37,7 +40,7 @@
         <div class = "row">
              <ul class = " nav pull-left" id= "navbar-maintabs">
                 <li><a href = "<?=site_url('user/archives')?>">ARCHIVES</a></li>
-                <li><a href = "#">CALENDAR</a></li>
+                <li><a href = "<?=site_url('user/calendar')?>">CALENDAR</a></li>
                 <?php if ($user['UserType'] == 'Faculty'): ?>
                     <li><a href="<?=site_url('user/settings')?>">SETTINGS</a></li>
                 <?php endif; ?>

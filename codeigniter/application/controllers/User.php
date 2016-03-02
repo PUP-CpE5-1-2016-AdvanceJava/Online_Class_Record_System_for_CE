@@ -90,6 +90,27 @@ class User extends CI_Controller
 		}
     }
 
+    public function calendar()
+    {
+    	if ($this->session->userdata('Id')!="")
+    	{
+    		// to go in the archives tab
+			$data['user'] = array(
+				'Username' => $this->session->userdata('Username'),
+				'UserType' => $this->session->userdata('UserType')
+			);
+			$this->load->model('Calendar_model');
+			$data['info'] = $this->Calendar_model->getEvent();
+
+			$this->load->view('templates/header',$data);
+			$this->load->view('pages/calendar',$data);
+		}
+		else 
+		{
+			$this->load->view("pages/login_view");
+		}
+    }
+
     public function regView($page = 'register_view')
     {
     	// just use this to register dummy users
@@ -131,6 +152,44 @@ class User extends CI_Controller
 			}
 		}
 	}
+
+	public function calendar_add_event()
+	{
+		if ($this->session->userdata('UserType') == "Administrator")
+		{
+		$event_name = $this->input->post('event_name');
+		$event_date = $this->input->post('event_date');
+		$UserId = $this->session->userdata('Id');
+		$this->load->model('Calendar_model');
+		$data = $this->Calendar_model->addEvent($event_date,$event_name,$UserId);
+		header('Content-Type: application/json');
+    	echo json_encode($data);
+    	}
+	}
+
+	public function calendar_delete_event()
+	{
+		if ($this->session->userdata('UserType') == "Administrator")
+		{
+			$UserId = $this->session->userdata('Id');
+			$event_date = $this->input->post('event_date');
+			$this->load->model('Calendar_model');
+			$data = $this->Calendar_model->delEvent($event_date,$UserId);
+			header('Content-Type: application/json');
+    		echo json_encode($data);
+		}
+	}
+
+	// public function calendar_get_event()
+	// {
+	// 	$UserId = $this->session->userdata('Id');
+	// 	$this->load->model('Calendar_model');
+	// 	$data['info'] = $this->Calendar_model->getEvent($UserId);
+	// 	$data['status'] = "OK";
+		
+	// 	header('Content-Type: application/json');
+ //    	echo json_encode($data);
+	// }
 
 	public function upload_pdf()
 	{
