@@ -2,11 +2,9 @@ $(document).ready(function() {
 	//-----------------------------delete event-----------------------------//
 	$("span#delete-event-button").each(function(){
 		$(this).click(function(){
-			console.log("click");
-			var date = $(this).parent().parent().parent().attr('id');
+			var date = $("div#event-title h4#current-event-date").html();
 			var sibling = $(this).parent().prev();
 			var name = $(sibling).find('p').html();
-			console.log(name);
 			var link = $(this).attr('href');
 			$.post(link,{'event_date':date,'event_name':name},function(response){
 				if(response.status == "OK")
@@ -14,11 +12,9 @@ $(document).ready(function() {
 					$("div#"+response.event_date).find('p').each(function(){
 						if($(this).html() == response.event_name) 
 						{
-							console.log("delete this");
 							$(this).parent().parent().parent().remove();
 						}
 					})
-					console.log($('div#event-list').find("div#"+response.event_date).length);
 					if($('div#event-list').find("div#"+response.event_date).length == 0)
 					{
 						var date_id = "td#td-" + response.event_date;

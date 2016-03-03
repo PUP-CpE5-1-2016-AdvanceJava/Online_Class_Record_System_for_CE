@@ -31,12 +31,16 @@ class Calendar_model extends CI_Model {
 
 	function delEvent($event_date,$event_name,$UserId)
 	{
-		$date = date('Y-m-d', strtotime($event_date));
+		$g = $event_date." GMT +0800";
+		$date = date('Y-m-d', strtotime($event_date." GMT +0800"));
 		$this->db->delete('calendar',array('Date' => $date,'UserId' => $UserId, 'Event' => $event_name));
+		$mon_dd_yyyy = date('M-d-Y',strtotime($date." GMT +0800"));
+		$arr = explode('-', $mon_dd_yyyy);
+		$converted_date = $this->getMonth($arr[0])."-".(int)$arr[1]."-".$arr[2];
 		$data = array(
 			'status' => "OK",
-			'event_date' => $event_date,
-			'event_name' => $event_name
+			'event_date' => $converted_date,
+			'event_name' => $event_name,
 			);
 		return $data;
 	}
