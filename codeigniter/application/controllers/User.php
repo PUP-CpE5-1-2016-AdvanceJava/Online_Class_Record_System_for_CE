@@ -173,23 +173,13 @@ class User extends CI_Controller
 		{
 			$UserId = $this->session->userdata('Id');
 			$event_date = $this->input->post('event_date');
+			$event_name = $this->input->post('event_name');
 			$this->load->model('Calendar_model');
-			$data = $this->Calendar_model->delEvent($event_date,$UserId);
+			$data = $this->Calendar_model->delEvent($event_date,$event_name,$UserId);
 			header('Content-Type: application/json');
     		echo json_encode($data);
 		}
 	}
-
-	// public function calendar_get_event()
-	// {
-	// 	$UserId = $this->session->userdata('Id');
-	// 	$this->load->model('Calendar_model');
-	// 	$data['info'] = $this->Calendar_model->getEvent($UserId);
-	// 	$data['status'] = "OK";
-		
-	// 	header('Content-Type: application/json');
- //    	echo json_encode($data);
-	// }
 
 	public function upload_pdf()
 	{
