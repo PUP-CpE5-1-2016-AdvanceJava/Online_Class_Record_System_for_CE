@@ -201,7 +201,6 @@ function calculatePointsPerSubj(f)
 
 function isModuleNull()
 {
-  console.log("null box");
   $('div#module_collection').find('input[type=number]').change(function(){
     if($(this).val() == "") 
     {
@@ -229,93 +228,7 @@ function resetModule(h)
   $('label#'+id+'_hundred').html("100");
 }
 
-function get_class_table(link)
-{
-  $.get(link,{},function(response)
-    {
-      if (response.status == 'OK')
-      {
-        var table = $('div#TEMPORARY');
-        table.empty();
-        table.html("<div class='row'>\
-                      <h2>"+response['Class']['ClassBlock']+"</h2>\
-                      <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                      <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3>\
-                    </div><br>\
-                    <div class='row'>\
-                      <div class='col-lg-12 col-md-12'>\
-                          <form>\
-                              <table class='table table-striped table-bordered'>\
-                                  <thead>\
-                                      <tr>\
-                                          <th class='studName'>STUDENT NAME</th>\
-                                          <th class='studNum'>STUDENT NUMBER</th>\
-                                          <th class='tableNum'>1</th>\
-                                          <th class='tableNum'>2</th>\
-                                          <th class='tableNum'>3</th>\
-                                          <th class='tableNum'>4</th>\
-                                          <th class='tableNum'>5</th>\
-                                          <th class='tableNum'>6</th>\
-                                          <th class='tableTotal'>Total</th>\
-                                          <th class='tableNum'>%</th>\
-                                          <th class='tableNum'>1</th>\
-                                          <th class='tableNum'>2</th>\
-                                          <th class='tableNum'>3</th>\
-                                          <th class='tableTotal'>Total</th>\
-                                          <th class='tableNum'>%</th>\
-                                      </tr>\
-                                  </thead>\
-                                  <tbody id=stud_table>\
-                                  </tbody\
-                              </table>\
-                          </form>\
-                      </div>\
-                  </div>\
-        ");
-        response.Student.forEach(function(stud){
-          $('tbody#stud_table').append("<tr>\
-                                        <td class='studName'>"+stud.full_name+"</td>\
-                                        <td class='studNum'>"+stud.stud_num+"</td>\
-                                        <td class='tableNum1' contenteditable='true'></td>\
-                                        <td class='tableNum1' contenteditable='true'></td>\
-                                        <td class='tableNum1' contenteditable='true'></td>\
-                                        <td class='tableNum1' contenteditable='true'></td>\
-                                        <td class='tableNum1' contenteditable='true'></td>\
-                                        <td class='tableNum1' contenteditable='true'></td>\
-                                        <td class='tableTotal1'></td>\
-                                        <td class='tableMod1'></td>\
-                                        <td class='tableNum2' contenteditable='true'></td>\
-                                        <td class='tableNum2' contenteditable='true'></td>\
-                                        <td class='tableNum2' contenteditable='true'></td>\
-                                        <td class='tableTotal2'></td>\
-                                        <td class='tableMod2'></td>\
-                                    </tr>\
-          ");
-        });
-        if (response['Class']['ModuleType'] == "Lec")
-        {
-          $("ul>li[name='module_submenu']").html("<a class='accordion-section-title hideOverflow'>Attendance - "+response.Module.Attendance+"%<span class='arrow-left'></span></a>\
-                                                  <a class='accordion-section-title hideOverflow'>Class Standing - "+response.Module.ClassStanding+"%<span class='arrow-left'></span></a>\
-                                                  <a class='accordion-section-title hideOverflow'>Quizzes/Long Exam - "+response.Module.QuizzesLExam+"%<span class='arrow-left'></span></a>\
-                                                  <a class='accordion-section-title hideOverflow'>Major Exam - "+response.Module.MajorExam+"%<span class='arrow-left'></span></a>");
-        }
-        else
-        {
-          $("ul>li[name='module_submenu']").html("<a class='accordion-section-title hideOverflow'>Practical Exam - "+response.Module.PracExam+"%<span class='arrow-left'></span></a>\
-                                                  <a class='accordion-section-title hideOverflow'>Project - "+response.Module.Project+"%<span class='arrow-left'></span></a>\
-                                                  <a class='accordion-section-title hideOverflow'>Lab/Machine Exercises - "+response.Module.Lab_MachineEx+"%<span class='arrow-left'></span></a>");
-        }
-        
-      }
-      else
-      {
-        console.log("no");
-      }
-    })
-  return false;
-}
-
-$(document).ready(function() {
+$(document).ready(function(){
 //SUBJECTS
     $("select#numSub").change(function() {
         var selVal = $(this).val();

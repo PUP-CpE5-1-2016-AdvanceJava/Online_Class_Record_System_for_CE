@@ -8,7 +8,7 @@ class Table_model extends CI_Model {
 		$this->load->database();
 	}
 	
-	function get_class_table($ClassId)
+	function get_class_table($table_type,$ClassId)
 	{
 		//--get Class Block and schedule--//
 		$this->db->select('*')->from('class')->where('Id',$ClassId);
@@ -17,7 +17,8 @@ class Table_model extends CI_Model {
 		$class = array(
 			'ClassBlock' => $block->ClassBlock,
 			'Schedule' => $block->Schedule,
-			'ModuleType' => $block->ModuleType
+			'ModuleType' => $block->ModuleType,
+			'ClassId' => $block->Id
 		);
 		//--get module--//
 		if ($block->ModuleType == "Lec") 

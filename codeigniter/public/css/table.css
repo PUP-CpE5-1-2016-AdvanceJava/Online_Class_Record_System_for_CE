@@ -21,6 +21,87 @@ h4 span{
 	margin: 0px;
 }
 
-div#main-col-wrapper{
-	background: #fff;
+.fixed-width{
+	font-weight: 600;
+	overflow: hidden;
+	max-width:30px;
+	max-height: 1em;
+	
+}
+
+
+.table-wrapper { 
+    overflow-x:scroll;
+    overflow-y:visible;
+    margin-left: 10%;
+}
+#table-wrapper{ white-space: nowrap; position: relative; width: 100%; }
+/*#table-blank, #table-blank2, #table-student, #table-name, #table-items { position: fixed; width: }*/
+.fa-plus-circle{color: #4BA301;} 
+.fa-minus-circle{color: red;}
+#myModal .modal-content {width: 481px; padding: 30px;}
+.modal-content h3{ width: 100%; margin-top: 0px;}
+#yes_btn {background-color: red; color: #fff; border: none; padding: 5px; width: 25%; margin-top: 10%; border-radius: 2px;}
+#close_btn {background-color: gray; color: #fff; border: none; padding: 5px; width: 25%; margin-top: 10%; border-radius: 2px; }
+#buttons-modal{margin-left: 30%}
+#table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
+#table-lab1-button-del, #table-prac1-button-del, #table-proj1-button-del, #table-lab2-button-del, #table-prac2-button-del, #table-proj2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
+#attend { padding-left: 10 }
+
+#table-midterm, #table-finals{
+	border: solid 2px gray
+}
+
+.border-bold, #border-bold, #table-name, #table-blank2, #table-items{
+	border-right: solid 2px gray 
+}
+#border-left, #table-student, #table-blank2, #table-items, #table-blank{
+	border-left: solid 2px gray !important;
+}
+#table-blank{
+	border-top: solid 2px gray;
+}
+
+
+#table-wrapper{ white-space: nowrap; position: relative; }
+/*#table-blank, #table-blank2, #table-student, #table-name, #table-items { position: fixed; width: }*/
+
+#table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
+#table-lab1-button-del, #table-prac1-button-del, #table-proj1-button-del, #table-lab2-button-del, #table-prac2-button-del, #table-proj2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
+
+
+#table-att1-button, #table-att2-button{background: none; font-size: 20px; padding: 0 3;}
+#table-att1-button-del, #table-att2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+
+
+#add-col-assign1, #add-col-sw1,#add-col-ex1,#add-col-rec1,#add-col-quiz1,#add-col-le1,#add-col-assign2, #add-col-sw2,#add-col-ex2,#add-col-rec2,#add-col-quiz2,#add-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px;}
+#delete-col-assign1, #delete-col-sw1,#delete-col-ex1,#delete-col-rec1,#delete-col-quiz1,#delete-col-le1,#delete-col-assign2, #delete-col-sw2,#delete-col-ex2,#delete-col-rec2,#delete-col-quiz2,#delete-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px; display: none;}
+
+#attendance, #midterm, #final, #border-bold{vertical-align: middle}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+
 }

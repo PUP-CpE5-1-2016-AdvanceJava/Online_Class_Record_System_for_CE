@@ -231,13 +231,14 @@ class User extends CI_Controller
 		}
 	}
 
-	public function get_table($ClassId = 0)
+	public function get_class_table($table_type,$ClassId = 0)
 	{
 		$this->load->model('Table_model');
 		// this function in the model will return object containing info about student,subject,class,module
-		$data = $this->Table_model->get_class_table($ClassId);
+		$data = $this->Table_model->get_class_table($table_type,$ClassId);
 		// for status checking
 		$data['status'] = "OK";
+		$data['table_type'] = $table_type;
 		// need to use json to response to the ajax request
 		header('Content-Type: application/json');
     	echo json_encode($data);
