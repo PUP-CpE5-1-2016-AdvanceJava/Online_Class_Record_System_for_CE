@@ -239,10 +239,17 @@ class User extends CI_Controller
 		// for status checking
 		$data['status'] = "OK";
 		$data['table_type'] = $table_type;
+		$data['class_id'] = $ClassId;
 		// need to use json to response to the ajax request
 		header('Content-Type: application/json');
     	echo json_encode($data);
     	return;
+	}
+	
+	public function get_table_data()
+	{
+		$this->load->model('Table_model');
+		$this->Table_model->save_table_data();
 	}
 
 	public function register()

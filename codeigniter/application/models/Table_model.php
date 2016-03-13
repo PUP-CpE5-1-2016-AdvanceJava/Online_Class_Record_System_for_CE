@@ -79,5 +79,12 @@ class Table_model extends CI_Model {
     	);
     	return $data;
 	}
+	
+	function save_table_data()
+	{
+		$lec_format = array();
+		$lab_format = array();
+		var_dump($_POST['tableData']);
+	}
 }
 ?>

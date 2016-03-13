@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'pupx.dx',
+	'hostname' => 'localhost',
 	'username' => 'root',
-	'password' => '99083915',
+	'password' => 'root',
 	'database' => 'online_class_record_system_for_ce',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
