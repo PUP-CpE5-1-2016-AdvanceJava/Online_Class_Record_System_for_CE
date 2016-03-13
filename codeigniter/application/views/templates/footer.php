@@ -23,6 +23,7 @@
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/script.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/sidebar.js"></script>
+    <script type="text/javascript" src="<?php base_url(); ?>/js/save_table.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/bootstrap-multiselect.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/bootstrap.min.js"></script>
