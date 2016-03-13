@@ -84,7 +84,7 @@ class Table_model extends CI_Model {
 	{
 		$lec_format = array();
 		$lab_format = array();
-		var_dump($_POST['tableData']);
+		var_dump($_POST);
 	}
 }
 ?>
