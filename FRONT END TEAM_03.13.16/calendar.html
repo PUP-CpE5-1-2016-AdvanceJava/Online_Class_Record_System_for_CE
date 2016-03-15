@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>CE-Online Class Record</title>
+    
+    <link type="text/css" href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" href="plugins/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet">
+
+    <link type="text/css" href="css/stylesheet.css" rel="stylesheet">
+    <link type="text/css" href="css/calendar.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="container-fluid" id = "header-wrapper">
+        <div class = "container">
+            <div class="row">
+                <div class = "col-lg-12 col-md-12" id = "header-details">
+                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b> | Online Class Record </span>     
+                </div>
+            </div>
+        </div>	
+    </div>
+
+
+    <!-- NAVBAR -->
+     <div class = "container-fluid" id = "navbar-wrapper">
+        <div class = "container">
+            <div class = "row" id = "navbar-normal">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#">ARCHIVES</a></li>
+                    <li><a href = "#" id = "active">CALENDAR</a></li>
+                    <li><a href = "#" >SETTINGS</a></li>
+                    <li><a href = "#">HOME</a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
+                </ul>
+            </div>
+            <div class = "row" id = "navbar-res">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active"><i class = "fa fa-archive "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-calendar "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-wrench "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-home "></i></a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>          
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+
+    <!-- EVENTS AND CALENDAR -->
+    <div class="container-fluid" id="calendar-content-wrapper">
+        <div class="container" id="calendar-wrapper">
+            <div class="row" id="calendar-wrapper-row">
+                <!--EVENTS-->
+                <div class="col-xs-3 col-lg-3 col-md-3" id="event-panel">
+                    <div id="event-title">
+                        <h2>EVENTS</h2>
+                        <h4 id="current-event-date"></h4>
+                        <h6 id="add-event-button"><span class="glyphicon glyphicon-plus"></span> ADD EVENT</h6>
+                        <!--Input-->
+                        <div class="form-group">
+                            <textarea name="form-control" rows="5" id="add-event"></textarea>
+                            <input class="btn btn-default" type="submit" value="SUBMIT">
+                        </div>
+                    </div>
+                    <div id="event-scroll">
+                        <div id="event-list">
+                            <!--Ilalagay dito ni backend lahat ng events-->
+                            <!--id naming. Month-day-year Capital first letter at kapag 1 digit ay 1 lang. e.i. February-1 instead of February-01-->
+
+                            <!--Sa admin ay ganitong format para may delete button-->
+                            <div class="cal-event" id="February-25-2016">
+                                <div class="row vertical-align">
+                                    <div class="col-xs-9"><p>EDSA Revolution ha hahahahaha aha aha ah aaDay</p></div>
+                                    <div class="col-xs-3"><span class="glyphicon glyphicon-remove" id="delete-button"></span></div>
+                                </div>
+                            </div>
+                            <div class="cal-event" id="February-10-2016">
+                                <div class="row vertical-align">
+                                    <div class="col-xs-9"><p>May pasok</p></div>
+                                    <div class="col-xs-3"><span class="glyphicon glyphicon-remove" id="delete-button"></span></div>
+                                </div>
+                            </div>
+                            <div class="cal-event" id="February-14-2016">
+                                <div class="row vertical-align">
+                                    <div class="col-xs-9"><p>Valentines Day</p></div>
+                                    <div class="col-xs-3"><span class="glyphicon glyphicon-remove" id="delete-button"></span></div>
+                                </div>
+                            </div>
+                            <div class="cal-event" id="February-25-2016">
+                                <div class="row vertical-align">
+                                    <div class="col-xs-9"><p>EDSA Revolution Day</p></div>
+                                    <div class="col-xs-3"><span class="glyphicon glyphicon-remove" id="delete-button"></span></div>
+                                </div>
+                            </div>
+                            <div class="cal-event" id="March-23-2016">
+                                <div class="row vertical-align">
+                                    <div class="col-xs-9"><p>Start Holy Week</p></div>
+                                    <div class="col-xs-3"><span class="glyphicon glyphicon-remove"></span></div>
+                                </div>
+                            </div>
+
+                            <!--sa user ay ganito format-->
+                            <div class="cal-event" id="February-27-2016">Event 1</div>
+                            <div class="cal-event" id="February-27-2016">Event 2</div>
+                            <div class="cal-event" id="March-19-2016">Birthday</div>
+                            <div class="cal-event" id="May-1-2015">Labor Day</div>
+                            <div class="cal-event" id="May-4-2015">??</div>
+                            <div class="cal-event" id="May-1-2017">Labor Day</div>
+                            <div class="cal-event" id="March-1-2016">Test</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                            <div class="cal-event" id="May-1-2016">Labor Day</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--MAIN CALENDAR-->
+                <div class="col-xs-9 col-lg-9 col-md-9" id="calendar-div-wrapper">
+                    <div class="row vertical-align" id="calendar-title">
+                        <div class="col-lg-3 col-md-3 col-xs-4 text-left" id="button-group1">
+                            <button type="button" id="back" class="btn btn-default"><span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span></button>
+                            <button type="button" class="btn btn-default" id="next"><span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span></button>
+                            <button type="button" class="btn btn-default btn-lg" id="today-button">Today</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-4">
+                            <h1 id="calendar-h2-month"></h1>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-4 text-right" id="button-group2">
+                            <button type="button" class="btn btn-default btn-lg active" id="month-button">Month</button>
+                            <button type="button" class="btn btn-default btn-lg" id="year-button">Year</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class = "container-fluid" id = "footer-wrapper">
+        <div class = "container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6" id = "footer-details">      
+                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b> | Online Class Record </span>      
+                    <p><i class="fa fa-copyright"></i>All Rights Reserved</p>
+                </div>
+                <div class = "col-lg-5 col-md-5 pull-right" id = "footer-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Comments and Queries">
+                        <span class="input-group-btn">
+                            <button id="footer-button" class="btn btn-default" type="button"><i class = "fa fa-envelope"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/calendar_lara.js"></script>
+    <script type="text/javascript" src="js/calendar_marci.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="plugins/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js"></script>
+</body>
