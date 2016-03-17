@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 02, 2016 at 04:35 AM
+-- Generation Time: Mar 17, 2016 at 10:49 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `attendance` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
   `Status` varchar(50) NOT NULL,
+  `Score` int(11) NOT NULL,
   `Rating` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -59,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `UserId` int(11) NOT NULL,
   `Date` date NOT NULL,
   `Event` varchar(300) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `calendar`
@@ -70,7 +71,8 @@ INSERT INTO `calendar` (`Id`, `UserId`, `Date`, `Event`) VALUES
 (60, 2, '2016-03-12', 'Game Dev Project Submission'),
 (61, 2, '2016-03-09', 'TQM Project Submission'),
 (62, 2, '2016-03-21', 'Start of Holy Week'),
-(63, 2, '2016-11-28', 'My Birthdaaaay :D');
+(63, 2, '2016-11-28', 'My Birthdaaaay :D'),
+(65, 2, '2016-04-29', 'Graduation');
 
 -- --------------------------------------------------------
 
@@ -133,7 +135,13 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 
 INSERT INTO `faculty` (`UserId`, `Background`, `FName`, `MName`, `LName`) VALUES
 (2, 'qweqwe', 'qweqweas', 'asdsad', 'qweqe'),
-(4, 'asdsad', 'asdas', 'qwewqe', 'asdsad');
+(4, 'asdsad', 'asdas', 'qwewqe', 'asdsad'),
+(5, 'qeqw', 'asd', 'aas', 'sd'),
+(6, 'asda', 'qweqw', 'asd', 'asdasd'),
+(7, 'Hayahay', 'Testfirst', 'Testmiddle', 'Testlast'),
+(8, 'qwee', 'asdas', 'qweqwe', 'asdsd'),
+(9, 'qweqwe', 'sdsad', 'qweqwe', 'sadasd'),
+(10, 'asdasd', 'qwea', 'sdasd', 'qwewe');
 
 -- --------------------------------------------------------
 
@@ -156,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `final_exam` (
 
 CREATE TABLE IF NOT EXISTS `grades` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
+  `StudId` int(11) NOT NULL,
   `MidTermGrade` int(11) NOT NULL,
   `FinalGrade` int(11) NOT NULL,
   `TotalGrade` int(11) NOT NULL,
@@ -290,6 +298,10 @@ CREATE TABLE IF NOT EXISTS `moduleitems` (
   `ExItems` smallint(6) NOT NULL,
   `LabNum` smallint(6) NOT NULL,
   `LabItems` smallint(6) NOT NULL,
+  `RecitationNum` smallint(6) NOT NULL,
+  `RecitationItems` smallint(6) NOT NULL,
+  `ProjINum` smallint(6) NOT NULL,
+  `ProjItems` smallint(6) NOT NULL,
   `QuizNum` smallint(6) NOT NULL,
   `QuizItems` smallint(6) NOT NULL,
   `LExamNum` smallint(6) NOT NULL,
@@ -317,6 +329,20 @@ CREATE TABLE IF NOT EXISTS `prac_exam` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `project`
+--
+
+CREATE TABLE IF NOT EXISTS `project` (
+  `Id` int(11) NOT NULL,
+  `StudGradeId` int(11) NOT NULL,
+  `Score` int(11) NOT NULL,
+  `Rating` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `quizzes`
 --
 
@@ -324,6 +350,20 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
   `Score` int(11) NOT NULL,
+  `Rating` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recitation`
+--
+
+CREATE TABLE IF NOT EXISTS `recitation` (
+  `Id` int(11) NOT NULL,
+  `StudGradeId` int(11) NOT NULL,
+  `Recite` int(11) NOT NULL,
   `Rating` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -528,15 +568,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `UserType` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `UserDept` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `LoginHist` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`Id`, `Username`, `Password`, `UserType`, `UserDept`, `LoginHist`) VALUES
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'CpE', '0000-00-00 00:00:00'),
-(4, 'faculty', 'd561c7c03c1f2831904823a95835ff5f', 'Faculty', 'CpE', '0000-00-00 00:00:00');
+(2, 'arian0987', '21232f297a57a5a743894a0e4a801fc3', 'Administrator', 'CpE', '0000-00-00 00:00:00'),
+(4, 'faculty', '74cd1e4ab5a57469ddae6fafe5550379', 'Faculty', 'CpE', '0000-00-00 00:00:00'),
+(6, 'chair', '74cd1e4ab5a57469ddae6fafe5550379', 'Chairperson', 'CpE', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -686,7 +727,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `calendar`
 --
 ALTER TABLE `calendar`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=64;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
 --
 -- AUTO_INCREMENT for table `class`
 --
@@ -771,7 +812,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

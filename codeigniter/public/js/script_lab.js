@@ -1,57 +1,40 @@
-/*INITIAL COUNTERS FOR TABLE*/
-midtermCounter=0
-finalsCounter=0
-labCounter1=0;
-labCounter2=0;
-pracCounter1=0;
-pracCounter2=0;
-projCounter1=0;
-projCounter2=0;
-labAdd1=0;
-pracAdd1=0;
-projAdd1=0;
-labAdd2=0;
-pracAdd2=0;
-projAdd2=0;
 
-var modal = document.getElementById('myModal');
 
 // Get the button that opens the modal
-var btn1 = document.getElementById("table-lab1-button-del");
-var btn2 = document.getElementById("table-prac1-button-del");
-var btn3 = document.getElementById("table-proj1-button-del");
-var btn4 = document.getElementById("table-lab2-button-del");
-var btn5 = document.getElementById("table-prac2-button-del");
-var btn6 = document.getElementById("table-proj2-button-del");
+// var btn1 = document.getElementById("");
+// var btn2 = document.getElementById("table-prac1-button-del");
+// var btn3 = document.getElementById("table-proj1-button-del");
+// var btn4 = document.getElementById("table-lab2-button-del");
+// var btn5 = document.getElementById("table-prac2-button-del");
+// var btn6 = document.getElementById("table-proj2-button-del");
 
 
 // Get the <span> element that closes the modal
-var cancel = document.getElementById("close_btn");
-var yes = document.getElementById("yes_btn");
+
 
 // When the user clicks the button, open the modal 
-btn1.onclick = function() {
-    modal.style.display = "block";
-}
+$(document).ready(function(){
+	/*INITIAL COUNTERS FOR TABLE*/
+	midtermCounter=0
+	finalsCounter=0
+	labCounter1=0;
+	labCounter2=0;
+	pracCounter1=0;
+	pracCounter2=0;
+	projCounter1=0;
+	projCounter2=0;
+	labAdd1=0;
+	pracAdd1=0;
+	projAdd1=0;
+	labAdd2=0;
+	pracAdd2=0;
+	projAdd2=0;
 
-btn2.onclick = function() {
-    modal.style.display = "block";
-}
+	var modal = document.getElementById('myModal');
+	var cancel = document.getElementById("close_btn");
+	var yes = document.getElementById("yes_btn");
+})
 
-btn3.onclick = function() {
-    modal.style.display = "block";
-}
-
-btn4.onclick = function() {
-    modal.style.display = "block";
-}
-btn5.onclick = function() {
-    modal.style.display = "block";
-}
-
-btn6.onclick = function() {
-    modal.style.display = "block";
-}
 
 // When the user clicks on <span> (x), close the modal
 cancel.onclick = function() {
@@ -65,8 +48,10 @@ window.onclick = function(event) {
     }
 }
 
+
 /* ADD BUTTON LAB1*/
-$('#table-lab1-button').click(function(){
+$(document).ready(function(){
+	$('#table-lab1-button').click(function(){
 	$('#table-lab1').each(function(){
 		if ($(this).attr('colspan') != 12){
 			labCounter1++;
@@ -89,6 +74,8 @@ $('#table-lab1-button').click(function(){
 		}
 	});
 });
+})
+
 /*DEL BUTTON LAB1*/
 $('#table-lab1-button-del').click(function(){
 	yes.onclick = function() {
