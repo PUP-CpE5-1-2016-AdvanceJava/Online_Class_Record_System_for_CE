@@ -472,9 +472,10 @@ function get_class_table(link)
         console.log("done");
         
         // append compute and save buttons
-        table.append("<button type='button' onclick='return getAllData("+ response.class_id +");' id='compute-button' name='compute-button'>Compute</button>\
-					<button type='button' id='save-button' name='save-button'>Save</button>\
+        table.append("<button type='button' id='compute-button' name='compute-button'>Compute</button>\
+					<button type='button' id='save-button' onclick='return getAllData("+ response.class_id +");'  name='save-button'>Save</button>\
 					<input type='hidden' id='tableType' name='tableType' value='"+ response['Class']['ModuleType']+"'></input>\
+					<input type='hidden' id='sheetType' name='sheetType' value='"+ response['table_type']+"'></input>\
 					<p id='status'></p>");
       }
       else

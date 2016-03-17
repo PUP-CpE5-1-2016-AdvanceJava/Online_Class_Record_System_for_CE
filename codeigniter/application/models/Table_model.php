@@ -82,9 +82,59 @@ class Table_model extends CI_Model {
 	
 	function save_table_data()
 	{
-		$lec_format = array();
-		$lab_format = array();
+		$grading_period = array('mt','ft');
+		$type = $_POST['tableType'];
 		var_dump($_POST);
+		switch ($type)
+		{
+			case 'Lec':
+				$format = array(
+					'att',
+					'cs',
+					'qz',
+					'exam'
+				);
+				$tables = array(
+					'assignment',
+					'seatwork',
+					'exercises',
+					'recitation',
+					'quizzes',
+					'long_exam',
+					'grades'
+				);
+				break;
+			case 'Lab':
+				$format = array(
+					'exer',
+					'prac',
+					'proj'
+				);
+				$tables = array(
+					'lab_act',
+					'prac_exam',
+					'project',
+					'grades'
+				);
+				break;
+			case 'attendance_table':
+				$tables = array(
+					'attendance'
+				);
+				$format = array(
+					'mt',
+					'ft',
+				);
+				break;
+			default:
+				exit ('Invalid Input');
+		}
+		
+	}
+	
+	function clear_table_session()
+	{
+		unset($_SESSION['table_data']);
 	}
 }
 ?>

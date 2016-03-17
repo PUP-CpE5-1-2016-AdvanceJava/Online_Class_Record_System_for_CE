@@ -246,10 +246,16 @@ class User extends CI_Controller
     	return;
 	}
 	
-	public function get_table_data()
+	public function set_table_data()
 	{
 		$this->load->model('Table_model');
 		$this->Table_model->save_table_data();
+	}
+	
+	public function clear_table_session()
+	{
+		$this->load->model('Table_model');
+		$this->Table_model->clear_table_session();
 	}
 
 	public function register()

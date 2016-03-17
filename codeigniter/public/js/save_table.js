@@ -5,15 +5,39 @@ function getAllData(id)
 	var tempContainer = [];
 	var numOfItemsContainer = [];
 	var type = $('#tableType').val();
+	var sheet = $('#sheetType').val();
 	var gradingPeriod = [ 'mt', 'ft' ];
+	var index = 0;
+	
 	
 	// collect all the innerHTML in the table e.g. 20xx-xxxxx-MN-0...
 	// separate number of items from the grades
-	var numberOfItems = document.getElementById('table-wrapper').tBodies[0].rows[5];
-	var index = 0;
-	
-	if (type == 'Lec')
+	if (sheet == 'attendance_table')
 	{
+		// over type for the format object later
+		type = sheet;
+		$('td').each(function(){
+			tempContainer.push($(this).text());
+		});
+		
+		// get the rows for the headers
+		var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[2];
+		for (var headerIndex = 2; headerIndex < gradeHeaderRow.cells.length; headerIndex++)
+		{
+			if (gradeHeaderRow.cells[headerIndex].innerHTML !== '')
+			colNames.push(gradeHeaderRow.cells[headerIndex].innerHTML.toLowerCase());
+		}
+		
+		var format = [
+			'mt',
+			'ft'
+		];
+		
+		var limitCount = 2;
+	}
+	else if (type == 'Lec')
+	{
+		var numberOfItems = document.getElementById('table-wrapper').tBodies[0].rows[5];
 		// cell length or the number of columns is different from lec and lab
 		$('td').each(function(){
 			
@@ -74,6 +98,7 @@ function getAllData(id)
 	}
 	else if (type == 'Lab')
 	{
+		var numberOfItems = document.getElementById('table-wrapper').tBodies[0].rows[5];
 		// note the '-1' difference from Lec
 		$('td').each(function(){
 			if (index < (numberOfItems.cells.length-1))
@@ -103,6 +128,7 @@ function getAllData(id)
 		
 		var limitCount = 2;
 	}
+
 	
 	// initialize some 
 	var num = 0;
@@ -144,6 +170,8 @@ function getAllData(id)
 			if (name.match(/per/g) != null)
 			{
 				count++;
+				if (sheet == 'attendance_table') periodCount++;
+				
 			}
 			
 			// advance the gradingPeriod array everytime it enconters a rating and reset the format array as well
@@ -168,23 +196,18 @@ function getAllData(id)
 		var toEncode = {
 			'tableData' : students,
 			'tableId' : id,
-			'tableType' : type
+			'tableType' : type,
+			'tableFormat' : keyFormat
 		};
 		
 		// encode to JSON then send one student's records
 		var recursiveEncoded = $.param(toEncode);
-		$.post('/user/get_table_data', recursiveEncoded)
+		$.post('/user/set_table_data', recursiveEncoded)
 			.done(function( result ) {
 				$('#status').html(result);
 		});
+		
+		//~ break;
 	}
-	
-	var nameFormat = { 'format': keyFormat };
-	
-	// encode format to JSON then send
-	var recursiveEncoded = $.param(nameFormat);
-	$.post('/user/get_table_data', recursiveEncoded)
-		.done(function( result ) {
-			$('#status').html(result);
-	});
+	return false;
 }
