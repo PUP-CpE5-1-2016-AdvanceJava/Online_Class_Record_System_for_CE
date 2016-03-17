@@ -11,3 +11,4 @@ pendings
 -faculty>settings>addstudent
 -admin>homepage
 -archive functionality
+.
