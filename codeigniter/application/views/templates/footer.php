@@ -24,14 +24,10 @@
     <script type="text/javascript" src="<?php base_url(); ?>/js/script.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/sidebar.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/save_table.js"></script>
-    <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/bootstrap-multiselect.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/table.js"></script>
-    <!--<script type="text/javascript" src="<?php base_url(); ?>/js/script_lab.js"></script>
-    <script type="text/javascript" src="<?php base_url(); ?>/js/script_lec.js"></script>
-    <script type="text/javascript" src="<?php base_url(); ?>/js/script_attendance.js"></script>
-    <script type="text/javascript" src="<?php base_url(); ?>/js/modal.js"></script>-->
+
 </body>
 
 </html>

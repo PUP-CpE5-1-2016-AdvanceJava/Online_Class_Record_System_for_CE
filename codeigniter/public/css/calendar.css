@@ -114,12 +114,7 @@ div[id^="calendar-div-"]{ display: none; }
 	height: calc(100% - 135px);
 }
 #calendar-title>div>button{ font-size: 1em; }
-button:not(#footer-button), input.btn {
-	border-radius: 0px !important;
-	padding: .2em .6em !important;
-	background: #f5f5f5 !important;
-	border: none !important;
-}
+
 .btn.btn-default:focus,.btn.active:focus, textarea:focus, textarea:active, textarea:hover{outline: none;-webkit-appearance:none;}
 .disabled{cursor: default !important;}
 .vertical-align {

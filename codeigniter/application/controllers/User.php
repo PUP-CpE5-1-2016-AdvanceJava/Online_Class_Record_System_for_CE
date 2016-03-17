@@ -38,8 +38,8 @@ class User extends CI_Controller
 			//get the username and usertype
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
-			);
+				'ActiveHeader' => "home"
+			);	
 			//call the pages and include variables
 			$this->load->view('templates/header',$user);
 			$this->load->view('pages/faculty_page',$data);
@@ -56,14 +56,30 @@ class User extends CI_Controller
     {
     	if ($this->session->userdata('Id')!="")
     	{
-    		//to go in the settings tab
-			$user['user'] = array(
+    		$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
+				'ActiveHeader' => "settings"
 			);
-			$this->load->view('templates/header',$user);
-			$this->load->view('pages/settings');
-			$this->load->view('templates/footer');
+    		if ($this->session->userdata('UserType') == "Faculty")
+    		{
+	    		//to go in the settings tab of faculty
+				$this->load->view('templates/header',$user);
+				$this->load->view('pages/settings');
+				$this->load->view('templates/footer');
+			}
+			else if ($this->session->userdata('UserType') == "Administrator")
+			{
+				//get faculty usernames for reset pass dropdown
+				$this->load->model('Admin_model');
+				$names['users'] = $this->Admin_model->get_usernames();
+				$this->load->view('templates/header',$user);
+				$this->load->view('pages/admin_settings_page',$names);
+			}
+			else 
+			{
+				die("Chair");
+			}
+			// $this->load->view('pages/chairperson_settings_page');
 		}
 		else 
 		{
@@ -78,7 +94,7 @@ class User extends CI_Controller
     		// to go in the archives tab
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
+				'ActiveHeader' => "archives"
 			);
 			$this->load->view('templates/header',$user);
 			$this->load->view('pages/archives');
@@ -95,14 +111,15 @@ class User extends CI_Controller
     	if ($this->session->userdata('Id')!="")
     	{
     		// to go in the archives tab
-			$data['user'] = array(
+			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
+				'UserType' => $this->session->userdata('UserType'),
+				'ActiveHeader' => "calendar"
 			);
 			$this->load->model('Calendar_model');
 			$data['info'] = $this->Calendar_model->getEvent();
 
-			$this->load->view('templates/header',$data);
+			$this->load->view('templates/header',$user);
 			$this->load->view('pages/calendar',$data);
 		}
 		else 
@@ -300,6 +317,44 @@ class User extends CI_Controller
 		{
 			$this->user_model->save_settings($this->session->userdata('Id'));
 			redirect(site_url('user/home'));
+		}
+	}	
+
+	public function admin_settings($todo)
+	{
+		if ($todo == "change_pw")
+		{
+			$old_pw = $this->input->post('old_pw');
+			$new_pw = $this->input->post('new_pw');
+			$this->load->model('Admin_model');
+			$data["status"] = $this->Admin_model->admin_change_pw($old_pw,$new_pw,$this->session->userdata('Id'));
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
+	    }
+		else if ($todo == "change_un")
+		{
+			$old_un = $this->input->post('old_un');
+			$new_un = $this->input->post('new_un');
+			$this->load->model('Admin_model');
+			$data["status"] = $this->Admin_model->admin_change_un($old_un,$new_un,$this->session->userdata('Id'));
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
+		}
+		else if ($todo == "create_acc")
+		{
+			$this->user_model->register_user();
+			$data["status"] = "OK";
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
+		}
+		else if ($todo == "fac_reset_pass")
+		{
+			$user = $this->input->post('data');
+			$this->load->model('Admin_model');
+			$data["pass"] = $this->Admin_model->acc_reset_pass($user);
+			$data["status"] = "OK";
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
 		}
 	}
 
