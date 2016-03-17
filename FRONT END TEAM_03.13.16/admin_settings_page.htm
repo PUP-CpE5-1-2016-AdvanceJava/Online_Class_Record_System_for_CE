@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>CE-OCR Settings</title>
+    
+    <link type="text/css" href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link type="text/css" href="css/stylesheet.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="container-fluid" id = "header-wrapper">
+		<div class = "container">
+		    <div class="row">
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "header-details">
+                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
+                    <span><b id = "header-details-title">College of Engineering</b><b id = "header-details-title-res">CE</b> | Online Class Record </span>     
+                </div> 
+            </div> 	
+		</div>	<!-- container -->	
+	</div> <!-- container-fluid -->
+	 
+
+   <!-- NAVBAR -->
+     <div class = "container-fluid" id = "navbar-wrapper">
+        <div class = "container">
+            <div class = "row" id = "navbar-normal">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#">ARCHIVES</a></li>
+                    <li><a href = "#">CALENDAR</a></li>
+                    <li><a href = "#" id = "active">SETTINGS</a></li>
+                    <li><a href = "#">HOME</a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
+                </ul>
+            </div>
+            <div class = "row" id = "navbar-res">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active"><i class = "fa fa-archive "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-calendar "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-wrench "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-home "></i></a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>          
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+
+    <!-- SETTINGS -->
+    <div class = "container" id = "settings-wrapper">
+        <div class = "col-md-12" id = "settings-title">
+            <span> SETTINGS </span> 
+        </div>
+        <div class = "row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <!-- PANEL 1 -CHANGEPWD -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <a id = "archives-panel-label" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Change Admin Password <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="list-group" >
+                                <div class="list-group-item" id ="settings-panel-details">
+                                    <form class="form-inline">
+                                        <div class="form-group" id = "settings-password-form">
+                                            <input type="password" class="form-control" placeholder="Old Password">
+                                        </div>
+                                        <div class="form-group" id = "settings-password-form">
+                                            <input type="password" class="form-control" id="exampleInputEmail2" placeholder="New Password">
+                                        </div>
+                                        <button class="btn btn-success " id = "settings-password-form-button" type="submit"><i class="fa fa-check"></i> Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- PANEL 2 -CHANGEUN -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <a id = "archives-panel-label" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">Change Admin Username <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="list-group" >
+                                <div class="list-group-item" id ="settings-panel-details">
+                                    <form class="form-inline">
+                                        <div class="form-group" id = "settings-password-form">
+                                            <input type="username" class="form-control" placeholder="Old Username">
+                                        </div>
+                                        <div class="form-group" id = "settings-password-form">
+                                            <input type="username" class="form-control" id="exampleInputEmail2" placeholder="New Username">
+                                        </div>
+                                        <button class="btn btn-success " id = "settings-password-form-button" type="submit"><i class="fa fa-check"></i> Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 3 - CREATE FACCCT -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <a id = "archives-panel-label" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Create Account <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="list-group" >
+                                <div class="list-group-item" id = "settings-create-panel-details" >
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="Email" class="col-sm-2 control-label">Email</label>
+                                            <div class="col-sm-10">
+                                                <input type="username" class="form-control" id="Email" placeholder="Username">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="Password" class="col-sm-2 control-label">Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="Password" placeholder="Password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="Info" class="col-sm-2 control-label">Personal Info</label>
+                                            <div class="col-sm-10">
+                                                <textarea id = "Info" class="form-control" type = "text" rows="4"  name = "abstract" style = "height: 100px; resize:none;" placeholder="Personal Information"  required></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="Firstname" class="col-sm-2 control-label">Firstname</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="Firstname" placeholder="First Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="Middlename" class="col-sm-2 control-label">Middlename</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="Middlename" placeholder="Middle Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="Lastname" class="col-sm-2 control-label">Lastname</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="Lastname" placeholder="Last Name">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Usertype">User Type</label> 
+                                            <div class="col-sm-10">
+                                                <select class = "form-control" name="Usertype" id = "Usertype" required>
+                                                    <option disabled selected>User Type</option>
+                                                    <option >Admin</option>
+                                                    <option >Chairperson</option>
+                                                    <option >Faculty</option>
+                                                </select>
+                                            </div>    
+                                        </div>        
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Userdepartment">User Department</label> 
+                                            <div class="col-sm-10 " >        
+                                                <select class = "form-control" name="Userdepartment" id = "Userdepartment" required>
+                                                    <option disabled selected >User Department</option>
+                                                    <option >Civil Engineering</option>
+                                                    <option >Computer Engineering</option>
+                                                    <option >Electrical Engineering</option>
+                                                    <option >Electronics Engineering</option>
+                                                    <option >Industrial Engineering</option>
+                                                    <option >Mechanical Engineering</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button class="btn btn-primary " id = "settings-createacct-form-button" type="submit"><i class="fa fa-plus"></i> Create Account</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+
+                    <!-- PANEL 4 - RESET FACPWD -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <a id = "archives-panel-label" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Faculty Reset Password <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                            <div class="list-group" >
+                                <div class="list-group-item" id = "settings-panel-details">
+                                    <form class = "form-inline">
+                                        <div class="form-group">
+                                            <select class = "form-control" id = "settings-reset-select" placeholder = "Faculty Name">
+                                                <option selected value="1" disabled >Faculty Name</option>
+                                                <option value="2">Engr. Julius Cansino</option>
+                                                <option value="3">Engr. Pedrito Tenerife </option>
+                                                <option value="4">Engr. Rolito Mahaguay</option>
+                                            </select>
+                                        </div>
+                                        <button class="btn btn-danger " id = "settings-resetpwd-form-button" type="submit"><i class="fa fa-refresh"></i> Reset Password</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+
+
+                </div>
+            </div>
+        </div> <!-- row -->      
+    </div> <!-- container -->
+
+
+    <!-- FOOTER -->
+     <div class = "container-fluid" id = "footer-wrapper">
+        <div class = "container">
+            <div class="row" id = "footer-details-wrapper">
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" id = "footer-details">      
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b><wbr> | Online Class Record </span>      
+                    <p><i class="fa fa-copyright"></i>All Rights Reserved</p>
+                </div>
+                <div class = "col-lg-5 col-md-5  com-sm-12 col-xs-12" id = "footer-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Comments and Queries">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class = "fa fa-envelope"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+    
+    <script type="text/javascript" src="plugins/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+
+</body>
