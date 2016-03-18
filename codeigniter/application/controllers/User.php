@@ -268,6 +268,7 @@ class User extends CI_Controller
 		$this->load->model('Table_model');
 		$this->Table_model->save_table_data();
 		unset($_SESSION['table_data']);
+		echo 'Recording finished';
 	}
 	
 	public function set_table_session()
@@ -277,8 +278,8 @@ class User extends CI_Controller
 	
 	public function clear_table_session()
 	{
-		var_dump($_SESSION['table_data']);
 		unset($_SESSION['table_data']);
+		echo 'OK';
 	}
 
 	public function register()

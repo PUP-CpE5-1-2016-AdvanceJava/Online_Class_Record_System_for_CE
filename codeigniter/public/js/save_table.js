@@ -132,7 +132,14 @@ function getAllData(id)
 	}
 	
 	// clear table session first 
-	$.get('/user/clear_table_session', {});
+	$.get('/user/clear_table_session', {})
+		.done(function( result ) {
+			if (result != 'OK')
+			{
+				$('#status').html("Operation not finished. Abort");
+				return false;
+			}
+		});
 	
 	// initialize some 
 	var num = 0;
@@ -216,12 +223,10 @@ function getAllData(id)
 	}
 	
 	console.log ('set session done');
-	window.setTimeout(function() {
-       	// trigger save into db
 		$.post('/user/set_table_data', {})
 			.done(function( result ) {
 				$('#status').html(result)
 		});
-    }, 2000);	
+
 	return false;
 }

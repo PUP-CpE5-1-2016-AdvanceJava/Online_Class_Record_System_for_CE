@@ -71,6 +71,32 @@ class Table_model extends CI_Model {
     		);
     		$i++;
     	}
+    	
+    	// justin code
+		switch ($block->ModuleType)
+		{
+			case 'Lec':
+				$tables = array( 'assignment', 'seatwork','exercises','recitation','quizzes','long_exam', 'midterm_exam', 'final_exam');
+				break;
+			case 'Lab':
+				$tables = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
+				break;
+			case 'attendance_table':
+				$tables = array( 'attendance' );
+				break;
+			default:
+				exit ('Invalid Input');
+		}
+		
+		// comment this out when you test the app
+		foreach ($tables as $table)
+		{
+			$sql = "SELECT * FROM $table WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students  WHERE ClassId = ?))"
+			$query = $this->db->query($sql, $ClassId);
+			
+			// do stuff with the result
+		}
+    	
     	$data = array(
     		'Class' => $class,
     		'Subject' => $subject,
@@ -135,22 +161,30 @@ class Table_model extends CI_Model {
 					$this->db->query("DELETE FROM $table WHERE StudGradeId = ?", $row->Id);
 				}
 				
+				// update the existing record
 				if ($type != 'attendance_table')
 				{
 					$sql = "UPDATE grades SET MidTermGrade = ?, FinalGrade = ?, TotalGrade = ? WHERE StudId = ?";
-					$input_array = array( $data['grades']['mt_mt_rating'], $data['grades']['ft_ft_rating'], $total_grade, $row->Id );	
+					$input_array = array( $data['grades']['mt_mt_rating'], $data['grades']['ft_ft_rating'], $total_grade, $row->Id );
+					$this->db->query($sql, $input_array);
 				}
 			}
 			else
 			{
 				if ($type != 'attendance_table')
 				{
+					// create the entry
 					$sql = "INSERT INTO grades (MidTermGrade, FinalGrade, TotalGrade, StudId) VALUES (?, ?, ?, ?)";
 					$input_array = array( $data['grades']['mt_mt_rating'], $data['grades']['ft_ft_rating'], $total_grade, $row->Id );
+					$this->db->query($sql, $input_array);
+					
+					// get the resulting id
+					$sql = "SELECT Id FROM grades WHERE StudId = ?";
+					$query = $this->db->query($sql, $row->Id);
+					$row = $query->row();
 				}
 			}
-			$query->free_result();
-			$this->db->query($sql, $input_array);
+			
 			
 			
 			$i = 0;
@@ -352,11 +386,13 @@ class Table_model extends CI_Model {
 					}
 				}
 				
-				// check to see if the sql query is complete
+				// check to see if the sql query is complete and reset values
 				if ($do_query)
 				{
 					// execute
 					$this->db->query($sql, $input_array);
+					$sql = '';
+					$input_array = array();
 					$do_query = FALSE;
 				}
 				
@@ -365,8 +401,6 @@ class Table_model extends CI_Model {
 				else $i = 0;
 			}
 		}
-		
-		//~ exit ('FUCKaaaa');
 	}
 }
 ?>
