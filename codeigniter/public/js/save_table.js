@@ -1,7 +1,7 @@
 function getAllData(id)
-{     
+{
 	// initialize necessary variables
-	var colNames = ['studentNumber', 'name'];
+	var colNames = ['number', 'name'];
 	var tempContainer = [];
 	var numOfItemsContainer = [];
 	var type = $('#tableType').val();
@@ -14,7 +14,7 @@ function getAllData(id)
 	// separate number of items from the grades
 	if (sheet == 'attendance_table')
 	{
-		// over type for the format object later
+		// overwrite type for the format object later
 		type = sheet;
 		$('td').each(function(){
 			tempContainer.push($(this).text());
@@ -29,11 +29,13 @@ function getAllData(id)
 		}
 		
 		var format = [
+			'att',
 			'mt',
+			'att',
 			'ft'
 		];
 		
-		var limitCount = 2;
+		var limitCount = 3;
 	}
 	else if (type == 'Lec')
 	{
@@ -44,7 +46,7 @@ function getAllData(id)
 			// this condition separates num of items row from grade data
 			if (index < (numberOfItems.cells.length))
 			{
-				numOfItemsContainer.push($(this).text());
+				//~ numOfItemsContainer.push($(this).text());
 				index++;
 			}
 			else
@@ -103,7 +105,7 @@ function getAllData(id)
 		$('td').each(function(){
 			if (index < (numberOfItems.cells.length-1))
 			{
-				numOfItemsContainer.push($(this).text());
+				//~ numOfItemsContainer.push($(this).text());
 				index++;
 			}
 			else
@@ -128,7 +130,9 @@ function getAllData(id)
 		
 		var limitCount = 2;
 	}
-
+	
+	// clear table session first 
+	$.get('/user/clear_table_session', {});
 	
 	// initialize some 
 	var num = 0;
@@ -142,7 +146,7 @@ function getAllData(id)
 	for (var i = 0; i < tempContainer.length; i = i + colNames.length)
 	{
 		// create javascript object for serialization
-		var students = {};
+		//~ var students = {};
 		var grades = {};
 		var count = 0;
 		var periodCount = 0;
@@ -151,6 +155,12 @@ function getAllData(id)
 			// elaborate loop for placing the names together and make a sensible system
 			name = colNames[j].split(' ').join('_');
 			name = name.replace('%', 'per');
+			
+			if (name.match(/total/g) != null && type == 'attendance_table')
+			{
+				count++;
+			}
+			
 			if (count > limitCount)
 			{
 				keyName = gradingPeriod[periodCount]+'_'+gradingPeriod[periodCount]+'_'+name;
@@ -170,7 +180,7 @@ function getAllData(id)
 			if (name.match(/per/g) != null)
 			{
 				count++;
-				if (sheet == 'attendance_table') periodCount++;
+				if (type == 'attendance_table') periodCount++;
 				
 			}
 			
@@ -186,7 +196,7 @@ function getAllData(id)
 		isKeying = false;
 		
 		// create a student object and place the grades object to place into another object
-		students['student'] = {	
+		var students = {	
 			'name' : tempContainer[i],
 			'id' : tempContainer[i+1],
 			'grades' : grades
@@ -202,12 +212,16 @@ function getAllData(id)
 		
 		// encode to JSON then send one student's records
 		var recursiveEncoded = $.param(toEncode);
-		$.post('/user/set_table_data', recursiveEncoded)
-			.done(function( result ) {
-				$('#status').html(result);
-		});
-		
-		//~ break;
+		$.post('/user/set_table_session', recursiveEncoded);
 	}
+	
+	console.log ('set session done');
+	window.setTimeout(function() {
+       	// trigger save into db
+		$.post('/user/set_table_data', {})
+			.done(function( result ) {
+				$('#status').html(result)
+		});
+    }, 2000);	
 	return false;
 }

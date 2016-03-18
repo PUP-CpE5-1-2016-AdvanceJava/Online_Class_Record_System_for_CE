@@ -267,12 +267,18 @@ class User extends CI_Controller
 	{
 		$this->load->model('Table_model');
 		$this->Table_model->save_table_data();
+		unset($_SESSION['table_data']);
+	}
+	
+	public function set_table_session()
+	{
+		$_SESSION['table_data'][] = $_POST;
 	}
 	
 	public function clear_table_session()
 	{
-		$this->load->model('Table_model');
-		$this->Table_model->clear_table_session();
+		var_dump($_SESSION['table_data']);
+		unset($_SESSION['table_data']);
 	}
 
 	public function register()
