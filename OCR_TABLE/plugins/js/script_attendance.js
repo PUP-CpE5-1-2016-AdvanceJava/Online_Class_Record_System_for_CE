@@ -46,13 +46,6 @@ $('#table-att1-button').click(function(){
 		    attAdd1 = attSpan1-2;
 		    $(this).attr('colspan',attSpan1);
 		    $(this).val(attCounter1);
-			
-			$('#table-midterm').each(function(){
-		    midtermCounter++;
-		    var midtermSpan1=17+midtermCounter;
-		    $(this).attr('colspan',midtermSpan1);
-		    $(this).val(midtermCounter);
-		});
 
 		$('#table-att1-button-del').css('display', 'inline-block');
 		$('#table-att1-total').before($("<td class='table-items-date-mid fixed-width' contenteditable='true'></td>"));
