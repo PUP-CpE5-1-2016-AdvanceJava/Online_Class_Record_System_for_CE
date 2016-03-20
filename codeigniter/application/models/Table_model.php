@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Table_model extends CI_Model {
 
@@ -65,9 +65,10 @@ class Table_model extends CI_Model {
     	{	
     		// combine to make full name and to capital first letter of each name
     		$full_name = ucwords($row->LName).', '.ucwords($row->FName).' '.ucwords($row->MName);
-    		$stud[$i] = array(
+    		$students[$i] = array(
+				'id'=> $row->Id,
     			'full_name' => $full_name, 
-    			'stud_num' => $row->StudentNumber,
+    			'stud_num' => $row->StudentNumber
     		);
     		$i++;
     	}
@@ -87,320 +88,207 @@ class Table_model extends CI_Model {
 			default:
 				exit ('Invalid Input');
 		}
-		
-		// comment this out when you test the app
+		$i = 0;
 		foreach ($tables as $table)
 		{
-			$sql = "SELECT * FROM $table WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students  WHERE ClassId = ?))"
+			$statement = ",$table.Sem";
+			if ($table == 'midterm_exam' OR $table == 'final_exam')
+			{
+				$statement = " ";
+			}
+			
+			$sql = "SELECT students.Id, $table.Score, $table.Rating".$statement."
+					FROM $table 
+					JOIN grades ON grades.Id = $table.StudGradeId 
+					JOIN students ON students.Id = grades.StudId 
+					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
 			$query = $this->db->query($sql, $ClassId);
 			
-			// do stuff with the result
+			foreach ($query->result() as $row)
+			{
+				if ($table == 'midterm_exam')
+				{
+					$semester = 'Midterm';
+				}
+				elseif ( $table == 'final_exam' )
+				{
+					$semester = 'Final';
+				}
+				else $semester = $row->Sem;
+				$grades[$i] = array(
+					'id' => $row->Id,
+					'module' => $table,
+					'score' => $row->Score,
+					'rating' => $row->Rating,
+					'sem' => $semester
+				);
+				$i++;
+			}
 		}
-    	
+
     	$data = array(
     		'Class' => $class,
     		'Subject' => $subject,
-    		'Student' => $stud,
+    		'Student' => $students,
     		'Module' => $module,
+    		'Grades' => $grades
     	);
     	return $data;
 	}
 	
+	private function databse_query($sql, $input_array)
+	{
+		
+		
+		return;
+	}
 		
 	function save_table_data()
 	{
-		foreach ($_SESSION['table_data'] as $student_grades)
+		$class_id = $_SESSION['table_format']['tableId'];
+		
+		// simple check to see if all students are going to be recorded
+		$sql = "SELECT Id FROM class WHERE NumOfStudents = ? AND Id = ?";
+		$query = $this->db->query($sql, array($_SESSION['table_format']['numOfStudents'], $class_id));
+		
+		if ($query->num_rows() ==  0) exit ('Recording failed, please try again');
+		
+		$type = $_SESSION['table_format']['tableType'];
+		$table_format = $_SESSION['table_format']['tableFormat'];
+		$table_data = $_SESSION['table_data'];
+		
+		// create stuff for the SQL insert loop 
+		switch ($type)
 		{
-			// collect post data
-			$type = $student_grades['tableType'];
-			$data = $student_grades['tableData'];
-			$class_id = $student_grades['tableId'];
-			$table_format = $student_grades['tableFormat'];
-			
-			// set some variables according to the type of table
-			switch ($type)
-			{
-				case 'Lec':
-					$tables = array( 'assignment', 'seatwork','exercises','recitation','quizzes','long_exam', 'midterm_exam', 'final_exam');
-					break;
-				case 'Lab':
-					$tables = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
-					break;
-				case 'attendance_table':
-					$tables = array( 'attendance' );
-					break;
-				default:
-					exit ('Invalid Input');
-			}
+			case 'Lec':
+				$tables_to_delete = array( 'assignment','seatwork','exercises','recitation','quizzes','long_exam','midterm_exam','final_exam');
+				$tables_to_record = array( 'assignment','seatwork','exercises','recitation','quizzes','long_exam','assignment','seatwork','exercises','recitation','quizzes','long_exam');
+				$name_formats = array( 'mt_cs_assign','mt_cs_sw','mt_cs_ex','mt_cs_rec','mt_qz_quiz','mt_qz_le',
+									'ft_cs_assign','ft_cs_sw','ft_cs_ex','ft_cs_rec','ft_qz_quiz','ft_qz_le' );
+				$rating_formats = array( 'mt_cs_per','mt_cs_per','mt_cs_per','mt_cs_per','mt_qz_per','mt_qz_per',
+									'ft_cs_per','ft_cs_per','ft_cs_per','ft_cs_per','ft_qz_per','ft_qz_per' );
+				$halfterm = array( 'Midterm','Midterm','Midterm','Midterm','Midterm','Midterm',
+									'Final','Final','Final','Final','Final','Final' );
+				$exam_tables = array('midterm_exam','final_exam');
+				$exam_format = array('mt_exam_','ft_exam_');
+				break;
+			case 'Lab':
+				$tables_to_delete = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
+				$tables_to_record = array( 'lab_act', 'prac_exam', 'project','lab_act', 'prac_exam', 'project' );
+				$name_formats = array( 'mt_exer_lab','mt_prac_practical','mt_proj_project','ft_exer_lab','ft_prac_practical','ft_proj_project' );
+				$rating_formats = array( 'mt_exer_per','mt_prac_per','mt_proj_per','ft_exer_per','ft_prac_per','ft_proj_per' );
+				$halfterm = array( 'Midterm','Midterm','Midterm','Final','Final','Final' );
+				break;
+			case 'attendance_table':
+				$tables_to_delete = array( 'attendance' );
+				$tables_to_record = array( 'attendance' );
+				$name_formats = array( 'mt_att','ft_att' );
+				$rating_formats = array( 'mt_mt_per','ft_ft_per' );
+				$halfterm = array( 'Midterm','Final' );
+				break;
+			default:
+				exit ('Invalid Input');
+		}
+		
 
-			// get id from student table to identify the student on grades table
-			$sql = "SELECT Id FROM students WHERE StudentNumber = ? AND ClassId = ?";
-			$query = $this->db->query($sql, array($data['id'], $class_id));
-			
-			if ($query->num_rows() > 0)
+		// destroy previous records
+		foreach ($tables_to_delete as $table)
+		{
+			$sql = "DELETE FROM $table 
+					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
+			$this->db->query($sql, $class_id);
+		}
+		
+		$b = 0;
+		$c = 0;
+		$first_student = TRUE;
+		$format_count = count($table_format);
+		$name_count = count($name_formats);
+
+		// record all non midterm/final exams
+		// loop of the column header array
+		for ($a = 0 ; $a < $format_count; $a++)
+		{
+			// loop of the header format array
+			for ($i = $b; $i < $name_count; $i++)
 			{
-			   $row = $query->row();
-			   $query->free_result();
-			}
-			else exit ('No Student');
-			
-			// get id from grades table that serves as the key on the module tables
-			$sql = "SELECT Id FROM grades WHERE StudId = ?";
-			$query = $this->db->query($sql, $row->Id);
-			
-			
-			$total_grade = ($data['grades']['mt_mt_rating'] + $data['grades']['ft_ft_rating']) / 2;
-			if ($query->num_rows() > 0)
-			{
-				$row = $query->row();
-				$query->free_result();
-				
-				// delete previous records in the appropriate tables
-				foreach ($tables as $table)
+				// check to see if the header at position of $b is equal. If equal break after query, otherwise iterate
+				if (stripos($table_format[$a], $name_formats[$i]) !== FALSE)
 				{
-					$this->db->query("DELETE FROM $table WHERE StudGradeId = ?", $row->Id);
-				}
-				
-				// update the existing record
-				if ($type != 'attendance_table')
-				{
-					$sql = "UPDATE grades SET MidTermGrade = ?, FinalGrade = ?, TotalGrade = ? WHERE StudId = ?";
-					$input_array = array( $data['grades']['mt_mt_rating'], $data['grades']['ft_ft_rating'], $total_grade, $row->Id );
-					$this->db->query($sql, $input_array);
-				}
-			}
-			else
-			{
-				if ($type != 'attendance_table')
-				{
-					// create the entry
-					$sql = "INSERT INTO grades (MidTermGrade, FinalGrade, TotalGrade, StudId) VALUES (?, ?, ?, ?)";
-					$input_array = array( $data['grades']['mt_mt_rating'], $data['grades']['ft_ft_rating'], $total_grade, $row->Id );
-					$this->db->query($sql, $input_array);
-					
-					// get the resulting id
-					$sql = "SELECT Id FROM grades WHERE StudId = ?";
-					$query = $this->db->query($sql, $row->Id);
-					$row = $query->row();
-				}
-			}
-			
-			
-			
-			$i = 0;
-			$num_of_items = count($table_format);
-			$input_array = array();
-			$rating = FALSE;
-			$do_query = FALSE;
-			
-			// record each data into the appropriate table
-			foreach ($data['grades'] as $grade)	
-			{
-				if (stripos($table_format[$i], 'mt') !== FALSE)  // MIDTERM GRADES
-				{
-					if ($type == 'Lec')
-					{
-						if (stripos($table_format[$i], 'mt_cs_assign') !== FALSE)
-						{
-							$sql = "INSERT INTO assignment (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_cs_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_cs_sw') !== FALSE)
-						{	
-							$sql = "INSERT INTO seatwork (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_cs_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_cs_ex') !== FALSE)
-						{
-							$sql = "INSERT INTO exercises (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_cs_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_cs_rec') !== FALSE)
-						{
-							$sql = "INSERT INTO recitation (StudGradeId, Recite, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_cs_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_qz_quiz') !== FALSE)
-						{
-							$sql = "INSERT INTO quizzes (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_qz_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_qz_le') !== FALSE)
-						{
-							$sql = "INSERT INTO long_exam (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_qz_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_exam') !== FALSE)
-						{
-							if (stripos($table_format[$i], 'score') !== FALSE)
-							{
-								$sql = "INSERT INTO midterm_exam (StudGradeId, Score, Rating) VALUES (?, ?, ?)";
-								$input_array = array($row->Id, $grade);
-							}
-							elseif (stripos($table_format[$i], 'per') !== FALSE)
-							{
-								$input_array[] = $grade;
-								$do_query = TRUE;
-							}
-						}
-					}
-					elseif ($type == 'Lab')
-					{
-						if (stripos($table_format[$i], 'mt_exer_lab') !== FALSE)
-						{
-							$sql = "INSERT INTO lab_act (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_exer_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_prac_practical') !== FALSE)
-						{
-							$sql = "INSERT INTO prac_exam (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_prac_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'mt_proj_project') !== FALSE)
-						{
-							$sql = "INSERT INTO prac_exam (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['mt_proj_total'], 'Midterm');
-							$do_query = TRUE;
-						}
-						
-					}
-					elseif ($type == 'attendance_table')
-					{
-						if (stripos($table_format[$i], 'mt_att') !== FALSE)
-						{
-							$sql = "INSERT INTO attendance (StudGradeId, Status, Score, Rating, Sem) VALUES (?, ?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade);
-						}
-						elseif (stripos($table_format[$i], 'mt_mt_total') === FALSE)
-						{
-							$input_array[] = $grade;
-						}
-						elseif (stripos($table_format[$i], 'per') === FALSE)
-						{
-							$input_array[] = $grade;
-							$input_array[] = 'Midterm';
-							$do_query = TRUE;
-						}
-					}
-				}
-				elseif (stripos($table_format[$i], 'ft') !== FALSE) // FINAL TERM GRADES
-				{
-					if ($type == 'Lec')
-					{
-						if (stripos($table_format[$i], 'ft_cs_assign') !== FALSE)
-						{
-							$sql = "INSERT INTO assignment (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_cs_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_cs_sw') !== FALSE)
-						{	
-							$sql = "INSERT INTO seatwork (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_cs_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_cs_ex') !== FALSE)
-						{
-							$sql = "INSERT INTO exercises (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_cs_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_cs_rec') !== FALSE)
-						{
-							$sql = "INSERT INTO recitation (StudGradeId, Recite, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_cs_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_qz_quiz') !== FALSE)
-						{
-							$sql = "INSERT INTO quizzes (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_qz_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_qz_le') !== FALSE)
-						{
-							$sql = "INSERT INTO long_exam (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_qz_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_exam') !== FALSE)
-						{
-							if (stripos($table_format[$i], 'score') !== FALSE)
-							{
-								$sql = "INSERT INTO final_exam (StudGradeId, Score, Rating) VALUES (?, ?, ?)";
-								$input_array = array($row->Id, $grade);
-							}
-							elseif (stripos($table_format[$i], 'per') !== FALSE)
-							{
-								$input_array[] = $grade;
-								$do_query = TRUE;
-							}
-						}
-					}
-					elseif ($type == 'Lab')
-					{
-						if (stripos($table_format[$i], 'ft_exer_lab') !== FALSE)
-						{
-							$sql = "INSERT INTO lab_act (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_exer_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_prac_practical') !== FALSE)
-						{
-							$sql = "INSERT INTO prac_exam (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_prac_total'], 'Final');
-							$do_query = TRUE;
-						}
-						elseif (stripos($table_format[$i], 'ft_proj_project') !== FALSE)
-						{
-							$sql = "INSERT INTO prac_exam (StudGradeId, Score, Rating, Sem) VALUES (?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade, $data['grades']['ft_proj_total'], 'Final');
-							$do_query = TRUE;
-						}
-					}
-					elseif ($type == 'attendance_table')
-					{
-						if (stripos($table_format[$i], 'ft_att') !== FALSE)
-						{
-							$sql = "INSERT INTO attendance (StudGradeId, Status, Score, Rating, Sem) VALUES (?, ?, ?, ?, ?)";
-							$input_array = array($row->Id, $grade);
-						}
-						elseif (stripos($table_format[$i], 'ft_ft_total') === FALSE)
-						{
-							$input_array[] = $grade;
-						}
-						elseif (stripos($table_format[$i], 'per') === FALSE)
-						{
-							$input_array[] = $grade;
-							$input_array[] = 'Midterm';
-							$do_query = TRUE;
-						}
-					}
-				}
-				
-				// check to see if the sql query is complete and reset values
-				if ($do_query)
-				{
-					// execute
-					$this->db->query($sql, $input_array);
-					$sql = '';
+					$sql = "INSERT INTO ".$tables_to_record[$i]." (StudGradeId, Score, Rating, Sem) VALUES ";
 					$input_array = array();
-					$do_query = FALSE;
+					foreach ($table_data as $student)
+					{
+						array_push($input_array, $class_id, $student['number'], $student['grades'][$table_format[$a]], $student['grades'][$rating_formats[$i]], $halfterm[$i]);
+						if ($first_student)
+						{
+							$sql .= "((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?, ?)";
+							$first_student = FALSE;
+						}
+						else 
+							$sql .= ",((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?, ?)";
+					}
+					
+					$this->db->query($sql, $input_array);
+					$first_student = TRUE;
+					$b = $i;
+					break;
 				}
-				
-				// reset because new row
-				if ($i < $num_of_items) $i++;
-				else $i = 0;
 			}
+		}
+		
+		
+		if ($type == 'Lec' OR $type == 'Lab')
+		{
+			// for lecture tables
+			if ($type == 'Lec')
+			{
+				$first_student = TRUE;
+				for ($i = 0; $i < count($exam_tables); $i++)
+				{
+					$sql = "INSERT INTO ".$exam_tables[$i]." (StudGradeId, Score, Rating) VALUES ";
+					$input_array = array();
+					foreach ($table_data as $student)
+					{
+						array_push($input_array, $class_id, $student['number'], $student['grades'][$exam_format[$i].'score'], $student['grades'][$exam_format[$i].'per']);
+						if ($first_student)
+						{
+							$sql .= "((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?)";
+							$first_student = FALSE;
+						}
+						else 
+							$sql .= ",((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?)";
+					}
+					$this->db->query($sql, $input_array);
+					$first_student = TRUE;
+				}
+			}
+			
+			// update grades table
+			$sql = "INSERT INTO grades (Id, MidTermGrade, FinalGrade, TotalGrade) VALUES ";
+			
+			$first_student = TRUE;
+			$input_array = array();
+			foreach ($table_data as $student)
+			{
+				$total_grade = ($student['grades']['mt_mt_rating'] + $student['grades']['ft_ft_rating']) / 2;
+				array_push($input_array, $class_id, $student['number'], $student['grades']['mt_mt_rating'], $student['grades']['ft_ft_rating'], $total_grade);
+						if ($first_student)
+						{
+							$sql .= "((SELECT Id FROM grades_id WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?, ?)";
+							$first_student = FALSE;
+						}
+						else 
+							$sql .= ",((SELECT Id FROM grades_id WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?, ?)";
+			}
+			$sql .= "ON DUPLICATE KEY UPDATE MidTermGrade= VALUES (MidTermGrade), FinalGrade= VALUES (FinalGrade), TotalGrade= VALUES (TotalGrade)";
+			$this->db->query($sql, $input_array);
+			
+			$sql .= "INSERT INTO grades_id SELECT Id, StudId FROM grades ON DUPLICATE KEY UPDATE StudId= VALUES (StudId)";
+			$this->db->query($sql);
 		}
 	}
 }
-?>
+
+
+/* END OF FILE */

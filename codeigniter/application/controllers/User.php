@@ -268,17 +268,38 @@ class User extends CI_Controller
 		$this->load->model('Table_model');
 		$this->Table_model->save_table_data();
 		unset($_SESSION['table_data']);
-		echo 'Recording finished';
+		unset($_SESSION['table_format']);
+		if ( ! $this->db->_error_message()) echo 'Recording finished!';
+		else echo 'Error detected!';
+	}
+	
+	// test function
+	public function show_var()
+	{
+		//~ var_dump($_SESSION['table_data']['student0']);
+		//~ var_dump($_SESSION['table_format']['tableFormat']);
+		//~ var_dump($_SESSION['table_data']['student0']['grades']);
+		//~ var_dump($_SESSION['table_format']['numOfStudents']);
+		//~ echo ($_SESSION['table_data']['student0']['grades']['mt_mt_rating'] + $_SESSION['table_data']['student0']['grades']['ft_ft_rating']) / 2;
+		//~ var_dump($_SESSION['table_format']);
+		var_dump($_SESSION['queries_to_db']);
+		unset($_SESSION['queries_to_db']);
 	}
 	
 	public function set_table_session()
 	{
-		$_SESSION['table_data'][] = $_POST;
+		$_SESSION['table_data']['student'.count($_SESSION['table_data'])] = $_POST;
+	}
+	
+	public function set_global_table_session()
+	{
+		$_SESSION['table_format'] = $_POST;
 	}
 	
 	public function clear_table_session()
 	{
 		unset($_SESSION['table_data']);
+		unset($_SESSION['table_format']);
 		echo 'OK';
 	}
 

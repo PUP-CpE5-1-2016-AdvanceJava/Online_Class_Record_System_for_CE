@@ -46,7 +46,7 @@ function getAllData(id)
 			// this condition separates num of items row from grade data
 			if (index < (numberOfItems.cells.length))
 			{
-				//~ numOfItemsContainer.push($(this).text());
+				numOfItemsContainer.push($(this).text());
 				index++;
 			}
 			else
@@ -105,7 +105,7 @@ function getAllData(id)
 		$('td').each(function(){
 			if (index < (numberOfItems.cells.length-1))
 			{
-				//~ numOfItemsContainer.push($(this).text());
+				numOfItemsContainer.push($(this).text());
 				index++;
 			}
 			else
@@ -153,7 +153,6 @@ function getAllData(id)
 	for (var i = 0; i < tempContainer.length; i = i + colNames.length)
 	{
 		// create javascript object for serialization
-		//~ var students = {};
 		var grades = {};
 		var count = 0;
 		var periodCount = 0;
@@ -163,11 +162,19 @@ function getAllData(id)
 			name = colNames[j].split(' ').join('_');
 			name = name.replace('%', 'per');
 			
+			// remove numbers from rating for php
+			if (name.match(/per/g) != null)
+			{
+				name = name.replace(/[0-9]/g, '');
+			}
+			
+			// rework some stuff for php
 			if (name.match(/total/g) != null && type == 'attendance_table')
 			{
 				count++;
 			}
 			
+			// can't explain myself, it worked in my head
 			if (count > limitCount)
 			{
 				keyName = gradingPeriod[periodCount]+'_'+gradingPeriod[periodCount]+'_'+name;
@@ -205,23 +212,30 @@ function getAllData(id)
 		// create a student object and place the grades object to place into another object
 		var students = {	
 			'name' : tempContainer[i],
-			'id' : tempContainer[i+1],
+			'number' : tempContainer[i+1],
 			'grades' : grades
 		};
-		
-		// place the other two sub-objects together
-		var toEncode = {
-			'tableData' : students,
-			'tableId' : id,
-			'tableType' : type,
-			'tableFormat' : keyFormat
-		};
-		
+
 		// encode to JSON then send one student's records
-		var recursiveEncoded = $.param(toEncode);
+		var recursiveEncoded = $.param(students);
 		$.post('/user/set_table_session', recursiveEncoded);
 	}
 	
+	// make object for JSON
+	var toEncode = {
+		'tableId' : id,
+		'tableType' : type,
+		'tableFormat' : keyFormat,
+		'tableItems' : numOfItemsContainer,
+		'numOfStudents' : numOfStudents
+	};
+	
+	// encode to JSON and set into session variable
+	recursiveEncoded = $.param(toEncode);
+	$.post('/user/set_global_table_session', recursiveEncoded);
+	
+	
+	// save into DB
 	console.log ('set session done');
 		$.post('/user/set_table_data', {})
 			.done(function( result ) {
