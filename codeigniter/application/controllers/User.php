@@ -30,20 +30,53 @@ class User extends CI_Controller
 	{
 		if ($this->session->userdata('Id')!="")
     	{
-    		//get user id
+			//get user id
     		$userId = $this->session->userdata('Id');
 			$this->load->model('User_model'); // load the model to be used
-			//get the subjects taken
-			$data['subj'] = $this->User_model->getUserSubjs($userId);
+			$this->load->model('Faculty_model'); // load the model to be used
 			//get the username and usertype
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
-			);
-			//call the pages and include variables
-			$this->load->view('templates/header',$user);
-			$this->load->view('pages/faculty_page',$data);
-			$this->load->view('templates/footer');
+				'Fullname' => $this->Faculty_model->get_fac_name($userId),
+				'ActiveHeader' => "home"
+			);	
+    		if ($this->session->userdata('UserType') == "Faculty")
+    		{
+				//get the subjects taken
+				$data['subj'] = $this->User_model->getUserSubjs($userId);
+				//call the pages and include variables
+				$this->load->view('templates/header',$user);
+				$this->load->view('pages/faculty_page',$data);
+				$this->load->view('templates/footer');
+    		}
+    		else if ($this->session->userdata('UserType') == "Chairperson" || $this->session->userdata('UserType') == "Administrator")
+    		{
+    			if ($this->session->userdata('UserType') == "Chairperson")
+    			{
+    				$data['info'] = $this->User_model->get_upload_status($this->session->userdata('UserDept'));
+    			}
+    			else if ($this->session->userdata('UserType') == "Administrator")
+    			{
+    				$data['info'] = $this->User_model->get_upload_status("none");
+    			}
+    			$i = 0;
+    				$arr = array();
+    				foreach ($data['info'] as $key) 
+    				{
+    					foreach ($key as $key2) 
+    					{
+    						if (isset($key2['user_id']))
+    						{
+    							$arr[$i] = $this->User_model->get_upload_count($key2['user_id']);
+    							$i++;
+    						}
+    					}
+    				}
+    			$data['upload_count'] = $arr;
+    			$this->load->view('templates/header',$user);
+				$this->load->view('pages/chairperson_page',$data);
+				$this->load->view('templates/footer');
+    		}
 		}
 		else
 		{
@@ -56,14 +89,34 @@ class User extends CI_Controller
     {
     	if ($this->session->userdata('Id')!="")
     	{
-    		//to go in the settings tab
-			$user['user'] = array(
+    		$this->load->model('Faculty_model'); // load the model to be used
+    		$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
+				'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
+				'ActiveHeader' => "settings"
 			);
-			$this->load->view('templates/header',$user);
-			$this->load->view('pages/settings');
-			$this->load->view('templates/footer');
+    		if ($this->session->userdata('UserType') == "Faculty")
+    		{
+	    		//to go in the settings tab of faculty
+				$this->load->view('templates/header',$user);
+				$this->load->view('pages/settings');
+				$this->load->view('templates/footer');
+			}
+			else if ($this->session->userdata('UserType') == "Administrator")
+			{
+				//get faculty usernames for reset pass dropdown
+				$this->load->model('Admin_model');
+				$names['users'] = $this->Admin_model->get_usernames();
+				$this->load->view('templates/header',$user);
+				$this->load->view('pages/admin_settings_page',$names);
+			}
+			else 
+			{
+				//to go in the settings tab of chairperson
+				$this->load->view('templates/header',$user);
+				$this->load->view('pages/chairperson_settings_page');
+			}
+			// $this->load->view('pages/chairperson_settings_page');
 		}
 		else 
 		{
@@ -75,10 +128,12 @@ class User extends CI_Controller
     {
     	if ($this->session->userdata('Id')!="")
     	{
+    		$this->load->model('Faculty_model'); // load the model to be used
     		// to go in the archives tab
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
+				'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
+				'ActiveHeader' => "archives"
 			);
 			$this->load->view('templates/header',$user);
 			$this->load->view('pages/archives');
@@ -94,15 +149,18 @@ class User extends CI_Controller
     {
     	if ($this->session->userdata('Id')!="")
     	{
+    		$this->load->model('Faculty_model'); // load the model to be used
     		// to go in the archives tab
-			$data['user'] = array(
+			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
-				'UserType' => $this->session->userdata('UserType')
+				'UserType' => $this->session->userdata('UserType'),
+				'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
+				'ActiveHeader' => "calendar"
 			);
 			$this->load->model('Calendar_model');
 			$data['info'] = $this->Calendar_model->getEvent();
 
-			$this->load->view('templates/header',$data);
+			$this->load->view('templates/header',$user);
 			$this->load->view('pages/calendar',$data);
 		}
 		else 
@@ -185,21 +243,23 @@ class User extends CI_Controller
 	{
 		$file = array('classlist' => $_FILES['classlist']);
 		$this->load->model('Upload_model');
+		$this->load->model('Faculty_model');
 		// $name = $_FILES["classlist"]["name"];
 		// $temp = $_FILES["classlist"]["tmp_name"];
 		$module = $this->input->post('module_type');
 		// move_uploaded_file($temp, "resources/uploads/".$name);
 		$status = $this->Upload_model->save_data($file,$module,$this->session->userdata('Id'));
+		$user['user'] = array(
+			'Username' => $this->session->userdata('Username'),
+			'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
+			'ActiveHeader' => "settings",
+			'UserType' => $this->session->userdata('UserType')
+		);
 		if ($status == TRUE)
 		{
 			$data['status'] ="PDF has been successfully uploaded.";
 			if ($this->session->userdata('Id')!="")
 	    	{
-	    		//to go in the settings tab
-				$user['user'] = array(
-					'Username' => $this->session->userdata('Username'),
-					'UserType' => $this->session->userdata('UserType')
-				);
 				$this->load->view('templates/header',$user);
 				$this->load->view('pages/settings',$data);
 				$this->load->view('templates/footer');
@@ -216,10 +276,6 @@ class User extends CI_Controller
 			if ($this->session->userdata('Id')!="")
 	    	{
 	    		//to go in the settings tab
-				$user['user'] = array(
-					'Username' => $this->session->userdata('Username'),
-					'UserType' => $this->session->userdata('UserType')
-				);
 				$this->load->view('templates/header',$user);
 				$this->load->view('pages/settings',$data);
 				$this->load->view('templates/footer');
@@ -294,6 +350,44 @@ class User extends CI_Controller
 		{
 			$this->user_model->save_settings($this->session->userdata('Id'));
 			redirect(site_url('user/home'));
+		}
+	}	
+
+	public function admin_settings($todo)
+	{
+		if ($todo == "change_pw")
+		{
+			$old_pw = $this->input->post('old_pw');
+			$new_pw = $this->input->post('new_pw');
+			$this->load->model('Admin_model');
+			$data["status"] = $this->Admin_model->admin_change_pw($old_pw,$new_pw,$this->session->userdata('Id'));
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
+	    }
+		else if ($todo == "change_un")
+		{
+			$old_un = $this->input->post('old_un');
+			$new_un = $this->input->post('new_un');
+			$this->load->model('Admin_model');
+			$data["status"] = $this->Admin_model->admin_change_un($old_un,$new_un,$this->session->userdata('Id'));
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
+		}
+		else if ($todo == "create_acc")
+		{
+			$this->user_model->register_user();
+			$data["status"] = "OK";
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
+		}
+		else if ($todo == "fac_reset_pass")
+		{
+			$user = $this->input->post('data');
+			$this->load->model('Admin_model');
+			$data["pass"] = $this->Admin_model->acc_reset_pass($user);
+			$data["status"] = "OK";
+			header('Content-Type: application/json');
+	    	echo json_encode($data);
 		}
 	}
 

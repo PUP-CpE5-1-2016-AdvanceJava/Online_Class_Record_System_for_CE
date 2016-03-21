@@ -27,14 +27,15 @@
                 </div> 
             </div> 	
 		</div>	<!-- container -->	
-	</div> <!-- container-fluid -->	
+	</div> <!-- container-fluid -->
+	
 	<div class = "container-fluid" id = "sub-header-wrapper"></div>
 
 	<div class = "container" id= "login-content-wrapper">
 		<div class = "row">
 			<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 " id = "login-title-wrapper">
-				<p id = "login-title-main">Welcome to CE-OCR</p>
-				<p id = "login-title-sub">Serves as an online class record <br> Exclusively for the College of Engineering faculty</p>
+				<p id = "login-title-main"><span>Welcome to CE-OCR</p></span></p>
+				<p id = "login-title-sub"><span>Serves as an Online Class Record <br> Exclusively for the College of Engineering faculty</span></p>
 			</div>
 					
 			<div class="col-lg-4 col-md-4 col-sm-8 col-xs-10 col-lg-offset-0 col-md-offset-0 col-sm-offset-2 col-xs-offset-1" id = "login-form-wrapper">
@@ -48,7 +49,7 @@
 						<span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
 		      			<input type="password" class="form-control" name="login_password" placeholder="Password" required=""/>      
 					</div>
-		      			<button class="btn" id = "login-form-button" type="submit"><i class="fa fa-check-circle fa-3x"></i></button>   
+		      			<button class="btn btn-success" id = "login-form-button" type="submit">Login</button>   
 		    	</form>
 		  	</div>
 		</div>

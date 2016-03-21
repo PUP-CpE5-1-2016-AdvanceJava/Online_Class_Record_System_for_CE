@@ -21,11 +21,11 @@
 			</select></div>
 			<div><label for="UserDept">User Department: </label><select name="UserDept">
 				<option selected disabled>Please Select</option>
-                <option value="CpE">CpE</option>
-                <option value="CE">CE</option>
-                <option value="ECE">ECE</option>
-                <option value="EE">EE</option>
-                <option value="IE">IE</option>
+                <option value="CpE">Computer Engineering</option>
+                <option value="CE">Civil Engineering</option>
+                <option value="ECE">Electronics and Communication Engineering</option>
+                <option value="EE">Electrical Engineering</option>
+                <option value="IE">Industrial Engineering</option>
 			</select></div>
 			<input type="submit" value="Sign up" name="register"/>
 		</form>
