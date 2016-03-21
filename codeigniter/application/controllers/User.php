@@ -278,7 +278,7 @@ class User extends CI_Controller
 	public function show_var()
 	{
 		var_dump($_SESSION['table_format']['numOfStudents']);
-	}
+	}	
 	
 	public function set_table_session()
 	{
