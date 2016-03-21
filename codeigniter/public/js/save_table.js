@@ -1,6 +1,7 @@
 function getAllData(id)
 {
-	$('#status').html();
+	$('#status').html("");
+	
 	// initialize necessary variables
 	var colNames = ['number', 'name'];
 	var tempContainer = [];

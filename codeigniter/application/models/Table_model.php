@@ -86,10 +86,12 @@ class Table_model extends CI_Model
 		switch ($block->ModuleType)
 		{
 			case 'Lec':
-				$tables = array( 'assignment', 'seatwork','exercises','recitation','quizzes','long_exam', 'midterm_exam', 'final_exam');
+				$tables = array( 'attendance','assignment', 'seatwork','exercises','recitation','quizzes','long_exam', 'midterm_exam', 'final_exam');
+				$first_attendance = TRUE;
 				break;
 			case 'Lab':
 				$tables = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
+				$first_attendance = FALSE;
 				break;
 			default:
 				exit ('Invalid Input');
@@ -100,19 +102,25 @@ class Table_model extends CI_Model
 		{
 			$tables = array( 'attendance' );
 			$type = $table_type;
+			$first_attendance = TRUE;
 		}
 				
-		$first_attendance = TRUE;
+		
 		$grades = array();
 		foreach ($tables as $table)
 		{
 			$statement = ",$table.Sem";
+			$get_attendance = "";
 			if ($table == 'midterm_exam' OR $table == 'final_exam')
 			{
 				$statement = " ";
 			}
+			if ($type == 'Lec')
+			{
+				$get_attendance = "DISTINCT";
+			}
 			
-			$sql = "SELECT students.Id, $table.Score, $table.Rating".$statement."
+			$sql = "SELECT ".$get_attendance." students.Id, $table.Score, $table.Rating".$statement."
 					FROM $table 
 					JOIN grades ON grades.Id = $table.StudGradeId 
 					JOIN students ON students.Id = grades.StudId 
@@ -132,6 +140,7 @@ class Table_model extends CI_Model
 				}
 				else $semester = $row->Sem;
 				
+				//
 				array_push($students[$row->Id], $row->Score.$table.$semester);
 				
 				if ($table == 'assignment' OR $table == 'quizzes' OR $first_attendance )
@@ -233,6 +242,9 @@ class Table_model extends CI_Model
 					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
 			$this->db->query($sql, $class_id);
 		}
+		$sql = "DELETE FROM module_items 
+				WHERE ClassId = ?";
+		$this->db->query($sql, $class_id);
 		
 		$b = 0;
 		$c = 0;
@@ -282,25 +294,22 @@ class Table_model extends CI_Model
 		{
 			// save module items
 			$first_header = TRUE;
-			$sql = "REPLACE module_items (Id, ClassId, Module, Items, TableType) VALUES ";
+			$sql = "INSERT INTO module_items (ClassId, Module, Items, TableType) VALUES ";
 			$input_array = array();
 			$count = 0;
 			foreach ($table_format as $header)
 			{
-				array_push($input_array, $class_id, $header, $class_id, $header, $num_of_items[$count], $type);
+				array_push($input_array, $class_id, $header, $num_of_items[$count], $type);
 				if ($first_header)
 				{
-					$sql .= "((SELECT Id FROM module_items_id WHERE `ClassId` = ? AND `Module` = ? ) , ?, ?, ?, ? )";
+					$sql .= "( ?, ?, ?, ? )";
 					$first_header = FALSE;
 				}
 				else 
-					$sql .= " ,((SELECT Id FROM module_items_id WHERE `ClassId`= ? AND `Module` = ? ) , ?, ?, ?, ? )";
+					$sql .= " ,( ?, ?, ?, ? )";
 				$count++;
 			}
 			$this->db->query($sql, $input_array);
-
-			$sql = "INSERT INTO module_items_id SELECT Id, ClassId, Module FROM module_items ON DUPLICATE KEY UPDATE ClassId = VALUES (ClassId), Module = VALUES (Module)";
-			$this->db->query($sql);
 			
 			// for lecture tables
 			if ($type == 'Lec')

@@ -494,6 +494,8 @@ function get_class_table(link)
 					<input type='hidden' id='tableType' name='tableType' value='"+ response['Class']['ModuleType']+"'></input>\
 					<input type='hidden' id='sheetType' name='sheetType' value='"+ response['table_type']+"'></input>\
 					<p id='status'></p>");
+		sent_table_data = response;
+		fillTable();
       }
       else
       {
@@ -501,6 +503,14 @@ function get_class_table(link)
       }
     })
   return false;
+}
+
+var sent_table_data;
+
+
+function fillTable()
+{
+	
 }
 
 /*INITIAL COUNTERS FOR TABLE*/
