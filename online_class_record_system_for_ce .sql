@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2016 at 10:38 AM
+-- Generation Time: Mar 21, 2016 at 10:54 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `assignment` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `attendance` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
   `Status` varchar(50) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,8 +113,8 @@ INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStuden
 CREATE TABLE IF NOT EXISTS `exercises` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -152,8 +152,8 @@ INSERT INTO `faculty` (`UserId`, `Background`, `FName`, `MName`, `LName`) VALUES
 CREATE TABLE IF NOT EXISTS `final_exam` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -227,8 +227,8 @@ INSERT INTO `labmodperc` (`Id`, `PracExam`, `Project`, `Lab_MachineEx`) VALUES
 CREATE TABLE IF NOT EXISTS `lab_act` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -262,8 +262,8 @@ INSERT INTO `lectmodperc` (`Id`, `Attendance`, `ClassStanding`, `QuizzesLExam`, 
 CREATE TABLE IF NOT EXISTS `long_exam` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -276,8 +276,8 @@ CREATE TABLE IF NOT EXISTS `long_exam` (
 CREATE TABLE IF NOT EXISTS `midterm_exam` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -321,8 +321,8 @@ CREATE TABLE IF NOT EXISTS `moduleitems` (
 CREATE TABLE IF NOT EXISTS `prac_exam` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -335,8 +335,8 @@ CREATE TABLE IF NOT EXISTS `prac_exam` (
 CREATE TABLE IF NOT EXISTS `project` (
   `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -349,8 +349,8 @@ CREATE TABLE IF NOT EXISTS `project` (
 CREATE TABLE IF NOT EXISTS `quizzes` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -363,8 +363,8 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
 CREATE TABLE IF NOT EXISTS `recitation` (
   `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Recite` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -377,8 +377,8 @@ CREATE TABLE IF NOT EXISTS `recitation` (
 CREATE TABLE IF NOT EXISTS `seatwork` (
 `Id` int(11) NOT NULL,
   `StudGradeId` int(11) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
+  `Score` float NOT NULL,
+  `Rating` float NOT NULL,
   `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
