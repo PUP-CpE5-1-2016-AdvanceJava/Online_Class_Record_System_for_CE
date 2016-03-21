@@ -47,7 +47,7 @@
             
             <ul class = " nav pull-right" id = "navbar-subtabs">
                 <li><a href = "<?=site_url('user/logout')?>"><i class="fa fa-sign-out"></i>Logout</a></li>
-                <li><p class="navbar-text"><?php echo $user['Username'];?></p></li>
+                <li><p class="navbar-text"><?php echo $user['Fullname'];?></p></li>
             </ul>
         </div>
         <div class = "row" id = "navbar-res">

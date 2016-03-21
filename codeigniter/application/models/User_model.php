@@ -47,6 +47,7 @@ class User_model extends CI_Model
 				'Id'  => $userRow->Id,
 				'Username' => $userRow->Username,
 				'UserType'=> $userRow->UserType,
+				'UserDept'=> $userRow->UserDept,
 			);
 			//after mavalidate kapag tama user/pass isasave nten ung Id,Username sa session
 			//pra sa redirection at pra magamit sa header ung name
@@ -66,8 +67,9 @@ class User_model extends CI_Model
         	// die("There are no subjects in the database.");
         	return;
     	}
-
+    	$res = $query->row();
     	$subjs = array();
+    	$subjs[$res->SubjectTitle]['user_id'] = $userId;
     	foreach ($query->result() as $row) 
     	{
     		//fetch sections based on SubjectId in database
@@ -78,11 +80,13 @@ class User_model extends CI_Model
     		$class = array();
     		$modules = array();
     		$ClassId = array();
+    		
     		foreach ($queryClass->result() as $rowClass) 
     		{
     			$class[$i] = array(
     				'c_block' => $rowClass->ClassBlock,
     				'c_id' => $rowClass->Id,
+    				'c_isUploaded' => $rowClass->IsUploaded
     			);
 
     			//fetch modules
@@ -122,4 +126,66 @@ class User_model extends CI_Model
     	return $subjs;
 	}
 
+	function get_upload_count($userId)
+	{
+		$this->db->select('*')->from('subjects')->where('UserId',$userId);
+		$query = $this->db->get();
+		if (!$query->num_rows() > 0) {
+        	// die("There are no subjects in the database.");
+        	return;
+    	}
+    	$cnt = 0;
+    	foreach ($query->result() as $row) 
+    	{
+    		//fetch sections based on SubjectId in database
+    		$this->db->select('*')->from('class')->where('SubjectId',$row->Id);
+    		$queryClass = $this->db->get();
+    		foreach ($queryClass->result() as $rowClass) 
+    		{
+    			if ($rowClass->IsUploaded == true)
+    			{
+    				$cnt++;
+    			}
+    		}
+    	}
+    	return $cnt;
+	}
+
+	function get_upload_status($UserDept)
+	{
+		if ($UserDept == "none")
+		{
+			$this->db->where("UserType","Faculty");
+			$validate = $this->db->get("users");
+
+			if($validate->num_rows()<=0)
+			{
+				return false;
+			}
+			$this->load->model('Faculty_model'); // load the model to be used
+			foreach ($validate->result() as $user) 
+			{
+				$name = $this->Faculty_model->get_fac_name($user->Id);
+				$arr[$name] = $this->getUserSubjs($user->Id);
+			}
+			return $arr;
+		}
+		else 
+		{
+			$this->db->where("UserType","Faculty");
+			$validate = $this->db->get("users");
+
+			if($validate->num_rows()<=0)
+			{
+				return false;
+			}
+			$this->load->model('Faculty_model'); // load the model to be used
+			foreach ($validate->result() as $user) 
+			{
+				$name = $this->Faculty_model->get_fac_name($user->Id);
+				$arr[$name] = $this->getUserSubjs($user->Id);
+			}
+			return $arr;
+		}
+	}
 }

@@ -21,6 +21,7 @@
     </div> <!-- container-fluid -->
 
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="<?php base_url(); ?>/js/submit_tracker.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/script.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/sidebar.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/chosen.jquery.min.js"></script>

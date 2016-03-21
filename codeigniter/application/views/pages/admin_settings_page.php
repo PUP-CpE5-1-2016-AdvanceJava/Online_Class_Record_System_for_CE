@@ -118,7 +118,7 @@
                                                     <option >Civil Engineering</option>
                                                     <option >Computer Engineering</option>
                                                     <option >Electrical Engineering</option>
-                                                    <option >Electronics Engineering</option>
+                                                    <option >Electronics and Communication Engineering</option>
                                                     <option >Industrial Engineering</option>
                                                     <option >Mechanical Engineering</option>
                                                 </select>
