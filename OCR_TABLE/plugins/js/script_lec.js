@@ -133,34 +133,32 @@ window.onclick = function(event) {
 //ASSIGNMENT
 $('#add-col-assign1').click(function(){
 	if ($('#assignment').attr('colspan') != 10){
+		$('#assignment').each(function(){
+		    assignCounter++;
+		    var newCol=1+assignCounter;
+		    $(this).attr('colspan',newCol);
+		    $(this).val(assignCounter);
+		    console.log("assign: "+newCol);
+		});
 		$('#table-classStanding').each(function(){
 		    a++;
 		    var newID1=6+a;
 		    increAssign = newID1-5;
 		    $(this).attr('colspan',newID1);
 		    $(this).val(a);
+		    console.log("cs: "+newID1);
 		});
-		$('#assignment').each(function(){
-		    assignCounter++;
-		    var newCol=1+assignCounter;
-		    $(this).attr('colspan',newCol);
-		    $(this).val(assignCounter);
-		});
-		$('#table-classStanding').each(function(){
-		    classCounter++;
-		    var newClass=6+classCounter;
-		    $(this).attr('colspan',newClass);
-		    $(this).val(classCounter);
-		});
+		
 		$('#table-midterm').each(function(){
 		    midtermCounter++;
 		    var newClassMidterm=15+midtermCounter;
 		    $(this).attr('colspan',newClassMidterm);
 		    $(this).val(midtermCounter);
+		    console.log("mterm: "+newClassMidterm);
 		});
 
 		$('#delete-col-assign1').css('display', 'inline-block');
-		$('#sideseatwork').before($("<th class='text-center'>ASSIGN " + increAssign + "</th>"));
+		$('#sideseatwork').before($("<th style='text-align:center'>ASSIGN " + increAssign + "</th>"));
 		$('#table-items-seatwork1').before($("<td class='table-items-assign-mid' contenteditable='true'></td>"));
 		$('tr #table-seatwork-classStanding1').before($("<td class='table-student-assign-mid' contenteditable='true'></td>"));
 	}

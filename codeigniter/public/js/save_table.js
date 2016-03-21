@@ -1,5 +1,6 @@
 function getAllData(id)
 {
+	$('#status').html();
 	// initialize necessary variables
 	var colNames = ['number', 'name'];
 	var tempContainer = [];
@@ -154,7 +155,7 @@ function getAllData(id)
 	var keyFormat = [];
 	var isKeying = true;
 	var numOfStudents = tempContainer.length / colNames.length;
-	
+	console.log(numOfStudents);
 	// associate the names with the data
 	for (var i = 0; i < tempContainer.length; i = i + colNames.length)
 	{
@@ -238,6 +239,7 @@ function getAllData(id)
 	
 	// encode to JSON and set into session variable
 	recursiveEncoded = $.param(toEncode);
+	console.log(toEncode);
 	$.post('/user/set_global_table_session', recursiveEncoded)
 		.done(function( result ) {
 			if (result != 'OK')

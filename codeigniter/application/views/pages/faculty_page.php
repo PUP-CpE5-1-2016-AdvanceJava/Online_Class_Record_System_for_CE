@@ -58,16 +58,18 @@
         </div>
 
     </div>
+    
+    <!-- ALERT MODAL -->
+    <div id="table-alert-modal" class="modal">
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-        <div class="modal-content">
-            <h4 style="text-align:center"><b>Are you sure you want to delete column?</b></h4>
-            <div id="buttons-modal"> 
-            <button id="yes_btn">YES</button>
-            <button id="close_btn">CANCEL</button>
-            </div>
+      <!-- MODAL CONTENT -->
+      <div class="modal-text" id="modal-text">
+        <h4><b>Are you sure you want to delete column?</b></h4>
+            <div id="table-modal-buttons"> 
+            <button id="table-yes-btn">YES</button>
+            <button id="table-cancel-btn">CANCEL</button>
         </div>
+      </div>
+
     </div>
 </div>

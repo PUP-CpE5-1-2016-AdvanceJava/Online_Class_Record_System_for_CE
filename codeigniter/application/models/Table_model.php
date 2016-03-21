@@ -184,7 +184,7 @@ class Table_model extends CI_Model
 		$sql = "SELECT Id FROM class WHERE NumOfStudents = ? AND Id = ?";
 		$query = $this->db->query($sql, array($_SESSION['table_format']['numOfStudents'], $class_id));
 		
-		if ($query->num_rows() ==  0) exit ('Recording failed, please try again');
+		if ($query->num_rows() ==  0) exit ('Recording failed, please try again'.$_SESSION['table_format']['numOfStudents']);
 		
 		
 		$type = $_SESSION['table_format']['tableType'];

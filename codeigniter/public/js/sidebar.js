@@ -56,7 +56,6 @@ $(document).ready(function() {
     }
 
     $('[class^=module-item]').click(function(e){
-        console.log("hello")
         $('[class^=module-item]').css("background-color","#444243");
         $(this).css("background-color","#9f9e9c");
     });
@@ -70,7 +69,6 @@ $(window).on('resize', function(){
 });
 
 $(document).on('click',"ul>li[name='sheet_submenu'] a",function() {
-    console.log($(this).attr('id'));
     get_class_table($(this).attr('id'));
     $("#sidebar-wrapper").removeClass("collapsed");
     $("#sidebar-wrapper").addClass("collapsed");
@@ -82,13 +80,34 @@ function get_class_table(link)
     {
       if (response.status == 'OK')
       {
-        console.log(response);
         //--clear sidebars content ang table content first to avoid bugs--//
         $("ul>li[name='sheet_submenu']").empty();
         $("ul>li[name='module_submenu']").empty();
         $('div#TEMPORARY').empty();
         $('tbody#stud_table').empty();
-
+        /*INITIALIZE COUNTERS FOR TABLE*/
+        //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
+        module_type;
+        midtermCounter=0;
+        finalsCounter=0;
+        //---variables for lab table---//
+        labCounter1=0;
+        labCounter2=0;
+        pracCounter1=0;
+        pracCounter2=0;
+        projCounter1=0;
+        projCounter2=0;
+        //---variables for lec table---//
+        assignCounter1=0;
+        assignCounter2=0;
+        swCounter1=0;
+        swCounter2=0;
+        exCounter1=0;
+        exCounter2=0;
+        recCounter1=0;
+        recCounter2=0;
+        module_type = response['Class']['ModuleType'];
+        type_of_table = response['table_type'];
         var table = $('div#TEMPORARY');
         table.empty();
         if (response['table_type'] == "main_table")
@@ -115,40 +134,40 @@ function get_class_table(link)
                                                 <th class='text-center' id='table-student'>Student Number</th>\
                                                 <th class='text-center' id='table-name'>Name</th>\
                                                 <th rowspan='2' class='text-center' id='attendance'>ATTENDANCE</th>\
-                                                <th colspan='6' class='text-center' id='table-classStanding'>CLASS STANDING (20%)</th>\
-                                                <th colspan='4' class='text-center' id='table-quizLE'>QUIZZES/LONG EXAM (30%)</th>\
+                                                <th colspan='6' class='text-center' id='table-class-standing1'>CLASS STANDING (20%)</th>\
+                                                <th colspan='4' class='text-center' id='table-quiz-le1'>QUIZZES/LONG EXAM (30%)</th>\
                                                 <th colspan='2' class='text-center'>MIDTERM EXAM (40%)</th>\
                                                 <th colspan='2' class='text-center' id='border-bold'>MIDTERM GRADE</th>\
                                                 <th rowspan='2' id='attendance'>ATTENDANCE</th>\
-                                                <th colspan='6' class='text-center' id='table-classStandingFinals'>CLASS STANDING (20%)</th>\
-                                                <th colspan='4' class='text-center' id='table-quizLEFinals'>QUIZZES/LONG EXAM (30%)</th>\
+                                                <th colspan='6' class='text-center' id='table-class-standing2'>CLASS STANDING (20%)</th>\
+                                                <th colspan='4' class='text-center' id='table-quiz-le2'>QUIZZES/LONG EXAM (30%)</th>\
                                                 <th colspan='2' class='text-center'>FINAL EXAM (40%)</th>\
                                                 <th colspan='2' class='text-center'>FINAL GRADE</th>\
                                             </tr>\
                                             <tr>\
                                                 <th class='text-center' colspan='2' id='table-blank2'></th>\
-                                                <th class='text-center' id='assignment'>ASSIGNMENT<a class='btn' id='add-col-assign1'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-assign1'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='seatwork'>SEATWORK<a class='btn' id='add-col-sw1'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-sw1'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='exercise'>EXERCISE<a class='btn' id='add-col-ex1'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-ex1'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='recitation'>RECITATION<a class='btn' id='add-col-rec1'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-rec1'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-assign1'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-assign1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-sw1'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-sw1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-ex1'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-ex1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-rec1'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-rec1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
-                                                <th class='text-center' id='quiz'>QUIZ<a class='btn' id='add-col-quiz1'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-quiz1'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='longexam'>LONG EXAM<a class='btn' id='add-col-le1'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-le1'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-quiz1'>QUIZ<a class='btn' id='add-col-quiz1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-quiz1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-le1'>LONG EXAM<a class='btn' id='add-col-le1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-le1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
                                                 <th rowspan='2' class='text-center' id='midterm'>SCORE</th>\
                                                 <th rowspan='2' class='text-center' id='midterm'>40%</th>\
                                                 <th rowspan='2' class='text-center' id='midterm'>100%</th>\
                                                 <th rowspan='2' class='text-center' id='border-bold'>RATING</th>\
-                                                <th class='text-center' id='assignmentFinals'>ASSIGNMENT<a class='btn' id='add-col-assign2'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-assign2'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='seatworkFinals'>SEATWORK<a class='btn' id='add-col-sw2'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-sw2'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='exerciseFinals'>EXERCISE<a class='btn' id='add-col-ex2'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-ex2'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='recitationFinals'>RECITATION<a class='btn' id='add-col-rec2'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-rec2'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-assign2'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-assign2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-sw2'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-sw2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-ex2'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-ex2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-rec2'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-rec2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
-                                                <th class='text-center' id='quizFinals'>QUIZ<a class='btn' id='add-col-quiz2'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-quiz2'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' id='longexamFinals'>LONG EXAM<a class='btn' id='add-col-le2'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='delete-col-le2'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-quiz2'>QUIZ<a class='btn' id='add-col-quiz2' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-quiz2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' id='table-le2'>LONG EXAM<a class='btn' id='add-col-le2' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-le2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
                                                 <th rowspan='2' class='text-center' id='final'>SCORE</th>\
@@ -159,26 +178,26 @@ function get_class_table(link)
                                             <tr id='table-module'>\
                                                 <th colspan='2' id='table-blank2'></th>\
                                                 <th class='text-center'>10%</th>\
-                                                <th class='text-center'>ASSIGN 1 </th>\
-                                                <th class='text-center' id='sideseatwork'>SW 1</th>\
-                                                <th class='text-center' id='sideexercise'>EX 1</th>\
-                                                <th class='text-center' id='siderecitation'>REC 1</th>\
-                                                <th class='text-center' id='sidetotal'>Total</th>\
+                                                <th class='text-center' id='assign-score-col'>Assign 1 </th>\
+                                                <th class='text-center' id='sw1-score-col'>Sw 1</th>\
+                                                <th class='text-center' id='ex1-score-col'>Ex 1</th>\
+                                                <th class='text-center' id='rec1-score-col'>Rec 1</th>\
+                                                <th class='text-center' id='cs1-total-col'>Total</th>\
                                                 <th class='text-center'>20%</th>\
-                                                <th class='text-center'>QUIZ 1</th>\
-                                                <th class='text-center' id='sideLE'>LE 1</th>\
-                                                <th class='text-center' id='sidetotal2'>Total</th>\
+                                                <th class='text-center' id='quiz1-score-col'>Quiz 1</th>\
+                                                <th class='text-center' id='le1-score-col'>Le 1</th>\
+                                                <th class='text-center' id='ql1-total-col'>Total</th>\
                                                 <th class='text-center'>30%</th>\
                                                 <th class='text-center'>10%</th>\
-                                                <th class='text-center'>ASSIGN 1 </th>\
-                                                <th class='text-center' id='sideseatworkFinals'>SW 1</th>\
-                                                <th class='text-center' id='sideexerciseFinals'>EX 1</th>\
-                                                <th class='text-center' id='siderecitationFinals'>REC 1</th>\
-                                                <th class='text-center' id='sidetotalFinals'>Total</th>\
+                                                <th class='text-center' id='assign-score-col'>Assign 1 </th>\
+                                                <th class='text-center' id='sw2-score-col'>Sw 1</th>\
+                                                <th class='text-center' id='ex2-score-col'>Ex 1</th>\
+                                                <th class='text-center' id='rec2-score-col'>Rec 1</th>\
+                                                <th class='text-center' id='cs2-total-col'>Total</th>\
                                                 <th class='text-center'>20%</th>\
-                                                <th class='text-center'>QUIZ 1</th>\
-                                                <th class='text-center' id='sideLEFinals'>LE 1</th>\
-                                                <th class='text-center' id='sidetotal2Finals'>Total</th>\
+                                                <th class='text-center' id='quiz1-score-col'>Quiz 1</th>\
+                                                <th class='text-center' id='le2-score-col'>Le 1</th>\
+                                                <th class='text-center' id='ql2-total-col'>Total</th>\
                                                 <th class='text-center'>30%</th>\
                                             </tr>\
                                             <tr class='num-items'>\
@@ -277,13 +296,13 @@ function get_class_table(link)
                                                 <tr>\
                                                     <th class='text-center' id='table-student'>Student Number</th>\
                                                     <th class='text-center' id='table-name'>Name</th>\
-                                                    <th colspan='3' class='text-center' id='table-lab1'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab1-button'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-lab1-button-del'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-prac1'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac1-button'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-prac1-button-del'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-proj1'>PROJECT(30%)<a class='btn' id='table-proj1-button'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-proj1-button-del'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-lab1'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-lab1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-prac1'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac1-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-prac1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-proj1'>PROJECT(30%)<a class='btn' id='table-proj1-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-proj1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='2' class='text-center' id='border-bold'>MIDTERM GRADE</th>\
-                                                    <th colspan='3' class='text-center' id='table-lab2'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab2-button'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-lab2-button-del'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-prac2'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac2-button'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-prac2-button-del'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-proj2'>PROJECT(30%)<a class='btn' id='table-proj2-button'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-proj2-button-del'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-lab2'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-lab2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-prac2'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-prac2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-proj2'>PROJECT(30%)<a class='btn' id='table-proj2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-proj2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='2' class='text-center'>FINAL GRADE</th>\
                                                 </tr>\
                                                 <tr id='table-module'>\
@@ -291,10 +310,10 @@ function get_class_table(link)
                                                     <th class='text-center'>Lab 1</th>\
                                                     <th class='text-center' id='table-lab1-total'>Total</th>\
                                                     <th class='text-center'>45%</th>\
-                                                    <th class='text-center'>Practical 1</th>\
+                                                    <th class='text-center'>Prac 1</th>\
                                                     <th class='text-center' id='table-prac1-total'>Total</th>\
                                                     <th class='text-center'>25%</th>\
-                                                    <th class='text-center'>Project 1</th>\
+                                                    <th class='text-center'>Proj 1</th>\
                                                     <th class='text-center' id='table-proj1-total'>Total</th>\
                                                     <th class='text-center'>30%</th>\
                                                     <th class='text-center'>100%</th>\
@@ -302,10 +321,10 @@ function get_class_table(link)
                                                     <th class='text-center'>Lab 1</th>\
                                                     <th class='text-center' id='table-lab2-total'>Total</th>\
                                                     <th class='text-center'>45%</th>\
-                                                    <th class='text-center'>Practical 1</th>\
+                                                    <th class='text-center'>Prac 1</th>\
                                                     <th class='text-center' id='table-prac2-total'>Total</th>\
                                                     <th class='text-center'>25%</th>\
-                                                    <th class='text-center'>Project 1</th>\
+                                                    <th class='text-center'>Proj 1</th>\
                                                     <th class='text-center' id='table-proj2-total'>Total</th>\
                                                     <th class='text-center'>30%</th>\
                                                     <th class='text-center'>100%</th>\
@@ -385,9 +404,9 @@ function get_class_table(link)
                                         <input type='hidden' id='sheetType' value='attendance'></input>\
                                             <tr>\
                                                 <tr>\
-                                                    <th colspan=2 ></th>\
-                                                    <th colspan=3 class=text-center id=table-att1>MIDTERMS<a class=btn id=table-att1-button><acronym title=ADD COLUMN><i class=fa fa-plus-circle></i></a><a class=btn id=table-att1-button-del><acronym title=DELETE COLUMN><i class=fa fa-minus-circle></i></acronym></a></th>\
-                                                    <th colspan=3 class=text-center id=table-att2>FINALS<a class=btn id=table-att2-button><acronym title=ADD><i class=fa fa-plus-circle></i></acronym></a><a class=btn id=table-att2-button-del><acronym title=DELETE COLUMN><i class=fa fa-minus-circle></i></acronym></a></th>\
+                                                    <th colspan='2' id='border-bold'></th>\
+                                                    <th colspan='3' class='text-center' id='table-att1'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-att1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='3' class='text-center' id='table-att2'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-att2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 </tr>\
                                                 <tr id='table-module' class='table-module'>\
                                                     <th class=text-center >Student Number</th>\
@@ -469,20 +488,517 @@ function get_class_table(link)
                                                   <a class='accordion-section-title hideOverflow'>Project - "+response.Module.Project+"%<span class='arrow-left'></span></a>\
                                                   <a class='accordion-section-title hideOverflow'>Lab/Machine Exercises - "+response.Module.Lab_MachineEx+"%<span class='arrow-left'></span></a>");
         }
-        console.log("done");
-
         // append compute and save buttons
-        table.append("<button type='button' onclick='getAllData();' id='compute-button' name='compute-button'>Compute</button>\
-					<button type='button' onclick='saveComputedData("+ response.class_id +");' id='save-button' name='save-button'>Save</button>\
+        table.append("<button type='button' id='compute-button' name='compute-button'>Compute</button>\
+					<button type='button' id='save-button' onclick='return getAllData("+ response.class_id +");'  name='save-button'>Save</button>\
 					<input type='hidden' id='tableType' name='tableType' value='"+ response['Class']['ModuleType']+"'></input>\
+					<input type='hidden' id='sheetType' name='sheetType' value='"+ response['table_type']+"'></input>\
 					<p id='status'></p>");
       }
       else
       {
-        console.log("no");
         console.log(link);
       }
     })
   return false;
 }
 
+/*INITIAL COUNTERS FOR TABLE*/
+var module_type;
+var type_of_table;
+var midtermCounter=0;
+var finalsCounter=0;
+//---variables for lab table---//
+var labCounter1=0;
+var labCounter2=0;
+var pracCounter1=0;
+var pracCounter2=0;
+var projCounter1=0;
+var projCounter2=0;
+//---variables for lec table---//
+    //--*Class Standing*--//
+var assignCounter1=0;
+var assignCounter2=0;
+var swCounter1=0;
+var swCounter2=0;
+var exCounter1=0;
+var exCounter2=0;
+var recCounter1=0;
+var recCounter2=0;
+var csCounter1=0;
+var csCounter2=0;
+    //--*Quiz/Lexam*--//
+var quizCounter1=0;
+var quizCounter2=0;
+var leCounter1=0;
+var leCounter2=0;
+var qlCounter1=0;
+var qlCounter2=0;
+//---variables for attendance table---//
+var attCounter1=0;
+var attCounter2=0;
+
+function getModuleCounter(label,term,type)
+{
+    if (type == "name")
+    {
+        if (term == "midterm")
+        {
+            if (label == "Lab") return "labCounter1";
+            else if (label == "Prac") return "pracCounter1";
+            else if (label == "Proj") return "projCounter1";
+            else if (label == "Assign") return "assignCounter1";
+            else if (label == "Sw") return "swCounter1";
+            else if (label == "Ex") return "exCounter1";
+            else if (label == "Rec") return "recCounter1";
+            else if (label == "class-standing") return "csCounter1";
+            else if (label == "Quiz") return "quizCounter1";
+            else if (label == "Le") return "leCounter1";
+            else if (label == "quiz-le") return "qlCounter1";
+            else if (label == "Att") return "attCounter1";
+        } 
+        else if (term == "finals")
+        {
+            if (label == "Lab") return "labCounter2";
+            else if (label == "Prac") return "pracCounter2";
+            else if (label == "Proj") return "projCounter2";
+            else if (label == "Assign") return "assignCounter2";
+            else if (label == "Sw") return "swCounter2";
+            else if (label == "Ex") return "exCounter2";
+            else if (label == "Rec") return "recCounter2";
+            else if (label == "class-standing") return "csCounter2";
+            else if (label == "Quiz") return "quizCounter2";
+            else if (label == "Le") return "leCounter2";
+            else if (label == "quiz-le") return "qlCounter2";
+            else if (label == "Att") return "attCounter2";
+        }
+    }
+    else 
+    {
+        if (term == "midterm")
+        {
+            if (label == "Lab") return labCounter1;
+            else if (label == "Prac") return pracCounter1;
+            else if (label == "Proj") return projCounter1;
+            else if (label == "Assign") return assignCounter1;
+            else if (label == "Sw") return swCounter1;
+            else if (label == "Ex") return exCounter1;
+            else if (label == "Rec") return recCounter1;
+            else if (label == "class-standing") return csCounter1;
+            else if (label == "Quiz") return quizCounter1;
+            else if (label == "Le") return leCounter1;
+            else if (label == "quiz-le") return qlCounter1;
+            else if (label == "Att") return attCounter1;
+        } 
+        else if (term == "finals")
+        {
+            if (label == "Lab") return labCounter2;
+            else if (label == "Prac") return pracCounter2;
+            else if (label == "Proj") return projCounter2;
+            else if (label == "Assign") return assignCounter2;
+            else if (label == "Sw") return swCounter2;
+            else if (label == "Ex") return exCounter2;
+            else if (label == "Rec") return recCounter2;
+            else if (label == "class-standing") return csCounter2;
+            else if (label == "Quiz") return quizCounter2;
+            else if (label == "Le") return leCounter2;
+            else if (label == "quiz-le") return qlCounter2;
+            else if (label == "Att") return attCounter2;
+        }
+    }
+    
+}
+
+function setModuleCounter(label,newCounter)
+{
+    if (label == "labCounter1") labCounter1 = newCounter;
+    else if (label == "labCounter2") labCounter2 = newCounter;
+    else if (label == "pracCounter1") pracCounter1 = newCounter;
+    else if (label == "pracCounter2") pracCounter2 = newCounter;
+    else if (label == "projCounter1") projCounter1 = newCounter;
+    else if (label == "projCounter2") projCounter2 = newCounter;
+    else if (label == "csCounter1") csCounter1 = newCounter;
+    else if (label == "csCounter2") csCounter2 = newCounter;
+    else if (label == "assignCounter1") assignCounter1 = newCounter;
+    else if (label == "assignCounter2") assignCounter2 = newCounter;
+    else if (label == "swCounter1") swCounter1 = newCounter;
+    else if (label == "swCounter2") swCounter2 = newCounter;
+    else if (label == "exCounter1") exCounter1 = newCounter;
+    else if (label == "exCounter2") exCounter2 = newCounter;
+    else if (label == "recCounter1") recCounter1 = newCounter;
+    else if (label == "recCounter2") recCounter2 = newCounter;
+    else if (label == "quizCounter1") quizCounter1 = newCounter;
+    else if (label == "quizCounter2") quizCounter2 = newCounter;
+    else if (label == "leCounter1") leCounter1 = newCounter;
+    else if (label == "leCounter2") leCounter2 = newCounter;
+    else if (label == "qlCounter1") qlCounter1 = newCounter;
+    else if (label == "qlCounter2") qlCounter2 = newCounter;
+    else if (label == "attCounter1") attCounter1 = newCounter;
+    else if (label == "attCounter2") attCounter2 = newCounter;
+}
+
+function get_col_pos(label,term,type)
+{
+    if (type == "module_num")
+    {
+        if (term == "midterm")
+        {
+            if (label == "Assign") return "sw1-score-col";
+            else if (label == "Sw") return "ex1-score-col";
+            else if (label == "Ex") return "rec1-score-col";
+            else if(label == "Rec") return "cs1-total-col";
+            else if(label == "Quiz") return "le1-score-col";
+            else if(label == "Le") return "ql1-total-col";
+        } 
+        else if (term == "finals")
+        {
+            if (label == "Assign") return "sw2-score-col";
+            else if (label == "Sw") return "ex2-score-col";
+            else if (label == "Ex") return "rec2-score-col";
+            else if(label == "Rec") return "cs2-total-col";
+            else if(label == "Quiz") return "le2-score-col";
+            else if(label == "Le") return "ql2-total-col";
+        }
+    }
+    else if (type == "module_items")
+    {
+        if (term == "midterm")
+        {
+            if (label == "Assign") return "table-items-sw1";
+            else if (label == "Sw") return "table-items-ex1";
+            else if (label == "Ex") return "table-items-rec1";
+            else if(label == "Rec") return "table-items-cs1";
+            else if(label == "Quiz") return "table-items-le1";
+            else if(label == "Le") return "table-items-ql1";
+        } 
+        else if (term == "finals")
+        {
+            if (label == "Assign") return "table-items-sw2";
+            else if (label == "Sw") return "table-items-ex2";
+            else if (label == "Ex") return "table-items-rec2";
+            else if(label == "Rec") return "table-items-cs2";
+            else if(label == "Quiz") return "table-items-le2";
+            else if(label == "Le") return "table-items-ql2";
+        }
+    }
+}
+
+var modal = document.getElementById('table-alert-modal');
+// Get the <span> element that closes the modal
+var cancel = document.getElementById("table-cancel-btn");
+var yes = document.getElementById("table-yes-btn");
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+/* ADD BUTTONS ALL SHEETS*/
+function add_column(parent)
+{
+    var parentId = parent.attr('id')    //get parent id
+    var parentTag = $("tr th#"+parentId) // get the parent tag or th of moodule
+
+    var array = parentId.split('-');
+    var module = array[1].slice(0,-1);
+    label = module.charAt(0).toUpperCase() + module.slice(1);
+    var items = array[0]+"-items-"+array[1]; // for getting items id
+    var name = array[0]+"-name-"+array[1]; // for getting name id
+    var td_class_name,stud_col_class,term_tag,term,label_num;
+
+    console.log(items);
+    console.log(name);
+    //---know if module under midterm or finals
+    if (parent.attr('id').slice(-1) == '1') 
+    {
+        term_tag = $('#table-midterm');
+        term = "midterm";
+        stud_col_class = array[0]+"-student-"+module+"-mid";
+    }
+    else 
+    {
+        term_tag = $('#table-finals');
+        term = "finals";
+        stud_col_class = array[0]+"-student-"+module+"-finals";
+    }
+
+    if (type_of_table == "attendance_table")
+    {
+        if ($(parentTag).attr('colspan') < 17){
+            parentTag.each(function(){
+                var counter = getModuleCounter(label,term,"val");
+                counter++;
+                var span=3+counter;
+                $(this).attr('colspan',span);
+                $(this).val(counter);
+                setModuleCounter(getModuleCounter(label,term,"name"),counter);
+            });
+
+            $("#"+parentId+"-button-del").css('display', 'inline-block');
+            $("#"+parentId+"-total").before($("<td class='table-items-date-mid fixed-width' contenteditable='true'></td>"));
+            $("tr td#"+name).before($("<td class='table-student-attendance-mid fixed-width' contenteditable='true'></td>")); // ADD NEW COLUMNS FOR ALL DUMMY ACCOUNT
+        }
+        else alert("Only 15 column is allowed on this table.");
+        console.log("label: "+label);
+        console.log("counter:"+ getModuleCounter(label,term,"val"));
+        console.log(term);
+        return;
+    }
+
+    if (module_type == "Lab")
+    {
+        if ($(parentTag).attr('colspan') != 12)
+        {
+            parentTag.each(function(){
+                var counter = getModuleCounter(label,term,"val");
+                counter++;
+                var span=3+counter;
+                label_num = span-2;
+                $(this).attr('colspan',span);
+                $(this).val(counter);
+                setModuleCounter(getModuleCounter(label,term,"name"),counter);
+            });
+
+            if (term == "midterm")
+            {
+                term_tag.each(function(){
+                    midtermCounter++;
+                    var term_span=11+midtermCounter;
+                    $(this).attr('colspan',term_span);
+                    $(this).val(midtermCounter);
+                });
+                td_class_name = items+"-mid"
+            }
+            else if (term == "finals")
+            {
+                term_tag.each(function(){
+                    finalsCounter++;
+                    var term_span=11+finalsCounter;
+                    $(this).attr('colspan',term_span);
+                    $(this).val(finalsCounter);
+                });
+                td_class_name = items+"-finals"
+            }
+            $("#"+parentId+"-button-del").css('display', 'inline-block');
+            $("#"+parentId+"-total").before($("<th style='text-align:center'>"+ label +" "+ label_num + "</th>"));
+            $("#"+items).before($("<td class='"+td_class_name+"' contenteditable='true'></td>"));
+            $("tr td#"+name).before($("<td class='"+stud_col_class+"' contenteditable='true'></td>")); // ADD NEW COLUMNS FOR ALL DUMMY ACCOUNT
+        }
+        else alert("Only 10 column is allowed on this table.");
+    }
+
+    else if (module_type == "Lec")
+    {
+        var upper_module,mod_id;
+        if ($(parentTag).attr('colspan') != 10)
+        {
+            parentTag.each(function(){
+                console.log("id: "+parentTag.attr('id'));
+                var counter = getModuleCounter(label,term,"val");
+                counter++;
+                var span=1+counter;
+                label_num = span;
+                $(this).attr('colspan',span);
+                $(this).val(counter);
+                console.log("assign: "+span);
+                console.log("label: "+label);
+                setModuleCounter(getModuleCounter(label,term,"name"),counter);
+            });
+
+            
+            if (term == "midterm")
+            {
+                var i;
+                if (label == "Assign" || label == "Sw" || label == "Ex" || label == "Rec") 
+                {
+                    upper_module = $('#table-class-standing1');
+                    i = 6;
+                }
+                else if (label == "Quiz" || label == "Le") 
+                {
+                    upper_module = $('#table-quiz-le1');
+                    i = 4;
+                }
+                mod_id = upper_module.attr('id');
+                var arr = mod_id.split('-');
+                var label2 = arr[1]+"-"+arr[2].slice(0,-1);
+                console.log(label2);
+                upper_module.each(function(){
+                    var counter2 = getModuleCounter(label2,term,"val");
+                    counter2++;
+                    var span2=i+counter2;
+                    $(this).attr('colspan',span2);
+                    $(this).val(counter2);
+                    console.log("cs: "+span2);
+                    setModuleCounter(getModuleCounter(label2,term,"name"),counter2);
+                });
+                term_tag.each(function(){
+                    midtermCounter++;
+                    var term_span=15+midtermCounter;
+                    $(this).attr('colspan',term_span);
+                    $(this).val(midtermCounter);
+                    console.log("mterm: "+term_span);
+                    td_class_name = items+"-mid"
+                });
+            }
+            else if (term == "finals")
+            {
+                var i;
+                if (label == "Assign" || label == "Sw" || label == "Ex" || label == "Rec") 
+                {
+                    upper_module = $('#table-class-standing2');
+                    i = 6;
+                }
+                else if (label == "Quiz" || label == "Le") 
+                {
+                    upper_module = $('#table-quiz-le2');
+                    i = 4;
+                }
+                mod_id = upper_module.attr('id');
+                var arr = mod_id.split('-');
+                var label2 = arr[1]+"-"+arr[2].slice(0,-1);
+                console.log(label2);
+                upper_module.each(function(){
+                    var counter2 = getModuleCounter(label2,term,"val");
+                    counter2++;
+                    var span2=i+counter2;
+                    $(this).attr('colspan',span2);
+                    $(this).val(counter2);
+                    setModuleCounter(getModuleCounter(label2,term,"name"),counter2);
+                });
+                term_tag.each(function(){
+                    finalsCounter++;
+                    var term_span=15+finalsCounter;
+                    $(this).attr('colspan',term_span);
+                    $(this).val(finalsCounter);
+                    td_class_name = items+"-finals"
+                });
+            }
+
+            $("#"+parentId+"-button-del").css('display', 'inline-block');
+            console.log("label_num: "+label_num);
+            $("#"+get_col_pos(label,term,"module_num")).before($("<th style='text-align:center'>"+ label +" "+ label_num + "</th>"));
+            $("#"+get_col_pos(label,term,"module_items")).before($("<td class='"+td_class_name+"' contenteditable='true'></td>"));
+            $("tr td#"+name).before($("<td class='"+stud_col_class+"' contenteditable='true'></td>")); // ADD NEW COLUMNS FOR ALL DUMMY ACCOUNT
+            console.log("par id: "+parentId);
+            console.log("name: "+name);
+        }
+        else alert("Only 10 column is allowed on this table.");
+    }
+    
+}
+
+/*DEL BUTTON*/
+function del_column(parent)
+{
+    modal.style.display = "block";
+    yes.onclick = function() 
+    {
+        modal.style.display = "none";
+        var parentId = parent.attr('id')    //get parent id
+        var parentTag = $("tr th#"+parentId) // get the parent tag or th of moodule
+
+        var array = parent.attr('id').split('-'); //process of getting label
+        var module = array[1].slice(0,-1);
+        label = module.charAt(0).toUpperCase() + module.slice(1); // uppercase 1st letter
+        var items = array[0]+"-items-"+array[1]; // for getting items id
+        var name = array[0]+"-name-"+array[1]; // for getting name id
+        var term_tag,term;
+        if (parent.attr('id').slice(-1) == '1') 
+        {
+            term_tag = $('#table-midterm');
+            term = "midterm";
+        }
+        else 
+        {
+            term_tag = $('#table-finals');
+            term = "finals";
+        }
+
+        if (type_of_table == "attendance_table")
+        {
+            if ($(parentTag).attr('colspan') > 3)
+            {
+                $(parentTag).attr('colspan',$(parentTag).attr('colspan')-1); //subtract one colspan to the module header
+                var newCount = getModuleCounter(label,term,"val") - 1;
+                setModuleCounter(getModuleCounter(label,term,"name"),newCount);
+                
+                $("#"+parentId+"-total").prev().remove();  //remove module names column e.g. lab3,quiz1 etc.
+                $("#"+items).prev().remove(); //remove the items column
+                $("tr td#"+name).prev().remove(); //remove students column of that module
+            }
+            if ($(parentTag).attr('colspan') <= 3){
+                $("#"+parentId+"-button-del").css('display', 'none');         
+            }
+            return;
+        }
+
+        if (module_type == "Lab")
+        {
+            if ($(parentTag).attr('colspan') > 3)
+            {
+                $(parentTag).attr('colspan',$(parentTag).attr('colspan')-1); //subtract one colspan to the module header
+                var newCount = getModuleCounter(label,term,"val") - 1;
+                setModuleCounter(getModuleCounter(label,term,"name"),newCount);
+
+                $(term_tag).attr('colspan',$(term_tag).attr('colspan')-1);  //subtract one colspan to the midterm or finals header
+                if (term == "midterm") midtermCounter--;
+                else if (term == "finals") finalsCounter--;
+
+                $("#"+parentId+"-total").prev().remove();  //remove module names column e.g. lab3,quiz1 etc.
+                $("#"+items).prev().remove(); //remove the items column
+                $("tr td#"+name).prev().remove(); //remove students column of that module
+            }
+            if ($(parentTag).attr('colspan') <= 3){
+                $("#"+parentId+"-button-del").css('display', 'none');         
+            }
+        }
+        else if (module_type == "Lec")
+        {
+            var upper_module,mod_id;
+            if ($(parentTag).attr('colspan') > 1)
+            {
+                $(parentTag).attr('colspan',$(parentTag).attr('colspan')-1);
+                var newCount = getModuleCounter(label,term,"val") - 1;
+                setModuleCounter(getModuleCounter(label,term,"name"),newCount);
+
+                if (term == "midterm")
+                {
+                    if (label == "Assign" || label == "Sw" || label == "Ex" || label == "Rec") upper_module = $('#table-class-standing1');
+                    else if (label == "Quiz" || label == "Le") upper_module = $('#table-quiz-le1');
+                    mod_id = upper_module.attr('id');
+                    var arr = mod_id.split('-');
+                    var label2 = arr[1]+"-"+arr[2].slice(0,-1);
+                    var newCount2 = getModuleCounter(label2,term,"val") - 1;
+                    setModuleCounter(getModuleCounter(label2,term,"name"),newCount2);
+                    midtermCounter--;
+                }
+                else if (term == "finals")
+                {
+                    if (label == "Assign" || label == "Sw" || label == "Ex" || label == "Rec") upper_module = $('#table-class-standing2');
+                    else if (label == "Quiz" || label == "Le") upper_module = $('#table-quiz-le2');
+                    mod_id = upper_module.attr('id');
+                    var arr = mod_id.split('-');
+                    var label2 = arr[1]+"-"+arr[2].slice(0,-1);
+                    var newCount2 = getModuleCounter(label2,term,"val") - 1;
+                    setModuleCounter(getModuleCounter(label2,term,"name"),newCount2);
+                    finalsCounter--;
+                }
+
+                $("#"+get_col_pos(label,term,"module_num")).prev().remove();
+                $("#"+get_col_pos(label,term,"module_items")).prev().remove();
+                $("tr td#"+name).prev().remove();
+
+            }
+            if ($(parentTag).attr('colspan') <= 1){
+                $("#"+parentId+"-button-del").css('display', 'none');         
+            }
+
+        }
+    }
+    cancel.onclick = function() {
+        modal.style.display = "none";
+    }
+}
