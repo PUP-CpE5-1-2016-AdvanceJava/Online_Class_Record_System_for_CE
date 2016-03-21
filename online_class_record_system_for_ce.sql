@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2016 at 10:54 AM
+-- Generation Time: Mar 21, 2016 at 03:20 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -91,18 +91,19 @@ CREATE TABLE IF NOT EXISTS `class` (
   `Schedule` varchar(100) NOT NULL,
   `Filename` varchar(100) DEFAULT NULL,
   `IsUploaded` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class`
 --
 
 INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStudents`, `Passers`, `YrSem`, `Schedule`, `Filename`, `IsUploaded`) VALUES
-(4, 4, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', NULL, 1),
+(4, 4, 'BSCOE 5-1', 'Lec', 39, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', NULL, 1),
 (5, 5, 'BSCOE 2-3', 'Lab', 45, NULL, 'Second Semester 2015-16', 'S/S 07:30AM-10:30AM/10:30AM-01:30PM', NULL, 1),
 (6, 6, 'BSCOE 3-5', 'Lec', 50, NULL, 'Second Semester 2015-16', 'T/F 02:00PM-05:00PM/02:00PM-05:00PM', NULL, 0),
 (7, 7, 'BSCOE 5-3', 'Lab', 49, NULL, 'Second Semester 2015-16', 'M 03:00PM-06:00PM', NULL, 1),
-(8, 8, 'BSCOE 4-3', 'Lec', 31, NULL, 'Second Semester 2015-16', 'T/F 07:30AM-10:30AM/07:30AM-10:30AM', NULL, 1);
+(8, 8, 'BSCOE 4-3', 'Lec', 31, NULL, 'Second Semester 2015-16', 'T/F 07:30AM-10:30AM/07:30AM-10:30AM', NULL, 1),
+(9, 9, 'BSCOE 4-3', 'Lec', 31, NULL, 'Second Semester 2015-16', 'T/F 07:30AM-10:30AM/07:30AM-10:30AM', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -395,7 +396,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `MName` varchar(100) NOT NULL,
   `LName` varchar(100) NOT NULL,
   `StudentNumber` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=343 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=377 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
@@ -743,7 +744,41 @@ INSERT INTO `students` (`Id`, `ClassId`, `FName`, `MName`, `LName`, `StudentNumb
 (339, 8, 'shanilyn louise ', 'garcia', 'santiago', '2012-00250-MN-0'),
 (340, 8, 'lleur ', 'rull', 'tan', '2012-03823-MN-0'),
 (341, 8, 'jefferson ', 'tamayo', 'tonic', '2012-01962-MN-0'),
-(342, 8, 'michael ', 'balubal', 'villaverde', '2012-03200-MN-0');
+(342, 8, 'michael ', 'balubal', 'villaverde', '2012-03200-MN-0'),
+(343, 4, 'Someone', 'Anyone', 'Nobody', '2020-55555-MN-0'),
+(344, 4, 'Again', 'Again', 'Again', '2011-2131-MN-0'),
+(345, 4, 'Testing3', 'MiddleTest3', 'LastTest3', '2011-12313-MN-0'),
+(346, 9, 'cyrille ', 'tiangco', 'ablaza', '2012-09082-MN-0'),
+(347, 9, 'darwin ', 'pascual', 'arandilla', '2012-05331-MN-0'),
+(348, 9, 'jay jasper ', 'roslin', 'bagay', '2012-02680-MN-0'),
+(349, 9, 'janine ', 'darlo', 'buarao', '2012-06236-MN-0'),
+(350, 9, 'ryan gabriel ', 'salvani', 'bunquin', '2012-08268-MN-0'),
+(351, 9, 'roselyn ', 'rezano', 'cañete', '2012-03743-MN-0'),
+(352, 9, 'william jr. ', 'benitez', 'caballero', '2012-04079-MN-0'),
+(353, 9, 'francisc jerhone ', 'esguerra', 'camillo', '2012-01236-MN-0'),
+(354, 9, 'shella may ', 'bautista', 'cantos', '2012-03474-MN-0'),
+(355, 9, 'zoren eleazar ', 'calos', 'caspe', '2012-02535-MN-0'),
+(356, 9, 'jhoffer vincent ', 'atencio', 'castillo', '2012-03988-MN-0'),
+(357, 9, 'justin christopher ', 'bordon', 'estorga', '2012-01882-MN-0'),
+(358, 9, 'nathaniel lewis ', '', 'galang', '2012-03321-MN-0'),
+(359, 9, 'joshua ', '', 'hermosura', '2012-08447-MN-0'),
+(360, 9, 'rose suzette ', 'mirabueno', 'lapitan', '2012-00740-MN-0'),
+(361, 9, 'allison dwight ', 'rosales', 'malto', '2012-00730-MN-0'),
+(362, 9, 'benito jr. ', 'sanchez', 'mascariñas', '2012-01522-MN-0'),
+(363, 9, 'charisse mariel ', 'villar', 'medina', '2012-01844-MN-0'),
+(364, 9, 'christian ashley ', 'pangilinan', 'mones', '2012-04296-MN-0'),
+(365, 9, 'niña geralyn ', 'reyes', 'palambiano', '2012-08052-MN-0'),
+(366, 9, 'johnston ', 'tiania', 'perocho', '2012-03403-MN-0'),
+(367, 9, 'ivy marie ', 'gordo', 'porras', '2012-03505-MN-0'),
+(368, 9, 'rommel jr. ', 'rañosa', 'reyes', '2012-01805-MN-0'),
+(369, 9, 'mary andrea ', 'latore', 'ricafrente', '2012-03548-MN-0'),
+(370, 9, 'rollyn john ', 'ardeï¿½o', 'romero', '2012-04961-MN-0'),
+(371, 9, 'paul aldrin ', 'parel', 'roque', '2012-01419-MN-0'),
+(372, 9, 'john paolo ', 'caperiña', 'samson', '2012-00225-MN-0'),
+(373, 9, 'shanilyn louise ', 'garcia', 'santiago', '2012-00250-MN-0'),
+(374, 9, 'lleur ', 'rull', 'tan', '2012-03823-MN-0'),
+(375, 9, 'jefferson ', 'tamayo', 'tonic', '2012-01962-MN-0'),
+(376, 9, 'michael ', 'balubal', 'villaverde', '2012-03200-MN-0');
 
 -- --------------------------------------------------------
 
@@ -755,7 +790,7 @@ CREATE TABLE IF NOT EXISTS `subjects` (
 `Id` int(11) NOT NULL,
   `UserId` int(11) NOT NULL,
   `SubjectTitle` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjects`
@@ -766,7 +801,8 @@ INSERT INTO `subjects` (`Id`, `UserId`, `SubjectTitle`) VALUES
 (5, 8, 'COEN 3054 Data Structures And Algorithm Analysis'),
 (6, 11, 'COEN 3134 Logic Circuits And Switching Theory'),
 (7, 11, 'COEN 3291 Computer Seminar And Field Trips'),
-(8, 12, 'COEN 3414 Operating Systems');
+(8, 12, 'COEN 3414 Operating Systems'),
+(9, 8, 'COEN 3414 Operating Systems');
 
 -- --------------------------------------------------------
 
@@ -947,7 +983,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `exercises`
 --
@@ -1017,12 +1053,12 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=343;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=377;
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `users`
 --

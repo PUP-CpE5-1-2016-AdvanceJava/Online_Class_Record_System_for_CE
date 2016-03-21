@@ -6,8 +6,8 @@
 -chairperson>settings
 -chairperson>homepage
 -admin>homepage
-
-pendings
 -faculty>settings>change pass
 -faculty>settings>addstudent
--archive functionality
+
+pendings
+-archive functionality ???
