@@ -61,20 +61,28 @@ class Table_model extends CI_Model
         	return;
     	}
 
-    	$i = 0;
     	foreach ($query->result() as $row) 
     	{	
     		// combine to make full name and to capital first letter of each name
-    		$full_name = ucwords($row->LName).', '.ucwords($row->FName).' '.ucwords($row->MName);
-    		$students[$i] = array(
-				'id'=> $row->Id,
-    			'full_name' => $full_name, 
-    			'stud_num' => $row->StudentNumber
-    		);
-    		$i++;
+    		$full_name = ucwords($row->LName).', '.ucwords($row->FName).' '.ucwords($row->MName);   		
+    		$students[$row->Id]['full_name'] = $full_name;
+    		$students[$row->Id]['stud_num'] =  $row->StudentNumber;
     	}
     	
-    	// justin code
+		$sql = "SELECT students.Id, MidtermGrade, FinalGrade, TotalGrade 
+				FROM grades 
+				JOIN students ON grades.StudId = students.Id 
+				WHERE StudId IN (SELECT Id FROM students WHERE ClassId = ?)";
+		$query = $this->db->query($sql, $ClassId);
+		foreach ($query->result() as $row)
+		{
+			array_push($students[$row->Id], $row->MidtermGrade.'MG');
+			array_push($students[$row->Id], $row->FinalGrade.'FG');
+			array_push($students[$row->Id], $row->TotalGrade.'TG');
+		}
+    	
+    	// justin code from here below
+    	$type = $block->ModuleType;
 		switch ($block->ModuleType)
 		{
 			case 'Lec':
@@ -83,14 +91,18 @@ class Table_model extends CI_Model
 			case 'Lab':
 				$tables = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
 				break;
-			case 'attendance_table':
-				$tables = array( 'attendance' );
-				break;
 			default:
 				exit ('Invalid Input');
 		}
 		
-		$i = 0;
+		// for attendance table, override switch block result
+		if ($table_type == 'attendance_table')
+		{
+			$tables = array( 'attendance' );
+			$type = $table_type;
+		}
+				
+		$first_attendance = TRUE;
 		$grades = array();
 		foreach ($tables as $table)
 		{
@@ -106,6 +118,7 @@ class Table_model extends CI_Model
 					JOIN students ON students.Id = grades.StudId 
 					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
 			$query = $this->db->query($sql, $ClassId);
+
 			
 			foreach ($query->result() as $row)
 			{
@@ -118,30 +131,45 @@ class Table_model extends CI_Model
 					$semester = 'Final';
 				}
 				else $semester = $row->Sem;
-				$grades[$i] = array(
-					'id' => $row->Id,
-					'module' => $table,
-					'score' => $row->Score,
-					'rating' => $row->Rating,
-					'sem' => $semester
-				);
-				$i++;
+				
+				array_push($students[$row->Id], $row->Score.$table.$semester);
+				
+				if ($table == 'assignment' OR $table == 'quizzes' OR $first_attendance )
+				{
+					array_push($students[$row->Id], $row->Rating.'rating');
+					$first_attendance = FALSE;
+				}
 			}
 		}
 		
-		$sql = "SELECT * FROM module_items WHERE ClassId = ? ";
-		$query = $this->db->query($sql, $ClassId);
+		// to fit the original JSON pattern
+		$grades = array();
+		foreach ($students as $student)
+		{
+			$grades[] = $student;
+		}
+		
+		// module items
+		$sql = "SELECT Module, Items FROM module_items WHERE ClassId = ? AND TableType = ?";
+		$query = $this->db->query($sql, array($ClassId, $type));
+		$items = array();
+		$i = 0;
 		foreach ($query->result() as $row)
 		{
-			
+			$items[$i] = array(
+				'header' => $row->Module,
+				'items' => $row->Items
+			);
+			$i++;
 		}
+		
 		
     	$data = array(
     		'Class' => $class,
     		'Subject' => $subject,
-    		'Student' => $students,
+    		'Student' => $grades,
     		'Module' => $module,
-    		'Grades' => $grades
+    		'Items' => $items
     	);
     	return $data;
 	}
@@ -252,20 +280,21 @@ class Table_model extends CI_Model
 		
 		if ($type == 'Lec' OR $type == 'Lab')
 		{
+			// save module items
 			$first_header = TRUE;
-			$sql = "REPLACE module_items (Id, ClassId, Module, Items) VALUES ";
+			$sql = "REPLACE module_items (Id, ClassId, Module, Items, TableType) VALUES ";
 			$input_array = array();
 			$count = 0;
 			foreach ($table_format as $header)
 			{
-				array_push($input_array, $class_id, $header, $class_id, $header, $num_of_items[$count]);
+				array_push($input_array, $class_id, $header, $class_id, $header, $num_of_items[$count], $type);
 				if ($first_header)
 				{
-					$sql .= "((SELECT Id FROM module_items_id WHERE `ClassId` = ? AND `Module` = ? ) , ?, ?, ? )";
+					$sql .= "((SELECT Id FROM module_items_id WHERE `ClassId` = ? AND `Module` = ? ) , ?, ?, ?, ? )";
 					$first_header = FALSE;
 				}
 				else 
-					$sql .= " ,((SELECT Id FROM module_items_id WHERE `ClassId`= ? AND `Module` = ? ) , ?, ?, ? )";
+					$sql .= " ,((SELECT Id FROM module_items_id WHERE `ClassId`= ? AND `Module` = ? ) , ?, ?, ?, ? )";
 				$count++;
 			}
 			$this->db->query($sql, $input_array);

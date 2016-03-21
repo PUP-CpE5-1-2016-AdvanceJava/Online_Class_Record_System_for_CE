@@ -443,6 +443,7 @@ CREATE TABLE `module_items` (
   `ClassId` int(11) NOT NULL,
   `Module` varchar(60) DEFAULT NULL,
   `Items` smallint(6) DEFAULT '0',
+  `TableType` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -453,7 +454,7 @@ CREATE TABLE `module_items` (
 
 LOCK TABLES `module_items` WRITE;
 /*!40000 ALTER TABLE `module_items` DISABLE KEYS */;
-INSERT INTO `module_items` VALUES (1,1,'mt_att_per',0),(2,1,'mt_cs_assign_1_',30),(3,1,'mt_cs_sw_1',10),(4,1,'mt_cs_ex_1',10),(5,1,'mt_cs_rec_1',30),(6,1,'mt_cs_total',0),(7,1,'mt_cs_per',0),(8,1,'mt_qz_quiz_1',20),(9,1,'mt_qz_le_1',50),(10,1,'mt_qz_total',0),(11,1,'mt_qz_per',0),(12,1,'mt_exam_score',100),(13,1,'mt_exam_per',0),(14,1,'mt_mt_per',0),(15,1,'mt_mt_rating',0),(16,1,'ft_att_per',0),(17,1,'ft_cs_assign_1_',0),(18,1,'ft_cs_sw_1',0),(19,1,'ft_cs_ex_1',0),(20,1,'ft_cs_rec_1',0),(21,1,'ft_cs_total',0),(22,1,'ft_cs_per',0),(23,1,'ft_qz_quiz_1',0),(24,1,'ft_qz_le_1',0),(25,1,'ft_qz_total',0),(26,1,'ft_qz_per',0),(27,1,'ft_exam_score',0),(28,1,'ft_exam_per',0),(29,1,'ft_ft_per',0),(30,1,'ft_ft_rating',0);
+INSERT INTO `module_items` VALUES (1,1,'mt_att_per',0,'Lec'),(2,1,'mt_cs_assign_1_',30,'Lec'),(3,1,'mt_cs_sw_1',10,'Lec'),(4,1,'mt_cs_ex_1',10,'Lec'),(5,1,'mt_cs_rec_1',30,'Lec'),(6,1,'mt_cs_total',0,'Lec'),(7,1,'mt_cs_per',0,'Lec'),(8,1,'mt_qz_quiz_1',20,'Lec'),(9,1,'mt_qz_le_1',50,'Lec'),(10,1,'mt_qz_total',0,'Lec'),(11,1,'mt_qz_per',0,'Lec'),(12,1,'mt_exam_score',100,'Lec'),(13,1,'mt_exam_per',0,'Lec'),(14,1,'mt_mt_per',0,'Lec'),(15,1,'mt_mt_rating',0,'Lec'),(16,1,'ft_att_per',0,'Lec'),(17,1,'ft_cs_assign_1_',0,'Lec'),(18,1,'ft_cs_sw_1',0,'Lec'),(19,1,'ft_cs_ex_1',0,'Lec'),(20,1,'ft_cs_rec_1',0,'Lec'),(21,1,'ft_cs_total',0,'Lec'),(22,1,'ft_cs_per',0,'Lec'),(23,1,'ft_qz_quiz_1',0,'Lec'),(24,1,'ft_qz_le_1',0,'Lec'),(25,1,'ft_qz_total',0,'Lec'),(26,1,'ft_qz_per',0,'Lec'),(27,1,'ft_exam_score',0,'Lec'),(28,1,'ft_exam_per',0,'Lec'),(29,1,'ft_ft_per',0,'Lec'),(30,1,'ft_ft_rating',0,'Lec');
 /*!40000 ALTER TABLE `module_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -750,4 +751,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-21 14:26:53
+-- Dump completed on 2016-03-22  0:34:58
