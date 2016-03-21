@@ -88,7 +88,9 @@ class Table_model extends CI_Model {
 			default:
 				exit ('Invalid Input');
 		}
+		
 		$i = 0;
+		$grades = array();
 		foreach ($tables as $table)
 		{
 			$statement = ",$table.Sem";
@@ -125,7 +127,14 @@ class Table_model extends CI_Model {
 				$i++;
 			}
 		}
-
+		
+		$sql = "SELECT * FROM module_items WHERE ClassId = ? ";
+		$query = $this->db->query($sql, $ClassId);
+		foreach ($query->result() as $row)
+		{
+			
+		}
+		
     	$data = array(
     		'Class' => $class,
     		'Subject' => $subject,
@@ -135,16 +144,11 @@ class Table_model extends CI_Model {
     	);
     	return $data;
 	}
-	
-	private function databse_query($sql, $input_array)
-	{
-		
-		
-		return;
-	}
 		
 	function save_table_data()
 	{
+		if ( ! isset($_SESSION['table_format'])) exit ('Cannot find format, please try again');
+		
 		$class_id = $_SESSION['table_format']['tableId'];
 		
 		// simple check to see if all students are going to be recorded
@@ -153,11 +157,14 @@ class Table_model extends CI_Model {
 		
 		if ($query->num_rows() ==  0) exit ('Recording failed, please try again');
 		
+		
 		$type = $_SESSION['table_format']['tableType'];
 		$table_format = $_SESSION['table_format']['tableFormat'];
+		$num_of_items = $_SESSION['table_format']['tableItems'];
+		if ( ! isset($_SESSION['table_data'])) exit ('Cannot find data, please try again');
 		$table_data = $_SESSION['table_data'];
 		
-		// create stuff for the SQL insert loop 
+		// create stuff for the SQL insert loop
 		switch ($type)
 		{
 			case 'Lec':
@@ -190,7 +197,6 @@ class Table_model extends CI_Model {
 				exit ('Invalid Input');
 		}
 		
-
 		// destroy previous records
 		foreach ($tables_to_delete as $table)
 		{
@@ -202,6 +208,7 @@ class Table_model extends CI_Model {
 		$b = 0;
 		$c = 0;
 		$first_student = TRUE;
+		$first_item = TRUE;
 		$format_count = count($table_format);
 		$name_count = count($name_formats);
 
@@ -215,8 +222,12 @@ class Table_model extends CI_Model {
 				// check to see if the header at position of $b is equal. If equal break after query, otherwise iterate
 				if (stripos($table_format[$a], $name_formats[$i]) !== FALSE)
 				{
+					// reset variables
 					$sql = "INSERT INTO ".$tables_to_record[$i]." (StudGradeId, Score, Rating, Sem) VALUES ";
 					$input_array = array();
+					
+					
+					
 					foreach ($table_data as $student)
 					{
 						array_push($input_array, $class_id, $student['number'], $student['grades'][$table_format[$a]], $student['grades'][$rating_formats[$i]], $halfterm[$i]);
@@ -240,6 +251,27 @@ class Table_model extends CI_Model {
 		
 		if ($type == 'Lec' OR $type == 'Lab')
 		{
+			$first_header = TRUE;
+			$sql = "REPLACE module_items (Id, ClassId, Module, Items) VALUES ";
+			$input_array = array();
+			$count = 0;
+			foreach ($table_format as $header)
+			{
+				array_push($input_array, $class_id, $header, $class_id, $header, $num_of_items[$count]);
+				if ($first_header)
+				{
+					$sql .= "((SELECT Id FROM module_items_id WHERE `ClassId` = ? AND `Module` = ? ) , ?, ?, ? )";
+					$first_header = FALSE;
+				}
+				else 
+					$sql .= " ,((SELECT Id FROM module_items_id WHERE `ClassId`= ? AND `Module` = ? ) , ?, ?, ? )";
+				$count++;
+			}
+			$this->db->query($sql, $input_array);
+
+			$sql = "INSERT INTO module_items_id SELECT Id, ClassId, Module FROM module_items ON DUPLICATE KEY UPDATE ClassId = VALUES (ClassId), Module = VALUES (Module)";
+			$this->db->query($sql);
+			
 			// for lecture tables
 			if ($type == 'Lec')
 			{
@@ -257,7 +289,7 @@ class Table_model extends CI_Model {
 							$first_student = FALSE;
 						}
 						else 
-							$sql .= ",((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?)";
+							$sql .= " ,((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?)";
 					}
 					$this->db->query($sql, $input_array);
 					$first_student = TRUE;
@@ -273,18 +305,18 @@ class Table_model extends CI_Model {
 			{
 				$total_grade = ($student['grades']['mt_mt_rating'] + $student['grades']['ft_ft_rating']) / 2;
 				array_push($input_array, $class_id, $student['number'], $student['grades']['mt_mt_rating'], $student['grades']['ft_ft_rating'], $total_grade);
-						if ($first_student)
-						{
-							$sql .= "((SELECT Id FROM grades_id WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?, ?)";
-							$first_student = FALSE;
-						}
-						else 
-							$sql .= ",((SELECT Id FROM grades_id WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ?, ?, ?)";
+				if ($first_student)
+				{
+					$sql .= "((SELECT Id FROM grades_id WHERE `StudId` = (SELECT `Id` FROM students WHERE `ClassId` = ? AND `StudentNumber` = ? )), ?, ?, ?)";
+					$first_student = FALSE;
+				}
+				else 
+					$sql .= " ,((SELECT Id FROM grades_id WHERE `StudId` = (SELECT `Id` FROM students WHERE `ClassId` = ? AND `StudentNumber` = ? )), ?, ?, ?)";
 			}
-			$sql .= "ON DUPLICATE KEY UPDATE MidTermGrade= VALUES (MidTermGrade), FinalGrade= VALUES (FinalGrade), TotalGrade= VALUES (TotalGrade)";
+			$sql .= " ON DUPLICATE KEY UPDATE MidTermGrade= VALUES (MidTermGrade), FinalGrade= VALUES (FinalGrade), TotalGrade= VALUES (TotalGrade)";
 			$this->db->query($sql, $input_array);
-			
-			$sql .= "INSERT INTO grades_id SELECT Id, StudId FROM grades ON DUPLICATE KEY UPDATE StudId= VALUES (StudId)";
+
+			$sql = "INSERT INTO grades_id SELECT Id, StudId FROM grades ON DUPLICATE KEY UPDATE StudId = VALUES (StudId)";
 			$this->db->query($sql);
 		}
 	}

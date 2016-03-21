@@ -55,6 +55,9 @@ function getAllData(id)
 			}
 		});
 		
+		// remove "Number of Items"
+		numOfItemsContainer.shift();
+		
 		// get the rows for the headers
 		var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[4];
 		var gradeHeaderRowAbove = document.getElementById('table-wrapper').tBodies[0].rows[3];
@@ -113,6 +116,9 @@ function getAllData(id)
 				tempContainer.push($(this).text());
 			}
 		});
+		
+		// remove "Number of Items"
+		numOfItemsContainer.shift();
 		
 		// same process as Lec but simpler
 		var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[3];
@@ -232,8 +238,14 @@ function getAllData(id)
 	
 	// encode to JSON and set into session variable
 	recursiveEncoded = $.param(toEncode);
-	$.post('/user/set_global_table_session', recursiveEncoded);
-	
+	$.post('/user/set_global_table_session', recursiveEncoded)
+		.done(function( result ) {
+			if (result != 'OK')
+			{
+				$('#status').html("Operation not finished. Abort");
+				return false;
+			}
+		});
 	
 	// save into DB
 	console.log ('set session done');

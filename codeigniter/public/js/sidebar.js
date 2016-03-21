@@ -223,7 +223,7 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
                                             <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'>100</td>\
                                             <td contenteditable='true'></td>\
                                             <td contenteditable='true' id='table-seatwork-classStanding1'></td>\
                                             <td contenteditable='true' id='table-exercise-classStanding1'></td>\
@@ -237,7 +237,7 @@ function get_class_table(link)
                                             <td contenteditable='true'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
-                                            <td contenteditable='false' id='border-bold'></td>\
+                                            <td contenteditable='false' id='border-bold'>75</td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='true'></td>\
                                             <td contenteditable='true' id='table-seatwork-classStanding2'></td>\
