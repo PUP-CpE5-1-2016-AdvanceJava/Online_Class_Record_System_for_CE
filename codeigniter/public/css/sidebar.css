@@ -105,10 +105,25 @@ li { list-style-type: none; }
 }
 @media only screen and (max-width:768px) {
 
+	#sidebar-menu{font-size: 18px}
+	#sidebar-subMenu a.hideOverflow{font-size: 15px}
+	#sidebar-item{font-size: 14px}
+
 }
 @media only screen and (max-width:640px) {
+
+	.icon-class-record , .icon-modules{font-size: 18px}
+
+	#sidebar-menu{font-size: 16px}
+	#sidebar-subMenu a.hideOverflow{font-size: 13px}
+	#sidebar-item{font-size: 12px}
 	
 }
 @media only screen and (max-width:480px) {
+	.icon-class-record , .icon-modules{font-size: 15px}
+
+	#sidebar-menu{font-size: 14px}
+	#sidebar-subMenu a.hideOverflow{font-size: 11px}
+	#sidebar-item{font-size: 10px}
 	
 }
