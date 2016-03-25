@@ -59,20 +59,27 @@ class User extends CI_Controller
     			{
     				$data['info'] = $this->User_model->get_upload_status("none");
     			}
-    			$i = 0;
+    			if (isset($data['info']))
+    			{
+    				$i = 0;
     				$arr = array();
-    				foreach ($data['info'] as $key) 
+    				foreach ($data['info'] as $key)
     				{
-    					foreach ($key as $key2) 
+    					if (isset($key))
     					{
-    						if (isset($key2['user_id']))
-    						{
-    							$arr[$i] = $this->User_model->get_upload_count($key2['user_id']);
-    							$i++;
-    						}
+    						foreach ($key as $key2)
+	    					{
+	    						if (isset($key2['user_id']))
+	    						{
+	    							$arr[$i] = $this->User_model->get_upload_count($key2['user_id']);
+	    							$i++;
+	    						}
+	    					}
     					}
+    					
     				}
-    			$data['upload_count'] = $arr;
+    				$data['upload_count'] = $arr;
+    			}
     			$this->load->view('templates/header',$user);
 				$this->load->view('pages/chairperson_page',$data);
 				$this->load->view('templates/footer');

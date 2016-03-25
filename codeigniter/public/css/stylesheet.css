@@ -65,7 +65,7 @@
 
 /*HOME CONTENT*/
 #home-body-wrapper{background: #E4E4E4;}
-#home-wrapper{ margin-bottom: 200px;}
+#home-wrapper{ margin-bottom: 200px; min-height: 300px;}
 #home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
 #home-panel{font-family: 'Source Sans Pro', sans-serif; }
 #home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}

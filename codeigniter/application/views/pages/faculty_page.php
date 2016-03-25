@@ -58,6 +58,8 @@
         </div>
 
     </div>
+    <div id="include_tooltip">
+    </div>
     
     <!-- ALERT MODAL -->
     <div id="table-alert-modal" class="modal">

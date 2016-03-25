@@ -160,7 +160,7 @@ class User_model extends CI_Model
 
 			if($validate->num_rows()<=0)
 			{
-				return false;
+				return null;
 			}
 			$this->load->model('Faculty_model'); // load the model to be used
 			foreach ($validate->result() as $user) 
@@ -177,7 +177,7 @@ class User_model extends CI_Model
 
 			if($validate->num_rows()<=0)
 			{
-				return false;
+				return null;
 			}
 			$this->load->model('Faculty_model'); // load the model to be used
 			foreach ($validate->result() as $user) 

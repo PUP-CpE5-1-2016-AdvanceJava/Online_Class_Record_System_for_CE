@@ -114,6 +114,7 @@ function get_class_table(link)
         {
             if (response['Class']['ModuleType'] == "Lec")
             {
+                // 'Lecture table' please edit classes for responsive //
                 table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
@@ -178,7 +179,7 @@ function get_class_table(link)
                                             <tr id='table-module'>\
                                                 <th colspan='2' id='table-blank2'></th>\
                                                 <th class='text-center'>10%</th>\
-                                                <th class='text-center' id='assign-score-col'>Assign 1 </th>\
+                                                <th class='text-center' id='assign1-score-col'>Assign 1 </th>\
                                                 <th class='text-center' id='sw1-score-col'>Sw 1</th>\
                                                 <th class='text-center' id='ex1-score-col'>Ex 1</th>\
                                                 <th class='text-center' id='rec1-score-col'>Rec 1</th>\
@@ -236,12 +237,13 @@ function get_class_table(link)
                                         </tr>\
                                     </table>\
                                 </div>\
+                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                             </div>\
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+              $('table tbody').append("  <tr><td id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='true'></td>\
                                             <td contenteditable='true' id='table-name-assign1'></td>\
@@ -273,9 +275,11 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
+            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
             else
             {
+                // 'Lab table' please edit classes for responsive //
                 table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
@@ -332,25 +336,25 @@ function get_class_table(link)
                                                 </tr>\
                                                 <tr id='table-items-wrapper' class='fixed-width'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                    <td contenteditable='true'></td>\
-                                                    <td contenteditable='false' id='table-items-lab1'></td>\
+                                                    <td contenteditable='true' id='table-items-lab1'></td>\
                                                     <td contenteditable='false'></td>\
-                                                    <td contenteditable='true'></td>\
-                                                    <td contenteditable='false' id='table-items-prac1'></td>\
                                                     <td contenteditable='false'></td>\
-                                                    <td contenteditable='true'></td>\
-                                                    <td contenteditable='false' id='table-items-proj1'></td>\
+                                                    <td contenteditable='true' id='table-items-prac1'></td>\
+                                                    <td contenteditable='false'></td>\
+                                                    <td contenteditable='false'></td>\
+                                                    <td contenteditable='true' id='table-items-proj1'></td>\
+                                                    <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                     <td id='border-bold' contenteditable='false'></td>\
-                                                    <td contenteditable='true'></td>\
-                                                    <td contenteditable='false' id='table-items-lab2'></td>\
+                                                    <td contenteditable='true' id='table-items-lab2'></td>\
                                                     <td contenteditable='false'></td>\
-                                                    <td contenteditable='true'></td>\
-                                                    <td contenteditable='false' id='table-items-prac2'></td>\
                                                     <td contenteditable='false'></td>\
-                                                    <td contenteditable='true'></td>\
-                                                    <td contenteditable='false' id='table-items-proj2'></td>\
+                                                    <td contenteditable='true' id='table-items-prac2'></td>\
+                                                    <td contenteditable='false'></td>\
+                                                    <td contenteditable='false'></td>\
+                                                    <td contenteditable='true' id='table-items-proj2'></td>\
+                                                    <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
@@ -358,12 +362,13 @@ function get_class_table(link)
                                             </tr>\
                                     </table>\
                                 </div>\
+                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                             </div>\
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+              $('table tbody').append("  <tr><td id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
                                             <td contenteditable='true' name='score[]'></td>\
                                             <td contenteditable='false' id='table-name-lab1'></td>\
                                             <td contenteditable='false'></td>\
@@ -387,10 +392,12 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
+            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
         }
         else if (response['table_type'] == "attendance_table")
         {
+            // 'Attendance table' please edit classes for responsive //
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
@@ -437,7 +444,8 @@ function get_class_table(link)
         }
         else if (response['table_type'] == "final_table")
         {
-                        table.html("<div class='row'>\
+            // 'Final table' please edit classes for responsive //
+            table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
                           <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3>\
@@ -693,6 +701,7 @@ window.onclick = function(event) {
 /* ADD BUTTONS ALL SHEETS*/
 function add_column(parent)
 {
+
     var parentId = parent.attr('id')    //get parent id
     var parentTag = $("tr th#"+parentId) // get the parent tag or th of moodule
 
@@ -778,7 +787,7 @@ function add_column(parent)
             }
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("#"+parentId+"-total").before($("<th style='text-align:center'>"+ label +" "+ label_num + "</th>"));
-            $("#"+items).before($("<td class='"+td_class_name+"' contenteditable='true'></td>"));
+            $("#"+items).after($("<td class='"+td_class_name+"' id='"+array[0]+"-items-"+ module + label_num + "' contenteditable='true'></td>"));
             $("tr td#"+name).before($("<td class='"+stud_col_class+"' contenteditable='true'></td>")); // ADD NEW COLUMNS FOR ALL DUMMY ACCOUNT
         }
         else alert("Only 10 column is allowed on this table.");
@@ -797,8 +806,6 @@ function add_column(parent)
                 label_num = span;
                 $(this).attr('colspan',span);
                 $(this).val(counter);
-                console.log("assign: "+span);
-                console.log("label: "+label);
                 setModuleCounter(getModuleCounter(label,term,"name"),counter);
             });
 
@@ -873,16 +880,44 @@ function add_column(parent)
             }
 
             $("#"+parentId+"-button-del").css('display', 'inline-block');
+            console.log("MODULE total: "+array[1]+"-score-col");
+            console.log("MODULE items: "+items);
+
             console.log("label_num: "+label_num);
-            $("#"+get_col_pos(label,term,"module_num")).before($("<th style='text-align:center'>"+ label +" "+ label_num + "</th>"));
-            $("#"+get_col_pos(label,term,"module_items")).before($("<td class='"+td_class_name+"' contenteditable='true'></td>"));
+            // $("#"+array[1]+"-score-col").after($("<th style='text-align:center'>"+ label +" "+ label_num + "</th>"));
+            $("#"+array[1]+"-score-col").after($("<th style='text-align:center'>"+ label +" "+ label_num + "</th>"));
+            $("#"+items).after($("<td class='"+td_class_name+"' id='"+array[0]+"-items-"+ module + label_num + "' contenteditable='true'></td>"));
             $("tr td#"+name).before($("<td class='"+stud_col_class+"' contenteditable='true'></td>")); // ADD NEW COLUMNS FOR ALL DUMMY ACCOUNT
             console.log("par id: "+parentId);
             console.log("name: "+name);
         }
         else alert("Only 10 column is allowed on this table.");
     }
-    
+    $('table td').each(function(){
+        $(this).addClass("current-test");
+        $parent = $(this).parent();
+        $parent.addClass("current-test-parent");
+        $studno = $parent.find('td:eq(0)').html();
+        $studname = $parent.find('td:eq(1)').html();
+        $index = $(".current-test-parent td").index($(".current-test"));
+        if($(this).is('[class*="table-items"]')){
+            $head = $("#table-module th:eq("+($index)+")").html();
+        //console.log($("#table-module th:eq("+($index-1)+")").html());
+        }else{
+            $head = $("#table-module th:eq("+($index-1)+")").html();
+        }
+        $(this).attr({
+            "data-toggle":"tooltip",
+            "data-container":"body",
+            "data-html":"true",
+            "data-placement":"bottom",
+            "title":$head +"<br>"+$studno+"<br>"+$studname
+        })
+        $(this).removeClass("current-test");
+        $parent.removeClass("current-test-parent");
+        // 
+    });
+    $('[data-toggle="tooltip"]').tooltip();
 }
 
 /*DEL BUTTON*/
