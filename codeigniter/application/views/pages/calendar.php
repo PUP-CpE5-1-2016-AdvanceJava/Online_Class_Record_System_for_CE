@@ -99,8 +99,6 @@
             </div>
         </div> <!-- container -->
     </div> <!-- container-fluid -->
-    <script type="text/javascript" src="<?php base_url(); ?>/js/sidebar.js"></script>
-    <script type="text/javascript" src="<?php base_url(); ?>/js/table.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/bootstrap-multiselect.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/script.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/chosen.jquery.min.js"></script>
