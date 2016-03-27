@@ -69,17 +69,17 @@ class Table_model extends CI_Model
     		$students[$row->Id]['stud_num'] =  $row->StudentNumber;
     	}
     	
-		$sql = "SELECT students.Id, MidtermGrade, FinalGrade, TotalGrade 
-				FROM grades 
-				JOIN students ON grades.StudId = students.Id 
-				WHERE StudId IN (SELECT Id FROM students WHERE ClassId = ?)";
-		$query = $this->db->query($sql, $ClassId);
-		foreach ($query->result() as $row)
-		{
-			array_push($students[$row->Id], $row->MidtermGrade.'MG');
-			array_push($students[$row->Id], $row->FinalGrade.'FG');
-			array_push($students[$row->Id], $row->TotalGrade.'TG');
-		}
+		//~ $sql = "SELECT students.Id, MidtermGrade, FinalGrade, TotalGrade 
+				//~ FROM grades 
+				//~ JOIN students ON grades.StudId = students.Id 
+				//~ WHERE StudId IN (SELECT Id FROM students WHERE ClassId = ?)";
+		//~ $query = $this->db->query($sql, $ClassId);
+		//~ foreach ($query->result() as $row)
+		//~ {
+			//~ array_push($students[$row->Id], $row->MidtermGrade.'MG');
+			//~ array_push($students[$row->Id], $row->FinalGrade.'FG');
+			//~ array_push($students[$row->Id], $row->TotalGrade.'TG');
+		//~ }
     	
     	// justin code from here below
     	$type = $block->ModuleType;
@@ -91,6 +91,7 @@ class Table_model extends CI_Model
 				break;
 			case 'Lab':
 				$tables = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
+
 				$first_attendance = FALSE;
 				break;
 			default:
@@ -101,61 +102,9 @@ class Table_model extends CI_Model
 		if ($table_type == 'attendance_table')
 		{
 			$tables = array( 'attendance' );
+			$name_formats = array( 'mt_att','mt_mt_per','ft_att','ft_ft_per' );
 			$type = $table_type;
 			$first_attendance = TRUE;
-		}
-				
-		
-		$grades = array();
-		foreach ($tables as $table)
-		{
-			$statement = ",$table.Sem";
-			$get_attendance = "";
-			if ($table == 'midterm_exam' OR $table == 'final_exam')
-			{
-				$statement = " ";
-			}
-			if ($type == 'Lec')
-			{
-				$get_attendance = "DISTINCT";
-			}
-			
-			$sql = "SELECT ".$get_attendance." students.Id, $table.Score, $table.Rating".$statement."
-					FROM $table 
-					JOIN grades ON grades.Id = $table.StudGradeId 
-					JOIN students ON students.Id = grades.StudId 
-					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
-			$query = $this->db->query($sql, $ClassId);
-
-			
-			foreach ($query->result() as $row)
-			{
-				if ($table == 'midterm_exam')
-				{
-					$semester = 'Midterm';
-				}
-				elseif ( $table == 'final_exam' )
-				{
-					$semester = 'Final';
-				}
-				else $semester = $row->Sem;
-				
-				//
-				array_push($students[$row->Id], $row->Score.$table.$semester);
-				
-				if ($table == 'assignment' OR $table == 'quizzes' OR $first_attendance )
-				{
-					array_push($students[$row->Id], $row->Rating.'rating');
-					$first_attendance = FALSE;
-				}
-			}
-		}
-		
-		// to fit the original JSON pattern
-		$grades = array();
-		foreach ($students as $student)
-		{
-			$grades[] = $student;
 		}
 		
 		// module items
@@ -172,7 +121,71 @@ class Table_model extends CI_Model
 			$i++;
 		}
 		
+		// 
+		$grades = array();
+		//~ foreach ($tables as $table)
+		//~ {
+			//~ $statement = ",$table.Sem";
+			//~ $get_attendance = "";
+			//~ if ($table == 'midterm_exam' OR $table == 'final_exam')
+			//~ {
+				//~ $statement = " ";
+			//~ }
+			//~ if ($type == 'Lec')
+			//~ {
+				//~ $get_attendance = "DISTINCT";
+			//~ }
+			//~ 
+			//~ $sql = "SELECT ".$get_attendance." students.Id, $table.Score, $table.Rating".$statement."
+					//~ FROM $table 
+					//~ JOIN grades ON grades.Id = $table.StudGradeId 
+					//~ JOIN students ON students.Id = grades.StudId 
+					//~ WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
+			//~ $query = $this->db->query($sql, $ClassId);
+//~ 
+			//~ 
+			//~ foreach ($query->result() as $row)
+			//~ {
+				//~ if ($table == 'midterm_exam')
+				//~ {
+					//~ $semester = 'Midterm';
+				//~ }
+				//~ elseif ( $table == 'final_exam' )
+				//~ {
+					//~ $semester = 'Final';
+				//~ }
+				//~ else $semester = $row->Sem;
+				//~ 
+				//~ array_push($students[$row->Id], $row->Score.$table.$semester);
+				//~ 
+				//~ if ($table == 'assignment' OR $table == 'quizzes' OR $first_attendance )
+				//~ {
+					//~ array_push($students[$row->Id], $row->Rating.'rating');
+					//~ $first_attendance = FALSE;
+				//~ }
+			//~ }
+		//~ }
+		$sql = "SELECT students.Id, Information
+				FROM table_information
+				JOIN grades ON grades.Id = table_information.StudGradeId 
+				JOIN students ON students.Id = grades.StudId 
+				WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
+		$query = $this->db->query($sql, $ClassId);
 		
+		foreach ($query->result() as $row)
+		{	
+			//~ array_push($students[$row->Id], $row->Information);
+			$students[$row->Id]['grade'] = $row->Information;
+		}
+		
+		// to fit the original JSON pattern
+		$grades = array();
+		foreach ($students as $student)
+		{
+			$grades[] = $student;
+		}
+		
+
     	$data = array(
     		'Class' => $class,
     		'Subject' => $subject,
@@ -193,7 +206,7 @@ class Table_model extends CI_Model
 		$sql = "SELECT Id FROM class WHERE NumOfStudents = ? AND Id = ?";
 		$query = $this->db->query($sql, array($_SESSION['table_format']['numOfStudents'], $class_id));
 		
-		if ($query->num_rows() ==  0) exit ('Recording failed, please try again'.$_SESSION['table_format']['numOfStudents']);
+		if ($query->num_rows() ==  0) exit ('Recording failed, please try again');
 		
 		
 		$type = $_SESSION['table_format']['tableType'];
@@ -246,6 +259,12 @@ class Table_model extends CI_Model
 				WHERE ClassId = ?";
 		$this->db->query($sql, $class_id);
 		
+		
+		$sql = "DELETE FROM table_information 
+				WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
+		$this->db->query($sql, $class_id);
+		
+		
 		$b = 0;
 		$c = 0;
 		$first_student = TRUE;
@@ -289,6 +308,29 @@ class Table_model extends CI_Model
 			}
 		}
 		
+		
+		$array_of_grades = array();
+		$sql = "INSERT INTO table_information (StudGradeId, Information) VALUES ";
+		$first_header = TRUE;
+		foreach ($table_data as $student)
+		{
+			$grade_list = '';
+			array_push($array_of_grades, $class_id, $student['number']);
+			foreach ($student['grades'] as $grade)
+			{
+				$grade_list .= $grade.';';
+			}
+			array_push($array_of_grades, $grade_list);
+			if ($first_header)
+			{
+				$sql .= "((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
+				$first_header = FALSE;
+			}
+			else 
+				$sql .= " ,((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
+			
+		}
+		$this->db->query($sql, $array_of_grades);
 		
 		if ($type == 'Lec' OR $type == 'Lab')
 		{

@@ -155,8 +155,8 @@ function getAllData(id)
 	var keyName = '';
 	var keyFormat = [];
 	var isKeying = true;
-	var numOfStudents = tempContainer.length / colNames.length;
-	console.log(numOfStudents);
+	var maxNumOfStudents = tempContainer.length / colNames.length;
+	var numOfStudents = 0;
 	// associate the names with the data
 	for (var i = 0; i < tempContainer.length; i = i + colNames.length)
 	{
@@ -223,19 +223,34 @@ function getAllData(id)
 			'number' : tempContainer[i+1],
 			'grades' : grades
 		};
+		num++;
 
 		// encode to JSON then send one student's records
-		var recursiveEncoded = $.param(students);
-		$.post('/user/set_table_session', recursiveEncoded);
+		//~ if (num == 10 || num <= maxNumOfStudents)
+		//~ {
+			var recursiveEncoded = $.param(students);
+			$.post('/user/set_table_session', recursiveEncoded).done(function(response){
+				//~ if (response == 'OK')
+				//~ {
+					numOfStudents++;
+				//~ }
+				//~ else 
+				//~ {
+					//~ $('#status').html("An error occured...");
+					//~ $.get('/user/clear_table_session', {});
+					//~ return false;
+				//~ }
+			});
+		//~ }	
 	}
-	
+	console.log(numOfStudents);
 	// make object for JSON
 	var toEncode = {
 		'tableId' : id,
 		'tableType' : type,
 		'tableFormat' : keyFormat,
 		'tableItems' : numOfItemsContainer,
-		'numOfStudents' : numOfStudents
+		'numOfStudents' : maxNumOfStudents
 	};
 	
 	// encode to JSON and set into session variable
@@ -245,7 +260,7 @@ function getAllData(id)
 		.done(function( result ) {
 			if (result != 'OK')
 			{
-				$('#status').html("Operation not finished. Abort");
+				$('#status').append(" Operation not finished. Abort");
 				return false;
 			}
 		});
@@ -254,7 +269,7 @@ function getAllData(id)
 	console.log ('set session done');
 		$.post('/user/set_table_data', {})
 			.done(function( result ) {
-				$('#status').html(result)
+				$('#status').append(" "+result);
 		});
 
 	return false;
