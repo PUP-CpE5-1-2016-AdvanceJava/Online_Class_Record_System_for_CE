@@ -8,6 +8,7 @@ hr{ margin: 0px; border-top: 2px solid #61605e; }
 h4 span{ font-family: inherit; font-size: inherit !important;}
 #table-content-wrapper h2{ font-weight: 600;}
 #table-content-wrapper .row{ margin: 0px;}
+.table-responsive{overflow-y: scroll; height: 600px; margin-bottom: 0 }
 .fixed-width{ font-weight: 600;overflow: hidden; max-width:30px; max-height: 1em;}
 .table-wrapper { overflow-x:scroll; overflow-y:visible; margin-left: 10%;}
 #table-wrapper{ white-space: nowrap; position: relative; width: 100%; }
