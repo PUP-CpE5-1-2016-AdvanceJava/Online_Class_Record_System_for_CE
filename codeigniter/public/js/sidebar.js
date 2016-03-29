@@ -83,7 +83,7 @@ function get_class_table(link)
         //--clear sidebars content ang table content first to avoid bugs--//
         $("ul>li[name='sheet_submenu']").empty();
         $("ul>li[name='module_submenu']").empty();
-        $('div#table-content-wrapper').empty();
+        $('div#TEMPORARY').empty();
         $('tbody#stud_table').empty();
         /*INITIALIZE COUNTERS FOR TABLE*/
         //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
@@ -108,7 +108,7 @@ function get_class_table(link)
         recCounter2=0;
         module_type = response['Class']['ModuleType'];
         type_of_table = response['table_type'];
-        var table = $('div#table-content-wrapper');
+        var table = $('div#TEMPORARY');
         table.empty();
         if (response['table_type'] == "main_table")
         {
@@ -242,38 +242,38 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-attendance-mid' contenteditable='false'></td>\
-                                            <td class='table-student-assign-mid' contenteditable='true'></td>\
-                                            <td class='table-student-seatwork-mid' contenteditable='true' id='table-name-assign1'></td>\
-                                            <td class='table-student-exercise-mid' contenteditable='true' id='table-name-sw1'></td>\
-                                            <td class='table-student-recitation-mid' contenteditable='true' id='table-name-ex1'></td>\
-                                            <td class='table-student-standing-total-mid' contenteditable='false' id='table-name-rec1'></td>\
-                                            <td class='table-student-standing-percent-mid' contenteditable='false'></td>\
-                                            <td class='table-student-quiz-mid' contenteditable='true'></td>\
-                                            <td class='table-student-longExam-mid' contenteditable='true' id='table-name-quiz1'></td>\
-                                            <td class='table-student-quiz-longExam-total-mid' contenteditable='false' id='table-name-le1'></td>\
-                                            <td class='table-student-quiz-longExam-percent-mid' contenteditable='false'></td>\
-                                            <td class='table-student-midterm-score' contenteditable='true'></td>\
-                                            <td class='table-student-midterm-percent' contenteditable='false'></td>\
-                                            <td class='table-student-midterm-grade' contenteditable='false'></td>\
-                                            <td class='table-student-midterm-rating' contenteditable='false' id='border-bold'></td>\
-                                            <td class='table-student-attendance-finals' contenteditable='false'></td>\
-                                            <td class='table-student-assign-finals' contenteditable='true'></td>\
-                                            <td class='table-student-seatwork-finals' contenteditable='true' id='table-name-assign2'></td>\
-                                            <td class='table-student-exercise-finals' contenteditable='true' id='table-name-sw2'></td>\
-                                            <td class='table-student-recitation-finals' contenteditable='true' id='table-name-ex2'></td>\
-                                            <td class='table-student-standing-total-finals' contenteditable='false' id='table-name-rec2'></td>\
-                                            <td class='table-student-standing-percent-finals' contenteditable='false'></td>\
-                                            <td class='table-student-quiz-finals' contenteditable='true'></td>\
-                                            <td class='table-student-longExam-finals' contenteditable='true' id='table-name-quiz2'></td>\
-                                            <td class='table-student-quiz-longExam-total-finals' contenteditable='false' id='table-name-le2'></td>\
-                                            <td class='table-student-quiz-longExam-percent-finals' contenteditable='false'></td>\
-                                            <td class='table-student-finals-score' contenteditable='true'></td>\
-                                            <td class='table-student-finals-percent' contenteditable='false'></td>\
-                                            <td class='table-student-finals-grade' contenteditable='false'></td>\
-                                            <td class='table-student-finals-rating' contenteditable='false'></td></tr>");
+              $('table tbody').append("  <tr><td id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='true' id='table-name-assign1'></td>\
+                                            <td contenteditable='true' id='table-name-sw1'></td>\
+                                            <td contenteditable='true' id='table-name-ex1'></td>\
+                                            <td contenteditable='false' id='table-name-rec1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='true' id='table-name-quiz1'></td>\
+                                            <td contenteditable='false' id='table-name-le1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false' id='border-bold'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='true' id='table-name-assign2'></td>\
+                                            <td contenteditable='true' id='table-name-sw2'></td>\
+                                            <td contenteditable='true' id='table-name-ex2'></td>\
+                                            <td contenteditable='false' id='table-name-rec2'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='true' id='table-name-quiz2'></td>\
+                                            <td contenteditable='false' id='table-name-le2'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td></tr>");
                 });
             $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
@@ -367,30 +367,30 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-lab-mid' contenteditable='true' name='score[]'></td>\
-                                            <td class='table-student-lab-total-mid' contenteditable='false' id='table-name-lab1'></td>\
-                                            <td class='table-student-lab-percent-mid' contenteditable='false'></td>\
-                                            <td class='table-student-prac-mid' contenteditable='true'></td>\
-                                            <td class='table-student-prac-total-mid' contenteditable='false' id='table-name-prac1'></td>\
-                                            <td class='table-student-prac-percent-mid' contenteditable='false'></td>\
-                                            <td class='table-student-proj-mid' contenteditable='true'></td>\
-                                            <td class='table-student-proj-total-mid' contenteditable='false' id='table-name-proj1'></td>\
-                                            <td class='table-student-proj-percent-mid' contenteditable='false'></td>\
-                                            <td class='table-student-midterm-grade' contenteditable='false'></td>\
-                                            <td class='table-student-midterm-rating' id='border-bold' contenteditable='false'></td>\
-                                            <td class='table-student-lab-finals' contenteditable='true' name='score[]'></td>\
-                                            <td class='table-student-lab-total-finals' contenteditable='false' id='table-name-lab2'></td>\
-                                            <td class='table-student-lab-percent-finals' contenteditable='false'></td>\
-                                            <td class='table-student-prac-finals' contenteditable='true'></td>\
-                                            <td class='table-student-prac-total-finals' contenteditable='false' id='table-name-prac2'></td>\
-                                            <td class='table-student-prac-percent-finals' contenteditable='false'></td>\
-                                            <td class='table-student-proj-finals' contenteditable='true'></td>\
-                                            <td class='table-student-proj-total-finals' contenteditable='false' id='table-name-proj2'></td>\
-                                            <td class='table-student-proj-percent-finals' contenteditable='false'></td>\
-                                            <td class='table-student-finals-grade' contenteditable='false'></td>\
-                                            <td class='table-student-finals-rating' contenteditable='false'></td></tr>");
+              $('table tbody').append("  <tr><td id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td contenteditable='true' name='score[]'></td>\
+                                            <td contenteditable='false' id='table-name-lab1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='false' id='table-name-prac1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='false' id='table-name-proj1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td id='border-bold' contenteditable='false'></td>\
+                                            <td contenteditable='true' name='score[]'></td>\
+                                            <td contenteditable='false' id='table-name-lab2'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='false' id='table-name-prac2'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true'></td>\
+                                            <td contenteditable='false' id='table-name-proj2'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td></tr>");
                 });
             $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
@@ -416,7 +416,7 @@ function get_class_table(link)
                                                     <th colspan='3' class='text-center' id='table-att2'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-att2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 </tr>\
                                                 <tr id='table-module'>\
-                                                    <th class='text-center'>Student Number</th>\
+                                                    <th class='text-center' >Student Number</th>\
                                                     <th class='text-center' id='border-bold'>Name</th>\
                                                     <th class='fixed-width' class='text-center' contenteditable='true'></th>\
                                                     <th class='text-center' id='table-att1-total'>Total</th>\
@@ -432,14 +432,14 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td class='table-student-attendance-mid' class='fixed-width' contenteditable='true' name='score[]'></td>\
-                                                        <td class='table-student-total-mid' contenteditable='false' id='table-name-att1'></td>\
-                                                        <td class='table-student-percent-mid' contenteditable='false'></td>\
-                                                        <td class='table-student-attendance-finals' class='fixed-width' contenteditable='true' name='score[]'></td>\
-                                                        <td class='table-student-total-finals' contenteditable='false' id='table-name-att2'></td>\
-                                                        <td class='table-student-percent-finals' contenteditable='false'></td></tr>");
+              $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td class='fixed-width' contenteditable='true' name='score[]'></td>\
+                                                        <td contenteditable='false' id='table-name-att1'></td>\
+                                                        <td contenteditable='false'></td>\
+                                                        <td class='fixed-width' contenteditable='true' name='score[]'></td>\
+                                                        <td contenteditable='false' id='table-name-att2'></td>\
+                                                        <td contenteditable='false'></td></tr>");
                 });
         }
         else if (response['table_type'] == "final_table")
@@ -459,7 +459,7 @@ function get_class_table(link)
                                                 <tr>\
                                                     <tr>\
                                                         <th class='text-center'>Student Number</th>\
-                                                        <th class='text-center' id='border-bold'>Name</th>\
+                                                        <th class='text-center'>Name</th>\
                                                         <th class='text-center'>Midterm Grade</th>\
                                                         <th class='text-center'>Final Grade</th>\
                                                         <th class='text-center'>Grade</th>\
@@ -471,11 +471,11 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td class='table-student-midterm' contenteditable='false'></td>\
-                                            <td class='table-student-finals' contenteditable='false'></td>\
-                                            <td class='table-student-grade' contenteditable='false'></td></tr>");
+              $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td></tr>");
                 });
         }
 
