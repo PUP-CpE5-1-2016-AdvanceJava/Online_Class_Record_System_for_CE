@@ -413,7 +413,7 @@ function get_class_table(link)
                                     <div class='table-responsive'>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <input type=hidden></input>\
-                                            <tr>\
+                                            <thead>\
                                                 <tr>\
                                                     <th colspan='2' id='border-bold'></th>\
                                                     <th colspan='3' class='text-center' id='table-att1'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-att1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
@@ -429,9 +429,12 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-att2-total'>Total</th>\
                                                     <th class='text-center'>10%</th>\
                                                 </tr>\
-                                            </tr>\
+                                            </thead>\
+                                            <tbody>\
+                                            </tbody>\
                                         </table>\
                                     </div>\
+                                    <script type='text/javascript' src='/js/tooltip_attendance.js'></script>\
                                 </div>\
                         </div>\
                       </div>");
@@ -445,6 +448,7 @@ function get_class_table(link)
                                                         <td class='table-student-total-finals' contenteditable='false' id='table-name-att2'></td>\
                                                         <td class='table-student-percent-finals' contenteditable='false'></td></tr>");
                 });
+                $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_attendance.js'></script>");
         }
         else if (response['table_type'] == "final_table")
         {
