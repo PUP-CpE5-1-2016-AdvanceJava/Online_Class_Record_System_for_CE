@@ -439,8 +439,8 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.stud_num+"</td>\
+                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.full_name+"</td>\
                                             <td class='table-student-attendance-mid' class='fixed-width' contenteditable='true' name='score[]'></td>\
                                                         <td class='table-student-total-mid' contenteditable='false' id='table-name-att1'></td>\
                                                         <td class='table-student-percent-mid' contenteditable='false'></td>\
@@ -479,8 +479,8 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.stud_num+"</td>\
+                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.full_name+"</td>\
                                             <td class='table-student-midterm' contenteditable='false'></td>\
                                             <td class='table-student-finals' contenteditable='false'></td>\
                                             <td class='table-student-grade' contenteditable='false'></td></tr>");
