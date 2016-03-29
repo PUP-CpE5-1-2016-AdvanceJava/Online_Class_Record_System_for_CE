@@ -1,0 +1,13 @@
+-login_page
+-admin>settings>change password
+-admin>settings>change username
+-admin>settings>create account
+-updated sql (reimport your sqls or edit the changes)
+-chairperson>settings
+-chairperson>homepage
+-admin>homepage
+-faculty>settings>change pass
+-faculty>settings>addstudent
+
+pendings
+-archive functionality ???

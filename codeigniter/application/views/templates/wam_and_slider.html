@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>CE-Online Class Record</title>
+    
+    <link type="text/css" href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" href="css/stylesheet.css" rel="stylesheet">
+    <script type="text/javascript" src="/plugins/bootstrap/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+	<!-- HEADER -->
+	<div class="container-fluid" id = "header-wrapper">
+		<div class = "container">
+		    <div class="row">
+		    	<div class = "col-md-12" id = "header-details">
+                    <center>
+                    <img alt="Brand" src="resources/img/logo.png">
+		    		<span><b>College of Engineering</b> | Online Class Record</span>
+                    </center>
+		    	</div>
+		    </div>
+		</div>    
+    </div>
+
+    <div class="container-fluid" id = "sub-header-wrapper">   
+</div>
+
+<!-- BODY -->
+<div class="container" id="body">
+    <div>
+        <p> ACCOUNT SETTINGS</p>
+        <p id="p2">Before proceeding, answer the following:</p>
+    </div>
+</div>
+
+<!-- FORM -->
+<div class="form">
+    <form id="input">
+        <!-- HANDLED SUBJECTS -->
+        <div id="group">
+            <div class="current">
+                <p><b> No. of handled subjects: </b></p>
+                <select required id="numSub">
+                        <option selected disabled>Please Select</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                </select>
+                <p><b> Name of subjects: </b></p>
+                <ul id="textBox"></ul>
+            </div>
+
+            <!-- SECTION OF SUBJECTS -->
+            <div>
+                <p><b> Class Block </b></p>
+                <select required name="Year">
+                    <option value="1">BSCpE 5-1</option>
+                    <option value="2">BSCpE 5-2</option>
+                    <option value="3">BSCpE 5-3</option>
+                    <option value="4">BSCpE 5-4</option>
+                    <option value="5">BSCpE 5-5</option>
+                </select>
+                <p><b> Name of Subject </b></p>
+                <select required name="Year">
+                    <option value="1">BSCpE 5-1</option>
+                    <option value="2">BSCpE 5-2</option>
+                    <option value="3">BSCpE 5-3</option>
+                    <option value="4">BSCpE 5-4</option>
+                    <option value="5">BSCpE 5-5</option>
+                </select>
+            </div>
+
+            <!-- Module Percentages -->
+            <div>
+                <p><b> Module Percentages </b></p>
+                <input type="checkbox"> <span>Attendance</span><b><p id="points">Points left: <span>100</span></p></b><br>
+                <input type="checkbox"> <span>Long Exam</span><br>
+                <input type="checkbox"> <span>Quizzes</span><br>
+                <input type="checkbox"> <span>Assignment</span><br>
+                <input type="checkbox"> <span>Seatwork</span><br>
+                <input type="checkbox"> <span>Recitation</span><br>
+                <input type="checkbox"> <span>Lab Activity</span><br>
+                <input type="checkbox"> <span>Midterm Exam</span><br>
+                <input type="checkbox"> <span>Final Exam</span><br>
+            </div>
+
+            <!-- Grading System -->
+            <div>
+                <p><b> Grading System </b></p>
+                <section style="height:375px">
+                    <section class="column">
+                        <label class="rateLabel">1.00</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">1.25</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">1.50</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">1.75</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">2.00</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">2.25</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">2.50</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">2.75</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">3.00</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly>
+                    </section>
+                    <section class="column">
+                        <label class="rateLabel">3.25</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">3.50</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">3.75</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">4.00</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">4.25</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">4.50</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">4.75</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly><br>
+                        <label class="rateLabel">5.00</label><input type="text" class="gradeBoxMin" readonly><i class="to">to</i><input type="text" class="gradeBoxMax" readonly>
+                    </section>
+                </section>
+                <label><u>Grade Slider</u></label>
+                <input type="range" min="0" max="100" onchange="updateRange(this.value)" oninput="updateRange(this.value)">
+                <input type="text" id="sliderVal" value="50" readonly><br>
+                <label id="labelInterval">Grade Interval: </label><input type="text" id="gradeInterval" value="" readonly>
+            </div>
+        </div>
+
+        <a id="prev"><span class="glyphicon glyphicon-arrow-left"></span></a>
+        <a id="next"><span class="glyphicon glyphicon-arrow-right"></span></a>
+
+    </form>
+</div>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+
+</html>

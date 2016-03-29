@@ -1,0 +1,27 @@
+--References--
+1.https://guides.github.com/activities/hello-world/
+  -Github basic actions for collaboration
+2.https://git-scm.com/book/en/v2/Getting-Started-Git-Basics
+  -Using git bash see chapters
+3.http://www.codeigniter.com/user_guide/general/welcome.html
+  -Guide about codeigniter... nsa branch 'arian' p codeigniter may  configurations e pde nyo ipull or magedit dun
+
+--Action Flows--
+
+*Importing the files on github ^note: use only 1 directory for whole project make new folder inside xampp/.../htdocs named 'OCRSforCE'
+	1.Open git bash on an empty directory(right click open git bash)
+	2.$git init
+	3.$git remote add origin https://github.com/PUP-CpE5-1-2016-AdvanceJava/Online_Class_Record_System_for_CE.git
+	4.$git pull origin master(directory will now be populated with files in master)
+
+*Creating branch
+	1.$git init
+	2.$git branch (branchname)
+	3.$git checkout (branchname) ^note: you will now notice changes on your directory it will be empty because branch contains nothing.
+	4.$git pull origin master ^master files will now be copied on your branch
+
+*Updating master or branch
+	1.$git pull origin (branchname or master) ^always git pull before updating a branch to be updated(if not will have error on git push)
+	2.$git status=>$git add .==>git commit -m "(msg)"==>git push
+	(ongoing)
+

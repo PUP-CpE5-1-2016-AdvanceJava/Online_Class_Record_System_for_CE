@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>CE-OCR Archives</title>
+    
+    <link type="text/css" href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link type="text/css" href="css/stylesheet.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="container-fluid" id = "header-wrapper">
+		<div class = "container">
+		    <div class="row">
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "header-details">
+                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
+                    <span><b id = "header-details-title">College of Engineering</b><b id = "header-details-title-res">CE</b> | Online Class Record </span>     
+                </div> 
+            </div> 	
+		</div>	<!-- container -->	
+	</div> <!-- container-fluid -->
+	 
+
+    <!-- NAVBAR -->
+     <div class = "container-fluid" id = "navbar-wrapper">
+        <div class = "container">
+        	<div class = "row" id = "navbar-normal">
+        		<ul class = " nav pull-left" id= "navbar-maintabs">
+	                <li><a href="#" id = "active">ARCHIVES</a></li>
+	                <li><a href = "#">CALENDAR</a></li>
+	                <li><a href = "#">SETTINGS</a></li>
+	                <li><a href = "#">HOME</a></li>
+	            </ul>
+                
+	            <ul class = " nav pull-right" id = "navbar-subtabs">
+	                <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
+	            </ul>
+	        </div>
+            <div class = "row" id = "navbar-res">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active"><i class = "fa fa-archive "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-calendar "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-wrench "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-home "></i></a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>			
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+
+
+
+    <div class = "container" id = "archives-wrapper">
+        <div class "row">
+            <div class = "col-md-12">
+                <span> ARCHIVES </span> 
+                <ol class="breadcrumb" id = "archives-breadcrumbs">
+                    <li><a href="#">Semester</a></li>
+                    <li class="active">Year</li>
+                    <li><a href="#">Course</a></li>
+                    <li><a href="#">Subject</a></li>
+                    <li><a href="#">Professor</a></li>
+                </ol>
+            </div>
+        </div>
+        <div class = "row">
+            <div class="col-md-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel" id = "archives-panel">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <a id = "archives-panel-label" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">2016 <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="list-group" id ="archives-panel-links">
+                                <a href="#" class="list-group-item">BSCpE 5-1 Software Engineering_Final001.pdf</a>
+                                <a href="#" class="list-group-item">BSCpE 5-1 Software Engineering_Draft001.pdf</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel" id = "archives-panel">
+                        <div role="tab" id="headingTwo">
+                            <a id = "archives-panel-label" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">2015 <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="list-group" id = "archives-panel-links">
+                                <a href="#" class="list-group-item">BSCpE 4-1 Digital Signal Processing_Final001.pdf</a>
+                                <a href="#" class="list-group-item">BSCpE 4-1 Design Project1_Final001.pdf</a>
+                                <a href="#" class="list-group-item">BSCpE 4-1 Design Project1_Draft001.pdf</a>
+                                <a href="#" class="list-group-item">BSCpE 4-1 Digital Signal Processing_Draft001.pdf</a>
+                            </div>
+                        </div>
+                    </div>                  
+                </div>
+            </div>
+        </div> 
+	</div>
+
+
+    <!-- FOOTER -->
+     <div class = "container-fluid" id = "footer-wrapper">
+        <div class = "container">
+        	<div class="row" id = "footer-details-wrapper">
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" id = "footer-details">      
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b><wbr> | Online Class Record </span>      
+                    <p><i class="fa fa-copyright"></i>All Rights Reserved</p>
+                </div>
+                <div class = "col-lg-5 col-md-5  com-sm-12 col-xs-12" id = "footer-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Comments and Queries">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class = "fa fa-envelope"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+    
+    <script type="text/javascript" src="plugins/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src= "plugins/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
