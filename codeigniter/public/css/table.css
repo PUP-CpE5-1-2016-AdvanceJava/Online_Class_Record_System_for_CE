@@ -33,7 +33,7 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 #table-att1-button, #table-att2-button{background: none; font-size: 20px; padding: 0 3;}
 #table-att1-button-del, #table-att2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
 #add-col-assign1, #add-col-sw1,#add-col-ex1,#add-col-rec1,#add-col-quiz1,#add-col-le1,#add-col-assign2, #add-col-sw2,#add-col-ex2,#add-col-rec2,#add-col-quiz2,#add-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px;}
-#delete-col-assign1, #delete-col-sw1,#delete-col-ex1,#delete-col-rec1,#delete-col-quiz1,#delete-col-le1,#delete-col-assign2, #delete-col-sw2,#delete-col-ex2,#delete-col-rec2,#delete-col-quiz2,#delete-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px; display: none;}
+#table-assign1-button-del, #table-sw1-button-del, #table-ex1-button-del, #table-rec1-button-del, #table-quiz1-button-del, #table-le1-button-del, #table-assign2-button-del, #table-sw2-button-del, #table-ex2-button-del, #table-rec2-button-del, #table-quiz2-button-del, #table-le2-button-del {background: none; font-size: 20px; padding: 5px 10px 5px 10px; display: none;}
 #attendance, #midterm, #final, #border-bold{vertical-align: middle}
 
 #main-header{font-family: 'Source Sans Pro', sans-serif; color: #333; }
