@@ -5,5 +5,5 @@ fix design in codeigniter
 
 to-do
 -tooltip fix for number of items
--add/del column numbering and process
--home page for admin change to gray background if possible
+-add/del column numbering and logic
+-change button style for upload and for calendar if needed
