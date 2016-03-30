@@ -8,3 +8,4 @@
 #TEMPORARY -> #table-content-wrapper
 
 table pages - responsive header, footer and navbar
+

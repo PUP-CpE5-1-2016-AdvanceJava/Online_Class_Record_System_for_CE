@@ -42,7 +42,7 @@
                     <li><a href = "#">SETTINGS</a></li>
                     <li><a href = "#">HOME</a></li>
                 </ul>
-                
+  
                 <ul class = " nav pull-right" id = "navbar-subtabs">
                     <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
                     <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
