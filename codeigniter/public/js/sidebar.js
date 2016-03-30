@@ -122,10 +122,10 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class='container-fluid' id='outer'>\
+                                <div class='container-fluid'\
                                 <div class='table-responsive' id='table-lec'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
-                                        <tr>\
+                                        <thead>\
                                             <tr>\
                                                 <th colspan='2' id='table-blank'></th>\
                                                 <th colspan='15' class='text-center' id='table-midterm'>Midterm</th>\
@@ -201,6 +201,8 @@ function get_class_table(link)
                                                 <th class='text-center' id='ql2-total-col'>Total</th>\
                                                 <th class='text-center'>30%</th>\
                                             </tr>\
+                                        </thead>\
+                                        <tbody>\
                                             <tr>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                 <td contenteditable='false'></td>\
@@ -234,10 +236,10 @@ function get_class_table(link)
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='false'></td>\
                                             </tr>\
-                                        </tr>\
+                                        </tbody>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/tooltip_lec.js'></script>\
                             </div>\
                         </div>\
                       </div>");
@@ -275,7 +277,7 @@ function get_class_table(link)
                                             <td class='table-student-finals-grade' contenteditable='false'></td>\
                                             <td class='table-student-finals-rating' contenteditable='false'></td></tr>");
                 });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
+            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_lec.js'></script>");
             }
             else
             {
@@ -291,7 +293,7 @@ function get_class_table(link)
                                 <div class='table-responsive' id='table-lab'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <input type='hidden'></input>\
-                                            <tr>\
+                                            <thead>\
                                                 <tr>\
                                                     <th colspan='2' id='table-blank'></th>\
                                                     <th colspan='11' id='table-midterm' class='text-center'>Midterms</th>\
@@ -334,6 +336,8 @@ function get_class_table(link)
                                                     <th class='text-center'>100%</th>\
                                                     <th class='text-center'>Rating</th>\
                                                 </tr>\
+                                                </thead>\
+                                                <tbody>\
                                                 <tr id='table-items-wrapper' class='fixed-width'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                     <td contenteditable='true' id='table-items-lab1'></td>\
@@ -359,10 +363,10 @@ function get_class_table(link)
                                                     <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                 </tr>\
-                                            </tr>\
+                                            </tbody>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/tooltip_lab.js'></script>\
                             </div>\
                         </div>\
                       </div>");
@@ -392,7 +396,7 @@ function get_class_table(link)
                                             <td class='table-student-finals-grade' contenteditable='false'></td>\
                                             <td class='table-student-finals-rating' contenteditable='false'></td></tr>");
                 });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
+            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_lab.js'></script>");
             }
         }
         else if (response['table_type'] == "attendance_table")
@@ -409,7 +413,7 @@ function get_class_table(link)
                                     <div class='table-responsive' id='table-attend'>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <input type=hidden></input>\
-                                            <tr>\
+                                            <thead>\
                                                 <tr>\
                                                     <th colspan='2' id='border-bold'></th>\
                                                     <th colspan='3' class='text-center' id='table-att1'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-att1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
@@ -425,9 +429,12 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-att2-total'>Total</th>\
                                                     <th class='text-center'>10%</th>\
                                                 </tr>\
-                                            </tr>\
+                                            </thead>\
+                                            <tbody>\
+                                            </tbody>\
                                         </table>\
                                     </div>\
+                                    <script type='text/javascript' src='/js/tooltip_attendance.js'></script>\
                                 </div>\
                         </div>\
                       </div>");
@@ -441,6 +448,7 @@ function get_class_table(link)
                                                         <td class='table-student-total-finals' contenteditable='false' id='table-name-att2'></td>\
                                                         <td class='table-student-percent-finals' contenteditable='false'></td></tr>");
                 });
+                $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_attendance.js'></script>");
         }
         else if (response['table_type'] == "final_table")
         {
