@@ -1,0 +1,10 @@
+**id/class change**
+
+#myModal -> #table-alert-modal
+.modal-content div -> #modal-text
+#buttons-modal -> #table-modal-buttons
+#yes_btn -> #table-yes-btn
+#no_btn -> #table-cancel-btn
+#TEMPORARY -> #table-content-wrapper
+
+table pages - responsive header, footer and navbar

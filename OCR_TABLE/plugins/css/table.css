@@ -1,0 +1,65 @@
+/*TABLE CONTENT WRAPPER*/ 
+#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; overflow-y: hidden; width: 100%;}
+#table-content-wrapper span{font-size: 3vw; font-family: 'Source Sans Pro', sans-serif; color: #333; }
+
+hr{ margin: 0px; border-top: 2px solid #61605e; }
+#table-content-wrapper, #main-wrapper, #main-header, #main-wrapper-settings, #main-content-wrapper, #main-header-settings{ font-family: 'Source Sans Pro', sans-serif;}
+#main-header h2{ font-family: 'Source Sans Pro', sans-serif; }
+h4 span{ font-family: inherit; font-size: inherit !important;}
+#table-content-wrapper h2{ font-weight: 600;}
+#table-content-wrapper .row{ margin: 0px;}
+.fixed-width{ font-weight: 600;overflow: hidden; max-width:30px; max-height: 1em;}
+.table-wrapper { overflow-x:scroll; overflow-y:scroll; margin-left: 10%;}
+#table-wrapper{ white-space: nowrap; position: relative; width: 100%;}
+.table-responsive{overflow-y: scroll; height: 600px; margin-bottom: 0 }
+.fa-plus-circle{color: #4BA301;} 
+.fa-minus-circle{color: red;}
+#table-alert-modal #modal-text {width: 480px; padding: 30px;}
+#modal-text h3{ width: 100%; margin-top: 0px;}
+#table-yes-btn {background-color: red; color: #fff; border: none; padding: 5px; width: 70px; font-size: 15px; margin-top: 10%; border-radius: 2px;}
+#table-cancel-btn {background-color: gray; color: #fff; border: none; padding: 5px; width: 70px; font-size: 15px; margin-top: 10%; border-radius: 2px; margin-left: 10%;}
+#table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
+#table-lab1-button-del, #table-prac1-button-del, #table-proj1-button-del, #table-lab2-button-del, #table-prac2-button-del, #table-proj2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
+#attend { padding-left: 10 }
+
+#table-midterm, #table-finals{ border: solid 2px gray}
+.border-bold, #border-bold, #table-name, #table-blank2, #table-items{ border-right: solid 2px gray}
+#border-left, #table-student, #table-blank2, #table-items, #table-blank{ border-left: solid 2px gray !important;}
+#table-blank{ border-top: solid 2px gray;}
+#table-wrapper{ white-space: nowrap; position: relative;}
+#table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
+#table-lab1-button-del, #table-prac1-button-del, #table-proj1-button-del, #table-lab2-button-del, #table-prac2-button-del, #table-proj2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
+#table-att1-button, #table-att2-button{background: none; font-size: 20px; padding: 0 3;}
+#table-att1-button-del, #table-att2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#add-col-assign1, #add-col-sw1,#add-col-ex1,#add-col-rec1,#add-col-quiz1,#add-col-le1,#add-col-assign2, #add-col-sw2,#add-col-ex2,#add-col-rec2,#add-col-quiz2,#add-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px;}
+#delete-col-assign1, #delete-col-sw1,#delete-col-ex1,#delete-col-rec1,#delete-col-quiz1,#delete-col-le1,#delete-col-assign2, #delete-col-sw2,#delete-col-ex2,#delete-col-rec2,#delete-col-quiz2,#delete-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px; display: none;}
+#attendance, #midterm, #final, #border-bold{vertical-align: middle}
+
+#main-header{font-family: 'Source Sans Pro', sans-serif; color: #333; }
+.form-horizontal{ width: 70%; margin-left: 15%;}
+
+textarea[type="text"]:focus, input[type="text"]:focus, input[type="password"]:focus, select[class="form-control"]:focus { border-color: #730B0A; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset; outline: 0 none;}
+.type:hover { border-color: #730B0A; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset; outline: 0 none;}
+.btn-primary{ background-color: #730B0A; opacity: 0.8; border: 1px solid #333; color: #333;}
+.btn-primary:hover{ background-color:  #730B0A; opacity: 1;}
+#submitbtn, #pass_btn, #pdf_btn, #add_student_btn{ color: white; width: 100px;}
+#submitbtn{ margin-top: 5%; width: 100px;}
+#main-header{ margin-top: 3.5%; margin-left:8%; font-family: 'Source Sans Pro', sans-serif !important;}
+#main-header h2{ font-style: 'Source Sans Pro', sans-serif !important; font-weight: 600;}
+#main-header-settings h2{ font-style: 'Source Sans Pro', sans-serif !important; font-weight:600;}
+#main-wrapper{ margin-top:3%; margin-bottom:5%; width:100%;}
+#main-header-settings{ margin-top: 3%; margin-left: 2%; font-style: 'Source Sans Pro', sans-serif !important;}
+#main-setting-wrapper{ padding-top: 0.5%; margin-left: 6%; width: 88%; height: 585px; background-color: #E2E2E2; border-radius: 2px;}
+#container-fluid{ margin: 0}
+.settings-label{ font-style: 'Source Sans Pro', sans-serif !important; font-weight:bold; font-size: 14px; padding-top: 1%; padding-bottom: 1%; padding-left: 3%; cursor: default;}
+
+
+/* The ALERT MODAL */
+#table-alert-modal { display: none; z-index: 1; padding-top: 100px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgb(0,0,0); background-color: rgba(0,0,0,0.4);}
+/* MODAL CONTENT */
+#modal-text { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 10%; text-align:center; position: relative;}
+
+
+
