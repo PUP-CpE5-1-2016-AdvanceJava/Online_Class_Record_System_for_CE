@@ -11,8 +11,7 @@
 .table-responsive{overflow-y: scroll; height: 600px; margin-bottom: 0 }
 
 /*TABLE WRAPPER*/
-#table-wrapper{ white-space: nowrap; position: relative; width: 100%; }
-#table-wrapper{ white-space: nowrap; position: relative;}
+#table-wrapper{ white-space: nowrap; position: relative; width: 100%; margin-bottom: 0; }
 
 /*MAIN*/
 #main-header{font-family: 'Source Sans Pro', sans-serif; color: #333; }
@@ -25,7 +24,8 @@
 #main-setting-wrapper{ padding-top: 0.5%; margin-left: 6%; width: 88%; height: 585px; background-color: #E2E2E2; border-radius: 2px;}
 
 /*TABLE*/
-#table-lec, #table-lab, #table-attend, #table-final{overflow-y: scroll; height: 600px; margin-bottom: 0; border: 1px solid black;}
+#table-lec, #table-lab, #table-attend, #table-final{overflow-y: scroll; height: 600px; margin-bottom: 0; border: 1px solid #808080;}
+#table-lec { padding-left: 0; }
 
 /* TABLE ELEMENTS*/
 hr{ margin: 0px; border-top: 2px solid #61605e; }
@@ -49,6 +49,7 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 	padding: 5px 10px 5px 10px; display: none;}
 
 #border-left, #table-student, #table-blank2, #table-items, #table-blank{ border-left: solid 2px gray !important;}
+#border-both{ border-left: solid 2px gray !important; border-right: solid 2px gray !important; }
 #add-col-assign1, #add-col-sw1, #add-col-ex1, #add-col-rec1, #add-col-quiz1, #add-col-le1, #add-col-assign2, #add-col-sw2, #add-col-ex2, #add-col-rec2,
 	#add-col-quiz2, #add-col-le2{background: none; font-size: 20px; padding: 5px 10px 5px 10px;}
 

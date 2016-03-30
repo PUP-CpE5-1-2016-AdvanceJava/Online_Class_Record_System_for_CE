@@ -415,12 +415,12 @@ function get_class_table(link)
                                         <input type=hidden></input>\
                                             <thead>\
                                                 <tr>\
-                                                    <th colspan='2' id='border-bold'></th>\
+                                                    <th colspan='2' id='border-both'></th>\
                                                     <th colspan='3' class='text-center' id='table-att1'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-att1-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='3' class='text-center' id='table-att2'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-att2-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 </tr>\
                                                 <tr id='table-module'>\
-                                                    <th class='text-center'>Student Number</th>\
+                                                    <th class='text-center' id='border-left'>Student Number</th>\
                                                     <th class='text-center' id='border-bold'>Name</th>\
                                                     <th class='fixed-width' class='text-center' contenteditable='true'></th>\
                                                     <th class='text-center' id='table-att1-total'>Total</th>\
