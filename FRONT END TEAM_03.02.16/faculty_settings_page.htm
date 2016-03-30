@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>CE-OCR Settings</title>
+    
+    <link type="text/css" href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+    <link type="text/css" href="css/stylesheet.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="container-fluid" id = "header-wrapper">
+		<div class = "container">
+		    <div class="row">
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "header-details">
+                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
+                    <span><b id = "header-details-title">College of Engineering</b><b id = "header-details-title-res">CE</b> | Online Class Record </span>     
+                </div> 
+            </div> 	
+		</div>	<!-- container -->	
+	</div> <!-- container-fluid -->
+	 
+
+    <!-- NAVBAR -->
+    <div class = "container-fluid" id = "navbar-wrapper">
+        <div class = "container">
+        	<div class = "row" id = "navbar-normal">
+        		<ul class = " nav pull-left" id= "navbar-maintabs">
+	                <li><a href="#">ARCHIVES</a></li>
+	                <li><a href = "#">CALENDAR</a></li>
+	                <li><a href = "#" id = "active">SETTINGS</a></li>
+	                <li><a href = "#">HOME</a></li>
+	            </ul>
+                
+	            <ul class = " nav pull-right" id = "navbar-subtabs">
+	                <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
+	            </ul>
+	        </div>
+
+            <div class = "row" id = "navbar-res">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#"><i class = "fa fa-archive "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-calendar "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-wrench "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-home "></i></a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i></a></li>
+                    
+                </ul>
+            </div>			
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+
+    <!-- SETTINGS -->
+    <div class = "container" id = "settings-wrapper">
+        <div class = "col-md-12" id = "settings-title">
+            <span> SETTINGS </span> 
+        </div>
+        <div class = "row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <!-- PANEL 1 -CHANGEPWD -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <a id = "archives-panel-label" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Change Password <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="list-group" >
+                                <div class="list-group-item" id ="settings-panel-details">
+                                    <form class="form-inline">
+                                        <div class="form-group" id = "settings-password-form">
+                                            <input type="password" class="form-control" placeholder="Old Password">
+                                        </div>
+                                        <div class="form-group" id = "settings-password-form">
+                                            <input type="password" class="form-control" id="exampleInputEmail2" placeholder="New Password">
+                                        </div>
+                                        <button class="btn btn-success " id = "settings-password-form-button" type="submit"><i class="fa fa-check"></i> Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PANEL 2 -ADD STUDENT -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <a id = "archives-panel-label" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">Add Student <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="list-group" >
+                                <div class="list-group-item" id = "settings-create-panel-details" >
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <label for="Name" class="col-sm-2 control-label">Name</label>
+                                            <div class="col-sm-10">
+                                                <input type="name" class="form-control" id="Name" placeholder="Last Name, First Name Middle Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="studentnum" class="col-sm-2 control-label">Student Number</label>
+                                            <div class="col-sm-10">
+                                                <input  class="form-control" id="studentnum" placeholder="Student Number">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Subject">Subject</label> 
+                                            <div class="col-sm-10">
+                                                <select class = "form-control" name="Subject" id = "Subject" required>
+                                                    <option disabled selected>Subject</option>
+                                                    <option >COEN 1234 - Dummy Subject</option>
+                                                    <option >COEN 3456 - Dummy Subject</option>
+                                                    <option >COEN 5678 - Dummy Subject</option>
+                                                </select>
+                                            </div>    
+                                        </div>        
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="Userdepartment">Year & Section</label> 
+                                            <div class="col-sm-10 " >        
+                                                <select class = "form-control" name="Userdepartment" id = "Userdepartment" required>
+                                                    <option disabled selected >Year & Section</option>
+                                                    <option >5-1</option>
+                                                    <option >5-2</option>
+                                                    <option >5-3</option>
+                                                    <option >5-4</option>
+                                                    <option >5-5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button class="btn btn-primary " id = "settings-createacct-form-button" type="submit"><i class="fa fa-plus"></i>  Add Student</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+
+                    <!-- PANEL 3 -GRADE -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <a id = "archives-panel-label" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">Class PDF <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="list-group" >
+                                <div class="list-group-item" id = "settings-panel-details">
+                                    <form class="form-inline" id = "settings-upload-form">
+                                        <button type="submit" class="btn btn-primary" id = "settings-upload-button"><i class = "fa fa-upload"></i><b> Upload</b></button>
+                                    </form>       
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+
+                </div>
+            </div>
+        </div> <!-- row -->      
+    </div> <!-- container -->
+
+
+    <!-- FOOTER -->
+     <div class = "container-fluid" id = "footer-wrapper">
+        <div class = "container">
+            <div class="row" id = "footer-details-wrapper">
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" id = "footer-details">      
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b><wbr> | Online Class Record </span>      
+                    <p><i class="fa fa-copyright"></i>All Rights Reserved</p>
+                </div>
+                <div class = "col-lg-5 col-md-5  com-sm-12 col-xs-12" id = "footer-form">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Comments and Queries">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class = "fa fa-envelope"></i></button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- container -->
+    </div> <!-- container-fluid -->
+    
+    <script type="text/javascript" src="plugins/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+
+
+</body>
