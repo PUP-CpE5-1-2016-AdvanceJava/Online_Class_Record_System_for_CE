@@ -23,10 +23,10 @@
     <div class="container-fluid" id = "header-wrapper">
         <div class = "container">
             <div class="row">
-                <div class = "col-lg-12 col-md-12" id = "header-details">
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "header-details">
                     <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
                     <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
-                    <span><b>College of Engineering</b> | Online Class Record </span>     
+                    <span><b id = "header-details-title">College of Engineering</b><b id = "header-details-title-res">CE</b> | Online Class Record </span>     
                 </div> 
             </div>  
         </div>  <!-- container -->  
@@ -36,18 +36,31 @@
     <!-- NAVBAR -->
      <div class = "container-fluid" id = "navbar-wrapper">
         <div class = "container" >
-            <div class = "row">
-
-                 <ul class = " nav pull-left" id= "navbar-maintabs">
-                    <li><a href = "#">ARCHIVES</a></li>
+             <div class = "row" id = "navbar-normal">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active">ARCHIVES</a></li>
                     <li><a href = "#">CALENDAR</a></li>
                     <li><a href = "#">SETTINGS</a></li>
                     <li><a href = "#">HOME</a></li>
                 </ul>
+                
                 <ul class = " nav pull-right" id = "navbar-subtabs">
-                    <li><a href = "#"><i class="fa fa-sign-out" id = "navbar-subtabs-logo"></i>Logout</a></li>
+                    <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
                 </ul>
-            </div>    
+            </div>
+            <div class = "row" id = "navbar-res">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active"><i class = "fa fa-archive "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-calendar "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-wrench "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-home "></i></a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>       
         </div> <!-- container -->
     </div> <!-- container-fluid -->
 
@@ -110,7 +123,7 @@
                             <div class="container-fluid">
                                 <div class="table-responsive">
                                     <table class="table table-striped table-bordered" id="table-wrapper">
-                                        <tr>
+                                        <thead>
                                             <tr>
                                                 <th colspan="2" ></th>
                                                 <th colspan="3" class="text-center" id="table-att1">MIDTERMS<a class="btn" id="table-att1-button"><acronym title="ADD COLUMN"><i class="fa fa-plus-circle"></i></a><a class="btn" id="table-att1-button-del"><acronym title="DELETE COLUMN"><i class="fa fa-minus-circle"></i></acronym></a></th>
@@ -129,11 +142,12 @@
                                                 <th class="text-center">10%</th>
                                                 
                                             </tr>
-                                            
+                                        </thead>
+                                        <tbody>
                                             <tr id="table-data-wrapper"> 
 
                                                 <?php
-                                                for ($a = 0; $a<10; $a++) 
+                                                for ($a = 0; $a<50; $a++) 
                                                 {
                                                     echo "<tr>";  
                                                     echo "<td class='table-student-number'>2011-00090-MN-0</td>";
@@ -151,7 +165,7 @@
                                                 }
                                                 ?>
                                             </tr>
-                                        </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>    
@@ -177,16 +191,16 @@
     </div> <!-- end of main-content-wrapper -->
 
     <!-- FOOTER -->
-     <div class = "container-fluid" id = "footer-wrapper">
+    <div class = "container-fluid" id = "footer-wrapper">
         <div class = "container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6" id = "footer-details">      
-                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
-                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
-                    <span><b>College of Engineering</b> | Online Class Record </span>      
+            <div class="row" id = "footer-details-wrapper">
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" id = "footer-details">      
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b><wbr> | Online Class Record </span>      
                     <p><i class="fa fa-copyright"></i>All Rights Reserved</p>
                 </div>
-                <div class = "col-lg-5 col-md-5 pull-right" id = "footer-form">
+                <div class = "col-lg-5 col-md-5  com-sm-12 col-xs-12" id = "footer-form">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Comments and Queries">
                         <span class="input-group-btn">
@@ -203,6 +217,8 @@
 <script type="text/javascript" src="plugins/js/sidebar.js"></script>
 <script type="text/javascript" src="plugins/js/table.js"></script>
 <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="plugins/js/tooltip_attendance.js"></script>
 <script type="text/javascript" src="plugins/js/script_attendance.js"></script>
+
 
 </body>
