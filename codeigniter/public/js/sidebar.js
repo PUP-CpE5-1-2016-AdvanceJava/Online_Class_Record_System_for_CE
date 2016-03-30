@@ -203,7 +203,7 @@ function get_class_table(link)
                                             </tr>\
                                         </thead>\
                                         <tbody>\
-                                            <tr>\
+                                            <tr class='table-student-num-name'>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='true' id='table-items-assign1'></td>\
