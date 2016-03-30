@@ -64,14 +64,13 @@
 /*ARCHIVES CONTENT end*/
 
 /*HOME CONTENT*/
-/*#home-body-wrapper{background: #E4E4E4;}*/
-#home-wrapper{ margin-bottom: 200px; min-height: 300px; margin-top: 50px;}
+#home-wrapper{ min-height: 300px; padding: 50px 60px 200px 60px; background-color: gray; margin: 0px; width: 100%; background: #E4E4E4;}
 #home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
 #home-panel{font-family: 'Source Sans Pro', sans-serif; }
 #home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}
 #home-panel-label:hover{color:#0C416F;}
 #home-panel-label:active{color:#0C416F;}
-#home-panel-label span{background:#277FCC; margin-bottom: 2px; font-family:'Source Sans Pro', sans-serif ; font-weight: bold;}
+#home-panel-label span{background:#277FCC; margin-bottom: 2px; font-family:'Source Sans Pro', sans-serif ; font-weight: bold; margin-left: 5px;}
 #home-panel-sublabel {text-decoration: none; font-size:15px; font-weight: bolder; color: #333; }
 #home-panel-links a{text-decoration: none; border-radius: 0; margin-bottom: 0; border: none; }
 #home-panel-links span{float:right; }
