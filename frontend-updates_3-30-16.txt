@@ -1,0 +1,9 @@
+updated all folders same to master
+modified some css
+added tooltips for each table
+fix design in codeigniter
+
+to-do
+-tooltip fix for number of items
+-add/del column numbering and process
+-home page for admin change to gray background if possible
