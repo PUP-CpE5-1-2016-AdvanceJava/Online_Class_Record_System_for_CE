@@ -122,7 +122,7 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class='container-fluid'\
+                                <div class='container-fluid'>\
                                 <div class='table-responsive' id='table-lec'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <thead>\
