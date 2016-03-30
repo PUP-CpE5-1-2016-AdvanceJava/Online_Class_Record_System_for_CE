@@ -4,7 +4,7 @@
 	text-transform: uppercase;
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300;
-	width: 350px;
+	width: 300px;
 	overflow: hidden;
 	background-color: #2e2c2d;
 	padding-right: 0px;
@@ -79,10 +79,9 @@
 #sidebar-wrapper ul i{ padding: 0px 10px;}
 #sidebar-wrapper ul li{ font-size: 0.7em; padding-left: 10px; }
 #sidebar-wrapper a:link, #sidebar-wrapper a:visited{ text-decoration: none; }
-#navbar-wrapper{ margin-bottom: 0px; }
 #footer-wrapper{ margin-top: 0px; }
-#main-content-wrapper{ padding-left: 0px; }
-#main-col-wrapper{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
+#main-content-wrapper{ padding-left: 0px; padding-right: 0; }
+#main-col-wrapper{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 1263px;}
 li { list-style-type: none; }
 .icon-class-record:before { content: "\e900";}
 .icon-modules:before { content: "\e901";}
@@ -109,10 +108,10 @@ li { list-style-type: none; }
 }
 @media only screen and (max-width:768px) {
 
-	#sidebar-menu{font-size: 18px}
+	#sidebar-menu{font-size: 18px; padding-left: 0;}
 	#sidebar-subMenu a.hideOverflow{font-size: 15px}
 	#sidebar-item{font-size: 14px}
-
+	#sidebar-wrapper.collapsed{ width: 50px !important; }
 }
 @media only screen and (max-width:640px) {
 
@@ -121,6 +120,7 @@ li { list-style-type: none; }
 	#sidebar-menu{font-size: 16px}
 	#sidebar-subMenu a.hideOverflow{font-size: 13px}
 	#sidebar-item{font-size: 12px}
+	#sidebar-wrapper{width: 310px;}
 	
 }
 @media only screen and (max-width:480px) {

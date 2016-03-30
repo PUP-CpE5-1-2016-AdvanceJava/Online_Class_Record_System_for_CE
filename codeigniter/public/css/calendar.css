@@ -65,7 +65,7 @@ div[id^="calendar-div-"]{ display: none; }
 #calendar-div-wrapper{
 	display: block;
 	border-left: 1px solid #999;
-	padding: 3%;
+	padding: 30px;
 	background: #fff;
 	/*box-shadow: inset 5px 0 9px -7px rgba(0,0,0,0.4);*/
 }

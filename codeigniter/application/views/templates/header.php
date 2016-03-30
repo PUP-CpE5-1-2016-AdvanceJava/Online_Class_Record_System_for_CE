@@ -20,7 +20,7 @@
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
 
 </head>
-<body>
+<body id="home-body-wrapper">
 	<!-- HEADER -->
     <div class="container-fluid" id = "header-wrapper">
         <div class = "container">

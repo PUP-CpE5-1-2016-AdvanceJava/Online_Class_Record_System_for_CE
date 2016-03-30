@@ -123,7 +123,7 @@ function get_class_table(link)
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
                                 <div class='container-fluid' id='outer'>\
-                                <div class='table-responsive' id='inner'>\
+                                <div class='table-responsive' id='table-lec'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <tr>\
                                             <tr>\
@@ -288,7 +288,7 @@ function get_class_table(link)
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
                                 <div class='container-fluid' id='outer'>\
-                                <div class='table-responsive' id='inner'>\
+                                <div class='table-responsive' id='table-lab'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <input type='hidden'></input>\
                                             <tr>\
@@ -406,7 +406,7 @@ function get_class_table(link)
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
                                 <div class='container-fluid'>\
-                                    <div class='table-responsive'>\
+                                    <div class='table-responsive' id='table-attend'>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <input type=hidden></input>\
                                             <tr>\
@@ -432,8 +432,8 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td class='table-student-name' id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
                                             <td class='table-student-attendance-mid' class='fixed-width' contenteditable='true' name='score[]'></td>\
                                                         <td class='table-student-total-mid' contenteditable='false' id='table-name-att1'></td>\
                                                         <td class='table-student-percent-mid' contenteditable='false'></td>\
@@ -452,13 +452,13 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class=container-fluid>\
-                                    <div class=table-responsive>\
+                                <div class='container-fluid'>\
+                                    <div class='table-responsive' id='table-final'>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                             <input type='hidden'></input>\
                                                 <tr>\
                                                     <tr>\
-                                                        <th class='text-center'>Student Number</th>\
+                                                        <th class='text-center' id='border-left'>Student Number</th>\
                                                         <th class='text-center' id='border-bold'>Name</th>\
                                                         <th class='text-center'>Midterm Grade</th>\
                                                         <th class='text-center'>Final Grade</th>\
@@ -471,8 +471,8 @@ function get_class_table(link)
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td class='table-student-name' id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
                                             <td class='table-student-midterm' contenteditable='false'></td>\
                                             <td class='table-student-finals' contenteditable='false'></td>\
                                             <td class='table-student-grade' contenteditable='false'></td></tr>");

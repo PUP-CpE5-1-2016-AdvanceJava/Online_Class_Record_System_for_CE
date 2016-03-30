@@ -4,7 +4,7 @@
 /*UNIVERSAL*/
 
 /*HEADER*/
-#header-wrapper{z-index: 999; background:#730b0a; }
+#header-wrapper{z-index: 999; background:#730b0a;}
 #header-details{padding: 20px 0 20px 0; }
 #header-details span{display:inline; color:#fff;  font-family: 'Lustria', serif; font-size: 28px; line-height: 2; padding-left:5px; }
 #header-logo{ height: auto; float: left; padding-right: 5px;}
@@ -26,7 +26,7 @@
 
 
 /*FOOTER*/
-#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; }
+#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px;}
 #footer-details {text-align: left; }
 #footer-details a:hover{color:#fff;}
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
@@ -55,7 +55,7 @@
 /*LOGIN CONTENT end*/
 
 /*ARCHIVES CONTENT*/
-#archives-wrapper{ margin-bottom: 200px;}
+#archives-wrapper{ margin-bottom: 200px; margin-top: 50px;}
 #archives-wrapper span{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold;}
 #archives-breadcrumbs{background:none; margin-left:-20px;}
 #archives-panel{background: #E2E2E2; border-radius:0; font-family: 'Source Sans Pro', sans-serif; border:none;}
@@ -64,8 +64,8 @@
 /*ARCHIVES CONTENT end*/
 
 /*HOME CONTENT*/
-#home-body-wrapper{background: #E4E4E4;}
-#home-wrapper{ margin-bottom: 200px; min-height: 300px;}
+/*#home-body-wrapper{background: #E4E4E4;}*/
+#home-wrapper{ margin-bottom: 200px; min-height: 300px; margin-top: 50px;}
 #home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
 #home-panel{font-family: 'Source Sans Pro', sans-serif; }
 #home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}
@@ -79,7 +79,7 @@
 /*HOME CONTENT end*/
 	
 /*SETTINGS CONTENT*/
-#settings-wrapper{background: #E2E2E2; padding: 10px 0;  margin-bottom: 200px;}
+#settings-wrapper{background: #E2E2E2; padding: 10px 0;  margin-bottom: 200px; margin-top: 50px;}
 #settings-title span{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold;}
 #settings-panel{background: #E2E2E2; border-radius:0; font-family: 'Source Sans Pro', sans-serif; border:none; }
 #settings-panel-details {background: #F3F3F3; border:1px solid #D0D0D0; padding: 20px 40px; }
@@ -90,9 +90,10 @@
 #settings-reset-select{width:200px; margin-top: 5px; margin-bottom: 5px; margin-right:10px;}
 #settings-createacct-form-button{padding-top: 5px; padding-bottom: 5px; color: #07253E;}
 #settings-upload-form {margin-bottom: 10px;}
-
-
 /*SETTINGS CONTENT end*/
+
+/*FOOTER FIX AT BOTTOM - SOLUTION*/
+#table-content-wrapper, #sidebar-content-wrapper { min-height: 500px;}
 
 /*------------------MEDIA QUERIES-----------------*/
 
