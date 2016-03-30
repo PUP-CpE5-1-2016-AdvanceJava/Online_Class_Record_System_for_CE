@@ -127,7 +127,6 @@
 	#footer-details span{display:block;}
 	#footer-logo{display: none;}
 
-
 }
 
 @media (min-width:640px) and (max-width:767px){
@@ -154,6 +153,15 @@
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-logo{display: none;}
+
+	#calendar-h2-month{font-size: 32px;}
+	#today-button{padding: 0px 13px!important; }
+
+	/*#calendar-tbody tr td{height: 100px;
+	width: 30px !important;
+	max-height: 100px;
+	max-width: 45px!important; border: 2px solid red;}*/
+
 }
 
 
@@ -188,6 +196,15 @@
 	#footer-details{display:block; text-align: center;}
 	#footer-details span{display:block;}
 	#footer-logo{display: none;}
+
+	#calendar-h2-month{font-size: 30px;}
+	#today-button{padding: 0px 14px!important; }
+	#event-title h2 {font-size:28px;}
+	#current-event-date{font-size: 16px;}
+	.cal-event h4{font-size: 15px;}
+	.cal-event p{font-size: 14px;}
+	
+
 
 }
 
@@ -226,6 +243,17 @@
 	#settings-resetpwd-form-button{width:100%;}
 	#settings-upload-button {width:100%;}
 
-
+	#calendar-h2-month{font-size: 22px;}
+	#calendar-days{font-size: 12px;}
+	#calendar-tbody tr td{height:70px!important; max-height: 70px;}
+	#event-title h2 {font-size:24px;}
+	#current-event-date{font-size: 14px;}
+	#button-group1{padding:0;}
+	#button-group2{padding:0;}
+	#back span{font-size: .7em;} 
+	#next span{font-size: .7em;} 
+	.cal-event h4{font-size: 15px;}
+	.cal-event p{font-size: 13px;}
+	.cal-event span{font-size: 13px;}
 
 }

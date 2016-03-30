@@ -277,7 +277,7 @@ function monthMode(){
 			else {
 				$(this).find('h4').slideUp(300).remove();
 				($(this).find('.col-xs-3')).css('display','block');
-				($(this).find('.col-xs-12')).removeClass('col-xs-12').addClass('col-xs-9');
+				
 			}
 		}
 	});
