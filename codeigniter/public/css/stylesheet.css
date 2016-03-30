@@ -161,7 +161,7 @@
 	.fa-plus-circle, .fa-minus-circle{font-size: 18px}
 
 	h2{font-size: 24px}
-	h4{font-size: 18px}
+	h3{font-size: 18px}
 	td,th{font-size: 14px}
 
 	#table-alert-modal #modal-text{width: 400px !important;}
@@ -210,7 +210,7 @@
 	.fa-plus-circle, .fa-minus-circle{font-size: 16px}
 
 	h2{font-size: 20px}
-	h4{font-size: 14px}
+	h3{font-size: 14px}
 	td,th{font-size: 12px}
 
 	#table-alert-modal #modal-text{width: 350px !important;}
@@ -268,7 +268,7 @@
 	.fa-plus-circle, .fa-minus-circle{font-size: 14px}
 
 	h2{font-size: 20px}
-	h4{font-size: 14px}
+	h3{font-size: 14px}
 	td,th{font-size: 10px}
 
 	#table-alert-modal #modal-text{width: 250px !important;}
