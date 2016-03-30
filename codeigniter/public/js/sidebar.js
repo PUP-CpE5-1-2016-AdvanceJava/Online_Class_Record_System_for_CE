@@ -122,7 +122,7 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class='container-fluid'\
+                                <div class='container-fluid'>\
                                 <div class='table-responsive' id='table-lec'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
                                         <thead>\
@@ -203,7 +203,7 @@ function get_class_table(link)
                                             </tr>\
                                         </thead>\
                                         <tbody>\
-                                            <tr>\
+                                            <tr class='table-student-num-name'>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='true' id='table-items-assign1'></td>\
@@ -338,7 +338,7 @@ function get_class_table(link)
                                                 </tr>\
                                                 </thead>\
                                                 <tbody>\
-                                                <tr id='table-items-wrapper' class='fixed-width'>\
+                                                <tr id='table-items-wrapper' class='table-student-num-name'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                     <td contenteditable='true' id='table-items-lab1'></td>\
                                                     <td contenteditable='false'></td>\
