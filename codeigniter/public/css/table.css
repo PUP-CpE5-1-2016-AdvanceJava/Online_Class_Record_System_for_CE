@@ -8,7 +8,6 @@
 /*TABLE RESPONSIVE*/
 .table-responsive>.table-bordered>tbody>tr>td:first-child{border-left: 1px solid #ddd;}
 .table-responsive>.table-bordered>tbody>tr>td:last-child{border-right: 1px solid #ddd;}
-.table-responsive{overflow-y: scroll; height: 600px; margin-bottom: 0 }
 
 /*TABLE WRAPPER*/
 #table-wrapper{ white-space: nowrap; position: relative; width: 100%; margin-bottom: 0; }
