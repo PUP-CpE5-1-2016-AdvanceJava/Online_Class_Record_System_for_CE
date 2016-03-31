@@ -151,7 +151,9 @@
 	#settings-password-form{padding-right: 0px;}
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%; }
-	#settings-upload-button {width:100%;}
+	#settings-upload-button{margin-left: 5%; width: 35%}
+	#settings-choose-file-button{margin:0; width: 30%}
+	#settings-choose-file-button b, #settings-upload-button b{font-size: 20px}
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
@@ -197,7 +199,9 @@
 	#settings-password-form{padding-right: 0px;}
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%; }
-	#settings-upload-button {width:100%;}
+	#settings-upload-button{margin-left: 5%; width: 28%}
+	#settings-choose-file-button{margin:0; width: 30%}
+	#settings-choose-file-button b, #settings-upload-button b{font-size: 15px}
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
@@ -260,8 +264,11 @@
 	#settings-password-form{padding-right: 0px;}
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%;}
-	#settings-upload-button {width:100%;}
-
+	#settings-upload-button{margin:0; width: 30%}
+	#settings-choose-file-button{margin:0; width: 30%}
+	#settings-choose-file-button b, #settings-upload-button b{font-size: 10px}
+	
+	
 	#calendar-h2-month{font-size: 22px;}
 	#calendar-days{font-size: 12px;}
 	#calendar-tbody tr td{height:70px!important; max-height: 70px;}
