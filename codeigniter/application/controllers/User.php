@@ -325,9 +325,7 @@ class User extends CI_Controller
 	// test function
 	public function show_var()
 	{
-		var_dump($_SESSION['table_format']['numOfStudents']);
-		unset($_SESSION);
-		unset($_SESSION);
+		var_dump(count($_SESSION['table_data']));
 	}	
 	
 	public function set_table_session()
@@ -339,7 +337,13 @@ class User extends CI_Controller
 	public function set_global_table_session()
 	{
 		$_SESSION['table_format'] = $_POST;
-		echo 'OK';
+		if ($_SESSION['table_format']['numOfStudents'] == count($_SESSION['table_data']))
+		{
+			echo 'OK';
+			$this->set_table_data();
+		}
+		else
+			echo 'NO';
 	}
 	
 	public function clear_table_session()

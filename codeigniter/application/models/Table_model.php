@@ -88,11 +88,13 @@ class Table_model extends CI_Model
 			case 'Lec':
 				$tables = array( 'attendance','assignment', 'seatwork','exercises','recitation','quizzes','long_exam', 'midterm_exam', 'final_exam');
 				$first_attendance = TRUE;
+				$query_table = 'table_information';
 				break;
 			case 'Lab':
 				$tables = array( 'lab_act', 'prac_exam', 'project', 'midterm_exam', 'final_exam' );
 
 				$first_attendance = FALSE;
+				$query_table = 'table_information';
 				break;
 			default:
 				exit ('Invalid Input');
@@ -105,6 +107,7 @@ class Table_model extends CI_Model
 			$name_formats = array( 'mt_att','mt_mt_per','ft_att','ft_ft_per' );
 			$type = $table_type;
 			$first_attendance = TRUE;
+			$query_table = 'table_information_att';
 		}
 		
 		// module items
@@ -121,60 +124,46 @@ class Table_model extends CI_Model
 			$i++;
 		}
 		
-		// 
-		$grades = array();
-		//~ foreach ($tables as $table)
-		//~ {
-			//~ $statement = ",$table.Sem";
-			//~ $get_attendance = "";
-			//~ if ($table == 'midterm_exam' OR $table == 'final_exam')
-			//~ {
-				//~ $statement = " ";
-			//~ }
-			//~ if ($type == 'Lec')
-			//~ {
-				//~ $get_attendance = "DISTINCT";
-			//~ }
-			//~ 
-			//~ $sql = "SELECT ".$get_attendance." students.Id, $table.Score, $table.Rating".$statement."
-					//~ FROM $table 
-					//~ JOIN grades ON grades.Id = $table.StudGradeId 
-					//~ JOIN students ON students.Id = grades.StudId 
-					//~ WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
-			//~ $query = $this->db->query($sql, $ClassId);
-//~ 
-			//~ 
-			//~ foreach ($query->result() as $row)
-			//~ {
-				//~ if ($table == 'midterm_exam')
-				//~ {
-					//~ $semester = 'Midterm';
-				//~ }
-				//~ elseif ( $table == 'final_exam' )
-				//~ {
-					//~ $semester = 'Final';
-				//~ }
-				//~ else $semester = $row->Sem;
-				//~ 
-				//~ array_push($students[$row->Id], $row->Score.$table.$semester);
-				//~ 
-				//~ if ($table == 'assignment' OR $table == 'quizzes' OR $first_attendance )
-				//~ {
-					//~ array_push($students[$row->Id], $row->Rating.'rating');
-					//~ $first_attendance = FALSE;
-				//~ }
-			//~ }
-		//~ }
-		$sql = "SELECT students.Id, Information
-				FROM table_information
-				JOIN grades ON grades.Id = table_information.StudGradeId 
-				JOIN students ON students.Id = grades.StudId 
-				WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
-		$query = $this->db->query($sql, $ClassId);
+		// customize data according to table
+		// get saved table format for main lec or lab or lec attendance sheets
+		if ($table_type == 'main_table' OR $table_type == 'attendance_table')
+		{
+			$sql = "SELECT students.Id, Information
+					FROM ".$query_table."
+					JOIN grades ON grades.Id = ".$query_table.".StudGradeId 
+					JOIN students ON students.Id = grades.StudId 
+					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
+			$query = $this->db->query($sql, $ClassId);
+			
+			foreach ($query->result() as $row)
+			{	
+				$students[$row->Id]['grade'] = $row->Information;
+			}
+		}
+		
+		// append the 10% grade from attendance for main lec sheets
+		if ($block->ModuleType == 'Lec' && $table_type == 'main_table')
+		{
+			$sql = "SELECT DISTINCT students.Id, Rating
+					FROM attendance
+					JOIN grades ON grades.Id = attendance.StudGradeId 
+					JOIN students ON students.Id = grades.StudId 
+					WHERE StudGradeId IN (SELECT Id from grades WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?))";
+			$query = $this->db->query($sql, $ClassId);
+			foreach ($query->result() as $row)
+			{	
+				$students[$row->Id]['grade'] = $row->Rating.$students[$row->Id]['grade'];
+			}
+		}
+		
+		if ($table_type == 'final_table')
+		{
+			
+		}
+		
 		
 		foreach ($query->result() as $row)
 		{	
-			//~ array_push($students[$row->Id], $row->Information);
 			$students[$row->Id]['grade'] = $row->Information;
 		}
 		
@@ -308,32 +297,33 @@ class Table_model extends CI_Model
 			}
 		}
 		
-		
-		$array_of_grades = array();
-		$sql = "INSERT INTO table_information (StudGradeId, Information) VALUES ";
-		$first_header = TRUE;
-		foreach ($table_data as $student)
-		{
-			$grade_list = '';
-			array_push($array_of_grades, $class_id, $student['number']);
-			foreach ($student['grades'] as $grade)
-			{
-				$grade_list .= $grade.';';
-			}
-			array_push($array_of_grades, $grade_list);
-			if ($first_header)
-			{
-				$sql .= "((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
-				$first_header = FALSE;
-			}
-			else 
-				$sql .= " ,((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
-			
-		}
-		$this->db->query($sql, $array_of_grades);
-		
 		if ($type == 'Lec' OR $type == 'Lab')
 		{
+			$array_of_grades = array();
+			$sql = "INSERT INTO table_information (StudGradeId, Information) VALUES ";
+			$first_header = TRUE;
+			foreach ($table_data as $student)
+			{
+				$grade_list = '';
+				array_push($array_of_grades, $class_id, $student['number']);
+				foreach ($student['grades'] as $grade)
+				{
+					$grade_list .= $grade.';';
+				}
+				array_push($array_of_grades, $grade_list);
+				if ($first_header)
+				{
+					$sql .= "((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
+					$first_header = FALSE;
+				}
+				else 
+					$sql .= " ,((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
+				
+			}
+			$this->db->query($sql, $array_of_grades);
+			
+			
+			
 			// save module items
 			$first_header = TRUE;
 			$sql = "INSERT INTO module_items (ClassId, Module, Items, TableType) VALUES ";
@@ -399,6 +389,31 @@ class Table_model extends CI_Model
 
 			$sql = "INSERT INTO grades_id SELECT Id, StudId FROM grades ON DUPLICATE KEY UPDATE StudId = VALUES (StudId)";
 			$this->db->query($sql);
+		}
+		elseif ($type == 'attendance_table')
+		{
+			$array_of_grades = array();
+			$sql = "INSERT INTO table_information_att (StudGradeId, Information) VALUES ";
+			$first_header = TRUE;
+			foreach ($table_data as $student)
+			{
+				$grade_list = '';
+				array_push($array_of_grades, $class_id, $student['number']);
+				foreach ($student['grades'] as $grade)
+				{
+					$grade_list .= $grade.';';
+				}
+				array_push($array_of_grades, $grade_list);
+				if ($first_header)
+				{
+					$sql .= "((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
+					$first_header = FALSE;
+				}
+				else 
+					$sql .= " ,((SELECT Id FROM grades WHERE StudId = (SELECT Id FROM students WHERE ClassId = ? AND StudentNumber = ?)), ? )";
+				
+			}
+			$this->db->query($sql, $array_of_grades);
 		}
 	}
 }

@@ -23,7 +23,7 @@ function getAllData(id)
 		});
 		
 		// get the rows for the headers
-		var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[2];
+		var gradeHeaderRow = document.getElementById('table-wrapper').tHead.rows[1];
 		for (var headerIndex = 2; headerIndex < gradeHeaderRow.cells.length; headerIndex++)
 		{
 			if (gradeHeaderRow.cells[headerIndex].innerHTML !== '')
@@ -46,7 +46,7 @@ function getAllData(id)
 		$('td').each(function(){
 			
 			// this condition separates num of items row from grade data
-			if (index < (numberOfItems.cells.length))
+			if (index < (numberOfItems.cells.length-1))
 			{
 				numOfItemsContainer.push($(this).text());
 				index++;
@@ -61,8 +61,10 @@ function getAllData(id)
 		numOfItemsContainer.shift();
 		
 		// get the rows for the headers
-		var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[4];
-		var gradeHeaderRowAbove = document.getElementById('table-wrapper').tBodies[0].rows[3];
+		//~ var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[4];
+		//~ var gradeHeaderRowAbove = document.getElementById('table-wrapper').tBodies[0].rows[3];
+		var gradeHeaderRow = document.getElementById('table-wrapper').tHead.rows[3];
+		var gradeHeaderRowAbove = document.getElementById('table-wrapper').tHead.rows[2];
 		var endOfTermHeader = [];
 		
 		// get the vital headers in the row above; score, rating
@@ -123,8 +125,9 @@ function getAllData(id)
 		numOfItemsContainer.shift();
 		
 		// same process as Lec but simpler
-		var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[3];
-				
+		//~ var gradeHeaderRow = document.getElementById('table-wrapper').tBodies[0].rows[3];
+		var gradeHeaderRow = document.getElementById('table-wrapper').tHead.rows[2];
+		console.log('apache wtf');		
 		for (var headerIndex = 1; headerIndex < gradeHeaderRow.cells.length; headerIndex++)
 		{
 			colNames.push(gradeHeaderRow.cells[headerIndex].innerHTML.toLowerCase());
@@ -149,6 +152,7 @@ function getAllData(id)
 			}
 		});
 	
+	
 	// initialize some 
 	var num = 0;
 	var name = '';
@@ -157,6 +161,8 @@ function getAllData(id)
 	var isKeying = true;
 	var maxNumOfStudents = tempContainer.length / colNames.length;
 	var numOfStudents = 0;
+	
+	
 	// associate the names with the data
 	for (var i = 0; i < tempContainer.length; i = i + colNames.length)
 	{
@@ -216,32 +222,20 @@ function getAllData(id)
 		
 		// disable recording keys after the first
 		isKeying = false;
-		
+		numOfStudents++;
 		// create a student object and place the grades object to place into another object
 		var students = {	
-			'name' : tempContainer[i],
-			'number' : tempContainer[i+1],
-			'grades' : grades
+			'number' : tempContainer[i],
+			'name' : tempContainer[i+1],
+			'grades' : grades,
+			'num_stud' : numOfStudents
 		};
 		num++;
-
+		
 		// encode to JSON then send one student's records
-		//~ if (num == 10 || num <= maxNumOfStudents)
-		//~ {
-			var recursiveEncoded = $.param(students);
-			$.post('/user/set_table_session', recursiveEncoded).done(function(response){
-				//~ if (response == 'OK')
-				//~ {
-					numOfStudents++;
-				//~ }
-				//~ else 
-				//~ {
-					//~ $('#status').html("An error occured...");
-					//~ $.get('/user/clear_table_session', {});
-					//~ return false;
-				//~ }
-			});
-		//~ }	
+		var recursiveEncoded = $.param(students);
+		$.post('/user/set_table_session', recursiveEncoded).done(function(response){
+		});
 	}
 	console.log(numOfStudents);
 	// make object for JSON
@@ -256,21 +250,38 @@ function getAllData(id)
 	// encode to JSON and set into session variable
 	recursiveEncoded = $.param(toEncode);
 	console.log(toEncode);
-	$.post('/user/set_global_table_session', recursiveEncoded)
-		.done(function( result ) {
-			if (result != 'OK')
-			{
-				$('#status').append(" Operation not finished. Abort");
-				return false;
-			}
-		});
+	console.log(numOfStudents);
+	var tryAgain = true;
+	//~ $.post('/user/set_global_table_session', recursiveEncoded)
+		//~ .done(function( result ) {
+			//~ if (result != 'OK')
+			//~ {
+				//~ tryAgain = true;
+			//~ }
+		//~ });
+	
+	var timesToTry = 3;
+	while (tryAgain && timesToTry > 0)
+	{
+		$.post('/user/set_global_table_session', recursiveEncoded)
+			.done(function( result ) {
+				if (result != 'OK')
+				{
+					tryAgain = true;
+				}
+				else tryAgain = false;
+			});
+			timesToTry--;
+	}
+	if (tryAgain)
+		$('status').html('Error');
 	
 	// save into DB
-	console.log ('set session done');
-		$.post('/user/set_table_data', {})
-			.done(function( result ) {
-				$('#status').append(" "+result);
-		});
+	//~ console.log ('set session done');
+		//~ $.post('/user/set_table_data', {})
+			//~ .done(function( result ) {
+				//~ $('#status').append(" "+result);
+		//~ });
 
 	return false;
 }
