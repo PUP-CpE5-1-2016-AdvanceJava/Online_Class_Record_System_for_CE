@@ -20,15 +20,15 @@
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
 
 </head>
-<body>
+<body id="home-body-wrapper">
 	<!-- HEADER -->
     <div class="container-fluid" id = "header-wrapper">
         <div class = "container">
             <div class="row">
-                <div class = "col-lg-12 col-md-12" id = "header-details">
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "header-details">
                     <img alt="Brand" id = "header-logo"src="<?php base_url(); ?>/resources/img/logoce.png"> 
                     <img alt="Brand" id = "header-logo"src="<?php base_url(); ?>/resources/img/logocpe.png">
-                    <span><b>College of Engineering</b> | Online Class Record </span>     
+                    <span><b id = "header-details-title">College of Engineering</b><b id = "header-details-title-res">CE</b> | Online Class Record </span>     
                 </div> 
             </div>  
         </div>  <!-- container -->  

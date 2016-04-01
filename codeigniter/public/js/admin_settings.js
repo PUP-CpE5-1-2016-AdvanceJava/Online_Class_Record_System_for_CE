@@ -36,7 +36,7 @@ $(document).ready(function(){
 				<div class='container'>\
                 <div class='alert alert-info'>\
                   <a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>\
-                  <strong>Change Username status:</strong> "+response.status+" You may need to relog to update your username label\
+                  <strong>Change Username status:</strong> "+response.status+"\
                 </div>\
                 </div>");
 				$('form#admin-change-un').find('div>input').each(function(){
@@ -68,9 +68,14 @@ $(document).ready(function(){
 				$('form#register-acc').find('input').each(function(){
 					$(this).val("");
 				})
-				$('form#register-acc').find('select').each(function(){
-					$(this).val("");
+				$('form#register-acc').find("select[name='UserType']").each(function(){
+					$(this).val("default_usertype");
 				})
+
+				$('form#register-acc').find("select[name='UserDept']").each(function(){
+					$(this).val("default_userdept");
+				})
+
 				$('form#register-acc').find('#Info').each(function(){
 					$(this).val("");
 				})

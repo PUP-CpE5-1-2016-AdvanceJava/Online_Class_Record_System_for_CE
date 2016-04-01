@@ -103,7 +103,7 @@
                                             <label class="col-sm-2 control-label" for="Usertype">User Type</label> 
                                             <div class="col-sm-10">
                                                 <select class = "form-control" name="UserType" id = "Usertype" required>
-                                                    <option disabled selected>User Type</option>
+                                                    <option disabled selected value="default_usertype">User Type</option>
                                                     <option value="Chairperson">Chairperson</option>
                                                     <option value="Faculty">Faculty</option>
                                                 </select>
@@ -114,7 +114,7 @@
                                             <label class="col-sm-2 control-label" for="Userdepartment">User Department</label> 
                                             <div class="col-sm-10 " >        
                                                 <select class = "form-control" name="UserDept" id = "Userdepartment" required>
-                                                    <option disabled selected >User Department</option>
+                                                    <option disabled selected value="default_userdept">User Department</option>
                                                     <option >Civil Engineering</option>
                                                     <option >Computer Engineering</option>
                                                     <option >Electrical Engineering</option>
@@ -190,7 +190,6 @@
         </div> <!-- container -->
     </div> <!-- container-fluid -->
 
-    <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/script.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/admin_settings.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/chosen.jquery.min.js"></script>

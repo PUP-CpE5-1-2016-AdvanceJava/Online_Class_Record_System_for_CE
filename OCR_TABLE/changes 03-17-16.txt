@@ -7,3 +7,4 @@
 #no_btn -> #table-cancel-btn
 #TEMPORARY -> #table-content-wrapper
 
+table pages - responsive header, footer and navbar
