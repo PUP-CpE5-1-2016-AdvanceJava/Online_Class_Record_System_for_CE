@@ -59,20 +59,27 @@ class User extends CI_Controller
     			{
     				$data['info'] = $this->User_model->get_upload_status("none");
     			}
-    			$i = 0;
+    			if (isset($data['info']))
+    			{
+    				$i = 0;
     				$arr = array();
-    				foreach ($data['info'] as $key) 
+    				foreach ($data['info'] as $key)
     				{
-    					foreach ($key as $key2) 
+    					if (isset($key))
     					{
-    						if (isset($key2['user_id']))
-    						{
-    							$arr[$i] = $this->User_model->get_upload_count($key2['user_id']);
-    							$i++;
-    						}
+    						foreach ($key as $key2)
+	    					{
+	    						if (isset($key2['user_id']))
+	    						{
+	    							$arr[$i] = $this->User_model->get_upload_count($key2['user_id']);
+	    							$i++;
+	    						}
+	    					}
     					}
+    					
     				}
-    			$data['upload_count'] = $arr;
+    				$data['upload_count'] = $arr;
+    			}
     			$this->load->view('templates/header',$user);
 				$this->load->view('pages/chairperson_page',$data);
 				$this->load->view('templates/footer');
@@ -98,9 +105,11 @@ class User extends CI_Controller
     		if ($this->session->userdata('UserType') == "Faculty")
     		{
 	    		//to go in the settings tab of faculty
+	    		$data['subjs'] = $this->Faculty_model->get_all_subjs();
+	    		$data['sections'] = $this->Faculty_model->get_all_section();
+
 				$this->load->view('templates/header',$user);
-				$this->load->view('pages/settings');
-				$this->load->view('templates/footer');
+				$this->load->view('pages/faculty_settings_page',$data);
 			}
 			else if ($this->session->userdata('UserType') == "Administrator")
 			{
@@ -421,6 +430,20 @@ class User extends CI_Controller
 			header('Content-Type: application/json');
 	    	echo json_encode($data);
 		}
+	}
+
+	public function add_student()
+	{
+		// $fname = $this->input->post('fname');
+		// $mname = $this->input->post('mname');
+		// $lname = $this->input->post('mname');
+		// $stud_num = $this->input->post('stud_num');
+		// $subject = $this->input->post('subject');
+		// $section = $this->input->post('section');
+		$this->load->model('Faculty_model');
+		$data["status"] = $this->Faculty_model->insert_student($this->input->post());
+		header('Content-Type: application/json');
+	    echo json_encode($data);
 	}
 
 	public function logout()

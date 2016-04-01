@@ -46,8 +46,8 @@
             </div>
         </div>
 
-    <!-- TEMPORARY-DELETABLE-CONTENT -->
-    <div class = "container" id = "TEMPORARY">
+    <!-- TABLE CONTENT WRAPPER -->
+    <div class = "container" id = "table-content-wrapper">
         <!-- <div class="row">
             <h2>BSCPE 5-1</h2>
             <hr>
@@ -57,6 +57,8 @@
             <h1 style="color:rgba(65,105,225,0.5)"><b>Please select a class to display the table...<b></h1>
         </div>
 
+    </div>
+    <div id="include_tooltip">
     </div>
     
     <!-- ALERT MODAL -->
