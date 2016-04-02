@@ -64,7 +64,7 @@
 /*ARCHIVES CONTENT end*/
 
 /*HOME CONTENT*/
-#home-wrapper{ min-height: 300px; padding: 50px 60px 200px 60px; background-color: gray; margin: 0px; width: 100%; background: #E4E4E4;}
+#home-wrapper{ min-height: 300px; padding: 50px 62px 200px 62px; margin: 0px; width: 100%; background: #E4E4E4;}
 #home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
 #home-panel{font-family: 'Source Sans Pro', sans-serif; }
 #home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}
@@ -129,7 +129,6 @@
 	#footer-details span{display:block;}
 	#footer-logo{display: none;}
 
-
 }
 
 @media (min-width:640px) and (max-width:767px){
@@ -158,19 +157,26 @@
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-logo{display: none;}
-	
+
+	/*CALENDAR	*/
 	#calendar-h2-month{font-size: 32px;}
 	#year-button{width: 60%; font-size: 15px !important; padding: 5px;}
 	#month-button{width: 60%; font-size: 15px !important; padding: 5px}
 	#today-button{width: 60%; font-size: 15px !important; padding: 5px}
 
+	/*BUTTONS*/
 	.fa-plus-circle, .fa-minus-circle{font-size: 18px}
 
+	/*FONTS*/
 	h2{font-size: 24px}
 	h3{font-size: 18px}
 	td,th{font-size: 14px}
 
+	/*MODAL*/
 	#table-alert-modal #modal-text{width: 400px !important;}
+
+	/*HOME WRAPPER*/
+	#home-wrapper{ padding-left: 15px; padding-right: 15px; }
 }
 
 
@@ -208,27 +214,32 @@
 	#footer-details span{display:block;}
 	#footer-logo{display: none;}
 	
+	/*CALENDAR*/
 	#calendar-h2-month{font-size: 30px;}
 	#today-button{padding: 0px 14px!important; }
 	#event-title h2 {font-size:28px;}
 	#current-event-date{font-size: 16px;}
-	.cal-event h4{font-size: 15px;}
-	.cal-event p{font-size: 14px;}
 	#year-button{width: 70%; font-size: 12px !important; padding: 5px;}
 	#month-button{width: 70%; font-size: 12px !important; padding: 5px}
 	#today-button{width: 70%; font-size: 12px !important; padding: 5px}
 	#back, #next{width:25px; padding: 5px}
-	
+	.cal-event h4{font-size: 15px;}
+	.cal-event p{font-size: 14px;}
 	.glyphicon-menu-right, .glyphicon-menu-left{font-size: 12px !important;}
 	
+	/*BUTTONS*/
 	.fa-plus-circle, .fa-minus-circle{font-size: 16px}
 
+	/*FONTS*/
 	h2{font-size: 20px}
 	h3{font-size: 14px}
 	td,th{font-size: 12px}
 
+	/*MODAL*/
 	#table-alert-modal #modal-text{width: 350px !important;}
-
+	
+	/*HOME WRAPPER*/
+	#home-wrapper{ padding-left: 15px; padding-right: 15px; }
 }
 
 @media (max-width: 439px){
@@ -268,7 +279,7 @@
 	#settings-choose-file-button{margin:0; width: 30%}
 	#settings-choose-file-button b, #settings-upload-button b{font-size: 10px}
 	
-	
+	/*CALENDAR*/
 	#calendar-h2-month{font-size: 22px;}
 	#calendar-days{font-size: 12px;}
 	#calendar-tbody tr td{height:70px!important; max-height: 70px;}
@@ -278,22 +289,27 @@
 	#button-group2{padding:0;}
 	#back span{font-size: .7em;} 
 	#next span{font-size: .7em;} 
-	.cal-event h4{font-size: 15px;}
-	.cal-event p{font-size: 13px;}
-	.cal-event span{font-size: 13px;}
 	#year-button{width: 70%; font-size: 12px !important; padding: 5px;}
 	#month-button{width: 70%; font-size: 12px !important; padding: 5px}
 	#today-button{width: 70%; font-size: 12px !important; padding: 5px}
 	#back, #next{width:20px; padding: 5px}
+	.cal-event h4{font-size: 15px;}
+	.cal-event p{font-size: 13px;}
+	.cal-event span{font-size: 13px;}
 	.glyphicon-menu-right, .glyphicon-menu-left{font-size: 10px !important;}
 	
-
+	/*BUTTONS*/
 	.fa-plus-circle, .fa-minus-circle{font-size: 14px}
 
+	/*FONTS*/
 	h2{font-size: 20px}
 	h3{font-size: 14px}
 	td,th{font-size: 10px}
 
+	/*MODAL*/
 	#table-alert-modal #modal-text{width: 250px !important;}
+	
+	/*HOME WRAPPER*/
+	#home-wrapper{ padding-left: 15px; padding-right: 15px; }
 
 }
