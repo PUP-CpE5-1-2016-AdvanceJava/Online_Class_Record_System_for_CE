@@ -49,8 +49,8 @@
 #login-form-details {border-radius: 7px; padding: 40px; background: rgba(35, 35, 35, 0.76); transition: background 1s ease;}
 #login-form-details:hover {background: rgba(35, 35, 35, 1);} 
 #login-form-title{color:#fff; font-family:'Source Sans Pro', sans-serif; font-size:18px; font-weight: bold; padding-bottom:10px;}
-#login-form-input {padding-bottom: 5px; padding-top: 5px; }
-#login-form-input input {padding-bottom: 20px; padding-top: 20px;}
+#login-form-input {padding-bottom: 5px; padding-top: 5px;}
+#login-form-input input { height: 42px;}
 #login-form-button {width:100%; margin-top: 20px;}
 /*LOGIN CONTENT end*/
 
