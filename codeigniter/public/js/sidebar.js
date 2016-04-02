@@ -504,13 +504,16 @@ function get_class_table(link)
                                                   <a class='accordion-section-title hideOverflow'>Project - "+response.Module.Project+"%<span class='arrow-left'></span></a>\
                                                   <a class='accordion-section-title hideOverflow'>Lab/Machine Exercises - "+response.Module.Lab_MachineEx+"%<span class='arrow-left'></span></a>");
         }
+        
 		// append compute and save buttons
-        table.append("<button type='button' id='compute-button' name='compute-button'>Compute</button>\
-					<button type='button' id='save-button' onclick='return getAllData("+ response.class_id +");'  name='save-button'>Save</button>\
-					<input type='hidden' id='tableType' name='tableType' value='"+ response['Class']['ModuleType']+"'></input>\
-					<input type='hidden' id='sheetType' name='sheetType' value='"+ response['table_type']+"'></input>\
-					<p id='status'></p>");
-		//~ sent_table_data = response;
+        if (response['table_type'] != "final_table")
+        {
+			table.append("<button type='button' id='compute-button' name='compute-button'>Compute</button>\
+						<button type='button' id='save-button' onclick='return getAllData("+ response.class_id +");'  name='save-button'>Save</button>\
+						<input type='hidden' id='tableType' name='tableType' value='"+ response['Class']['ModuleType']+"'></input>\
+						<input type='hidden' id='sheetType' name='sheetType' value='"+ response['table_type']+"'></input>\
+						<p id='status'></p>");
+		}
 		fillTable(response);
 		console.log('debug');
       }
@@ -520,56 +523,6 @@ function get_class_table(link)
       }
     })
   return false;
-}
-
-//~ var sent_table_data;
-
-function fillTable(sent_table_data)
-{
-	var startFilling = false;
-	var gradeList = [];
-	var studentCount = 0;
-	var studentLimit = Object.keys(sent_table_data.Student).length;
-	for (var i = 0 ; i < studentLimit; i++)
-	{
-		gradeList[studentCount] = sent_table_data.Student[studentCount]["grade"].split(";");
-		studentCount++;
-	}
-	var count = 0;
-	var limitCount = gradeList[0].length-2;
-	
-	// reset
-	studentCount = 0;
-	$('td').each(function(){
-		if ($(this).html() == sent_table_data.Student[0]['full_name'])
-		{
-			startFilling = true;
-		}
-		
-		if ($(this).html() == sent_table_data.Student[studentCount]['full_name'] || $(this).html() == sent_table_data.Student[studentCount]['stud_num'])
-		{
-			// do nothing
-		}
-		else
-		{
-			if (startFilling)
-			{
-				
-				$(this).html(gradeList[studentCount][count]);
-				if (count < limitCount)
-				{	
-					count++
-				}
-				else 
-				{
-					studentCount++;
-					count = 0;
-				}
-			}
-		}
-	});
-	
-	sent_table_data = '';
 }
 
 /*INITIAL COUNTERS FOR TABLE*/

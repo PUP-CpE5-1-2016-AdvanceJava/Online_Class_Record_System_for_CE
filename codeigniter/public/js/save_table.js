@@ -1,6 +1,6 @@
 function getAllData(id)
 {
-	$('#status').html("");
+	$('#status').html("Recording... this may take a few seconds.");
 	
 	// initialize necessary variables
 	var colNames = ['number', 'name'];
@@ -222,20 +222,18 @@ function getAllData(id)
 		
 		// disable recording keys after the first
 		isKeying = false;
-		numOfStudents++;
+		//~ numOfStudents++;
 		// create a student object and place the grades object to place into another object
 		var students = {	
 			'number' : tempContainer[i],
 			'name' : tempContainer[i+1],
 			'grades' : grades,
-			'num_stud' : numOfStudents
 		};
-		num++;
+		//~ num++;
 		
 		// encode to JSON then send one student's records
 		var recursiveEncoded = $.param(students);
-		$.post('/user/set_table_session', recursiveEncoded).done(function(response){
-		});
+		$.post('/user/set_table_session', recursiveEncoded);
 	}
 	console.log(numOfStudents);
 	// make object for JSON
@@ -249,33 +247,35 @@ function getAllData(id)
 	
 	// encode to JSON and set into session variable
 	recursiveEncoded = $.param(toEncode);
-	console.log(toEncode);
-	console.log(numOfStudents);
-	var tryAgain = true;
-	//~ $.post('/user/set_global_table_session', recursiveEncoded)
-		//~ .done(function( result ) {
-			//~ if (result != 'OK')
-			//~ {
-				//~ tryAgain = true;
-			//~ }
-		//~ });
+	console.log(numOfStudents);	
 	
-	var timesToTry = 3;
-	while (tryAgain && timesToTry > 0)
-	{
-		$.post('/user/set_global_table_session', recursiveEncoded)
-			.done(function( result ) {
-				if (result != 'OK')
-				{
-					tryAgain = true;
-				}
-				else tryAgain = false;
-			});
-			timesToTry--;
-	}
-	if (tryAgain)
-		$('status').html('Error');
-	
+	// try to ajax at least three times
+	$.post('/user/set_global_table_session', recursiveEncoded)
+		.done(function( result ) {
+			if (result != 'OK')
+			{
+				$.post('/user/set_global_table_session', recursiveEncoded)
+					.done(function( result ) {
+						if (result != 'OK')
+						{
+							$.post('/user/set_global_table_session', recursiveEncoded)
+								.done(function( result ) {
+									if (result == 'OK')
+									{
+										$('#status').html('Grading Sheet Saved!');
+									}
+									else $('#status').html('Please try again!');
+								});
+						}
+						else $('#status').html('Grading Sheet Saved!');
+					});
+			}
+			else $('#status').html('Grading Sheet Saved!');
+		});
+		
+	//~ }
+	//~ if (tryAgain)
+		//~ $('#status').html('Error');
 	// save into DB
 	//~ console.log ('set session done');
 		//~ $.post('/user/set_table_data', {})

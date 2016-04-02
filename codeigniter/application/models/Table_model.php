@@ -156,16 +156,19 @@ class Table_model extends CI_Model
 			}
 		}
 		
+		// get grades for final table
 		if ($table_type == 'final_table')
 		{
-			
+			$sql = "SELECT students.Id, MidTermGrade, FinalGrade, TotalGrade 
+					FROM grades JOIN students ON students.Id = grades.StudId 
+					WHERE grades.StudId IN (SELECT Id FROM students WHERE ClassId = ?)";
+			$query = $this->db->query($sql, $ClassId);
+			foreach ($query->result() as $row)
+			{	
+				$students[$row->Id]['grade'] = $row->MidTermGrade.';'.$row->FinalGrade.';'.$row->TotalGrade.';';
+			}
 		}
 		
-		
-		foreach ($query->result() as $row)
-		{	
-			$students[$row->Id]['grade'] = $row->Information;
-		}
 		
 		// to fit the original JSON pattern
 		$grades = array();

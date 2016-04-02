@@ -311,21 +311,22 @@ class User extends CI_Controller
     	return;
 	}
 	
-	public function set_table_data()
+	private function set_table_data()
 	{
 		$this->load->model('Table_model');
 		$this->Table_model->save_table_data();
 		unset($_SESSION['table_data']);
 		unset($_SESSION['table_format']);
 		//~ if ( ! $this->db->_error_message()) echo 'Recording finished!';
-		echo 'Recording finished!';
+		//~ echo 'Recording finished!';
 		//~ else echo 'Error detected!';
 	}
 	
 	// test function
 	public function show_var()
 	{
-		var_dump(count($_SESSION['table_data']));
+		//~ var_dump($_SESSION['table_data']);
+		var_dump($_SESSION['table_format']);
 	}	
 	
 	public function set_table_session()
@@ -343,7 +344,7 @@ class User extends CI_Controller
 			$this->set_table_data();
 		}
 		else
-			echo 'NO';
+			echo 'Error';
 	}
 	
 	public function clear_table_session()
