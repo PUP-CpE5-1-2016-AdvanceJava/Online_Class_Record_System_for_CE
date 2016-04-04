@@ -38,10 +38,10 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 #table-blank{ border-top: solid 2px gray;}
 
 #table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
-#table-mid-lab-button-del, #table-mid-prac-button-del, #table-mid-proj-button-del, #table-final-lab-button-dell, #table-final-prac-button-del, #table-final-proj-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-mid-lab-button-del, #table-mid-prac-button-del, #table-mid-proj-button-del, #table-final-lab-button-del, #table-final-prac-button-del, #table-final-proj-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
 #table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
 #table-att1-button, #table-att2-button{background: none; font-size: 20px; padding: 0 3;}
-#table-att1-button-del, #table-att2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-mid-att-button-del, #table-final-att-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
 #table-mid-assign-button-del, #table-mid-sw-button-del, #table-mid-ex-button-del, #table-mid-rec-button-del, #table-mid-quiz-button-del, #table-mid-le-button-del, #table-final-assign-button-del,
 	#table-final-sw-button-del, #table-final-ex-button-del, #table-final-rec-button-del, #table-final-quiz-button-del, #table-final-le-button-del {background: none; font-size: 20px;
 	padding: 5px 10px 5px 10px; display: none;}
@@ -58,7 +58,7 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 .table-wrapper { overflow-x:scroll; overflow-y:visible; margin-left: 10%;}
 .fa-plus-circle{color: #4BA301;} 
 .fa-minus-circle{color: red;}
-.border-bold, #border-bold, #table-name, #table-blank2, #table-items{ border-right: solid 2px gray}
+.border-bold, #border-bold, #table-name, #table-blank2, #table-items, #table-header-mid-overall-grade{ border-right: solid 2px gray}
 
 
 /* ALERT MODAL */
