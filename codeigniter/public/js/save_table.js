@@ -1,5 +1,6 @@
 function getAllData(id)
 {
+	$('#save-button').attr('disable');
 	$('#status').html("Recording... this may take a few seconds.");
 	
 	// initialize necessary variables
@@ -272,7 +273,9 @@ function getAllData(id)
 			}
 			else $('#status').html('Grading Sheet Saved!');
 		});
-		
+	
+	$('#save-button').removeAttr('disable');
+	
 	//~ }
 	//~ if (tryAgain)
 		//~ $('#status').html('Error');

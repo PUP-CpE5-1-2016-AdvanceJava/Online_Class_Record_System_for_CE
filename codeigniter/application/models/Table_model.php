@@ -83,6 +83,7 @@ class Table_model extends CI_Model
     	
     	// justin code from here below
     	$type = $block->ModuleType;
+    	$items = array();
 		switch ($block->ModuleType)
 		{
 			case 'Lec':
@@ -110,20 +111,6 @@ class Table_model extends CI_Model
 			$query_table = 'table_information_att';
 		}
 		
-		// module items
-		$sql = "SELECT Module, Items FROM module_items WHERE ClassId = ? AND TableType = ?";
-		$query = $this->db->query($sql, array($ClassId, $type));
-		$items = array();
-		$i = 0;
-		foreach ($query->result() as $row)
-		{
-			$items[$i] = array(
-				'header' => $row->Module,
-				'items' => $row->Items
-			);
-			$i++;
-		}
-		
 		// customize data according to table
 		// get saved table format for main lec or lab or lec attendance sheets
 		if ($table_type == 'main_table' OR $table_type == 'attendance_table')
@@ -138,6 +125,21 @@ class Table_model extends CI_Model
 			foreach ($query->result() as $row)
 			{	
 				$students[$row->Id]['grade'] = $row->Information;
+			}
+			
+			
+			// module items
+			$sql = "SELECT Module, Items FROM module_items WHERE ClassId = ? AND TableType = ?";
+			$query = $this->db->query($sql, array($ClassId, $type));
+			
+			$i = 0;
+			foreach ($query->result() as $row)
+			{
+				$items[$i] = array(
+					'header' => $row->Module,
+					'items' => $row->Items
+				);
+				$i++;
 			}
 		}
 		
