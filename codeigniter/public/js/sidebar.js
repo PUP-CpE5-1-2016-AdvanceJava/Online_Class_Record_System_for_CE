@@ -363,13 +363,9 @@ function get_class_table(link)
                                                 <th class='text-center' id='table-header-final-ql-total'>Total</th>\
                                                 <th class='text-center' id='table-header-final-ql-rating'>30%</th>\
                                             </tr>\
-<<<<<<< HEAD
-                                            <tr>\
-=======
                                         </thead>\
                                         <tbody>\
                                             <tr class='num-items'>\
->>>>>>> 7789a449ddbc0d06de6d94f17d5ac86130ef9883
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                 <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+"\
                                                 <td contenteditable='true' id='table-items-mid-ex1'></td>\
@@ -403,8 +399,6 @@ function get_class_table(link)
                                         </tbody>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltip_lec.js'></script>\
-                                <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
                       </div>");
@@ -440,14 +434,10 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
-<<<<<<< HEAD
                 ctr_module++;
-            });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
-=======
                 });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_lec.js'></script>");
->>>>>>> 7789a449ddbc0d06de6d94f17d5ac86130ef9883
+                table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/table.js'></script>");
             }
             else
             {
@@ -536,8 +526,6 @@ function get_class_table(link)
                                             </tbody>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltip_lab.js'></script>\
-                                <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
                       </div>");
@@ -566,8 +554,9 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
-                });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_lab.js'></script>");
+            });
+            table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/table.js'></script>");
             }
         }
         else if (response['table_type'] == "attendance_table")
@@ -606,12 +595,6 @@ function get_class_table(link)
                                             </tbody>\
                                         </table>\
                                     </div>\
-<<<<<<< HEAD
-                                    <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
-                                    <script type='text/javascript' src='/js/table.js'></script>\
-=======
-                                    <script type='text/javascript' src='/js/tooltip_attendance.js'></script>\
->>>>>>> 7789a449ddbc0d06de6d94f17d5ac86130ef9883
                                 </div>\
                         </div>\
                       </div>");
@@ -625,7 +608,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
-               $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_attendance.js'></script>");
+            table.append("<script type='text/javascript' src='/js/table.js'></script>");
         }
         else if (response['table_type'] == "final_table")
         {
@@ -649,9 +632,8 @@ function get_class_table(link)
                                                         <th class='text-center'>Grade</th>\
                                                     </tr>\
                                                 </tr>\
-                                            </table>\
-                                        </div>\
-                                    <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                        </table>\
+                                    </div>\
                                 </div>\
                             </div>\
                         </div>");

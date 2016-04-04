@@ -18,6 +18,9 @@
                             <div class="form-group" id = "settings-password-form">
                                 <input type="password" class="form-control" id="exampleInputEmail2" placeholder="New Password" name="new_pw">
                             </div>
+                            <div class="form-group" id = "settings-password-form">
+                                <input type="password" class="form-control" id="exampleInputEmail2" placeholder="Confirm Password" name="conf_new_pw">
+                            </div>
                             <button class="btn btn-success " id = "settings-password-form-button" type="submit"><i class="fa fa-check"></i> Submit</button>
                         </form>
                     </div>
