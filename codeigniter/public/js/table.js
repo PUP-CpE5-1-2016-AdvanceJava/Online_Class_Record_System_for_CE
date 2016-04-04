@@ -2,7 +2,7 @@
 $(document).ready(function() {
 	var modulePercentage = 0.1;
 	compute();
-	$('hr').width($("#TEMPORARY h4 span").innerWidth());
+	$('hr').width($("#table-content-wrapper h4 span").innerWidth());
 	$('td').focusin(function(e) {
 		compute(modulePercentage);
 	});

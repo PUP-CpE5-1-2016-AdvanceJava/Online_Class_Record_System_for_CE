@@ -1,4 +1,4 @@
-$(document).ready(function(){
+window.onload = function(){
     var d = new Date();
 
     // Get references for 1yr before
@@ -21,7 +21,7 @@ $(document).ready(function(){
     create_calendar(year_present, first_day_present);
     create_calendar(year_future, first_day_future);
     event_marker();
-})
+}
 
 function create_calendar(year, first_day){
     var day_name = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -49,7 +49,7 @@ function create_calendar(year, first_day){
             div_row.setAttribute("id", "calendar-row-" + row_count + "-" + year);
 
             var div_table = document.createElement('div');
-            div_table.setAttribute("class", "col-lg-12 col-md-12 table-responsive");
+            div_table.setAttribute("class", "col-lg-12 col-md-12 col-xs-12 table-responsive");
             div_table.setAttribute("id", "calendar-div-" + month + "-" + year);
             div_row.appendChild(div_table);
 
@@ -138,7 +138,7 @@ function create_calendar(year, first_day){
             row_count += 1;
         } else{
             var div_table = document.createElement('div');
-            div_table.setAttribute("class", "col-lg-12 col-md-12 table-responsive");
+            div_table.setAttribute("class", "col-lg-12 col-md-12 col-xs-12 table-responsive");
             div_table.setAttribute("id", "calendar-div-" + month + "-" + year);
 
             var h3_month = document.createElement('h3');

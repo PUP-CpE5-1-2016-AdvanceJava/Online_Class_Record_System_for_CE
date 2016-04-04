@@ -11,7 +11,23 @@ $(document).ready(function() {
 	});
 	$('.ModPer',this).html(modulePercentage*100);
 
-	$('td').live("keydown", function(e) {
+	// $('td').live("keydown", function(e) {
+ //        if (e.which == 9) { //tab Key                                   
+ //            $(this).blur();
+ //            $(this).next('td').focus();
+ //            return false;
+ //        }
+ //    });
+ 	
+ 	//The .live() method has been deprecated since jQuery 1.7 
+ 	//and has been removed in 1.9. 
+ 	//We recommend upgrading code to use the .on() method instead.
+ 	//http://jquery.com/upgrade-guide/1.9/
+ 	//Bakit kc may jquery 2.1 AT 1.11 na naka-include?
+ 	//walang exception handling 'tong script na 'to kaya kapag mag error ay nastop
+ 	//na lahat ng susunod na gagamit ng $(document).ready()
+ 	//kaya use .on() --Marci :)
+ 	$('td').on("keydown", function(e) {
         if (e.which == 9) { //tab Key                                   
             $(this).blur();
             $(this).next('td').focus();
@@ -52,7 +68,6 @@ function compute(modulePercentage){
 
 //For Table Testing
 // $('#irow').click(function(){
-
 //         $('#mtable tbody').append($("#mtable tbody tr:last").clone());
 //         $('#mtable tbody tr:last :checkbox').attr('checked',false);
 //         $('#mtable tbody tr:last td:first').html($('#row').val());

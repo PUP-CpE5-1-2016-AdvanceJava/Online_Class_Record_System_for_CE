@@ -23,10 +23,10 @@
     <div class="container-fluid" id = "header-wrapper">
         <div class = "container">
             <div class="row">
-                <div class = "col-lg-12 col-md-12" id = "header-details">
+                <div class = "col-lg-12 col-md-12 col-sm-12 col-xs-12" id = "header-details">
                     <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
                     <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
-                    <span><b>College of Engineering</b> | Online Class Record </span>     
+                    <span><b id = "header-details-title">College of Engineering</b><b id = "header-details-title-res">CE</b> | Online Class Record </span>     
                 </div> 
             </div>  
         </div>  <!-- container -->  
@@ -34,19 +34,32 @@
      
     <!-- NAVBAR -->
      <div class = "container-fluid" id = "navbar-wrapper">
-        <div class = "container" >
-            <div class = "row">
-
-                 <ul class = " nav pull-left" id= "navbar-maintabs">
-                    <li><a href = "#">ARCHIVES</a></li>
+        <div class = "container">
+            <div class = "row" id = "navbar-normal">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active">ARCHIVES</a></li>
                     <li><a href = "#">CALENDAR</a></li>
                     <li><a href = "#">SETTINGS</a></li>
                     <li><a href = "#">HOME</a></li>
                 </ul>
+                
                 <ul class = " nav pull-right" id = "navbar-subtabs">
-                    <li><a href = "#"><i class="fa fa-sign-out" id = "navbar-subtabs-logo"></i>Logout</a></li>
+                    <li><a href = "#"><i class="fa fa-sign-out"></i>Logout</a></li>
+                    <li><p class="navbar-text">Hi, Engr. Julius Cansino</p></li>
                 </ul>
-            </div>    
+            </div>
+            <div class = "row" id = "navbar-res">
+                <ul class = " nav pull-left" id= "navbar-maintabs">
+                    <li><a href="#" id = "active"><i class = "fa fa-archive "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-calendar "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-wrench "></i></a></li>
+                    <li><a href = "#"><i class = "fa fa-home "></i></a></li>
+                </ul>
+                
+                <ul class = " nav pull-right" id = "navbar-subtabs">
+                    <li><a href = "#"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>          
         </div> <!-- container -->
     </div> <!-- container-fluid -->
 
@@ -108,15 +121,15 @@
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered" id="table-wrapper">
                                 <input type="hidden"></input>
-                                    <tr>
+                                    <thead>
                                         <tr>
-                                            <th colspan="2" id="table-blank"></th>
+                                            <th colspan="2" class="fixed-column-cells" id="table-blank"></th>
                                             <th colspan="15" class="text-center" id="table-midterm">Midterm</th>
                                             <th colspan="15" class="text-center" id="table-finals">Finals</th>                
                                         </tr>
                                         <tr>
-                                            <th class="text-center" id="table-student">Student Number</th>
-                                            <th class="text-center" id="table-name">Name</th>
+                                            <th class="text-center fixed-column-cells" id="table-student">Student Number</th>
+                                            <th class="text-center fixed-column-cells" id="table-name">Name</th>
                                             
                                             <!-- MIDTERM -->
                                             <th rowspan='2' class="text-center" id="attendance">ATTENDANCE</th>
@@ -134,8 +147,15 @@
                                         </tr>
                                         <tr>
                                             <!-- MIDTERM -->
-                                            <th class="text-center" colspan='2' id="table-blank2"></th>
-                                            <th class="text-center" id='assignment'>ASSIGNMENT<a class="btn" id="add-col-assign1"><acronym title="ADD COLUMN"><i class="fa fa-plus-circle"></i></acronym></a> <a class="btn" id="delete-col-assign1"><acronym title="DELETE COLUMN"><i class="fa fa-minus-circle"></i></acronym></a></th>
+                                            <th class="text-center fixed-column-cells" colspan='2' id="table-blank2"></th>
+                                            <th class="text-center" id='assignment'>ASSIGNMENT
+                                                <a class="btn" id="add-col-assign1">
+                                                    <acronym title="ADD COLUMN"><i class="fa fa-plus-circle"></i></acronym>
+                                                </a> 
+                                                <a class="btn" id="delete-col-assign1">
+                                                    <acronym title="DELETE COLUMN"><i class="fa fa-minus-circle"></i></acronym>
+                                                </a>
+                                            </th>
                                             <th class="text-center" id='seatwork'>SEATWORK<a class="btn" id="add-col-sw1"><acronym title="ADD COLUMN"><i class="fa fa-plus-circle"></i></acronym></a> <a class="btn" id="delete-col-sw1"><acronym title="DELETE COLUMN"><i class="fa fa-minus-circle"></i></acronym></a></th>
                                             <th class="text-center" id='exercise'>EXERCISE<a class="btn" id="add-col-ex1"><acronym title="ADD COLUMN"><i class="fa fa-plus-circle"></i></acronym></a> <a class="btn" id="delete-col-ex1"><acronym title="DELETE COLUMN"><i class="fa fa-minus-circle"></i></acronym></a></th>
                                             <th class="text-center" id='recitation'>RECITATION<a class="btn" id="add-col-rec1"><acronym title="ADD COLUMN"><i class="fa fa-plus-circle"></i></acronym></a> <a class="btn" id="delete-col-rec1"><acronym title="DELETE COLUMN"><i class="fa fa-minus-circle"></i></acronym></a></th>
@@ -167,7 +187,7 @@
                                         </tr>   
                                         <tr id="table-module">
                                             <!-- MIDTERM -->
-                                            <th colspan="2" id="table-blank2"></th>
+                                            <th colspan="2" class="fixed-column-cells" id="table-blank2"></th>
                                             <th class="text-center">10%</th>
                                             <th class="text-center">ASSIGN 1 </th>
                                             <th class="text-center" id="sideseatwork">SW 1</th>
@@ -192,8 +212,10 @@
                                             <th class="text-center" id='sidetotal2Finals'>Total</th>
                                             <th class="text-center">30%</th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
                                         <tr>
-                                            <td colspan="2" class="text-right" id="table-items">Number of Items</td>
+                                            <td colspan="2" class="text-right fixed-column-cells" id="table-items">Number of Items</td>
                                             <td class='table-items-attendance-mid' contenteditable='false'></td>
                                             <td class='table-items-assign-mid' contenteditable='true'></td>
                                             <td class='table-items-seatwork-mid' contenteditable='true' id="table-items-seatwork1"></td>
@@ -227,12 +249,12 @@
                                         </tr>
                                         <tr> 
                                             <?php
-                                            for ($a = 0; $a<5; $a++) 
+                                            for ($a = 0; $a<50; $a++) 
                                             {
                                                 echo "<tr>";
                                                 echo "<input type='hidden' name='id[]' value='".$a."'/>"; 
-                                                echo "<td class='table-student-number' id='border-left'>2011-00090-MN-0</td>";
-                                                echo "<td class='table-student-name' id='border-bold'>J.C. Flores</td>";
+                                                echo "<td class='table-student-number fixed-column-cells' id='border-left'>2011-00090-MN-0</td>";
+                                                echo "<td class='table-student-name fixed-column-cells' id='border-bold'>J.C. Flores</td>";
                                                 // MIDTERM
                                                 echo "<td class='table-student-attendance-mid' contenteditable='false'></td>";
                                                 echo "<td class='table-student-assign-mid' contenteditable='true'></td>";
@@ -270,14 +292,16 @@
                                             }
                                             ?>
                                         </tr>
-                                    </tr>
+                                    </tbody>
                                 </table>
+                                </div>
                             </div>
                         </div>    
                     </div>
                 </div>
                 
                 <!-- The Modal -->
+             
                 <div id="table-alert-modal" class="modal">
 
                   <!-- Modal content -->
@@ -289,7 +313,7 @@
                         </div>
                   </div>
                 </div>
- 
+
             </div> <!-- end of table-content-wrapper -->
         </div> <!-- end of main-col-wrapper -->
     </div> <!-- end of main-content-wrapper -->
@@ -297,14 +321,14 @@
     <!-- FOOTER -->
      <div class = "container-fluid" id = "footer-wrapper">
         <div class = "container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6" id = "footer-details">      
-                    <img alt="Brand" id = "header-logo"src="resources/img/logoce.png"> 
-                    <img alt="Brand" id = "header-logo"src="resources/img/logocpe.png">
-                    <span><b>College of Engineering</b> | Online Class Record </span>      
+            <div class="row" id = "footer-details-wrapper">
+                <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12" id = "footer-details">      
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logoce.png"> 
+                    <img alt="Brand" id = "footer-logo"src="resources/img/logocpe.png">
+                    <span><b>College of Engineering</b><wbr> | Online Class Record </span>      
                     <p><i class="fa fa-copyright"></i>All Rights Reserved</p>
                 </div>
-                <div class = "col-lg-5 col-md-5 pull-right" id = "footer-form">
+                <div class = "col-lg-5 col-md-5  com-sm-12 col-xs-12" id = "footer-form">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Comments and Queries">
                         <span class="input-group-btn">
@@ -320,7 +344,9 @@
 <script type="text/javascript" src="plugins/js/jquery-1.11.3.js"></script>
 <script type="text/javascript" src="plugins/js/sidebar.js"></script>
 <script type="text/javascript" src="plugins/js/table.js"></script>
+<script type="text/javascript" src="plugins/js/tooltip_lec.js"></script>
 <script type="text/javascript" src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="plugins/js/script_lec.js"></script>
+
 
 </body>
