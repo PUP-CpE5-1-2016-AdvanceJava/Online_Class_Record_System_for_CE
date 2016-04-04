@@ -24,6 +24,9 @@
 #navbar-subtabs p{line-height: .75; padding: 0;}
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
+/* Save, Update Button */
+#save-upload-normal{display: block;}
+#save-upload-res{display: none;} 
 
 /*FOOTER*/
 #footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; }
@@ -218,6 +221,10 @@
 	td,th{font-size: 12px}
 
 	#table-alert-modal #modal-text{width: 350px !important;}
+	
+	/*save, update */
+	#save-upload-res{display:block !important; }
+	#save-upload-normal{display:none !important;}
 
 }
 
@@ -276,5 +283,9 @@
 	td,th{font-size: 10px}
 
 	#table-alert-modal #modal-text{width: 250px !important;}
+	
+	/*save, update */
+	#save-upload-res{display:block !important; }
+	#save-upload-normal{display:none !important;}
 
 }
