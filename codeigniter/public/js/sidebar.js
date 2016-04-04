@@ -939,8 +939,8 @@ function get_class_table(link)
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right;'><div id='save-upload-normal'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button><button class='btn btn-primary ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></div>\
+                          <div id='save-upload-res'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-floppy-o'></i></button><button class='btn btn-primary ' id = 'table-upload-button' type='submit'><i class='fa fa-upload'></i></button></div></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
