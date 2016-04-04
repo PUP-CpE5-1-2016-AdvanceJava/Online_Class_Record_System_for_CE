@@ -43,6 +43,7 @@ class User extends CI_Controller
     		if ($this->session->userdata('UserType') == "Faculty")
     		{
 				//get the subjects taken
+
 				$data['subj'] = $this->User_model->getUserSubjs($userId);
 				//call the pages and include variables
 				$this->load->view('templates/header',$user);

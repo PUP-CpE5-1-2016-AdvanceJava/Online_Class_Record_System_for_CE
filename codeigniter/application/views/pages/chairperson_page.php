@@ -43,7 +43,12 @@
                                             foreach ($data2["class"] as $class)
                                             {
                                                         echo               "<a href='#' class='list-group-item list-group-item-success'>".$class['c_block'];
-                                                        if ($class['c_isUploaded'] == true) echo "<span class='label label-success'>Submitted</span>";
+                                                        if ($class['c_isUploaded'] == true) 
+                                                        {
+                                                            echo "<span class='label label-success'>";
+                                                            echo $class['c_dateUploaded'];
+                                                            echo"</span>";
+                                                        }
                                                         echo               "</a>";
                                             }            
                                             echo                     "</div>";
