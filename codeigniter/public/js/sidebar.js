@@ -279,7 +279,6 @@ function get_class_table(link)
                                     </table>\
                                 </div>\
                                 <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
-                                <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
                       </div>");
@@ -405,7 +404,6 @@ function get_class_table(link)
                                     </table>\
                                 </div>\
                                 <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
-                                <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
                       </div>");

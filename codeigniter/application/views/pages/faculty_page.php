@@ -46,8 +46,8 @@
             </div>
         </div>
 
-    <!-- TABLE CONTENT WRAPPER -->
-    <div class = "container" id = "table-content-wrapper">
+    <!-- TEMPORARY-DELETABLE-CONTENT -->
+    <div class = "container" id = "TEMPORARY">
         <!-- <div class="row">
             <h2>BSCPE 5-1</h2>
             <hr>

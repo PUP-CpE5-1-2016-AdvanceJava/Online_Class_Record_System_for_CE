@@ -6,6 +6,7 @@ class Upload_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->database();
+		// $this->load->model('Grades_model');
 	}
 	
 	function save_data($file,$module,$UserId)
@@ -15,7 +16,7 @@ class Upload_model extends CI_Model {
 
 		if (file_exists('resources/uploads/'. $name) || $file["classlist"]["type"] != "application/pdf")
 		{
-			return false;
+			return "PDF has not been uploaded. Invalid file type or file already exists.";
 		}
 		move_uploaded_file($temp, "resources/uploads/".$name);
 
@@ -30,6 +31,7 @@ class Upload_model extends CI_Model {
 		$data = $pdfdata->output();
 		//get max count for the loop later
 		$count = count($data["studs"]);
+		$num_students = $count/2;
 
 		//---get subj title---//
 		$s = $this->slugify($data["info"][5]);
@@ -59,16 +61,16 @@ class Upload_model extends CI_Model {
 			'SubjectId' => $SubjectId,
 			'ClassBlock' => $class_block,
 			'ModuleType' => $module,
-			'NumOfStudents' => $count/2,
+			'NumOfStudents' => $num_students,
 			'YrSem' => $class_yr_sem,
 			'Schedule' => $class_schedule,
 		);
 		$this->db->insert('class',$class);
 		$ClassId = $this->db->insert_id();
-
+	
 		for ($c=0; $c < $count; $c+=2) 
 		{ 	
-			//---block of code for getting first,middle and last name---//
+			//---block of code for getting first;middle and last name---//
 			$text = strtolower($data["studs"][$c+1]);
 			$text = utf8_encode($text); // to read special characters ñ
 			$name = explode(',',$text);
@@ -96,8 +98,9 @@ class Upload_model extends CI_Model {
 				'StudentNumber' => $stud_num, 
 			);
 			$this->db->insert('students',$student);
+			//get student id and insert to 'grades table'
 		}
-		return true;
+		return "PDF has been successfully uploaded.";
 	}
 
 	function slugify($text)

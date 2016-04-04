@@ -6,6 +6,7 @@ class Table_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->database();
+		// $this->load->model('ModuleItems_model');
 	}
 	
 	function get_class_table($table_type,$ClassId)
@@ -18,7 +19,7 @@ class Table_model extends CI_Model {
 			'ClassBlock' => $block->ClassBlock,
 			'Schedule' => $block->Schedule,
 			'ModuleType' => $block->ModuleType,
-			'ClassId' => $block->Id
+			'ClassId' => $block->Id,
 		);
 		//--get module--//
 		if ($block->ModuleType == "Lec") 
@@ -53,6 +54,7 @@ class Table_model extends CI_Model {
 		$subject = $subj->SubjectTitle;
 		//--get studentes--//
 		$this->db->select('*')->from('students')->where('ClassId',$ClassId);
+		$this->db->order_by('LName','asc');
 		$query = $this->db->get();
 
 		if (!$query->num_rows() > 0) {
@@ -62,7 +64,7 @@ class Table_model extends CI_Model {
 
     	$i = 0;
     	foreach ($query->result() as $row) 
-    	{	
+    	{
     		// combine to make full name and to capital first letter of each name
     		$full_name = ucwords($row->LName).', '.ucwords($row->FName).' '.ucwords($row->MName);
     		$stud[$i] = array(
