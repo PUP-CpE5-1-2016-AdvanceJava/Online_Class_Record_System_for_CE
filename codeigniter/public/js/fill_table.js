@@ -1,7 +1,7 @@
 is_apache_updating();
 function is_apache_updating()
 {
-	console.log('all is right in JS world');
+	console.log('all is right in JS world!');
 }
 
 function fillTable(response)
@@ -10,9 +10,33 @@ function fillTable(response)
 	var fillItems = false;
 	var startAfter = false;
 	var itemCounter = 0;
-	// set number of columns before filling
+	
+	
 	if (Object.keys(response.Items).length > 0)
-	{
+	{			
+		// set number of columns before filling
+		if (response['table_type'] == 'attendance_table')
+		{
+			var name_formats = [ 'mt_att','ft_att' ];
+		}
+		
+		if (response.Class.ModuleType == 'Lec')
+		{
+			var name_formats = [ 'mt_cs_assign','mt_cs_sw','mt_cs_ex','mt_cs_rec','mt_qz_quiz','mt_qz_le',
+									'ft_cs_assign','ft_cs_sw','ft_cs_ex','ft_cs_rec','ft_qz_quiz','ft_qz_le' ];
+		}
+		else if (response.Class.ModuleType == 'Lab')
+		{
+			var name_formats = [ 'mt_exer_lab','mt_prac_practical','mt_proj_project','ft_exer_lab','ft_prac_practical','ft_proj_project' ];
+		}
+		
+		for (var a = 0; a < itemLength; a++)
+		{
+			
+		}
+		
+		
+		// fill number of items per module
 		itemLength = Object.keys(response.Items).length;
 		$('td').each(function(){
 			if ($(this).html().toLowerCase() == "number of items")
@@ -33,26 +57,7 @@ function fillTable(response)
 				}
 				fillItems = true;
 			}
-		});		
-		if (response['table_type'] == 'attendance_table')
-		{
-			var name_formats = [ 'mt_att','ft_att' ];
-		}
-		
-		if (response.Class.ModuleType == 'Lec')
-		{
-			var name_formats = [ 'mt_cs_assign','mt_cs_sw','mt_cs_ex','mt_cs_rec','mt_qz_quiz','mt_qz_le',
-									'ft_cs_assign','ft_cs_sw','ft_cs_ex','ft_cs_rec','ft_qz_quiz','ft_qz_le' ];
-		}
-		else if (response.Class.ModuleType == 'Lab')
-		{
-			var name_formats = [ 'mt_exer_lab','mt_prac_practical','mt_proj_project','ft_exer_lab','ft_prac_practical','ft_proj_project' ];
-		}
-		
-		for (var a = 0; a < itemLength; a++)
-		{
-			
-		}
+		});
 	}
 	
 	// initialize variables for filling the table
