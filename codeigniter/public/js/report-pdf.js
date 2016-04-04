@@ -1,17 +1,60 @@
+(function(API){
+    API.myText = function(txt, options, x, y) {
+        options = options ||{};
+        /* Use the options align property to specify desired text alignment
+         * Param x will be ignored if desired text alignment is 'center'.
+         * Usage of options can easily extend the function to apply different text 
+         * styles and sizes 
+        */
+        if( options.align == "center" ){
+            // Get current font size
+            var fontSize = this.internal.getFontSize();
+
+            // Get page width
+            var pageWidth = this.internal.pageSize.width;
+
+            // Get the actual text's width
+            /* You multiply the unit width of your string by your font size and divide
+             * by the internal scale factor. The division is necessary
+             * for the case where you use units other than 'pt' in the constructor
+             * of jsPDF.
+            */
+            txtWidth = this.getStringUnitWidth(txt)*fontSize/this.internal.scaleFactor;
+
+            // Calculate text's x coordinate
+            x = ( pageWidth - txtWidth ) / 2;
+        }
+
+        // Draw text at x,y
+        this.text(txt,x,y);
+    }
+})(jsPDF.API);
+
 $(document).ready(function(e){
+	var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
 	var cols = ['PROFESSOR','SUBJECT','SECTION','DATE SUBMITTED'];
 	var rows = [];
-	var doc = new jsPDF('p','pt');
+	var doc = new jsPDF('p','pt','letter');
 	var header = function (data) {
-        doc.setFontSize(20);
+        doc.setFontSize(11);
+        doc.setTextColor(40);
+        doc.setFontStyle('normal');
+        doc.myText("Polytechnic University of the Philippines",{align: "center"},0,60);
+        doc.myText("Online Class Record System",{align: "center"},0,75);
+        doc.setFontSize(15);
         doc.setTextColor(40);
         doc.setFontStyle('bold');
-        doc.text("TRACKER", data.settings.margin.left, 60);
+        doc.text("Faculty Class Record / Grade Sheet Submission Tracker", data.settings.margin.left, 130);
     };
     var options = {
         beforePageContent: header,
         theme: 'striped',
-        margin: {top: 80},
+        margin: {
+        	top: 145,
+        	left: 60,
+        	right: 60,
+        	bottom: 60
+        },
         styles:{
         	lineColor: 200,
         	lineWidth: 2,
@@ -36,7 +79,7 @@ $(document).ready(function(e){
 					$(this).closest('div#home-panel-body').find('.list-group-item').each(function(e){
 						$sec = $(this).contents().filter(function(e){return this.nodeType == 3;}).text();
 						if(($(this).find('span')).length != 0) $subm = ($(this).find('span')).text();
-						else $subm = "--";
+						else $subm = "---";
 						var rowin = [];
 						if($ctr1 == 0) {
 							rowin.push($prof);
@@ -70,8 +113,12 @@ $(document).ready(function(e){
 				rows.push(rowin);				
 			}
 		});
-
+		var d = new Date();
+		var curr_date = d.getDate();
+		var curr_month = d.getMonth();
+		var curr_year = d.getFullYear();
+		$filename = 'Tracker_'+curr_date + "-" + m_names[curr_month] + "-" + curr_year;
 		doc.autoTable(cols, rows,options);
-		doc.save('table1.pdf');
+		doc.save($filename+'.pdf');
 	});
 });
