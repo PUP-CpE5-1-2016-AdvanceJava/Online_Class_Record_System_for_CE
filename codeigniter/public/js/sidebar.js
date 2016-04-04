@@ -648,49 +648,33 @@ function setModuleCounter(label,newCounter)
     else if (label == "attCounter2") attCounter2 = newCounter;
 }
 
-function get_col_pos(label,term,type)
+function get_class_name(label,label_num,term)
 {
-    if (type == "module_num")
+    if (term == "mid")
     {
-        if (term == "midterm")
-        {
-            if (label == "Assign") return "sw1-score-col";
-            else if (label == "Sw") return "ex1-score-col";
-            else if (label == "Ex") return "rec1-score-col";
-            else if(label == "Rec") return "cs1-total-col";
-            else if(label == "Quiz") return "le1-score-col";
-            else if(label == "Le") return "ql1-total-col";
-        } 
-        else if (term == "finals")
-        {
-            if (label == "Assign") return "sw2-score-col";
-            else if (label == "Sw") return "ex2-score-col";
-            else if (label == "Ex") return "rec2-score-col";
-            else if(label == "Rec") return "cs2-total-col";
-            else if(label == "Quiz") return "le2-score-col";
-            else if(label == "Le") return "ql2-total-col";
-        }
-    }
-    else if (type == "module_items")
+        if (label == "Assign") return "table-items-assign-mid";
+        else if (label == "Sw") return "table-items-seatwork-mid";
+        else if (label == "Ex") return "table-items-exercise-mid";
+        else if(label == "Rec") return "table-items-recitation-mid";
+        else if(label == "Quiz") return "table-items-quiz-mid";
+        else if(label == "Le") return "table-items-longExam-mid";
+        else if (label == "Lab") return "table-items-lab-mid";
+        else if (label == "Prac") return "table-items-prac-mid";
+        else if (label == "Proj") return "table-items-proj-mid";
+        else if (label == "Att") return "stud-att-date-midterm"
+    } 
+    else if (term == "final")
     {
-        if (term == "midterm")
-        {
-            if (label == "Assign") return "table-items-sw1";
-            else if (label == "Sw") return "table-items-ex1";
-            else if (label == "Ex") return "table-items-rec1";
-            else if(label == "Rec") return "table-items-cs1";
-            else if(label == "Quiz") return "table-items-le1";
-            else if(label == "Le") return "table-items-ql1";
-        } 
-        else if (term == "finals")
-        {
-            if (label == "Assign") return "table-items-sw2";
-            else if (label == "Sw") return "table-items-ex2";
-            else if (label == "Ex") return "table-items-rec2";
-            else if(label == "Rec") return "table-items-cs2";
-            else if(label == "Quiz") return "table-items-le2";
-            else if(label == "Le") return "table-items-ql2";
-        }
+        if (label == "Assign") return "table-items-assign-finals";
+        else if (label == "Sw") return "table-items-seatwork-finals";
+        else if (label == "Ex") return "table-items-exercise-finals";
+        else if(label == "Rec") return "table-items-recitation-finals";
+        else if(label == "Quiz") return "table-items-quiz-finals";
+        else if(label == "Le") return "table-items-longExam-finals";
+        else if (label == "Lab") return "table-items-lab-finals";
+        else if (label == "Prac") return "table-items-prac-finals";
+        else if (label == "Proj") return "table-items-proj-finals";
+        else if (label == "Att") return "stud-att-date-finals"
     }
 }
 
@@ -747,9 +731,11 @@ function add_column(parent)
                 newScore = array[0]+"-score-"+array[1]+"-"+module+counter;
             });
 
+            var class_name = get_class_name(label,label_num,term);
+
             $("#"+parentId+"-button-del").css('display', 'inline-block');
-            $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
+            $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' class='"+class_name+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));
+            $("tr td#"+score).after($("<td id='"+newScore+"' class='"+class_name+"' contenteditable='true'></td>"));
         }
         else alert("Only 15 column is allowed on this table.");
         return;
@@ -789,10 +775,13 @@ function add_column(parent)
                     $(this).attr('colspan',term_span);
                 });
             }
+
+            var class_name = get_class_name(label,label_num,term);
+
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+items).after($("<td id='"+newItems+"' contenteditable='true'></td>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
+            $("tr td#"+items).after($("<td id='"+newItems+"' class='"+class_name+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td id='"+newScore+"' class='"+class_name+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
     }
@@ -877,10 +866,12 @@ function add_column(parent)
                 });
             }
 
+            var class_name = get_class_name(label,label_num,term);
+
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+items).after($("<td id='"+newItems+"' contenteditable='true'></td>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
+            $("tr td#"+items).after($("<td id='"+newItems+"' class='"+class_name+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td id='"+newScore+"' class='"+class_name+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
     }
