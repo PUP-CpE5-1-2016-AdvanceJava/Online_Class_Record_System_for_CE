@@ -387,17 +387,17 @@ class User extends CI_Controller
 	    echo json_encode($data);
 	}
 
-	// public function save_table()
-	// {
-	// 	// $before = memory_get_usage();
-	// 	$this->load->model('Table_model');
-	// 	$data["info"] = $this->Table_model->save_table_data($this->input->post());
-	// 	// $after = memory_get_usage();
-	// 	// $data["memory"] = ($after - $before);
-	// 	$data["status"] = "OK";
-	// 	header('Content-Type: application/json');
-	//     echo json_encode($data);
-	// }
+	public function save_table()
+	{
+		// $before = memory_get_usage();
+		$this->load->model('Table_model');
+		$data["info"] = $this->Table_model->save_table_data($this->input->post());
+		// $after = memory_get_usage();
+		// $data["memory"] = ($after - $before);
+		$data["status"] = "OK";
+		header('Content-Type: application/json');
+	    echo json_encode($data);
+	}
 
 	public function logout()
 	{

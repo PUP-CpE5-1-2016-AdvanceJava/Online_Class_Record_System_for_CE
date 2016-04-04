@@ -116,10 +116,11 @@ function get_class_table(link)
     {
       if (response.status == 'OK')
       {
+        console.log(response);
         //--clear sidebars content ang table content first to avoid bugs--//
         $("ul>li[name='sheet_submenu']").empty();
         $("ul>li[name='module_submenu']").empty();
-        $('div#table-content-wrapper').empty();
+        $('div#TEMPORARY').empty();
         $('tbody#stud_table').empty();
         /*INITIALIZE COUNTERS FOR TABLE*/
         //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
@@ -134,9 +135,7 @@ function get_class_table(link)
         projCounter1=1;
         projCounter2=1;
         //---variables for lec table---//
-        assignCounter1 = 1;
         assignCounter2=1;
-        swCounter1 = 1;
         swCounter2=1;
         exCounter1=1;
         exCounter2=1;
@@ -148,17 +147,141 @@ function get_class_table(link)
         module_type = response['Class']['ModuleType'];
         classId = response['Class']['ClassId'];
         type_of_table = response['table_type'];
-        var table = $('div#table-content-wrapper');
+        var table = $('div#TEMPORARY');
         table.empty();
         if (response['table_type'] == "main_table")
         {
             if (response['Class']['ModuleType'] == "Lec")
             {
-             table.html("<input type='hidden' id='tableType' value='Lec'>\
-                          <div class='row'>\
+            // 'Lecture table' please edit classes for responsive //
+            var midterm_cols = 13,mid_cs_cols = 4;
+            var mid_assign_cols,mid_assign_header_str = "",mid_assign_items_str = "",mid_assign_score_str = [];
+            var mid_sw_cols,mid_sw_header_str = "",mid_sw_items_str = "",mid_sw_score_str = [];
+            var mid_ex_cols,mid_ex_header_str = "",mid_ex_items_str = "",mid_ex_score_str = [];
+            var mid_rec_cols,mid_rec_header_str = "",mid_rec_items_str = "",mid_rec_score_str = [];
+
+            /*ASSIGN MIDTERM STRING INITIALIZATION*/
+            if (response['assign_mid_num'] > 0)
+            {
+                midterm_cols += response['assign_mid_num'];
+                mid_cs_cols += response['assign_mid_num'];
+                mid_assign_cols = response['assign_mid_num'];
+                assignCounter1 = response['assign_mid_num'];
+            }
+            else 
+            {
+                midterm_cols++;
+                mid_cs_cols++;
+                mid_assign_cols = 1;
+                assignCounter1 = 1;
+            }
+            
+            if (mid_assign_cols > 0)
+            {
+                for (var i = 0; i <  mid_assign_cols; i++) 
+                {
+                    mid_assign_header_str += "<th class='text-center' id='table-header-mid-assign"+(i+1)+"'>Assign "+(i+1)+" </th>";
+                }
+            }
+            
+            if (response['assign_mid_items'].length > 0)
+            {
+                for (var i = 0; i <  mid_assign_cols; i++) 
+                {
+                    mid_assign_items_str += "<td contenteditable='true' id='table-items-mid-assign"+(i+1)+"'>"+response['assign_mid_items'][i]+"</td>";
+                }
+            }
+            else
+            {
+                mid_assign_items_str = "<td contenteditable='true' id='table-items-mid-assign1'></td>";
+            }
+
+            if (response['assign_mid_score'].length > 0)
+            {
+                var x_assign_mid = 0;
+                response.assign_mid_score.forEach(function(assign){
+                    for (var i = 0; i <  mid_assign_cols; i++) 
+                    {
+                        mid_assign_score_str[x_assign_mid] += "<td contenteditable='true' id='table-score-mid-assign"+(i+1)+"'>"+assign[i]+"</td>";
+                    }
+                    x_assign_mid++;
+                });
+            }
+            else
+            {
+                var x_assign_mid = 0;
+                response.Student.forEach(function(assign){
+                    for (var i = 0; i <  mid_assign_cols; i++) 
+                    {
+                        mid_assign_score_str[x_assign_mid] += "<td contenteditable='true' id='table-score-mid-assign"+(i+1)+"'></td>";
+                    }
+                    x_assign_mid++;
+                });
+            }
+
+            /*SW MIDTERM STRING INITIALIZATION*/
+            if (response['sw_mid_num'] > 0)
+            {
+                midterm_cols += response['sw_mid_num'];
+                mid_cs_cols += response['sw_mid_num'];
+                mid_sw_cols = response['sw_mid_num'];
+                swCounter1 = response['sw_mid_num'];
+            }
+            else 
+            {
+                midterm_cols++;
+                mid_cs_cols++;
+                mid_sw_cols = 1;
+                swCounter1 = 1;
+            }
+
+            if (mid_sw_cols > 0)
+            {
+                for (var i = 0; i <  mid_sw_cols; i++) 
+                {
+                    mid_sw_header_str += "<th class='text-center' id='table-header-mid-sw"+(i+1)+"'>Sw "+(i+1)+" </th>";
+                }
+            }
+
+            if (response['sw_mid_items'].length > 0)
+            {
+                for (var i = 0; i <  mid_sw_cols; i++) 
+                {
+                    mid_sw_items_str += "<td contenteditable='true' id='table-items-mid-sw"+(i+1)+"'>"+response['sw_mid_items'][i]+"</td>";
+                }
+            }
+            else
+            {
+                mid_sw_items_str = "<td contenteditable='true' id='table-items-mid-sw1'></td>";
+            }
+
+            if (response['sw_mid_score'].length > 0)
+            {
+                var x_sw_mid = 0;
+                response.sw_mid_score.forEach(function(sw){
+                    for (var i = 0; i <  mid_sw_cols; i++) 
+                    {
+                        mid_sw_score_str[x_sw_mid] += "<td contenteditable='true' id='table-score-mid-sw"+(i+1)+"'>"+sw[i]+"</td>";
+                    }
+                    x_sw_mid++;
+                });
+            }
+            else
+            {
+                var x_sw_mid = 0;
+                response.Student.forEach(function(sw){
+                    for (var i = 0; i <  mid_sw_cols; i++) 
+                    {
+                        mid_sw_score_str[x_sw_mid] += "<td contenteditable='true' id='table-score-mid-sw"+(i+1)+"'></td>";
+                    }
+                    x_sw_mid++;
+                });
+            }
+
+            table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
@@ -169,14 +292,14 @@ function get_class_table(link)
                                         <tr>\
                                             <tr>\
                                                 <th colspan='2' id='table-blank'></th>\
-                                                <th colspan='15' class='text-center' id='table-midterm'>Midterm</th>\
+                                                <th colspan='"+midterm_cols+"' class='text-center' id='table-midterm'>Midterm</th>\
                                                 <th colspan='15' class='text-center' id='table-finals'>Finals</th>\
                                             </tr>\
                                             <tr>\
                                                 <th class='text-center' id='table-student'>Student Number</th>\
                                                 <th class='text-center' id='table-name'>Name</th>\
                                                 <th rowspan='2' class='text-center' id='attendance'>ATTENDANCE</th>\
-                                                <th colspan='6' class='text-center' id='table-mid-class-standing'>CLASS STANDING (20%)</th>\
+                                                <th colspan='"+mid_cs_cols+"' class='text-center' id='table-mid-class-standing'>CLASS STANDING (20%)</th>\
                                                 <th colspan='4' class='text-center' id='table-mid-quiz-le'>QUIZZES/LONG EXAM (30%)</th>\
                                                 <th colspan='2' class='text-center'>MIDTERM EXAM (40%)</th>\
                                                 <th colspan='2' class='text-center' id='border-bold'>MIDTERM GRADE</th>\
@@ -188,8 +311,8 @@ function get_class_table(link)
                                             </tr>\
                                             <tr>\
                                                 <th class='text-center' colspan='2' id='table-blank2'></th>\
-                                                <th class='text-center' colspan='1' id='table-mid-assign'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-assign-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='1' id='table-mid-sw'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-sw-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='"+mid_assign_cols+"' id='table-mid-assign'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-assign-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='"+mid_sw_cols+"' id='table-mid-sw'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-sw-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th class='text-center' colspan='1' id='table-mid-ex'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-ex-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th class='text-center' colspan='1' id='table-mid-rec'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-rec-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
@@ -219,9 +342,7 @@ function get_class_table(link)
                                             </tr>\
                                             <tr id='table-module'>\
                                                 <th colspan='2' id='table-blank2'></th>\
-                                                <th class='text-center' id='table-header-mid-att1'>10%</th>\
-                                                <th class='text-center' id='table-header-mid-assign1'>Assign 1 </th>\
-                                                <th class='text-center' id='table-header-mid-sw1'>Sw 1</th>\
+                                                <th class='text-center' id='table-header-mid-att1'>10%</th>"+mid_assign_header_str+mid_sw_header_str+"\
                                                 <th class='text-center' id='table-header-mid-ex1'>Ex 1</th>\
                                                 <th class='text-center' id='table-header-mid-rec1'>Rec 1</th>\
                                                 <th class='text-center' id='table-header-mid-cs-total'>Total</th>\
@@ -242,36 +363,34 @@ function get_class_table(link)
                                                 <th class='text-center' id='table-header-final-ql-total'>Total</th>\
                                                 <th class='text-center' id='table-header-final-ql-rating'>30%</th>\
                                             </tr>\
-                                            <tr class='num-items'>\
+                                            <tr>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                <td contenteditable='false' class='table-items-att-mid' id='table-items-mid-att1'></td>\
-                                                <td contenteditable='true' class='table-items-assign-mid' id='table-items-mid-assign1'></td>\
-                                                <td contenteditable='true' class='table-items-seatwork-mid' id='table-items-mid-sw1'></td>\
-                                                <td contenteditable='true' class='table-items-exercise-mid' id='table-items-mid-ex1'></td>\
-                                                <td contenteditable='true' class='table-items-recitation-mid' id='table-items-mid-rec1'></td>\
-                                                <td contenteditable='false' class='table-items-standing-total-mid' id='table-items-mid-cs-total'></td>\
-                                                <td contenteditable='false' class='table-items-standing-percent-mid' id='table-items-mid-cs-rating'></td>\
-                                                <td contenteditable='true' class='table-items-quiz-mid' id='table-items-mid-quiz1'></td>\
-                                                <td contenteditable='true' class='table-items-longExam-mid' id='table-items-mid-le1'></td>\
-                                                <td contenteditable='false' class='table-items-quiz-longExam-total-mid' id='table-items-mid-ql-total'></td>\
-                                                <td contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-items-mid-ql-rating'></td>\
-                                                <td contenteditable='true' class='table-items-midterm-grade' id='table-items-mid-mexam'></td>\
-                                                <td contenteditable='false' class='table-items-midterm-rating' id='table-items-mid-mexam-rating'></td>\
+                                                <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+"\
+                                                <td contenteditable='true' id='table-items-mid-ex1'></td>\
+                                                <td contenteditable='true' id='table-items-mid-rec1'></td>\
+                                                <td contenteditable='false' id='table-items-mid-cs-total'></td>\
+                                                <td contenteditable='false' id='table-items-mid-cs-rating'></td>\
+                                                <td contenteditable='true' id='table-items-mid-quiz1'></td>\
+                                                <td contenteditable='true' id='table-items-mid-le1'></td>\
+                                                <td contenteditable='false' id='table-items-mid-ql-total'></td>\
+                                                <td contenteditable='false' id='table-items-mid-ql-rating'></td>\
+                                                <td contenteditable='true' id='table-items-mid-mexam'></td>\
+                                                <td contenteditable='false' id='table-items-mexam-rating'></td>\
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='false' id='border-bold'></td>\
-                                                <td contenteditable='false' class='table-items-att-finals' id='table-items-final-att1'></td>\
-                                                <td contenteditable='true' class='table-items-assign-finals' id='table-items-final-assign1'></td>\
-                                                <td contenteditable='true' class='table-items-seatwork-finals' id='table-items-final-sw1'></td>\
-                                                <td contenteditable='true' class='table-items-exercise-finals' id='table-items-final-ex1'></td>\
-                                                <td contenteditable='true' class='table-items-recitation-finals' id='table-items-final-rec1'></td>\
-                                                <td contenteditable='false' class='table-items-standing-total-finals' id='table-items-final-cs-total'></td>\
-                                                <td contenteditable='false' class='table-items-standing-percent-finals' id='table-items-final-cs-rating'></td>\
-                                                <td contenteditable='true' class='table-items-quiz-finals' id='table-items-final-quiz1'></td>\
-                                                <td contenteditable='true' class='table-items-longExam-finals' id='table-items-final-le1'></td>\
-                                                <td contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-items-final-ql-total'></td>\
-                                                <td contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-items-final-ql-rating'></td>\
-                                                <td contenteditable='true' class='table-items-finals-grade' id='table-items-final-mexam'></td>\
-                                                <td contenteditable='false' class='table-items-finals-rating' id='table-items-final-mexam-rating'></td>\
+                                                <td contenteditable='false' id='table-items-final-att1'></td>\
+                                                <td contenteditable='true' id='table-items-final-assign1'></td>\
+                                                <td contenteditable='true' id='table-items-final-sw1'></td>\
+                                                <td contenteditable='true' id='table-items-final-ex1'></td>\
+                                                <td contenteditable='true' id='table-items-final-rec1'></td>\
+                                                <td contenteditable='false' id='table-items-final-cs-total'></td>\
+                                                <td contenteditable='false' id='table-items-final-cs-rating'></td>\
+                                                <td contenteditable='true' id='table-items-final-quiz1'></td>\
+                                                <td contenteditable='true' id='table-items-final-le1'></td>\
+                                                <td contenteditable='false' id='table-items-final-ql-total'></td>\
+                                                <td contenteditable='false' id='table-items-final-ql-rating'></td>\
+                                                <td contenteditable='true' id='table-items-final-fexam'></td>\
+                                                <td contenteditable='false' id='table-items-fexam-rating'></td>\
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='false'></td>\
                                             </tr>\
@@ -279,43 +398,44 @@ function get_class_table(link)
                                     </table>\
                                 </div>\
                                 <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
                       </div>");
+            var ctr_module = 0;
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr class='stud-record "+stud.stud_num+"'><td id='border-left' name='stud-num' class='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name' class='stud-name'>"+stud.full_name+"</td>\
-                                            <td contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'></td>\
-                                            <td contenteditable='true' class='table-items-assign-mid' id='table-score-mid-assign1'></td>\
-                                            <td contenteditable='true' class='table-items-seatwork-mid' id='table-score-mid-sw1'></td>\
-                                            <td contenteditable='true' class='table-items-exercise-mid' id='table-score-mid-ex1'></td>\
-                                            <td contenteditable='true' class='table-items-recitation-mid' id='table-score-mid-rec1'></td>\
-                                            <td contenteditable='false' class='table-items-standing-total-mid' ></td>\
-                                            <td contenteditable='false' class='table-items-standing-percent-mid'></td>\
-                                            <td contenteditable='true' class='table-items-quiz-mid' id='table-score-mid-quiz1'></td>\
-                                            <td contenteditable='true' class='table-items-longExam-mid' id='table-score-mid-le1'></td>\
-                                            <td contenteditable='false' class='table-items-quiz-longExam-total-mid'></td>\
-                                            <td contenteditable='false' class='table-items-quiz-longExam-percent-mid' ></td>\
-                                            <td contenteditable='true' class='table-items-midterm-grade' id='table-score-mid-mexam'></td>\
-                                            <td contenteditable='false' class='table-items-midterm-rating' ></td>\
+              $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td contenteditable='false' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+"\
+                                            <td contenteditable='true' id='table-score-mid-ex1'></td>\
+                                            <td contenteditable='true' id='table-score-mid-rec1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-mid-quiz1'></td>\
+                                            <td contenteditable='true' id='table-score-mid-le1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-mid-mexam'></td>\
+                                            <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false' id='border-bold'></td>\
-                                            <td contenteditable='false' class='table-items-att-finals' id='table-score-final-att1'></td>\
-                                            <td contenteditable='true' class='table-items-assign-finals' id='table-score-final-assign1'></td>\
-                                            <td contenteditable='true' class='table-items-seatwork-finals' id='table-score-final-sw1'></td>\
-                                            <td contenteditable='true' class='table-items-exercise-finals' id='table-score-final-ex1'></td>\
-                                            <td contenteditable='true' class='table-items-recitation-finals' id='table-score-final-rec1'></td>\
-                                            <td contenteditable='false' class='table-items-standing-total-finals' ></td>\
-                                            <td contenteditable='false' class='table-items-standing-percent-finals'></td>\
-                                            <td contenteditable='true' class='table-items-quiz-finals' id='table-score-final-quiz1'></td>\
-                                            <td contenteditable='true' class='table-items-longExam-finals' id='table-score-final-le1'></td>\
-                                            <td contenteditable='false' class='table-items-quiz-longExam-total-finals'></td>\
-                                            <td contenteditable='false' class='table-items-quiz-longExam-percent-finals' ></td>\
-                                            <td contenteditable='true' class='table-items-finals-grade' id='table-score-final-mexam'></td>\
-                                            <td contenteditable='false' class='table-items-finals-rating' ></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-assign1'></td>\
+                                            <td contenteditable='true' id='table-score-final-sw1'></td>\
+                                            <td contenteditable='true' id='table-score-final-ex1'></td>\
+                                            <td contenteditable='true' id='table-score-final-rec1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-quiz1'></td>\
+                                            <td contenteditable='true' id='table-score-final-le1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-fexam'></td>\
+                                            <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
-                });
+                ctr_module++;
+            });
             $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
             else
@@ -361,8 +481,8 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-header-mid-proj1'>Proj 1</th>\
                                                     <th class='text-center' id='table-header-mid-proj-total'>Total</th>\
                                                     <th class='text-center' id='table-header-mid-proj-rating'>30%</th>\
-                                                    <th class='text-center' class='table-items-midterm-grade' id='table-header-mid-overall-rating'>100%</th>\
-                                                    <th id='border-bold' class='table-items-midterm-rating' id='table-header-mid-overall-grade' class='text-center'>Rating</th>\
+                                                    <th class='text-center' id='table-header-mid-overall-rating'>100%</th>\
+                                                    <th id='border-bold' id='table-header-mid-overall-grade' class='text-center'>Rating</th>\
                                                     <th class='text-center' id='table-header-final-lab1'>Lab 1</th>\
                                                     <th class='text-center' id='table-header-final-lab-total'>Total</th>\
                                                     <th class='text-center' id='table-header-final-lab-rating'>45%</th>\
@@ -372,31 +492,31 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-header-final-proj1'>Proj 1</th>\
                                                     <th class='text-center' id='table-header-final-proj-total'>Total</th>\
                                                     <th class='text-center' id='table-header-final-proj-rating'>30%</th>\
-                                                    <th class='text-center' class='table-items-finals-grade' id='table-header-final-overall-rating'>100%</th>\
-                                                    <th id='border-bold' class='table-items-finals-rating' id='table-header-final-overall-grade' class='text-center'>Rating</th>\
+                                                    <th class='text-center' id='table-header-final-overall-rating'>100%</th>\
+                                                    <th id='border-bold' id='table-header-final-overall-grade' class='text-center'>Rating</th>\
                                                 </tr>\
                                                 <tr id='table-items-wrapper' class='fixed-width'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                    <td contenteditable='true' class='table-items-lab-mid' id='table-items-mid-lab1'></td>\
-                                                    <td contenteditable='false' class='table-items-lab-total-mid' id='table-items-mid-lab-total'></td>\
-                                                    <td contenteditable='false' class='table-items-lab-percent-mid' id='table-items-mid-lab-rating'></td>\
-                                                    <td contenteditable='true' class='table-items-prac-mid' id='table-items-mid-prac1'></td>\
-                                                    <td contenteditable='false' class='table-items-prac-total-mid' id='table-items-mid-prac-total'></td>\
-                                                    <td contenteditable='false' class='table-items-prac-percent-mid' id='table-items-mid-prac-rating'></td>\
-                                                    <td contenteditable='true' class='table-items-proj-mid' id='table-items-mid-proj1'></td>\
-                                                    <td contenteditable='false' class='table-items-proj-total-mid' id='table-items-mid-proj-total'></td>\
-                                                    <td contenteditable='false' class='table-items-proj-percent-mid' id='table-items-mid-proj-rating'></td>\
+                                                    <td contenteditable='true' id='table-items-mid-lab1'></td>\
+                                                    <td contenteditable='false' id='table-items-mid-lb-total'></td>\
+                                                    <td contenteditable='false' id='table-items-mid-lb-rating'></td>\
+                                                    <td contenteditable='true' id='table-items-mid-prac1'></td>\
+                                                    <td contenteditable='false' id='table-items-mid-prc-total'></td>\
+                                                    <td contenteditable='false' id='table-items-mid-prc-rating'></td>\
+                                                    <td contenteditable='true' id='table-items-mid-proj1'></td>\
+                                                    <td contenteditable='false' id='table-items-mid-prj-total'></td>\
+                                                    <td contenteditable='false' id='table-items-mid-prj-rating'></td>\
                                                     <td contenteditable='false'></td>\
                                                     <td id='border-bold' contenteditable='false'></td>\
-                                                    <td contenteditable='true' class='table-items-lab-finals' id='table-items-final-lab1'></td>\
-                                                    <td contenteditable='false' class='table-items-lab-total-finals' id='table-items-final-lab-total'></td>\
-                                                    <td contenteditable='false' class='table-items-lab-percent-finals' id='table-items-final-lab-rating'></td>\
-                                                    <td contenteditable='true' class='table-items-prac-finals' id='table-items-finals-prac1'></td>\
-                                                    <td contenteditable='false' class='table-items-prac-total-finals' id='table-items-final-prac-total'></td>\
-                                                    <td contenteditable='false' class='table-items-prac-percent-finals' id='table-items-final-prac-rating'></td>\
-                                                    <td contenteditable='true' class='table-items-proj-finals' id='table-items-final-proj1'></td>\
-                                                    <td contenteditable='false' class='table-items-proj-total-finals' id='table-items-final-proj-total'></td>\
-                                                    <td contenteditable='false' class='table-items-proj-percent-finals' id='table-items-final-proj-rating'></td>\
+                                                    <td contenteditable='true' id='table-items-final-lab1'></td>\
+                                                    <td contenteditable='false' id='table-items-final-lb-total'></td>\
+                                                    <td contenteditable='false' id='table-items-final-lb-rating'></td>\
+                                                    <td contenteditable='true' id='table-items-final-prac1'></td>\
+                                                    <td contenteditable='false' id='table-items-final-prc-total'></td>\
+                                                    <td contenteditable='false' id='table-items-final-prc-rating'></td>\
+                                                    <td contenteditable='true' id='table-items-final-proj1'></td>\
+                                                    <td contenteditable='false' id='table-items-final-prj-total'></td>\
+                                                    <td contenteditable='false' id='table-items-final-prj-rating'></td>\
                                                     <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                 </tr>\
@@ -404,34 +524,35 @@ function get_class_table(link)
                                     </table>\
                                 </div>\
                                 <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr class='stud-record "+stud.stud_num+"'><td id='border-left' name='stud-num' class='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name' class='stud-name'>"+stud.full_name+"</td>\
-                                            <td contenteditable='true' class='table-items-lab-mid' id='table-score-mid-lab1'></td>\
-                                            <td contenteditable='false' class='table-items-lab-total-mid'></td>\
-                                            <td contenteditable='false' class='table-items-lab-percent-mid'></td>\
-                                            <td contenteditable='true' class='table-items-prac-mid' id='table-score-mid-prac1'></td>\
-                                            <td contenteditable='false' class='table-items-prac-total-mid'></td>\
-                                            <td contenteditable='false' class='table-items-prac-percent-mid'></td>\
-                                            <td contenteditable='true' class='table-items-proj-mid' id='table-score-mid-proj1'></td>\
-                                            <td contenteditable='false' class='table-items-proj-total-mid'></td>\
-                                            <td contenteditable='false' class='table-items-proj-percent-mid'></td>\
-                                            <td contenteditable='false' class='table-items-midterm-grade'></td>\
-                                            <td id='border-bold' contenteditable='false' class='table-items-midterm-rating'></td>\
-                                            <td contenteditable='true' class='table-items-lab-finals' id='table-score-final-lab1'></td>\
-                                            <td contenteditable='false' class='table-items-lab-total-finals'></td>\
-                                            <td contenteditable='false' class='table-items-lab-percent-finals'></td>\
-                                            <td contenteditable='true' class='table-items-prac-finals' id='table-score-final-prac1'></td>\
-                                            <td contenteditable='false' class='table-items-prac-total-finals'></td>\
-                                            <td contenteditable='false' class='table-items-prac-percent-finals'></td>\
-                                            <td contenteditable='true' class='table-items-proj-finals' id='table-score-final-proj1'></td>\
-                                            <td contenteditable='false' class='table-items-proj-total-finals'></td>\
-                                            <td contenteditable='false' class='table-items-proj-percent-finals'></td>\
-                                            <td contenteditable='false' class='table-items-finals-grade'></td>\
-                                            <td contenteditable='false' class='table-items-finals-rating'></td></tr>");
+              $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td contenteditable='true' id='table-score-mid-lab1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-mid-prac1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-mid-proj1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td id='border-bold' contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-lab1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-prac1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-proj1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td></tr>");
                 });
             $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
@@ -439,10 +560,12 @@ function get_class_table(link)
         else if (response['table_type'] == "attendance_table")
         {
             // 'Attendance table' please edit classes for responsive //
+            module_type = "attendance";
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
+                          </span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -451,36 +574,37 @@ function get_class_table(link)
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                             <tr>\
                                                 <tr>\
-                                                    <th colspan='2' id='border-bold'></th>\
+                                                    <th colspan='2' id='border-bold' class='border-left'></th>\
                                                     <th colspan='3' class='text-center' id='table-mid-att'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='3' class='text-center' id='table-final-att'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 </tr>\
                                                 <tr id='table-module'>\
-                                                    <th class='text-center' >Name</th>\
-                                                    <th class='text-center' id='border-bold'>Student Number</th>\
-                                                    <th class='fixed-width' class='stud-att-date-midterm' id='table-header-mid-att1' contenteditable='true'>Att 1</th>\
-                                                    <th class='text-center' class='stud-att-total-midterm'>Total</th>\
-                                                    <th class='text-center' class='stud-att-10p-midterm'>10%</th>\
-                                                    <th class='fixed-width' class='stud-att-date-finals' id='table-header-final-att1' contenteditable='true'>Att 1</th>\
-                                                    <th class='text-center' class='stud-att-total-finals'>Total</th>\
-                                                    <th class='text-center' class='stud-att-10p-finals'>10%</th>\
+                                                    <th class='text-center border-left'>Student Number</th>\
+                                                    <th class='text-center' id='border-bold'>Name</th>\
+                                                    <th class='fixed-width' class='text-center' id='table-header-mid-att1' contenteditable='true'>Att 1</th>\
+                                                    <th class='text-center'>Total</th>\
+                                                    <th class='text-center'>10%</th>\
+                                                    <th class='fixed-width' class='text-center' id='table-header-final-att1' contenteditable='true'>Att 1</th>\
+                                                    <th class='text-center'>Total</th>\
+                                                    <th class='text-center'>10%</th>\
                                                 </tr>\
                                             </tr>\
                                         </table>\
                                     </div>\
                                     <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                    <script type='text/javascript' src='/js/table.js'></script>\
                                 </div>\
                         </div>\
                       </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr class='stud-record "+stud.stud_num+"'><td id='border-left' name='stud-num' class='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name' class='stud-name'>"+stud.full_name+"</td>\
-                                            <td contenteditable='true' class='stud-att-date-midterm' id='table-score-mid-att1'></td>\
-                                            <td contenteditable='false' class='stud-att-total-midterm'></td>\
-                                            <td contenteditable='false' class='stud-att-10p-midterm'></td>\
-                                            <td contenteditable='true' class='stud-att-date-finals' id='table-score-final-att1'></td>\
-                                            <td contenteditable='false' class='stud-att-total-finals'></td>\
-                                            <td contenteditable='false' class='stud-att-10p-finals'></td></tr>");
+              $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td class='fixed-width' contenteditable='true' id='table-score-mid-att1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td class='fixed-width' contenteditable='true' id='table-score-final-att1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td></tr>");
                 });
         }
         else if (response['table_type'] == "final_table")
@@ -493,13 +617,13 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class='container-fluid'>\
-                                    <div class='table-responsive' id='table-final'>\
+                                <div class=container-fluid>\
+                                    <div class=table-responsive>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                                 <tr>\
                                                     <tr>\
-                                                        <th class='text-center' id='border-left'>Student Number</th>\
-                                                        <th class='text-center' id='border-bold'>Name</th>\
+                                                        <th class='text-center'>Student Number</th>\
+                                                        <th class='text-center'>Name</th>\
                                                         <th class='text-center'>Midterm Grade</th>\
                                                         <th class='text-center'>Final Grade</th>\
                                                         <th class='text-center'>Grade</th>\
@@ -512,11 +636,11 @@ function get_class_table(link)
                             </div>\
                         </div>");
             response.Student.forEach(function(stud){
-              $('table tbody').append("  <tr><td class='table-student-number' id='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td class='table-student-name' id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='table-student-midterm' contenteditable='false'></td>\
-                                            <td class='table-student-finals' contenteditable='false'></td>\
-                                            <td class='table-student-grade' contenteditable='false'></td></tr>");
+              $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
+                                            <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td></tr>");
                 });
         }
 
@@ -646,33 +770,49 @@ function setModuleCounter(label,newCounter)
     else if (label == "attCounter2") attCounter2 = newCounter;
 }
 
-function get_class_name(label,label_num,term)
+function get_col_pos(label,term,type)
 {
-    if (term == "mid")
+    if (type == "module_num")
     {
-        if (label == "Assign") return "table-items-assign-mid";
-        else if (label == "Sw") return "table-items-seatwork-mid";
-        else if (label == "Ex") return "table-items-exercise-mid";
-        else if(label == "Rec") return "table-items-recitation-mid";
-        else if(label == "Quiz") return "table-items-quiz-mid";
-        else if(label == "Le") return "table-items-longExam-mid";
-        else if (label == "Lab") return "table-items-lab-mid";
-        else if (label == "Prac") return "table-items-prac-mid";
-        else if (label == "Proj") return "table-items-proj-mid";
-        else if (label == "Att") return "stud-att-date-midterm"
-    } 
-    else if (term == "final")
+        if (term == "midterm")
+        {
+            if (label == "Assign") return "sw1-score-col";
+            else if (label == "Sw") return "ex1-score-col";
+            else if (label == "Ex") return "rec1-score-col";
+            else if(label == "Rec") return "cs1-total-col";
+            else if(label == "Quiz") return "le1-score-col";
+            else if(label == "Le") return "ql1-total-col";
+        } 
+        else if (term == "finals")
+        {
+            if (label == "Assign") return "sw2-score-col";
+            else if (label == "Sw") return "ex2-score-col";
+            else if (label == "Ex") return "rec2-score-col";
+            else if(label == "Rec") return "cs2-total-col";
+            else if(label == "Quiz") return "le2-score-col";
+            else if(label == "Le") return "ql2-total-col";
+        }
+    }
+    else if (type == "module_items")
     {
-        if (label == "Assign") return "table-items-assign-finals";
-        else if (label == "Sw") return "table-items-seatwork-finals";
-        else if (label == "Ex") return "table-items-exercise-finals";
-        else if(label == "Rec") return "table-items-recitation-finals";
-        else if(label == "Quiz") return "table-items-quiz-finals";
-        else if(label == "Le") return "table-items-longExam-finals";
-        else if (label == "Lab") return "table-items-lab-finals";
-        else if (label == "Prac") return "table-items-prac-finals";
-        else if (label == "Proj") return "table-items-proj-finals";
-        else if (label == "Att") return "stud-att-date-finals"
+        if (term == "midterm")
+        {
+            if (label == "Assign") return "table-items-sw1";
+            else if (label == "Sw") return "table-items-ex1";
+            else if (label == "Ex") return "table-items-rec1";
+            else if(label == "Rec") return "table-items-cs1";
+            else if(label == "Quiz") return "table-items-le1";
+            else if(label == "Le") return "table-items-ql1";
+        } 
+        else if (term == "finals")
+        {
+            if (label == "Assign") return "table-items-sw2";
+            else if (label == "Sw") return "table-items-ex2";
+            else if (label == "Ex") return "table-items-rec2";
+            else if(label == "Rec") return "table-items-cs2";
+            else if(label == "Quiz") return "table-items-le2";
+            else if(label == "Le") return "table-items-ql2";
+        }
     }
 }
 
@@ -729,11 +869,9 @@ function add_column(parent)
                 newScore = array[0]+"-score-"+array[1]+"-"+module+counter;
             });
 
-            var class_name = get_class_name(label,label_num,term);
-
             $("#"+parentId+"-button-del").css('display', 'inline-block');
-            $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' class='"+class_name+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' class='"+class_name+"' contenteditable='true'></td>"));
+            $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));
+            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 15 column is allowed on this table.");
         return;
@@ -773,13 +911,10 @@ function add_column(parent)
                     $(this).attr('colspan',term_span);
                 });
             }
-
-            var class_name = get_class_name(label,label_num,term);
-
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+items).after($("<td id='"+newItems+"' class='"+class_name+"' contenteditable='true'></td>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' class='"+class_name+"' contenteditable='true'></td>"));
+            $("tr td#"+items).after($("<td id='"+newItems+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
     }
@@ -864,12 +999,10 @@ function add_column(parent)
                 });
             }
 
-            var class_name = get_class_name(label,label_num,term);
-
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+items).after($("<td id='"+newItems+"' class='"+class_name+"' contenteditable='true'></td>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' class='"+class_name+"' contenteditable='true'></td>"));
+            $("tr td#"+items).after($("<td id='"+newItems+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
     }
