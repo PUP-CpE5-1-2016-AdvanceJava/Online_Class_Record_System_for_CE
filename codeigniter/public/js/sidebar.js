@@ -286,10 +286,10 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class='container-fluid' id='outer'>\
-                                <div class='table-responsive' id='inner'>\
+                                <div class='container-fluid'>\
+                                <div class='table-responsive'  id='table-lec'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
-                                        <tr>\
+                                        <thead>\
                                             <tr>\
                                                 <th colspan='2' id='table-blank'></th>\
                                                 <th colspan='"+midterm_cols+"' class='text-center' id='table-midterm'>Midterm</th>\
@@ -363,7 +363,13 @@ function get_class_table(link)
                                                 <th class='text-center' id='table-header-final-ql-total'>Total</th>\
                                                 <th class='text-center' id='table-header-final-ql-rating'>30%</th>\
                                             </tr>\
+<<<<<<< HEAD
                                             <tr>\
+=======
+                                        </thead>\
+                                        <tbody>\
+                                            <tr class='num-items'>\
+>>>>>>> 7789a449ddbc0d06de6d94f17d5ac86130ef9883
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                 <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+"\
                                                 <td contenteditable='true' id='table-items-mid-ex1'></td>\
@@ -394,10 +400,10 @@ function get_class_table(link)
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='false'></td>\
                                             </tr>\
-                                        </tr>\
+                                        </tbody>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/tooltip_lec.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
@@ -434,9 +440,14 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
+<<<<<<< HEAD
                 ctr_module++;
             });
             $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
+=======
+                });
+            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_lec.js'></script>");
+>>>>>>> 7789a449ddbc0d06de6d94f17d5ac86130ef9883
             }
             else
             {
@@ -449,10 +460,10 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class='container-fluid' id='outer'>\
-                                <div class='table-responsive' id='inner'>\
+                                <div class='container-fluid'>\
+                                <div class='table-responsive'  id='table-lab'>\
                                     <table class='table table-striped table-bordered' id='table-wrapper'>\
-                                            <tr>\
+                                            <thead>\
                                                 <tr>\
                                                     <th colspan='2' id='table-blank'></th>\
                                                     <th colspan='11' id='table-midterm' class='text-center'>Midterms</th>\
@@ -495,6 +506,8 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-header-final-overall-rating'>100%</th>\
                                                     <th id='border-bold' id='table-header-final-overall-grade' class='text-center'>Rating</th>\
                                                 </tr>\
+                                                </thead>\
+                                                <tbody>\
                                                 <tr id='table-items-wrapper' class='fixed-width'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                     <td contenteditable='true' id='table-items-mid-lab1'></td>\
@@ -520,10 +533,10 @@ function get_class_table(link)
                                                     <td contenteditable='false'></td>\
                                                     <td contenteditable='false'></td>\
                                                 </tr>\
-                                            </tr>\
+                                            </tbody>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                <script type='text/javascript' src='/js/tooltip_lab.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>\
                             </div>\
                         </div>\
@@ -554,7 +567,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
+            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_lab.js'></script>");
             }
         }
         else if (response['table_type'] == "attendance_table")
@@ -570,9 +583,9 @@ function get_class_table(link)
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
                                 <div class='container-fluid'>\
-                                    <div class='table-responsive'>\
+                                    <div class='table-responsive'  id='table-attend'>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
-                                            <tr>\
+                                            <thead>\
                                                 <tr>\
                                                     <th colspan='2' id='border-bold' class='border-left'></th>\
                                                     <th colspan='3' class='text-center' id='table-mid-att'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
@@ -588,11 +601,17 @@ function get_class_table(link)
                                                     <th class='text-center'>Total</th>\
                                                     <th class='text-center'>10%</th>\
                                                 </tr>\
-                                            </tr>\
+                                            </thead>\
+                                            <tbody>\
+                                            </tbody>\
                                         </table>\
                                     </div>\
+<<<<<<< HEAD
                                     <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                     <script type='text/javascript' src='/js/table.js'></script>\
+=======
+                                    <script type='text/javascript' src='/js/tooltip_attendance.js'></script>\
+>>>>>>> 7789a449ddbc0d06de6d94f17d5ac86130ef9883
                                 </div>\
                         </div>\
                       </div>");
@@ -606,6 +625,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
+               $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltip_attendance.js'></script>");
         }
         else if (response['table_type'] == "final_table")
         {
