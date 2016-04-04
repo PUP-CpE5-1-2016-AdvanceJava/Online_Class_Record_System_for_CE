@@ -270,7 +270,7 @@ class User extends CI_Controller
 			if ($this->session->userdata('Id')!="")
 	    	{
 				$this->load->view('templates/header',$user);
-				$this->load->view('pages/settings',$data);
+				$this->load->view('pages/faculty_settings_page',$data);
 				$this->load->view('templates/footer');
 			}
 			else 
@@ -286,7 +286,7 @@ class User extends CI_Controller
 	    	{
 	    		//to go in the settings tab
 				$this->load->view('templates/header',$user);
-				$this->load->view('pages/settings',$data);
+				$this->load->view('pages/faculty_settings_page',$data);
 				$this->load->view('templates/footer');
 			}
 			else 
