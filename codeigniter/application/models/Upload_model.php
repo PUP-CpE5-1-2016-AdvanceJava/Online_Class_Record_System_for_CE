@@ -70,6 +70,7 @@ class Upload_model extends CI_Model {
 
 		$init_att = false; $init_assign = false; $init_sw = false; $init_ex= false; $init_rec = false; $init_quiz = false; $init_le = false; $init_mexam = false; $init_fexam = false;
 		$init_lab = false; $init_prac = false; $init_proj = false;
+	
 		for ($c=0; $c < $count; $c+=2) 
 		{ 	
 			//---block of code for getting first;middle and last name---//
@@ -102,51 +103,51 @@ class Upload_model extends CI_Model {
 			$this->db->insert('students',$student);
 			//get student id and insert to 'grades table'
 			$stud_id = $this->db->insert_id();
-			$grades_id = $this->Grades_model->init_grades($stud_id);
+			$this->Grades_model->init_grades($stud_id);
 			//know the module to be used 'Lec' or 'Lab'
 			//if 'Lec'
 			if ($module == 'Lec')
 			{
 				if ($init_att == false)
 					//insert att
-					$init_att = $this->Grades_model->init_att($grades_id,$num_students);
+					$init_att = $this->Grades_model->init_att($stud_id,$num_students);
 				if ($init_assign == false)
 					//insert assign
-					$init_assign = $this->Grades_model->init_assign($grades_id,$num_students);
+					$init_assign = $this->Grades_model->init_assign($stud_id,$num_students);
 				if ($init_sw == false)
 					//insert sw
-					$init_sw = $this->Grades_model->init_sw($grades_id,$num_students);
+					$init_sw = $this->Grades_model->init_sw($stud_id,$num_students);
 				if ($init_ex == false)
 					//insert ex
-					$init_ex = $this->Grades_model->init_ex($grades_id,$num_students);
+					$init_ex = $this->Grades_model->init_ex($stud_id,$num_students);
 				if ($init_rec == false)
 					//insert rec
-					$init_rec = $this->Grades_model->init_rec($grades_id,$num_students);
+					$init_rec = $this->Grades_model->init_rec($stud_id,$num_students);
 				if ($init_quiz == false)
 					//insert quiz
-					$init_quiz = $this->Grades_model->init_quiz($grades_id,$num_students);
+					$init_quiz = $this->Grades_model->init_quiz($stud_id,$num_students);
 				if ($init_le == false)
 					//insert le
-					$init_le = $this->Grades_model->init_le($grades_id,$num_students);
+					$init_le = $this->Grades_model->init_le($stud_id,$num_students);
 				if ($init_mexam == false)
 					//insert midterm exam
-					$init_mexam = $this->Grades_model->init_mexam($grades_id,$num_students);
+					$init_mexam = $this->Grades_model->init_mexam($stud_id,$num_students);
 				if ($init_fexam == false)
 					//insert final exam
-					$init_fexam = $this->Grades_model->init_fexam($grades_id,$num_students);
+					$init_fexam = $this->Grades_model->init_fexam($stud_id,$num_students);
 			}
 			//else 'Lab'
 			else
 			{
 				if ($init_lab == false)
 					//insert lab/machine ex
-					$init_lab = $this->Grades_model->init_lab($grades_id,$num_students);
+					$init_lab = $this->Grades_model->init_lab($stud_id,$num_students);
 				if ($init_prac == false)
 					//insert prac exam
-					$init_prac = $this->Grades_model->init_prac($grades_id,$num_students);
+					$init_prac = $this->Grades_model->init_prac($stud_id,$num_students);
 				if ($init_proj == false)
 					//insert proj
-					$init_proj = $this->Grades_model->init_proj($grades_id,$num_students);
+					$init_proj = $this->Grades_model->init_proj($stud_id,$num_students);
 			}
 				
 		}

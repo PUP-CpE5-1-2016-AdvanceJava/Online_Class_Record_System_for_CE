@@ -11,7 +11,7 @@
     <link type="text/css" href="<?php base_url(); ?>/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
     <link type="text/css" href="<?php base_url(); ?>/css/stylesheet.css" rel="stylesheet">
-
+    <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/jquery-2.1.3.min.js"></script>
 </head>
 	
 <body id = "login-body-wrapper">

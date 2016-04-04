@@ -24,7 +24,7 @@ a[id*="-button-del"]{background: none; font-size: 20px; padding: 0 3; display: n
 
 #table-midterm, #table-finals{ border: solid 2px gray}
 .border-bold, #border-bold, #table-name, #table-blank2, #table-items{ border-right: solid 2px gray}
-#border-left, #table-student, #table-blank2, #table-items, #table-blank{ border-left: solid 2px gray !important;}
+.border-left, #table-student, #table-blank2, #table-items, #table-blank{ border-left: solid 2px gray !important;}
 #table-blank{ border-top: solid 2px gray;}
 #table-wrapper{ white-space: nowrap; position: relative;}
 #table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
