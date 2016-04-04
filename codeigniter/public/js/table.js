@@ -180,6 +180,7 @@ $(document).ready(function(){
     		// contentType: "application/jsonrequest; charset=utf-8",
 			success: function(res) {
 				console.log(res);
+				alert("Table has been saved.")
 			}
 		})
 	})

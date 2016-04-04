@@ -287,15 +287,6 @@ class ModuleItems_model extends CI_Model {
 				// $this->db->update('mod_rec', $obj);
 				$update_counter++;
 			}
-			/* GET THE SCORES*/
-			// for loop < $rec_mid_num
-				// for loop for rec1 to insert_batch or update
-					// if condition Num(i) no entry then insert to array scores else update
-					// needs StudNum(to get StudId)
-				// for loop for rec2 to insert_batch or update
-					// if condition Num(i) no entry then insert to array scores else update
-					// needs StudNum(to get StudId)
-				// ... until all entry based on rec num has already inserted or updated
 		}
 		$mid_final_len = sizeof($mod_rec_ins)+$rec_final_num+$update_counter;
 		for ($j=sizeof($mod_rec_ins)+$update_counter,$k=0; $j < $mid_final_len; $j++,$k++) 

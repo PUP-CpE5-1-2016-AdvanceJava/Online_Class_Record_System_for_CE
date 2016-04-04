@@ -67,6 +67,19 @@ class Table_model extends CI_Model {
     	$sw_mid_num = 0;$sw_mid_items = array();$sw_mid_score = array();
     	$ex_mid_num = 0;$ex_mid_items = array();$ex_mid_score = array();
     	$rec_mid_num = 0;$rec_mid_items = array();$rec_mid_score = array();
+    	$quiz_mid_num = 0;$quiz_mid_items = array();$quiz_mid_score = array();
+    	$le_mid_num = 0;$le_mid_items = array();$le_mid_score = array();
+
+    	$mexam_mid_num = 0;$mexam_mid_items = array();$mexam_mid_score = array();
+
+    	$assign_final_num = 0;$assign_final_items = array();$assign_final_score = array();
+    	$sw_final_num = 0;$sw_final_items = array();$sw_final_score = array();
+    	$ex_final_num = 0;$ex_final_items = array();$ex_final_score = array();
+    	$rec_final_num = 0;$rec_final_items = array();$rec_final_score = array();
+    	$quiz_final_num = 0;$quiz_final_items = array();$quiz_final_score = array();
+    	$le_final_num = 0;$le_final_items = array();$le_final_score = array();
+
+    	$fexam_final_num = 0;$fexam_final_items = array();$fexam_final_score = array();
 
     	foreach ($query->result() as $row) 
     	{	
@@ -213,7 +226,340 @@ class Table_model extends CI_Model {
 	    				$rec_mid_score[$i][$y] = "0.00";
 	    			}
     			}
+
+    			//---quiz_mid ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Midterm');
+    			$query_module = $this->db->get('mod_quiz');
+    			$quiz_mid_num = $query_module->num_rows();
+    			if ($quiz_mid_num > 0)
+    			{
+    				$quiz_items = $query_module->result_array();
+	    			for ($x=0; $x < $quiz_mid_num; $x++) 
+	    			{ 
+	    				$quiz_mid_items[$x] = $quiz_items[$x]["QuizItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Midterm');
+    			$query_quiz_score = $this->db->get('quizzes');
+    			$quiz_mid_score_num = $query_quiz_score->num_rows();
+    			if ($quiz_mid_score_num > 0)
+    			{
+    				$quiz_score = $query_quiz_score->result_array();
+	    			for ($y=0; $y < $quiz_mid_num; $y++) 
+	    			{ 
+	    				$quiz_mid_score[$i][$y] = $quiz_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $quiz_mid_num; $y++) 
+	    			{ 
+	    				$quiz_mid_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---le_mid ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Midterm');
+    			$query_module = $this->db->get('mod_le');
+    			$le_mid_num = $query_module->num_rows();
+    			if ($le_mid_num > 0)
+    			{
+    				$le_items = $query_module->result_array();
+	    			for ($x=0; $x < $le_mid_num; $x++) 
+	    			{ 
+	    				$le_mid_items[$x] = $le_items[$x]["LExamItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Midterm');
+    			$query_le_score = $this->db->get('long_exam');
+    			$le_mid_score_num = $query_le_score->num_rows();
+    			if ($le_mid_score_num > 0)
+    			{
+    				$le_score = $query_le_score->result_array();
+	    			for ($y=0; $y < $le_mid_num; $y++) 
+	    			{ 
+	    				$le_mid_score[$i][$y] = $le_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $le_mid_num; $y++) 
+	    			{ 
+	    				$le_mid_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---mexam_mid ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$query_module = $this->db->get('mod_me');
+    			$mexam_mid_num = $query_module->num_rows();
+    			if ($mexam_mid_num > 0)
+    			{
+    				$mexam_items = $query_module->result_array();
+	    			$mexam_mid_items[0] = $mexam_items[0]['MExamItems'];
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$query_mexam_score = $this->db->get('midterm_exam');
+    			$mexam_mid_score_num = $query_mexam_score->num_rows();
+    			if ($mexam_mid_score_num > 0)
+    			{
+    				$mexam_score = $query_mexam_score->result_array();
+	    			for ($y=0; $y < $mexam_mid_num; $y++) 
+	    			{ 
+	    				$mexam_mid_score[$i][$y] = $mexam_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $mexam_mid_num; $y++) 
+	    			{ 
+	    				$mexam_mid_score[$i][$y] = "0.00";
+	    			}
+    			}
 				
+
+
+
+
+				//---assign_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_module = $this->db->get('mod_assign');
+    			$assign_final_num = $query_module->num_rows();
+    			if ($assign_final_num > 0)
+    			{
+    				$assign_items = $query_module->result_array();
+	    			for ($x=0; $x < $assign_final_num; $x++) 
+	    			{ 
+	    				$assign_final_items[$x] = $assign_items[$x]["AssignItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_assign_score = $this->db->get('assignment');
+    			$assign_final_score_num = $query_assign_score->num_rows();
+    			if ($assign_final_score_num > 0)
+    			{
+    				$assign_score = $query_assign_score->result_array();
+	    			for ($y=0; $y < $assign_final_num; $y++) 
+	    			{ 
+	    				$assign_final_score[$i][$y] = $assign_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $assign_final_num; $y++) 
+	    			{ 
+	    				$assign_final_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---sw_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_module = $this->db->get('mod_sw');
+    			$sw_final_num = $query_module->num_rows();
+    			if ($sw_final_num > 0)
+    			{
+    				$sw_items = $query_module->result_array();
+	    			for ($x=0; $x < $sw_final_num; $x++) 
+	    			{ 
+	    				$sw_final_items[$x] = $sw_items[$x]["SWItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_sw_score = $this->db->get('seatwork');
+    			$sw_final_score_num = $query_sw_score->num_rows();
+    			if ($sw_final_score_num > 0)
+    			{
+    				$sw_score = $query_sw_score->result_array();
+	    			for ($y=0; $y < $sw_final_num; $y++) 
+	    			{ 
+	    				$sw_final_score[$i][$y] = $sw_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $sw_final_num; $y++) 
+	    			{ 
+	    				$sw_final_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---ex_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_module = $this->db->get('mod_ex');
+    			$ex_final_num = $query_module->num_rows();
+    			if ($ex_final_num > 0)
+    			{
+    				$ex_items = $query_module->result_array();
+	    			for ($x=0; $x < $ex_final_num; $x++) 
+	    			{ 
+	    				$ex_final_items[$x] = $ex_items[$x]["ExItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_ex_score = $this->db->get('exercises');
+    			$ex_final_score_num = $query_ex_score->num_rows();
+    			if ($ex_final_score_num > 0)
+    			{
+    				$ex_score = $query_ex_score->result_array();
+	    			for ($y=0; $y < $ex_final_num; $y++) 
+	    			{ 
+	    				$ex_final_score[$i][$y] = $ex_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $ex_final_num; $y++) 
+	    			{ 
+	    				$ex_final_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---rec_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_module = $this->db->get('mod_rec');
+    			$rec_final_num = $query_module->num_rows();
+    			if ($rec_final_num > 0)
+    			{
+    				$rec_items = $query_module->result_array();
+	    			for ($x=0; $x < $rec_final_num; $x++) 
+	    			{ 
+	    				$rec_final_items[$x] = $rec_items[$x]["RecItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_rec_score = $this->db->get('recitation');
+    			$rec_final_score_num = $query_rec_score->num_rows();
+    			if ($rec_final_score_num > 0)
+    			{
+    				$rec_score = $query_rec_score->result_array();
+	    			for ($y=0; $y < $rec_final_num; $y++) 
+	    			{ 
+	    				$rec_final_score[$i][$y] = $rec_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $rec_final_num; $y++) 
+	    			{ 
+	    				$rec_final_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---quiz_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_module = $this->db->get('mod_quiz');
+    			$quiz_final_num = $query_module->num_rows();
+    			if ($quiz_final_num > 0)
+    			{
+    				$quiz_items = $query_module->result_array();
+	    			for ($x=0; $x < $quiz_final_num; $x++) 
+	    			{ 
+	    				$quiz_final_items[$x] = $quiz_items[$x]["QuizItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_quiz_score = $this->db->get('quizzes');
+    			$quiz_final_score_num = $query_quiz_score->num_rows();
+    			if ($quiz_final_score_num > 0)
+    			{
+    				$quiz_score = $query_quiz_score->result_array();
+	    			for ($y=0; $y < $quiz_final_num; $y++) 
+	    			{ 
+	    				$quiz_final_score[$i][$y] = $quiz_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $quiz_final_num; $y++) 
+	    			{ 
+	    				$quiz_final_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---le_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_module = $this->db->get('mod_le');
+    			$le_final_num = $query_module->num_rows();
+    			if ($le_final_num > 0)
+    			{
+    				$le_items = $query_module->result_array();
+	    			for ($x=0; $x < $le_final_num; $x++) 
+	    			{ 
+	    				$le_final_items[$x] = $le_items[$x]["LExamItems"];
+	    			}
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$this->db->where('Sem','Finals');
+    			$query_le_score = $this->db->get('long_exam');
+    			$le_final_score_num = $query_le_score->num_rows();
+    			if ($le_final_score_num > 0)
+    			{
+    				$le_score = $query_le_score->result_array();
+	    			for ($y=0; $y < $le_final_num; $y++) 
+	    			{ 
+	    				$le_final_score[$i][$y] = $le_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $le_final_num; $y++) 
+	    			{ 
+	    				$le_final_score[$i][$y] = "0.00";
+	    			}
+    			}
+
+    			//---fexam_final ---//
+    			$this->db->where('ClassId',$block->Id);
+    			$query_module = $this->db->get('mod_fe');
+    			$fexam_final_num = $query_module->num_rows();
+    			if ($fexam_final_num > 0)
+    			{
+    				$fexam_items = $query_module->result_array();
+	    			$fexam_final_items[0] = $fexam_items[0]['FExamItems'];
+    			}
+
+    			$this->db->where('StudId',$row->Id);
+    			$query_fexam_score = $this->db->get('final_exam');
+    			$fexam_final_score_num = $query_fexam_score->num_rows();
+    			if ($fexam_final_score_num > 0)
+    			{
+    				$fexam_score = $query_fexam_score->result_array();
+	    			for ($y=0; $y < $fexam_final_num; $y++) 
+	    			{ 
+	    				$fexam_final_score[$i][$y] = $fexam_score[$y]["Score"];
+	    			}
+    			}
+    			else
+    			{
+    				for ($y=0; $y < $fexam_final_num; $y++) 
+	    			{ 
+	    				$fexam_final_score[$i][$y] = "0.00";
+	    			}
+    			}
     		}
     		$i++;
     	}
@@ -234,6 +580,34 @@ class Table_model extends CI_Model {
     		'rec_mid_num' => $rec_mid_num,
     		'rec_mid_items' => $rec_mid_items,
     		'rec_mid_score' => $rec_mid_score,
+    		'quiz_mid_num' => $quiz_mid_num,
+    		'quiz_mid_items' => $quiz_mid_items,
+    		'quiz_mid_score' => $quiz_mid_score,
+    		'le_mid_num' => $le_mid_num,
+    		'le_mid_items' => $le_mid_items,
+    		'le_mid_score' => $le_mid_score,
+    		'mexam_mid_items' => $mexam_mid_items,
+    		'mexam_mid_score' => $mexam_mid_score,
+    		'assign_final_num' => $assign_final_num,
+    		'assign_final_items' => $assign_final_items,
+    		'assign_final_score' => $assign_final_score,
+    		'sw_final_num' => $sw_final_num,
+    		'sw_final_items' => $sw_final_items,
+    		'sw_final_score' => $sw_final_score,
+    		'ex_final_num' => $ex_final_num,
+    		'ex_final_items' => $ex_final_items,
+    		'ex_final_score' => $ex_final_score,
+    		'rec_final_num' => $rec_final_num,
+    		'rec_final_items' => $rec_final_items,
+    		'rec_final_score' => $rec_final_score,
+    		'quiz_final_num' => $quiz_final_num,
+    		'quiz_final_items' => $quiz_final_items,
+    		'quiz_final_score' => $quiz_final_score,
+    		'le_final_num' => $le_final_num,
+    		'le_final_items' => $le_final_items,
+    		'le_final_score' => $le_final_score,
+    		'fexam_final_items' => $fexam_final_items,
+    		'fexam_final_score' => $fexam_final_score,
     	);
     	return $data;
 	}
@@ -280,10 +654,10 @@ class Table_model extends CI_Model {
 			$this->ModuleItems_model->ins_mod_ex($data['classId'],$arr3,$data['ex_mid_num'],$data['ex_final_num'],$stud_id,$ex_mid_data,$ex_final_data);
 			
 			/*rec_num (midterm and final)*/
-			for ($i=0; $i <$data['rec_mid_num'] ; $i++) { $arr4[$i] = $rec_mid_data[$i]; } 
-			$mid_final_len = sizeof($arr4)+$data['rec_final_num'];
-			for ($j=sizeof($arr4),$k=0; $j < $mid_final_len; $j++,$k++) { $arr4[$j] = $rec_final_data[$k];}
-			$this->ModuleItems_model->ins_mod_rec($data['classId'],$arr4,$data['rec_mid_num'],$data['rec_final_num'],$stud_id,$rec_mid_data,$rec_final_data);
+			for ($i=0; $i <$data['rec_mid_num'] ; $i++) { $arr[$i] = $rec_mid_data[$i]; } 
+			$mid_final_len = sizeof($arr)+$data['rec_final_num'];
+			for ($j=sizeof($arr),$k=0; $j < $mid_final_len; $j++,$k++) { $arr[$j] = $rec_final_data[$k];}
+			$this->ModuleItems_model->ins_mod_rec($data['classId'],$arr,$data['rec_mid_num'],$data['rec_final_num'],$stud_id,$rec_mid_data,$rec_final_data);
 			
 			/*quiz_num (midterm and final)*/
 			for ($i=0; $i <$data['quiz_mid_num'] ; $i++) { $arr5[$i] = $quiz_mid_data[$i]; } 
