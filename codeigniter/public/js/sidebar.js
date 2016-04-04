@@ -365,7 +365,7 @@ function get_class_table(link)
                                             </tr>\
                                         </thead>\
                                         <tbody>\
-                                            <tr class='num-items'>\
+                                            <tr  id='table-items-wrapper' class='num-items'>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                 <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+"\
                                                 <td contenteditable='true' id='table-items-mid-ex1'></td>\
@@ -483,7 +483,7 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-header-mid-proj-total'>Total</th>\
                                                     <th class='text-center' id='table-header-mid-proj-rating'>30%</th>\
                                                     <th class='text-center' id='table-header-mid-overall-rating'>100%</th>\
-                                                    <th id='border-bold' id='table-header-mid-overall-grade' class='text-center'>Rating</th>\
+                                                    <th id='table-header-mid-overall-grade' class='text-center'>Rating</th>\
                                                     <th class='text-center' id='table-header-final-lab1'>Lab 1</th>\
                                                     <th class='text-center' id='table-header-final-lab-total'>Total</th>\
                                                     <th class='text-center' id='table-header-final-lab-rating'>45%</th>\
@@ -494,11 +494,11 @@ function get_class_table(link)
                                                     <th class='text-center' id='table-header-final-proj-total'>Total</th>\
                                                     <th class='text-center' id='table-header-final-proj-rating'>30%</th>\
                                                     <th class='text-center' id='table-header-final-overall-rating'>100%</th>\
-                                                    <th id='border-bold' id='table-header-final-overall-grade' class='text-center'>Rating</th>\
+                                                    <th id='table-header-final-overall-grade' class='text-center'>Rating</th>\
                                                 </tr>\
                                                 </thead>\
                                                 <tbody>\
-                                                <tr id='table-items-wrapper' class='fixed-width'>\
+                                                <tr id='table-items-wrapper'  id='table-items-wrapper'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                     <td contenteditable='true' id='table-items-mid-lab1'></td>\
                                                     <td contenteditable='false' id='table-items-mid-lb-total'></td>\
