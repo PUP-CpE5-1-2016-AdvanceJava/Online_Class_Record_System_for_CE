@@ -91,6 +91,10 @@
 #settings-createacct-form-button{padding-top: 5px; padding-bottom: 5px; color: #07253E;}
 #settings-upload-form {margin-bottom: 10px;}
 
+/*FOOTER FIX AT BOTTOM - SOLUTION*/
+#table-content-wrapper, #sidebar-content-wrapper { min-height: 500px;}
+
+.row{margin-right: 0}
 
 /*SETTINGS CONTENT end*/
 
