@@ -134,6 +134,13 @@ function get_class_table(link)
         pracCounter2=1;
         projCounter1=1;
         projCounter2=1;
+        //---variables for lec table---//
+        assignCounter2=1;
+        swCounter2=1;
+        exCounter1=1;
+        exCounter2=1;
+        recCounter1=1;
+        recCounter2=1;
         //---variables for att table---//
         attCounter1=1;
         attCounter2=1;
@@ -147,27 +154,12 @@ function get_class_table(link)
             if (response['Class']['ModuleType'] == "Lec")
             {
             // 'Lecture table' please edit classes for responsive //
-            var midterm_cols = 9,mid_cs_cols = 2,mid_qle_cols = 2;
-
+            var midterm_cols = 13,mid_cs_cols = 4;
             var mid_assign_cols,mid_assign_header_str = "",mid_assign_items_str = "",mid_assign_score_str = [];
             var mid_sw_cols,mid_sw_header_str = "",mid_sw_items_str = "",mid_sw_score_str = [];
             var mid_ex_cols,mid_ex_header_str = "",mid_ex_items_str = "",mid_ex_score_str = [];
             var mid_rec_cols,mid_rec_header_str = "",mid_rec_items_str = "",mid_rec_score_str = [];
-            var mid_quiz_cols,mid_quiz_header_str = "",mid_quiz_items_str = "",mid_quiz_score_str = [];
-            var mid_le_cols,mid_le_header_str = "",mid_le_items_str = "",mid_le_score_str = [];
 
-            var mid_mexam_items_str = "",mid_mexam_score_str = [];
-
-            var final_cols = 9,final_cs_cols = 2,final_qle_cols = 2;
-
-            var final_assign_cols,final_assign_header_str = "",final_assign_items_str = "",final_assign_score_str = [];
-            var final_sw_cols,final_sw_header_str = "",final_sw_items_str = "",final_sw_score_str = [];
-            var final_ex_cols,final_ex_header_str = "",final_ex_items_str = "",final_ex_score_str = [];
-            var final_rec_cols,final_rec_header_str = "",final_rec_items_str = "",final_rec_score_str = [];
-            var final_quiz_cols,final_quiz_header_str = "",final_quiz_items_str = "",final_quiz_score_str = [];
-            var final_le_cols,final_le_header_str = "",final_le_items_str = "",final_le_score_str = [];
-
-            var final_fexam_items_str = "",final_fexam_score_str = [];
             /*ASSIGN MIDTERM STRING INITIALIZATION*/
             if (response['assign_mid_num'] > 0)
             {
@@ -286,661 +278,11 @@ function get_class_table(link)
                 });
             }
 
-            /*ex MIDTERM STRING INITIALIZATION*/
-            if (response['ex_mid_num'] > 0)
-            {
-                midterm_cols += response['ex_mid_num'];
-                mid_cs_cols += response['ex_mid_num'];
-                mid_ex_cols = response['ex_mid_num'];
-                exCounter1 = response['ex_mid_num'];
-            }
-            else 
-            {
-                midterm_cols++;
-                mid_cs_cols++;
-                mid_ex_cols = 1;
-                exCounter1 = 1;
-            }
-            
-            if (mid_ex_cols > 0)
-            {
-                for (var i = 0; i <  mid_ex_cols; i++) 
-                {
-                    mid_ex_header_str += "<th class='text-center' id='table-header-mid-ex"+(i+1)+"'>Ex "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['ex_mid_items'].length > 0)
-            {
-                for (var i = 0; i <  mid_ex_cols; i++) 
-                {
-                    mid_ex_items_str += "<td contenteditable='true' id='table-items-mid-ex"+(i+1)+"'>"+response['ex_mid_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                mid_ex_items_str = "<td contenteditable='true' id='table-items-mid-ex1'></td>";
-            }
-
-            if (response['ex_mid_score'].length > 0)
-            {
-                var x_ex_mid = 0;
-                response.ex_mid_score.forEach(function(ex){
-                    for (var i = 0; i <  mid_ex_cols; i++) 
-                    {
-                        mid_ex_score_str[x_ex_mid] += "<td contenteditable='true' id='table-score-mid-ex"+(i+1)+"'>"+ex[i]+"</td>";
-                    }
-                    x_ex_mid++;
-                });
-            }
-            else
-            {
-                var x_ex_mid = 0;
-                response.Student.forEach(function(ex){
-                    for (var i = 0; i <  mid_ex_cols; i++) 
-                    {
-                        mid_ex_score_str[x_ex_mid] += "<td contenteditable='true' id='table-score-mid-ex"+(i+1)+"'></td>";
-                    }
-                    x_ex_mid++;
-                });
-            }
-
-            /*rec MIDTERM STRING INITIALIZATION*/
-            if (response['rec_mid_num'] > 0)
-            {
-                midterm_cols += response['rec_mid_num'];
-                mid_cs_cols += response['rec_mid_num'];
-                mid_rec_cols = response['rec_mid_num'];
-                recCounter1 = response['rec_mid_num'];
-            }
-            else 
-            {
-                midterm_cols++;
-                mid_cs_cols++;
-                mid_rec_cols = 1;
-                recCounter1 = 1;
-            }
-            
-            if (mid_rec_cols > 0)
-            {
-                for (var i = 0; i <  mid_rec_cols; i++) 
-                {
-                    mid_rec_header_str += "<th class='text-center' id='table-header-mid-rec"+(i+1)+"'>Rec "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['rec_mid_items'].length > 0)
-            {
-                for (var i = 0; i <  mid_rec_cols; i++) 
-                {
-                    mid_rec_items_str += "<td contenteditable='true' id='table-items-mid-rec"+(i+1)+"'>"+response['rec_mid_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                mid_rec_items_str = "<td contenteditable='true' id='table-items-mid-rec1'></td>";
-            }
-
-            if (response['rec_mid_score'].length > 0)
-            {
-                var x_rec_mid = 0;
-                response.rec_mid_score.forEach(function(rec){
-                    for (var i = 0; i <  mid_rec_cols; i++) 
-                    {
-                        mid_rec_score_str[x_rec_mid] += "<td contenteditable='true' id='table-score-mid-rec"+(i+1)+"'>"+rec[i]+"</td>";
-                    }
-                    x_rec_mid++;
-                });
-            }
-            else
-            {
-                var x_rec_mid = 0;
-                response.Student.forEach(function(rec){
-                    for (var i = 0; i <  mid_rec_cols; i++) 
-                    {
-                        mid_rec_score_str[x_rec_mid] += "<td contenteditable='true' id='table-score-mid-rec"+(i+1)+"'></td>";
-                    }
-                    x_rec_mid++;
-                });
-            }
-
-            /*quiz MIDTERM STRING INITIALIZATION*/
-            if (response['quiz_mid_num'] > 0)
-            {
-                midterm_cols += response['quiz_mid_num'];
-                mid_qle_cols += response['quiz_mid_num'];
-                mid_quiz_cols = response['quiz_mid_num'];
-                quizCounter1 = response['quiz_mid_num'];
-            }
-            else 
-            {
-                midterm_cols++;
-                mid_qle_cols++;
-                mid_quiz_cols = 1;
-                quizCounter1 = 1;
-            }
-            
-            if (mid_quiz_cols > 0)
-            {
-                for (var i = 0; i <  mid_quiz_cols; i++) 
-                {
-                    mid_quiz_header_str += "<th class='text-center' id='table-header-mid-quiz"+(i+1)+"'>Quiz "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['quiz_mid_items'].length > 0)
-            {
-                for (var i = 0; i <  mid_quiz_cols; i++) 
-                {
-                    mid_quiz_items_str += "<td contenteditable='true' id='table-items-mid-quiz"+(i+1)+"'>"+response['quiz_mid_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                mid_quiz_items_str = "<td contenteditable='true' id='table-items-mid-quiz1'></td>";
-            }
-
-            if (response['quiz_mid_score'].length > 0)
-            {
-                var x_quiz_mid = 0;
-                response.quiz_mid_score.forEach(function(quiz){
-                    for (var i = 0; i <  mid_quiz_cols; i++) 
-                    {
-                        mid_quiz_score_str[x_quiz_mid] += "<td contenteditable='true' id='table-score-mid-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
-                    }
-                    x_quiz_mid++;
-                });
-            }
-            else
-            {
-                var x_quiz_mid = 0;
-                response.Student.forEach(function(quiz){
-                    for (var i = 0; i <  mid_quiz_cols; i++) 
-                    {
-                        mid_quiz_score_str[x_quiz_mid] += "<td contenteditable='true' id='table-score-mid-quiz"+(i+1)+"'></td>";
-                    }
-                    x_quiz_mid++;
-                });
-            }
-
-            /*le MIDTERM STRING INITIALIZATION*/
-            if (response['le_mid_num'] > 0)
-            {
-                midterm_cols += response['le_mid_num'];
-                mid_qle_cols += response['le_mid_num'];
-                mid_le_cols = response['le_mid_num'];
-                leCounter1 = response['le_mid_num'];
-            }
-            else 
-            {
-                midterm_cols++;
-                mid_qle_cols++;
-                mid_le_cols = 1;
-                leCounter1 = 1;
-            }
-            
-            if (mid_le_cols > 0)
-            {
-                for (var i = 0; i <  mid_le_cols; i++) 
-                {
-                    mid_le_header_str += "<th class='text-center' id='table-header-mid-le"+(i+1)+"'>Le "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['le_mid_items'].length > 0)
-            {
-                for (var i = 0; i <  mid_le_cols; i++) 
-                {
-                    mid_le_items_str += "<td contenteditable='true' id='table-items-mid-le"+(i+1)+"'>"+response['le_mid_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                mid_le_items_str = "<td contenteditable='true' id='table-items-mid-le1'></td>";
-            }
-
-            if (response['le_mid_score'].length > 0)
-            {
-                var x_le_mid = 0;
-                response.le_mid_score.forEach(function(le){
-                    for (var i = 0; i <  mid_le_cols; i++) 
-                    {
-                        mid_le_score_str[x_le_mid] += "<td contenteditable='true' id='table-score-mid-le"+(i+1)+"'>"+le[i]+"</td>";
-                    }
-                    x_le_mid++;
-                });
-            }
-            else
-            {
-                var x_le_mid = 0;
-                response.Student.forEach(function(le){
-                    for (var i = 0; i <  mid_le_cols; i++) 
-                    {
-                        mid_le_score_str[x_le_mid] += "<td contenteditable='true' id='table-score-mid-le"+(i+1)+"'></td>";
-                    }
-                    x_le_mid++;
-                });
-            }
-
-            /*mexam MIDTERM STRING INITIALIZATION*/
-            if (response['mexam_mid_items'].length > 0)
-            {
-                mid_mexam_items_str = "<td contenteditable='true' id='table-items-mid-mexam'>"+response['mexam_mid_items'][0]+"</td>";
-            }
-            else
-            {
-                mid_mexam_items_str = "<td contenteditable='true' id='table-items-mid-mexam'></td>";
-            }
-
-            if (response['mexam_mid_score'].length > 0)
-            {
-                var x_mexam_mid = 0;
-                response.mexam_mid_score.forEach(function(mexam){
-                    mid_mexam_score_str[x_mexam_mid] = "<td contenteditable='true' id='table-score-mid-mexam'>"+mexam+"</td>";
-                    x_mexam_mid++;
-                });
-            }
-            else
-            {
-                var x_mexam_mid = 0;
-                response.Student.forEach(function(mexam){
-                    mid_mexam_score_str[x_mexam_mid] = "<td contenteditable='true' id='table-score-mid-mexam'></td>";
-                    x_mexam_mid++;
-                });
-            }
-
-
-
-
-
-            /*ASSIGN FINALS STRING INITIALIZATION*/
-            if (response['assign_final_num'] > 0)
-            {
-                final_cols += response['assign_final_num'];
-                final_cs_cols += response['assign_final_num'];
-                final_assign_cols = response['assign_final_num'];
-                assignCounter2 = response['assign_final_num'];
-            }
-            else 
-            {
-                final_cols++;
-                final_cs_cols++;
-                final_assign_cols = 1;
-                assignCounter2 = 1;
-            }
-            
-            if (final_assign_cols > 0)
-            {
-                for (var i = 0; i <  final_assign_cols; i++) 
-                {
-                    final_assign_header_str += "<th class='text-center' id='table-header-final-assign"+(i+1)+"'>Assign "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['assign_final_items'].length > 0)
-            {
-                for (var i = 0; i <  final_assign_cols; i++) 
-                {
-                    final_assign_items_str += "<td contenteditable='true' id='table-items-final-assign"+(i+1)+"'>"+response['assign_final_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                final_assign_items_str = "<td contenteditable='true' id='table-items-final-assign1'></td>";
-            }
-
-            if (response['assign_final_score'].length > 0)
-            {
-                var x_assign_final = 0;
-                response.assign_final_score.forEach(function(assign){
-                    for (var i = 0; i <  final_assign_cols; i++) 
-                    {
-                        final_assign_score_str[x_assign_final] += "<td contenteditable='true' id='table-score-final-assign"+(i+1)+"'>"+assign[i]+"</td>";
-                    }
-                    x_assign_final++;
-                });
-            }
-            else
-            {
-                var x_assign_final = 0;
-                response.Student.forEach(function(assign){
-                    for (var i = 0; i <  final_assign_cols; i++) 
-                    {
-                        final_assign_score_str[x_assign_final] += "<td contenteditable='true' id='table-score-final-assign"+(i+1)+"'></td>";
-                    }
-                    x_assign_final++;
-                });
-            }
-
-            /*SW finalTERM STRING INITIALIZATION*/
-            if (response['sw_final_num'] > 0)
-            {
-                final_cols += response['sw_final_num'];
-                final_cs_cols += response['sw_final_num'];
-                final_sw_cols = response['sw_final_num'];
-                swCounter2 = response['sw_final_num'];
-            }
-            else 
-            {
-                final_cols++;
-                final_cs_cols++;
-                final_sw_cols = 1;
-                swCounter2 = 1;
-            }
-
-            if (final_sw_cols > 0)
-            {
-                for (var i = 0; i <  final_sw_cols; i++) 
-                {
-                    final_sw_header_str += "<th class='text-center' id='table-header-final-sw"+(i+1)+"'>Sw "+(i+1)+" </th>";
-                }
-            }
-
-            if (response['sw_final_items'].length > 0)
-            {
-                for (var i = 0; i <  final_sw_cols; i++) 
-                {
-                    final_sw_items_str += "<td contenteditable='true' id='table-items-final-sw"+(i+1)+"'>"+response['sw_final_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                final_sw_items_str = "<td contenteditable='true' id='table-items-final-sw1'></td>";
-            }
-
-            if (response['sw_final_score'].length > 0)
-            {
-                var x_sw_final = 0;
-                response.sw_final_score.forEach(function(sw){
-                    for (var i = 0; i <  final_sw_cols; i++) 
-                    {
-                        final_sw_score_str[x_sw_final] += "<td contenteditable='true' id='table-score-final-sw"+(i+1)+"'>"+sw[i]+"</td>";
-                    }
-                    x_sw_final++;
-                });
-            }
-            else
-            {
-                var x_sw_final = 0;
-                response.Student.forEach(function(sw){
-                    for (var i = 0; i <  final_sw_cols; i++) 
-                    {
-                        final_sw_score_str[x_sw_final] += "<td contenteditable='true' id='table-score-final-sw"+(i+1)+"'></td>";
-                    }
-                    x_sw_final++;
-                });
-            }
-
-            /*ex finalTERM STRING INITIALIZATION*/
-            if (response['ex_final_num'] > 0)
-            {
-                final_cols += response['ex_final_num'];
-                final_cs_cols += response['ex_final_num'];
-                final_ex_cols = response['ex_final_num'];
-                exCounter2 = response['ex_final_num'];
-            }
-            else 
-            {
-                final_cols++;
-                final_cs_cols++;
-                final_ex_cols = 1;
-                exCounter2 = 1;
-            }
-            
-            if (final_ex_cols > 0)
-            {
-                for (var i = 0; i <  final_ex_cols; i++) 
-                {
-                    final_ex_header_str += "<th class='text-center' id='table-header-final-ex"+(i+1)+"'>Ex "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['ex_final_items'].length > 0)
-            {
-                for (var i = 0; i <  final_ex_cols; i++) 
-                {
-                    final_ex_items_str += "<td contenteditable='true' id='table-items-final-ex"+(i+1)+"'>"+response['ex_final_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                final_ex_items_str = "<td contenteditable='true' id='table-items-final-ex1'></td>";
-            }
-
-            if (response['ex_final_score'].length > 0)
-            {
-                var x_ex_final = 0;
-                response.ex_final_score.forEach(function(ex){
-                    for (var i = 0; i <  final_ex_cols; i++) 
-                    {
-                        final_ex_score_str[x_ex_final] += "<td contenteditable='true' id='table-score-final-ex"+(i+1)+"'>"+ex[i]+"</td>";
-                    }
-                    x_ex_final++;
-                });
-            }
-            else
-            {
-                var x_ex_final = 0;
-                response.Student.forEach(function(ex){
-                    for (var i = 0; i <  final_ex_cols; i++) 
-                    {
-                        final_ex_score_str[x_ex_final] += "<td contenteditable='true' id='table-score-final-ex"+(i+1)+"'></td>";
-                    }
-                    x_ex_final++;
-                });
-            }
-
-            /*rec finalTERM STRING INITIALIZATION*/
-            if (response['rec_final_num'] > 0)
-            {
-                final_cols += response['rec_final_num'];
-                final_cs_cols += response['rec_final_num'];
-                final_rec_cols = response['rec_final_num'];
-                recCounter2 = response['rec_final_num'];
-            }
-            else 
-            {
-                final_cols++;
-                final_cs_cols++;
-                final_rec_cols = 1;
-                recCounter2 = 1;
-            }
-            
-            if (final_rec_cols > 0)
-            {
-                for (var i = 0; i <  final_rec_cols; i++) 
-                {
-                    final_rec_header_str += "<th class='text-center' id='table-header-final-rec"+(i+1)+"'>Rec "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['rec_final_items'].length > 0)
-            {
-                for (var i = 0; i <  final_rec_cols; i++) 
-                {
-                    final_rec_items_str += "<td contenteditable='true' id='table-items-final-rec"+(i+1)+"'>"+response['rec_final_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                final_rec_items_str = "<td contenteditable='true' id='table-items-final-rec1'></td>";
-            }
-
-            if (response['rec_final_score'].length > 0)
-            {
-                var x_rec_final = 0;
-                response.rec_final_score.forEach(function(rec){
-                    for (var i = 0; i <  final_rec_cols; i++) 
-                    {
-                        final_rec_score_str[x_rec_final] += "<td contenteditable='true' id='table-score-final-rec"+(i+1)+"'>"+rec[i]+"</td>";
-                    }
-                    x_rec_final++;
-                });
-            }
-            else
-            {
-                var x_rec_final = 0;
-                response.Student.forEach(function(rec){
-                    for (var i = 0; i <  final_rec_cols; i++) 
-                    {
-                        final_rec_score_str[x_rec_final] += "<td contenteditable='true' id='table-score-final-rec"+(i+1)+"'></td>";
-                    }
-                    x_rec_final++;
-                });
-            }
-
-            /*quiz finalTERM STRING INITIALIZATION*/
-            if (response['quiz_final_num'] > 0)
-            {
-                final_cols += response['quiz_final_num'];
-                final_qle_cols += response['quiz_final_num'];
-                final_quiz_cols = response['quiz_final_num'];
-                quizCounter2 = response['quiz_final_num'];
-            }
-            else 
-            {
-                final_cols++;
-                final_qle_cols++;
-                final_quiz_cols = 1;
-                quizCounter2 = 1;
-            }
-            
-            if (final_quiz_cols > 0)
-            {
-                for (var i = 0; i <  final_quiz_cols; i++) 
-                {
-                    final_quiz_header_str += "<th class='text-center' id='table-header-final-quiz"+(i+1)+"'>Quiz "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['quiz_final_items'].length > 0)
-            {
-                for (var i = 0; i <  final_quiz_cols; i++) 
-                {
-                    final_quiz_items_str += "<td contenteditable='true' id='table-items-final-quiz"+(i+1)+"'>"+response['quiz_final_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                final_quiz_items_str = "<td contenteditable='true' id='table-items-final-quiz1'></td>";
-            }
-
-            if (response['quiz_final_score'].length > 0)
-            {
-                var x_quiz_final = 0;
-                response.quiz_final_score.forEach(function(quiz){
-                    for (var i = 0; i <  final_quiz_cols; i++) 
-                    {
-                        final_quiz_score_str[x_quiz_final] += "<td contenteditable='true' id='table-score-final-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
-                    }
-                    x_quiz_final++;
-                });
-            }
-            else
-            {
-                var x_quiz_final = 0;
-                response.Student.forEach(function(quiz){
-                    for (var i = 0; i <  final_quiz_cols; i++) 
-                    {
-                        final_quiz_score_str[x_quiz_final] += "<td contenteditable='true' id='table-score-final-quiz"+(i+1)+"'></td>";
-                    }
-                    x_quiz_final++;
-                });
-            }
-
-            /*le finalTERM STRING INITIALIZATION*/
-            if (response['le_final_num'] > 0)
-            {
-                final_cols += response['le_final_num'];
-                final_qle_cols += response['le_final_num'];
-                final_le_cols = response['le_final_num'];
-                leCounter2 = response['le_final_num'];
-            }
-            else 
-            {
-                final_cols++;
-                final_qle_cols++;
-                final_le_cols = 1;
-                leCounter2 = 1;
-            }
-            
-            if (final_le_cols > 0)
-            {
-                for (var i = 0; i <  final_le_cols; i++) 
-                {
-                    final_le_header_str += "<th class='text-center' id='table-header-final-le"+(i+1)+"'>Le "+(i+1)+" </th>";
-                }
-            }
-            
-            if (response['le_final_items'].length > 0)
-            {
-                for (var i = 0; i <  final_le_cols; i++) 
-                {
-                    final_le_items_str += "<td contenteditable='true' id='table-items-final-le"+(i+1)+"'>"+response['le_final_items'][i]+"</td>";
-                }
-            }
-            else
-            {
-                final_le_items_str = "<td contenteditable='true' id='table-items-final-le1'></td>";
-            }
-
-            if (response['le_final_score'].length > 0)
-            {
-                var x_le_final = 0;
-                response.le_final_score.forEach(function(le){
-                    for (var i = 0; i <  final_le_cols; i++) 
-                    {
-                        final_le_score_str[x_le_final] += "<td contenteditable='true' id='table-score-final-le"+(i+1)+"'>"+le[i]+"</td>";
-                    }
-                    x_le_final++;
-                });
-            }
-            else
-            {
-                var x_le_final = 0;
-                response.Student.forEach(function(le){
-                    for (var i = 0; i <  final_le_cols; i++) 
-                    {
-                        final_le_score_str[x_le_final] += "<td contenteditable='true' id='table-score-final-le"+(i+1)+"'></td>";
-                    }
-                    x_le_final++;
-                });
-            }
-
-            /*fexam finalTERM STRING INITIALIZATION*/
-            if (response['fexam_final_items'].length > 0)
-            {
-                final_fexam_items_str = "<td contenteditable='true' id='table-items-final-fexam'>"+response['fexam_final_items'][0]+"</td>";
-            }
-            else
-            {
-                final_fexam_items_str = "<td contenteditable='true' id='table-items-final-fexam'></td>";
-            }
-
-            if (response['fexam_final_score'].length > 0)
-            {
-                var x_fexam_final = 0;
-                response.fexam_final_score.forEach(function(fexam){
-                    final_fexam_score_str[x_fexam_final] = "<td contenteditable='true' id='table-score-final-fexam'>"+fexam+"</td>";
-                    x_fexam_final++;
-                });
-            }
-            else
-            {
-                var x_fexam_final = 0;
-                response.Student.forEach(function(fexam){
-                    final_fexam_score_str[x_fexam_final] = "<td contenteditable='true' id='table-score-final-fexam'></td>";
-                    x_fexam_final++;
-                });
-            }
-
-            console.log("final_cs_cols:"+final_cs_cols);
-            console.log("final_qle_cols:"+final_qle_cols);
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right;'><div id='save-upload-normal'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button><button class='btn btn-primary ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></div>\
+                          <div id='save-upload-res'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-floppy-o'></i></button><button class='btn btn-primary ' id = 'table-upload-button' type='submit'><i class='fa fa-upload'></i></button></div></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -951,19 +293,19 @@ function get_class_table(link)
                                             <tr>\
                                                 <th colspan='2' id='table-blank'></th>\
                                                 <th colspan='"+midterm_cols+"' class='text-center' id='table-midterm'>Midterm</th>\
-                                                <th colspan='"+final_cols+"' class='text-center' id='table-finals'>Finals</th>\
+                                                <th colspan='15' class='text-center' id='table-finals'>Finals</th>\
                                             </tr>\
                                             <tr>\
                                                 <th class='text-center' id='table-student'>Student Number</th>\
                                                 <th class='text-center' id='table-name'>Name</th>\
                                                 <th rowspan='2' class='text-center' id='attendance'>ATTENDANCE</th>\
                                                 <th colspan='"+mid_cs_cols+"' class='text-center' id='table-mid-class-standing'>CLASS STANDING (20%)</th>\
-                                                <th colspan='"+mid_qle_cols+"' class='text-center' id='table-mid-quiz-le'>QUIZZES/LONG EXAM (30%)</th>\
+                                                <th colspan='4' class='text-center' id='table-mid-quiz-le'>QUIZZES/LONG EXAM (30%)</th>\
                                                 <th colspan='2' class='text-center'>MIDTERM EXAM (40%)</th>\
                                                 <th colspan='2' class='text-center' id='border-bold'>MIDTERM GRADE</th>\
                                                 <th rowspan='2' id='attendance'>ATTENDANCE</th>\
-                                                <th colspan='"+final_cs_cols+"' class='text-center' id='table-final-class-standing'>CLASS STANDING (20%)</th>\
-                                                <th colspan='"+final_qle_cols+"' class='text-center' id='table-final-quiz-le'>QUIZZES/LONG EXAM (30%)</th>\
+                                                <th colspan='6' class='text-center' id='table-final-class-standing'>CLASS STANDING (20%)</th>\
+                                                <th colspan='4' class='text-center' id='table-final-quiz-le'>QUIZZES/LONG EXAM (30%)</th>\
                                                 <th colspan='2' class='text-center'>FINAL EXAM (40%)</th>\
                                                 <th colspan='2' class='text-center'>FINAL GRADE</th>\
                                             </tr>\
@@ -971,26 +313,26 @@ function get_class_table(link)
                                                 <th class='text-center' colspan='2' id='table-blank2'></th>\
                                                 <th class='text-center' colspan='"+mid_assign_cols+"' id='table-mid-assign'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-assign-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th class='text-center' colspan='"+mid_sw_cols+"' id='table-mid-sw'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-sw-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+mid_ex_cols+"' id='table-mid-ex'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-ex-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+mid_rec_cols+"' id='table-mid-rec'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-rec-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-mid-ex'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-ex-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-mid-rec'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-rec-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
-                                                <th class='text-center' colspan='"+mid_quiz_cols+"' id='table-mid-quiz'>QUIZ<a class='btn' id='add-col-quiz1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-quiz-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+mid_le_cols+"' id='table-mid-le'>LONG EXAM<a class='btn' id='add-col-le1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-le-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-mid-quiz'>QUIZ<a class='btn' id='add-col-quiz1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-quiz-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-mid-le'>LONG EXAM<a class='btn' id='add-col-le1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-mid-le-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
                                                 <th rowspan='2' class='text-center' id='table-header-mid-mexam'>SCORE</th>\
                                                 <th rowspan='2' class='text-center' id='table-header-mid-mexam-rating'>40%</th>\
                                                 <th rowspan='2' class='text-center' id='table-header-mid-overall-rating'>100%</th>\
                                                 <th rowspan='2' class='text-center' id='table-header-mid-overall-grade'>RATING</th>\
-                                                <th class='text-center' colspan='"+final_assign_cols+"' id='table-final-assign'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-assign-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+final_sw_cols+"' id='table-final-sw'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-sw-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+final_ex_cols+"' id='table-final-ex'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-ex-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+final_rec_cols+"' id='table-final-rec'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-rec-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-final-assign'>ASSIGNMENT<a class='btn' id='add-col-assign1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-assign-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-final-sw'>SEATWORK<a class='btn' id='add-col-sw1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-sw-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-final-ex'>EXERCISE<a class='btn' id='add-col-ex1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-ex-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-final-rec'>RECITATION<a class='btn' id='add-col-rec1' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-rec-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN' onclick='del_column($(this).parent());'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
-                                                <th class='text-center' colspan='"+final_quiz_cols+"' id='table-final-quiz'>QUIZ<a class='btn' id='add-col-quiz2' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-quiz-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                <th class='text-center' colspan='"+final_le_cols+"' id='table-final-le'>LONG EXAM<a class='btn' id='add-col-le2' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-le-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-final-quiz'>QUIZ<a class='btn' id='add-col-quiz2' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-quiz-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                <th class='text-center' colspan='1' id='table-final-le'>LONG EXAM<a class='btn' id='add-col-le2' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a> <a class='btn' id='table-final-le-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 <th></th>\
                                                 <th></th>\
                                                 <th rowspan='2' class='text-center' id='table-header-final-fexam'>SCORE</th>\
@@ -1000,14 +342,24 @@ function get_class_table(link)
                                             </tr>\
                                             <tr id='table-module'>\
                                                 <th colspan='2' id='table-blank2'></th>\
-                                                <th class='text-center' id='table-header-mid-att1'>10%</th>"+mid_assign_header_str+mid_sw_header_str+mid_ex_header_str+mid_rec_header_str+"\
+                                                <th class='text-center' id='table-header-mid-att1'>10%</th>"+mid_assign_header_str+mid_sw_header_str+"\
+                                                <th class='text-center' id='table-header-mid-ex1'>Ex 1</th>\
+                                                <th class='text-center' id='table-header-mid-rec1'>Rec 1</th>\
                                                 <th class='text-center' id='table-header-mid-cs-total'>Total</th>\
-                                                <th class='text-center' id='table-header-mid-cs-rating'>20%</th>"+mid_quiz_header_str+mid_le_header_str+"\
+                                                <th class='text-center' id='table-header-mid-cs-rating'>20%</th>\
+                                                <th class='text-center' id='table-header-mid-quiz1'>Quiz 1</th>\
+                                                <th class='text-center' id='table-header-mid-le1'>Le 1</th>\
                                                 <th class='text-center' id='table-header-mid-ql-total'>Total</th>\
                                                 <th class='text-center' id='table-header-mid-ql-rating'>30%</th>\
-                                                <th class='text-center' id='table-header-final-att1'>10%</th>"+final_assign_header_str+final_sw_header_str+final_ex_header_str+final_rec_header_str+"\
+                                                <th class='text-center' id='table-header-final-att1'>10%</th>\
+                                                <th class='text-center' id='table-header-final-assign1'>Assign 1 </th>\
+                                                <th class='text-center' id='table-header-final-sw1'>Sw 1</th>\
+                                                <th class='text-center' id='table-header-final-ex1'>Ex 1</th>\
+                                                <th class='text-center' id='table-header-final-rec1'>Rec 1</th>\
                                                 <th class='text-center' id='table-header-final-cs-total'>Total</th>\
-                                                <th class='text-center' id='table-header-final-cs-rating'>20%</th>"+final_quiz_header_str+final_le_header_str+"\
+                                                <th class='text-center' id='table-header-final-cs-rating'>20%</th>\
+                                                <th class='text-center' id='table-header-final-quiz1'>Quiz 1</th>\
+                                                <th class='text-center' id='table-header-final-le1'>Le 1</th>\
                                                 <th class='text-center' id='table-header-final-ql-total'>Total</th>\
                                                 <th class='text-center' id='table-header-final-ql-rating'>30%</th>\
                                             </tr>\
@@ -1015,19 +367,31 @@ function get_class_table(link)
                                         <tbody>\
                                             <tr  id='table-items-wrapper' class='num-items'>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+mid_ex_items_str+mid_rec_items_str+"\
+                                                <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+"\
+                                                <td contenteditable='true' id='table-items-mid-ex1'></td>\
+                                                <td contenteditable='true' id='table-items-mid-rec1'></td>\
                                                 <td contenteditable='false' id='table-items-mid-cs-total'></td>\
-                                                <td contenteditable='false' id='table-items-mid-cs-rating'></td>"+mid_quiz_items_str+mid_le_items_str+"\
+                                                <td contenteditable='false' id='table-items-mid-cs-rating'></td>\
+                                                <td contenteditable='true' id='table-items-mid-quiz1'></td>\
+                                                <td contenteditable='true' id='table-items-mid-le1'></td>\
                                                 <td contenteditable='false' id='table-items-mid-ql-total'></td>\
-                                                <td contenteditable='false' id='table-items-mid-ql-rating'></td>"+mid_mexam_items_str+"\
+                                                <td contenteditable='false' id='table-items-mid-ql-rating'></td>\
+                                                <td contenteditable='true' id='table-items-mid-mexam'></td>\
                                                 <td contenteditable='false' id='table-items-mexam-rating'></td>\
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='false' id='border-bold'></td>\
-                                                <td contenteditable='false' id='table-items-final-att1'></td>"+final_assign_items_str+final_sw_items_str+final_ex_items_str+final_rec_items_str+"\
+                                                <td contenteditable='false' id='table-items-final-att1'></td>\
+                                                <td contenteditable='true' id='table-items-final-assign1'></td>\
+                                                <td contenteditable='true' id='table-items-final-sw1'></td>\
+                                                <td contenteditable='true' id='table-items-final-ex1'></td>\
+                                                <td contenteditable='true' id='table-items-final-rec1'></td>\
                                                 <td contenteditable='false' id='table-items-final-cs-total'></td>\
-                                                <td contenteditable='false' id='table-items-final-cs-rating'></td>"+final_quiz_items_str+final_le_items_str+"\
+                                                <td contenteditable='false' id='table-items-final-cs-rating'></td>\
+                                                <td contenteditable='true' id='table-items-final-quiz1'></td>\
+                                                <td contenteditable='true' id='table-items-final-le1'></td>\
                                                 <td contenteditable='false' id='table-items-final-ql-total'></td>\
-                                                <td contenteditable='false' id='table-items-final-ql-rating'></td>"+final_fexam_items_str+"\
+                                                <td contenteditable='false' id='table-items-final-ql-rating'></td>\
+                                                <td contenteditable='true' id='table-items-final-fexam'></td>\
                                                 <td contenteditable='false' id='table-items-fexam-rating'></td>\
                                                 <td contenteditable='false'></td>\
                                                 <td contenteditable='false'></td>\
@@ -1042,19 +406,31 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td contenteditable='false' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
+                                            <td contenteditable='false' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+"\
+                                            <td contenteditable='true' id='table-score-mid-ex1'></td>\
+                                            <td contenteditable='true' id='table-score-mid-rec1'></td>\
                                             <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
                                             <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+mid_mexam_score_str[ctr_module]+"\
+                                            <td contenteditable='true' id='table-score-mid-quiz1'></td>\
+                                            <td contenteditable='true' id='table-score-mid-le1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-mid-mexam'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false' id='border-bold'></td>\
-                                            <td contenteditable='false' id='table-score-final-att1'></td>"+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
                                             <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
+                                            <td contenteditable='true' id='table-score-final-assign1'></td>\
+                                            <td contenteditable='true' id='table-score-final-sw1'></td>\
+                                            <td contenteditable='true' id='table-score-final-ex1'></td>\
+                                            <td contenteditable='true' id='table-score-final-rec1'></td>\
                                             <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+final_fexam_score_str[ctr_module]+"\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-quiz1'></td>\
+                                            <td contenteditable='true' id='table-score-final-le1'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='false'></td>\
+                                            <td contenteditable='true' id='table-score-final-fexam'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
