@@ -1,13 +1,14 @@
 $(document).ready(function() {
 	$('table td').each(function(){
-		if(!($(this).attr('data-toggle') == 'tooltip') && !$(this).is('#table-items') && !$(this).is('.table-student-number') && !$(this).is('.table-student-name')){
+		if(!($(this).attr('data-toggle') == 'tooltip') && !$(this).is('#table-items') && $(this).attr('name') != 'stud-name' && $(this).attr('name') != 'stud-num'){
 			$(this).addClass("current-test");
 			$parent = $(this).parent()
 			$parent.addClass("current-test-parent");
 			$studno = $parent.find('td:eq(0)').html();
 			$studname = $parent.find('td:eq(1)').html();
 			$index = $(".current-test-parent td").index($(".current-test"));
-			if($(this).is('[class*="-attendance-mid"]') || $(this).is('[class*="-attendance-finals"]')) $head = $('#attendance').html();
+			if($(this).is('[id*="-att"]') && $(this).is('[id*="table-items-"]')) $head = 'ATTENDACE' + $("#table-module th:eq("+($index)+")").html();
+			else if($(this).is('[id*="-att"]')) $head = 'ATTENDACE' + $("#table-module th:eq("+($index-1)+")").html();
 			else if($(this).is('[class*="-midterm-score"]')) $head = "ME " + $('.table-item-title2>#midterm:eq(0)').html();
 			else if($(this).is('[class*="-midterm-percent"]')) $head = "ME PERCENTAGE (" + $('.table-item-title2>#midterm:eq(1)').html() +")";
 			else if($(this).is('[class*="-midterm-grade"]')) $head = "MIDTERM GRADE (" + $('.table-item-title2>#midterm:eq(2)').html()+")";
