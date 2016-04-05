@@ -35,8 +35,10 @@ class User extends CI_Controller
     		$userId = $this->session->userdata('Id');
 			$this->load->model('Faculty_model'); // load the model to be used
 			//get the username and usertype
+			$type = $this->session->userdata('UserType');
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
+				'type' => $type,
 				'Fullname' => $this->Faculty_model->get_fac_name($userId),
 				'ActiveHeader' => "home"
 			);	
@@ -98,8 +100,10 @@ class User extends CI_Controller
     	if ($this->session->userdata('Id')!="")
     	{
     		$this->load->model('Faculty_model'); // load the model to be used
+    		$type = $this->session->userdata('UserType');
     		$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
+				'type' => $type,
 				'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
 				'ActiveHeader' => "settings"
 			);
@@ -140,10 +144,12 @@ class User extends CI_Controller
     	{
     		$this->load->model('Faculty_model'); // load the model to be used
     		// to go in the archives tab
+    		$type = $this->session->userdata('UserType');;
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
+				'type' => $type,
 				'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
-				'ActiveHeader' => "archives"
+				'ActiveHeader' => "archives",
 			);
 			// if chairperson
 			if ($this->session->userdata('UserType') == 'Chairperson')
@@ -152,7 +158,14 @@ class User extends CI_Controller
 				$dept = $this->session->userdata('UserDept'); 
 				$data['info'] = $this->Faculty_model->get_archive($dept);
 			}
-			
+			else if ($this->session->userdata('UserType') == 'Administrator')
+			{
+				// fetch all class with IsUploaded = true
+				$dept = false;
+				$data['info'] = $this->Faculty_model->get_archive($dept);
+			}
+			else $data = null;
+
 			$this->load->view('templates/header',$user);
 			$this->load->view('pages/archives',$data);
 			$this->load->view('templates/footer');
@@ -169,8 +182,10 @@ class User extends CI_Controller
     	{
     		$this->load->model('Faculty_model'); // load the model to be used
     		// to go in the archives tab
+			$type = $this->session->userdata('UserType');
 			$user['user'] = array(
 				'Username' => $this->session->userdata('Username'),
+				'type' => $type,
 				'UserType' => $this->session->userdata('UserType'),
 				'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
 				'ActiveHeader' => "calendar"
@@ -267,6 +282,7 @@ class User extends CI_Controller
 		$module = $this->input->post('module_type');
 		// move_uploaded_file($temp, "resources/uploads/".$name);
 		$data['status'] = $this->Upload_model->save_data($file,$module,$this->session->userdata('Id'));
+		$type = $this->session->userdata('UserType');
 		$user['user'] = array(
 			'Username' => $this->session->userdata('Username'),
 			'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
@@ -417,6 +433,7 @@ class User extends CI_Controller
 		// $temp = $_FILES["excel_file"]["tmp_name"];
 		// move_uploaded_file($temp, "resources/uploads/".$name);
 		$data['status'] = $this->Upload_model->upload_class($file);
+		$type = $this->session->userdata('UserType');
 		$user['user'] = array(
 			'Username' => $this->session->userdata('Username'),
 			'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),

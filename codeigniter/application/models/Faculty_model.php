@@ -91,23 +91,31 @@ class Faculty_model extends CI_Model
 		$base = base_url();
 		$path = $base.'resources/reports/';
 		foreach ($query->result_array() as $class) {
-			//check if same department
-			$subj_id = $class["SubjectId"];
-			$this->db->where('Id',$subj_id);
-			$query_subj = $this->db->get('subjects');
+			if ($dept)
+			{
+				//check if same department
+				$subj_id = $class["SubjectId"];
+				$this->db->where('Id',$subj_id);
+				$query_subj = $this->db->get('subjects');
 
-			$subj = $query_subj->row();
+				$subj = $query_subj->row();
 
-			$user_id = $subj->UserId;
-			$this->db->where('Id',$user_id);
-			$query_users = $this->db->get('users');
+				$user_id = $subj->UserId;
+				$this->db->where('Id',$user_id);
+				$query_users = $this->db->get('users');
 
-			$user = $query_users->row();
+				$user = $query_users->row();
 
-			if ($dept == $user->UserDept)
+				if ($dept == $user->UserDept)
+				{
+					$data[$class["Filename"]] = $path.$class["Filename"];
+				}
+			}
+			else
 			{
 				$data[$class["Filename"]] = $path.$class["Filename"];
 			}
+			
 		}
 		return $data;
 	}

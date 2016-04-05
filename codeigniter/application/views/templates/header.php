@@ -39,7 +39,13 @@
     <div class = "container">
         <div class = "row" id = "navbar-normal">
             <ul class = " nav pull-left" id= "navbar-maintabs">
-                <li><a href="<?=site_url('user/archives')?>" id="<?php if($user['ActiveHeader'] == 'archives') echo 'active';?>">ARCHIVES</a></li>
+                <?php
+                    if ($user['type'] != 'Faculty'):
+                        ?>
+                            <li><a href="<?=site_url('user/archives')?>" id="<?php if($user['ActiveHeader'] == 'archives') echo 'active';?>">ARCHIVES</a></li>
+                        <?php
+                    endif;
+                ?>
                 <li><a href = "<?=site_url('user/calendar')?>" id="<?php if($user['ActiveHeader'] == 'calendar') echo 'active';?>">CALENDAR</a></li>
                 <li><a href = "<?=site_url('user/settings')?>" id="<?php if($user['ActiveHeader'] == 'settings') echo 'active';?>">SETTINGS</a></li>
                 <li><a href = "<?=site_url('user/home')?>" id="<?php if($user['ActiveHeader'] == 'home') echo 'active';?>">HOME</a></li>
@@ -52,7 +58,13 @@
         </div>
         <div class = "row" id = "navbar-res">
             <ul class = " nav pull-left" id= "navbar-maintabs">
-                <li><a href="<?=site_url('user/archives')?>" id="<?php if($user['ActiveHeader'] == 'archives') echo 'active';?>"><i class = "fa fa-archive "></i></a></li>
+                 <?php
+                    if ($user['type'] != 'Faculty'):
+                        ?>
+                            <li><a href="<?=site_url('user/archives')?>" id="<?php if($user['ActiveHeader'] == 'archives') echo 'active';?>"><i class = "fa fa-archive "></i></a></li>
+                        <?php
+                    endif;
+                ?>
                 <li><a href = "<?=site_url('user/calendar')?>" id="<?php if($user['ActiveHeader'] == 'calendar') echo 'active';?>"><i class = "fa fa-calendar "></i></a></li>
                 <li><a href = "<?=site_url('user/settings')?>" id="<?php if($user['ActiveHeader'] == 'settings') echo 'active';?>"><i class = "fa fa-wrench "></i></a></li>
                 <li><a href = "<?=site_url('user/home')?>" id="<?php if($user['ActiveHeader'] == 'home') echo 'active';?>"><i class = "fa fa-home "></i></a></li>
