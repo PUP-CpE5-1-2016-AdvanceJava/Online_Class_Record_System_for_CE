@@ -29,7 +29,7 @@
 #save-upload-res{display: none;} 
 
 /*FOOTER*/
-#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; }
+#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px; }
 #footer-details {text-align: left; }
 #footer-details a:hover{color:#fff;}
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
@@ -58,7 +58,7 @@
 /*LOGIN CONTENT end*/
 
 /*ARCHIVES CONTENT*/
-#archives-wrapper{ margin-bottom: 200px;}
+#archives-wrapper{ margin-bottom: 200px; margin-top: 50px;}
 #archives-wrapper span{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold;}
 #archives-breadcrumbs{background:none; margin-left:-20px;}
 #archives-panel{background: #E2E2E2; border-radius:0; font-family: 'Source Sans Pro', sans-serif; border:none;}
@@ -67,8 +67,7 @@
 /*ARCHIVES CONTENT end*/
 
 /*HOME CONTENT*/
-#home-body-wrapper{background: #E4E4E4;}
-#home-wrapper{ margin-bottom: 200px; min-height: 300px;}
+#home-wrapper{ margin-bottom: 200px; min-height: 300px; margin-top: 50px;}
 #home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
 #home-panel{font-family: 'Source Sans Pro', sans-serif; }
 #home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}

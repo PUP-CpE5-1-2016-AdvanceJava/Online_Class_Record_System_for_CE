@@ -120,7 +120,7 @@ function get_class_table(link)
         //--clear sidebars content ang table content first to avoid bugs--//
         $("ul>li[name='sheet_submenu']").empty();
         $("ul>li[name='module_submenu']").empty();
-        $('div#TEMPORARY').empty();
+        $('div#table-content-wrapper').empty();
         $('tbody#stud_table').empty();
         /*INITIALIZE COUNTERS FOR TABLE*/
         //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
@@ -140,7 +140,7 @@ function get_class_table(link)
         module_type = response['Class']['ModuleType'];
         classId = response['Class']['ClassId'];
         type_of_table = response['table_type'];
-        var table = $('div#TEMPORARY');
+        var table = $('div#table-content-wrapper');
         table.empty();
         if (response['table_type'] == "main_table")
         {
