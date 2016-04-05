@@ -49,7 +49,7 @@ function create_calendar(year, first_day){
             div_row.setAttribute("id", "calendar-row-" + row_count + "-" + year);
 
             var div_table = document.createElement('div');
-            div_table.setAttribute("class", "col-lg-12 col-md-12");
+            div_table.setAttribute("class", "col-lg-12 col-md-12 table-responsive");
             div_table.setAttribute("id", "calendar-div-" + month + "-" + year);
             div_row.appendChild(div_table);
 
@@ -138,7 +138,7 @@ function create_calendar(year, first_day){
             row_count += 1;
         } else{
             var div_table = document.createElement('div');
-            div_table.setAttribute("class", "col-lg-12 col-md-12");
+            div_table.setAttribute("class", "col-lg-12 col-md-12 table-responsive");
             div_table.setAttribute("id", "calendar-div-" + month + "-" + year);
 
             var h3_month = document.createElement('h3');

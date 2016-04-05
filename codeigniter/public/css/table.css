@@ -38,13 +38,14 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 #table-blank{ border-top: solid 2px gray;}
 
 #table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
-#table-mid-lab-button-del, #table-mid-prac-button-del, #table-mid-proj-button-del, #table-final-lab-button-del, #table-final-prac-button-del, #table-final-proj-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-mid-lab-button-del, #table-mid-prac-button-del, #table-mid-proj-button-del, #table-final-lab-button-del, #table-final-prac-button-del, #table-final-proj-button-del
+	{background: none; font-size: 20px; padding: 0 3; display: none;}
 #table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
 #table-att1-button, #table-att2-button{background: none; font-size: 20px; padding: 0 3;}
 #table-mid-att-button-del, #table-final-att-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
-#table-mid-assign-button-del, #table-mid-sw-button-del, #table-mid-ex-button-del, #table-mid-rec-button-del, #table-mid-quiz-button-del, #table-mid-le-button-del, #table-final-assign-button-del,
-	#table-final-sw-button-del, #table-final-ex-button-del, #table-final-rec-button-del, #table-final-quiz-button-del, #table-final-le-button-del {background: none; font-size: 20px;
-	padding: 5px 10px 5px 10px; display: none;}
+#table-mid-assign-button-del, #table-mid-sw-button-del, #table-mid-ex-button-del, #table-mid-rec-button-del, #table-mid-quiz-button-del, #table-mid-le-button-del,
+	#table-final-assign-button-del, #table-final-sw-button-del, #table-final-ex-button-del, #table-final-rec-button-del, #table-final-quiz-button-del,
+	#table-final-le-button-del {background: none; font-size: 20px; padding: 5px 10px 5px 10px; display: none;}
 
 #border-left, #table-student, #table-blank2, #table-items, #table-blank{ border-left: solid 2px gray !important;}
 #border-both{ border-left: solid 2px gray !important; border-right: solid 2px gray !important; }
@@ -67,5 +68,9 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 #modal-text { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 10%; text-align:center; position: relative;}
 
 /*Fixed cell */
-.table-items-assign-mid, .table-items-seatwork-mid, .table-items-exercise-mid, .table-items-recitation-mid, .table-items-quiz-mid, .table-items-longExam-mid,.table-items-midterm-score, .table-items-assign-finals, .table-items-seatwork-finals, .table-items-exercise-finals, .table-items-recitation-finals, .table-items-quiz-finals, .table-items-longExam-finals,.table-items-finals-score, .table-items-lab-mid, .table-items-prac-mid, .table-items-proj-mid, .table-items-lab-finals, .table-items-prac-finals, .table-items-proj-finals, .num-items td, .stud-att-date-midterm, .stud-att-date-finals{ overflow: hidden; white-space: nowrap; word-wrap: break-word; max-width: 30px; max-height: 1em;}
+.table-items-assign-mid, .table-items-seatwork-mid, .table-items-exercise-mid, .table-items-recitation-mid, .table-items-quiz-mid, .table-items-longExam-mid,
+	.table-items-midterm-score, .table-items-assign-finals, .table-items-seatwork-finals, .table-items-exercise-finals, .table-items-recitation-finals,
+	.table-items-quiz-finals, .table-items-longExam-finals,.table-items-finals-score, .table-items-lab-mid, .table-items-prac-mid, .table-items-proj-mid,
+	.table-items-lab-finals, .table-items-prac-finals, .table-items-proj-finals, .num-items td, .stud-att-date-midterm, .stud-att-date-finals, .num-items
+	{ overflow: hidden; white-space: nowrap; word-wrap: break-word; max-width: 30px; max-height: 1em;}
 .table-student-number, .table-student-name{width:150px !important;}

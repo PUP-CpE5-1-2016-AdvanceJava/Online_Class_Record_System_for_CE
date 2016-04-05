@@ -1064,7 +1064,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td></tr>");
                 ctr_module++;
                 });
-                table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                table.append("<script type='text/javascript' src='/js/tooltip_lec.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
             }
             else
@@ -1126,7 +1126,7 @@ function get_class_table(link)
                                                 </tr>\
                                                 </thead>\
                                                 <tbody>\
-                                                <tr id='table-items-wrapper'  id='table-items-wrapper'>\
+                                                <tr id='table-items-wrapper'  class='table-student-num-name'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
                                                     <td contenteditable='true' id='table-items-mid-lab1'></td>\
                                                     <td contenteditable='false' id='table-items-mid-lb-total'></td>\
@@ -1183,7 +1183,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
             });
-            table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+            table.append("<script type='text/javascript' src='/js/tooltip_lab.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
             }
         }
@@ -1236,6 +1236,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
+            table.append("<script type='text/javascript' src='/js/tooltip_attendance.js'></script>");
             table.append("<script type='text/javascript' src='/js/table.js'></script>");
         }
         else if (response['table_type'] == "final_table")
@@ -1248,8 +1249,8 @@ function get_class_table(link)
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
-                                <div class=container-fluid>\
-                                    <div class=table-responsive>\
+                                <div class='container-fluid'>\
+                                    <div class='table-responsive' id='table-final'>\
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                                 <tr>\
                                                     <tr>\

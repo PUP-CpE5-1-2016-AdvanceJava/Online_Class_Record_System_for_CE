@@ -4,7 +4,7 @@
 /*UNIVERSAL*/
 
 /*HEADER*/
-#header-wrapper{z-index: 999; background:#730b0a; }
+#header-wrapper{z-index: 999; background:#730b0a;}
 #header-details{padding: 20px 0 20px 0; }
 #header-details span{display:inline; color:#fff;  font-family: 'Lustria', serif; font-size: 28px; line-height: 2; padding-left:5px; }
 #header-logo{ height: auto; float: left; padding-right: 5px;}
@@ -24,12 +24,8 @@
 #navbar-subtabs p{line-height: .75; padding: 0;}
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
-/* Save, Update Button */
-#save-upload-normal{display: block;}
-#save-upload-res{display: none;} 
-
 /*FOOTER*/
-#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px; }
+#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px;}
 #footer-details {text-align: left; }
 #footer-details a:hover{color:#fff;}
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
@@ -52,8 +48,8 @@
 #login-form-details {border-radius: 7px; padding: 40px; background: rgba(35, 35, 35, 0.76); transition: background 1s ease;}
 #login-form-details:hover {background: rgba(35, 35, 35, 1);} 
 #login-form-title{color:#fff; font-family:'Source Sans Pro', sans-serif; font-size:18px; font-weight: bold; padding-bottom:10px;}
-#login-form-input {padding-bottom: 5px; padding-top: 5px; }
-#login-form-input input {padding-bottom: 20px; padding-top: 20px;}
+#login-form-input {padding-bottom: 5px; padding-top: 5px;}
+#login-form-input input { height: 42px;}
 #login-form-button {width:100%; margin-top: 20px;}
 /*LOGIN CONTENT end*/
 
@@ -67,13 +63,13 @@
 /*ARCHIVES CONTENT end*/
 
 /*HOME CONTENT*/
-#home-wrapper{ margin-bottom: 200px; min-height: 300px; margin-top: 50px;}
+#home-wrapper{ min-height: 300px; padding: 50px 62px 200px 62px; margin: 0px; width: 100%; background: #E4E4E4;}
 #home-wrapper-title{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold; color:#333;padding-bottom: 20px; padding-left: 0;}
 #home-panel{font-family: 'Source Sans Pro', sans-serif; }
 #home-panel-label{color:#065498; text-decoration: none; font-size:18px; font-weight: bolder; padding: 0; border-bottom:0;}
 #home-panel-label:hover{color:#0C416F;}
 #home-panel-label:active{color:#0C416F;}
-#home-panel-label span{background:#277FCC; margin-bottom: 2px; font-family:'Source Sans Pro', sans-serif ; font-weight: bold;}
+#home-panel-label span{background:#277FCC; margin-bottom: 2px; font-family:'Source Sans Pro', sans-serif ; font-weight: bold; margin-left: 5px;}
 #home-panel-sublabel {text-decoration: none; font-size:15px; font-weight: bolder; color: #333; }
 #home-panel-links a{text-decoration: none; border-radius: 0; margin-bottom: 0; border: none; }
 #home-panel-links span{float:right; }
@@ -81,7 +77,7 @@
 /*HOME CONTENT end*/
 	
 /*SETTINGS CONTENT*/
-#settings-wrapper{background: #E2E2E2; padding: 10px 0;  margin-bottom: 200px;}
+#settings-wrapper{background: #E2E2E2; padding: 10px 0;  margin-bottom: 200px; margin-top: 50px;}
 #settings-title span{font-family:'Source Sans Pro', sans-serif ; font-size: 30px; font-weight: bold;}
 #settings-panel{background: #E2E2E2; border-radius:0; font-family: 'Source Sans Pro', sans-serif; border:none; }
 #settings-panel-details {background: #F3F3F3; border:1px solid #D0D0D0; padding: 20px 40px; }
@@ -92,13 +88,12 @@
 #settings-reset-select{width:200px; margin-top: 5px; margin-bottom: 5px; margin-right:10px;}
 #settings-createacct-form-button{padding-top: 5px; padding-bottom: 5px; color: #07253E;}
 #settings-upload-form {margin-bottom: 10px;}
+#settings-upload-button-input, input[type="file"]{display: none;}
+#settings-upload-button{margin-right: 10%; margin-left: 1%;}
+/*SETTINGS CONTENT end*/
 
 /*FOOTER FIX AT BOTTOM - SOLUTION*/
 #table-content-wrapper, #sidebar-content-wrapper { min-height: 500px;}
-
-.row{margin-right: 0}
-
-/*SETTINGS CONTENT end*/
 
 /*------------------MEDIA QUERIES-----------------*/
 
@@ -133,7 +128,6 @@
 	#footer-details span{display:block;}
 	#footer-logo{display: none;}
 
-
 }
 
 @media (min-width:640px) and (max-width:767px){
@@ -155,22 +149,33 @@
 	#settings-password-form{padding-right: 0px;}
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%; }
-	#settings-upload-button {width:100%;}
+	#settings-upload-button{margin-left: 5%; width: 35%}
+	#settings-choose-file-button{margin:0; width: 30%}
+	#settings-choose-file-button b, #settings-upload-button b{font-size: 20px}
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-logo{display: none;}
-	
-	#calendar-h2-month{font-size: 32px;}
-	#today-button{padding: 0px 13px!important; }
 
+	/*CALENDAR	*/
+	#calendar-h2-month{font-size: 32px;}
+	#year-button{width: 60%; font-size: 15px !important; padding: 5px;}
+	#month-button{width: 60%; font-size: 15px !important; padding: 5px}
+	#today-button{width: 60%; font-size: 15px !important; padding: 5px}
+
+	/*BUTTONS*/
 	.fa-plus-circle, .fa-minus-circle{font-size: 18px}
 
+	/*FONTS*/
 	h2{font-size: 24px}
-	h4{font-size: 18px}
+	h3{font-size: 18px}
 	td,th{font-size: 14px}
 
+	/*MODAL*/
 	#table-alert-modal #modal-text{width: 400px !important;}
+
+	/*HOME WRAPPER*/
+	#home-wrapper{ padding-left: 15px; padding-right: 15px; }
 }
 
 
@@ -199,32 +204,41 @@
 	#settings-password-form{padding-right: 0px;}
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%; }
-	#settings-upload-button {width:100%;}
+	#settings-upload-button{margin-left: 5%; width: 28%}
+	#settings-choose-file-button{margin:0; width: 30%}
+	#settings-choose-file-button b, #settings-upload-button b{font-size: 15px}
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-details span{display:block;}
 	#footer-logo{display: none;}
 	
+	/*CALENDAR*/
 	#calendar-h2-month{font-size: 30px;}
 	#today-button{padding: 0px 14px!important; }
 	#event-title h2 {font-size:28px;}
 	#current-event-date{font-size: 16px;}
+	#year-button{width: 70%; font-size: 12px !important; padding: 5px;}
+	#month-button{width: 70%; font-size: 12px !important; padding: 5px}
+	#today-button{width: 70%; font-size: 12px !important; padding: 5px}
+	#back, #next{width:25px; padding: 5px}
 	.cal-event h4{font-size: 15px;}
 	.cal-event p{font-size: 14px;}
+	.glyphicon-menu-right, .glyphicon-menu-left{font-size: 12px !important;}
 	
+	/*BUTTONS*/
 	.fa-plus-circle, .fa-minus-circle{font-size: 16px}
 
+	/*FONTS*/
 	h2{font-size: 20px}
-	h4{font-size: 14px}
+	h3{font-size: 14px}
 	td,th{font-size: 12px}
 
+	/*MODAL*/
 	#table-alert-modal #modal-text{width: 350px !important;}
 	
-	/*save, update */
-	#save-upload-res{display:block !important; }
-	#save-upload-normal{display:none !important;}
-
+	/*HOME WRAPPER*/
+	#home-wrapper{ padding-left: 15px; padding-right: 15px; }
 }
 
 @media (max-width: 439px){
@@ -260,8 +274,11 @@
 	#settings-password-form{padding-right: 0px;}
 	#settings-reset-select{width:100%; }
 	#settings-resetpwd-form-button{width:100%;}
-	#settings-upload-button {width:100%;}
-
+	#settings-upload-button{margin:0; width: 30%}
+	#settings-choose-file-button{margin:0; width: 30%}
+	#settings-choose-file-button b, #settings-upload-button b{font-size: 10px}
+	
+	/*CALENDAR*/
 	#calendar-h2-month{font-size: 22px;}
 	#calendar-days{font-size: 12px;}
 	#calendar-tbody tr td{height:70px!important; max-height: 70px;}
@@ -271,20 +288,27 @@
 	#button-group2{padding:0;}
 	#back span{font-size: .7em;} 
 	#next span{font-size: .7em;} 
+	#year-button{width: 70%; font-size: 12px !important; padding: 5px;}
+	#month-button{width: 70%; font-size: 12px !important; padding: 5px}
+	#today-button{width: 70%; font-size: 12px !important; padding: 5px}
+	#back, #next{width:20px; padding: 5px}
 	.cal-event h4{font-size: 15px;}
 	.cal-event p{font-size: 13px;}
 	.cal-event span{font-size: 13px;}
-
+	.glyphicon-menu-right, .glyphicon-menu-left{font-size: 10px !important;}
+	
+	/*BUTTONS*/
 	.fa-plus-circle, .fa-minus-circle{font-size: 14px}
 
+	/*FONTS*/
 	h2{font-size: 20px}
-	h4{font-size: 14px}
+	h3{font-size: 14px}
 	td,th{font-size: 10px}
 
+	/*MODAL*/
 	#table-alert-modal #modal-text{width: 250px !important;}
 	
-	/*save, update */
-	#save-upload-res{display:block !important; }
-	#save-upload-normal{display:none !important;}
+	/*HOME WRAPPER*/
+	#home-wrapper{ padding-left: 15px; padding-right: 15px; }
 
 }
