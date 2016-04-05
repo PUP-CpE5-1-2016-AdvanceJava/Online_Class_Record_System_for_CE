@@ -191,6 +191,8 @@ $(document).ready(function(){
 	    var classId = get_class_id();
 	    var classBlock = get_class_block();
 		var classSubj = get_class_subj();
+		var classSched = get_class_sched();
+		var module = get_module_type();
 	    var dt = new Date();
 	    var day = dt.getDate();
 	    var month = dt.getMonth() + 1;
@@ -204,12 +206,11 @@ $(document).ready(function(){
 	    var data_type = 'data:application/vnd.ms-excel;charset=utf-8';
 	    
 	    var table_html = $('table#table-wrapper')[0].outerHTML;
-	//    table_html = table_html.replace(/ /g, '%20');
 	    table_html = table_html.replace(/<tfoot[\s\S.]*tfoot>/gmi, '');
 	    
 	    var css_html = '<style>td {border: 0.5pt solid #c0c0c0} .tRight { text-align:right} .tLeft { text-align:left} </style>';
-	//    css_html = css_html.replace(/ /g, '%20');
-		var data = '<html><head>' + css_html + '</' + 'head><body>' + table_html + '</body></html>'
+		var header = "<h2>"+classBlock+"</h2><h6>"+classSched+"</h6><hr><h3>"+classSubj+"("+module+")"+"</h3>"
+		var data = '<html><head>' + css_html + '</' + "head><body>"+ header + table_html + '</body></html>'
 	    var encoded = encodeURIComponent(data);
 	    a.href = data_type + ',' + encoded;
 	    var link = classSubj+'__'+classBlock +'__'+ postfix + '.xls';
