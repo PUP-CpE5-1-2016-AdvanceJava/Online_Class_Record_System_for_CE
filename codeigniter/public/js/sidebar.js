@@ -131,7 +131,6 @@ function get_class_table(link)
         midtermCounter=0;
         finalsCounter=0;
         //---variables for lab table---//
-        labCounter1=1;
         labCounter2=1;
         pracCounter1=1;
         pracCounter2=1;
@@ -1071,6 +1070,65 @@ function get_class_table(link)
             }
             else
             {
+            // 'Lab table' please edit classes for responsive //
+            var midterm_cols = 10,mid_lab_cols = 3,mid_prac_cols = 3,mid_proj_cols = 3;
+
+            var mid_lab_header_str = "",mid_lab_items_str = "",mid_lab_score_str = [];
+            // var mid_sw_cols,mid_sw_header_str = "",mid_sw_items_str = "",mid_sw_score_str = [];
+            // var mid_ex_cols,mid_ex_header_str = "",mid_ex_items_str = "",mid_ex_score_str = [];
+
+            var finals_cols = 11,final_lab_cols = 3,final_prac_cols = 3,final_proj_cols = 3;
+
+            // var final_assign_cols,final_assign_header_str = "",final_assign_items_str = "",final_assign_score_str = [];
+            // var final_sw_cols,final_sw_header_str = "",final_sw_items_str = "",final_sw_score_str = [];
+            // var final_ex_cols,final_ex_header_str = "",final_ex_items_str = "",final_ex_score_str = [];
+
+            /*lab MIDTERM STRING INITIALIZATION*/
+            if (response['lab_mid_num'] > 0)
+            {
+                midterm_cols += response['lab_mid_num'];
+                mid_lab_cols += response['lab_mid_num'] - 1;
+                labCounter1 = response['lab_mid_num'];
+            }
+            else 
+            {
+                midterm_cols++;
+                labCounter1 = 1;
+            }
+            
+            for (var i = 0; i <  mid_lab_cols-2; i++) 
+            {
+                mid_lab_header_str += "<th class='text-center' id='table-header-mid-lab"+(i+1)+"'>Lab "+(i+1)+" </th>";
+            }
+            
+            if (response['lab_mid_items'].length > 0)
+            {
+                for (var i = 0; i <  mid_lab_cols-2; i++) 
+                {
+                    mid_lab_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab"+(i+1)+"'>"+response['lab_mid_items'][i]+"</td>";
+                }
+            }
+            else
+            {
+                mid_lab_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab1'></td>";
+            }
+
+            if (response['lab_mid_score'].length > 0)
+            {
+                var x_lab_mid = 0;
+                response.lab_mid_score.forEach(function(lab){
+                    mid_lab_score_str[x_lab_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-lab"+(x_lab_mid+1)+"'>"+lab+"</td>";
+                    x_lab_mid++;
+                });
+            }
+            else
+            {
+                var x_lab_mid = 0;
+                response.Student.forEach(function(lab){
+                    mid_lab_score_str[x_lab_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-lab"+(x_lab_mid+1)+"'></td>";
+                    x_lab_mid++;
+                });
+            }
                 // 'Lab table' please edit classes for responsive //
                 table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
@@ -1086,24 +1144,23 @@ function get_class_table(link)
                                             <thead>\
                                                 <tr>\
                                                     <th colspan='2' id='table-blank'></th>\
-                                                    <th colspan='11' id='table-midterm' class='text-center'>Midterms</th>\
-                                                    <th colspan='11' id='table-finals' class='text-center'>Finals</th>\
+                                                    <th colspan='"+midterm_cols+"' id='table-midterm' class='text-center'>Midterms</th>\
+                                                    <th colspan='"+finals_cols+"' id='table-finals' class='text-center'>Finals</th>\
                                                 </tr>\
                                                 <tr>\
                                                     <th class='text-center' id='table-student'>Student Number</th>\
                                                     <th class='text-center' id='table-name'>Name</th>\
-                                                    <th colspan='3' class='text-center' id='table-mid-lab'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-lab-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-mid-prac'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac1-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-mid-prac-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-mid-proj'>PROJECT(30%)<a class='btn' id='table-proj1-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-mid-proj-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+mid_lab_cols+"' class='text-center' id='table-mid-lab'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-lab-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+mid_prac_cols+"' class='text-center' id='table-mid-prac'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac1-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-mid-prac-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+mid_proj_cols+"' class='text-center' id='table-mid-proj'>PROJECT(30%)<a class='btn' id='table-proj1-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-mid-proj-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='2' class='text-center' id='border-bold'>MIDTERM GRADE</th>\
-                                                    <th colspan='3' class='text-center' id='table-final-lab'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-lab-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-final-prac'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-prac-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-final-proj'>PROJECT(30%)<a class='btn' id='table-proj2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-proj-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+final_lab_cols+"' class='text-center' id='table-final-lab'>LABORATORY EXERCISE/MACHINE PROBLEMS(45%)<a class='btn' id='table-lab2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-lab-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+final_prac_cols+"' class='text-center' id='table-final-prac'>PRACTICAL EXAM(25%)<a class='btn' id='table-prac2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-prac-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+final_proj_cols+"' class='text-center' id='table-final-proj'>PROJECT(30%)<a class='btn' id='table-proj2-button' onclick='add_column($(this).parent());'><acronym title='ADD'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-proj-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='2' class='text-center'>FINAL GRADE</th>\
                                                 </tr>\
                                                 <tr id='table-module'>\
-                                                    <th colspan='2' id='table-blank2'></th>\
-                                                    <th class='text-center' id='table-header-mid-lab1'>Lab 1</th>\
+                                                    <th colspan='2' id='table-blank2'></th>"+mid_lab_header_str+"\
                                                     <th class='text-center' id='table-header-mid-lab-total'>Total</th>\
                                                     <th class='text-center' id='table-header-mid-lab-rating'>45%</th>\
                                                     <th class='text-center' id='table-header-mid-prac1'>Prac 1</th>\
@@ -1129,8 +1186,7 @@ function get_class_table(link)
                                                 </thead>\
                                                 <tbody>\
                                                 <tr id='table-items-wrapper'  class='table-student-num-name'>\
-                                                    <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab1'></td>\
+                                                    <td colspan='2' class='text-right' id='table-items'>Number of Items</td>"+mid_lab_items_str+"\
                                                     <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-total'></td>\
                                                     <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-rating'></td>\
                                                     <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-prac1'></td>\
@@ -1159,10 +1215,10 @@ function get_class_table(link)
                             </div>\
                         </div>\
                       </div>");
+            var ctr_module = 0;
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-lab1'></td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_lab_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-prac1'></td>\
@@ -1184,7 +1240,9 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
+                ctr_module++;
             });
+            
             table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
             }

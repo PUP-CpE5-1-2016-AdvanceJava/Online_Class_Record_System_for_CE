@@ -81,6 +81,9 @@ class Table_model extends CI_Model {
 
     	$fexam_final_num = 0;$fexam_final_items = array();$fexam_final_score = array();
 
+
+        $lab_mid_num = 0;$lab_mid_items = array();$lab_mid_score = array();
+
     	foreach ($query->result() as $row) 
     	{	
     		// combine to make full name and to capital first letter of each name
@@ -561,6 +564,42 @@ class Table_model extends CI_Model {
 	    			}
     			}
     		}
+            else if ($block->ModuleType == 'Lab')
+            {
+                //---lab_mid ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Midterm');
+                $query_module = $this->db->get('mod_lab');
+                $lab_mid_num = $query_module->num_rows();
+                if ($lab_mid_num > 0)
+                {
+                    $lab_items = $query_module->result_array();
+                    for ($x=0; $x < $lab_mid_num; $x++) 
+                    { 
+                        $lab_mid_items[$x] = $lab_items[$x]["LabItems"];
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Midterm');
+                $query_lab_score = $this->db->get('lab_act');
+                $lab_mid_score_num = $query_lab_score->num_rows();
+                if ($lab_mid_score_num > 0)
+                {
+                    $lab_score = $query_lab_score->result_array();
+                    for ($y=0; $y < $lab_mid_num; $y++) 
+                    { 
+                        $lab_mid_score[$i][$y] = $lab_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $lab_mid_num; $y++) 
+                    { 
+                        $lab_mid_score[$i][$y] = "0.00";
+                    }
+                }
+            }
     		$i++;
     	}
     	$data = array(
@@ -608,6 +647,9 @@ class Table_model extends CI_Model {
     		'le_final_score' => $le_final_score,
     		'fexam_final_items' => $fexam_final_items,
     		'fexam_final_score' => $fexam_final_score,
+            'lab_mid_num' => $lab_mid_num,
+            'lab_mid_items' => $lab_mid_items,
+            'lab_mid_score' => $lab_mid_score,
     	);
     	return $data;
 	}
