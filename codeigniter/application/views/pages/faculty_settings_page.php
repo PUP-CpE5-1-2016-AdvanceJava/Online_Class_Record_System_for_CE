@@ -134,6 +134,24 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- PANEL 3 -Upload excel file -->
+                    <div class="panel" id = "settings-panel">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <a id = "archives-panel-label" class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Send Class Report <i class = "fa fa-caret-down"></i></a>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                            <div class="list-group" >
+                                <div class="list-group-item" id = "settings-panel-details">
+                                    <form class="form-inline" id = "settings-upload-class-form" enctype="multipart/form-data" action="<?=site_url('user/upload_class')?>" method="POST">
+                                        <!-- Name of input element determines name in $_FILES array -->
+                                        <input name="excel_file" type="file" />
+                                        <button type="submit" class="btn btn-primary" id = "settings-upload-class-button"><i class = "fa fa-upload"></i><b> Upload</b></button>
+                                    </form>     
+                                </div>
+                            </div>
+                        </div>
                     </div>  
                 </div>
             </div>

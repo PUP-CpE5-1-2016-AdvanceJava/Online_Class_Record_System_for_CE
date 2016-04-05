@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2016 at 03:12 PM
+-- Generation Time: Apr 05, 2016 at 08:38 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -245,8 +245,8 @@ CREATE TABLE IF NOT EXISTS `class` (
 --
 
 INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStudents`, `Passers`, `YrSem`, `Schedule`, `Filename`, `IsUploaded`, `DateUploaded`) VALUES
-(1, 1, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', '', 1, '2016-04-11'),
-(2, 2, 'BSCOE 2-3', 'Lab', 45, NULL, 'Second Semester 2015-16', 'S/S 07:30AM-10:30AM/10:30AM-01:30PM', '', 1, '2016-04-05');
+(1, 1, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', 'BSCOE Elec4 Bscoe Elective 4__BSCOE 5-1__1__6.4.2016_1.11.xls', 1, '2016-04-05'),
+(2, 2, 'BSCOE 2-3', 'Lab', 45, NULL, 'Second Semester 2015-16', 'S/S 07:30AM-10:30AM/10:30AM-01:30PM', 'COEN 3054 Data Structures And Algorithm Analysis__BSCOE 2-3__2__6.4.2016_1.11.xls', 1, '2016-04-05');
 
 -- --------------------------------------------------------
 

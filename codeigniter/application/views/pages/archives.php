@@ -19,8 +19,15 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                             <div class="list-group" id ="archives-panel-links">
-                                <a href="#" class="list-group-item">BSCpE 5-1 Software Engineering_Final001.pdf</a>
-                                <a href="#" class="list-group-item">BSCpE 5-1 Software Engineering_Draft001.pdf</a>
+                                <?php
+                                    if (isset($info))
+                                    {
+                                        $hrefId = 0;
+                                        foreach ($info as $data => $path) :
+                                            echo "<a href='".$path."' class='list-group-item'>".$data."</a>";
+                                        endforeach;
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>

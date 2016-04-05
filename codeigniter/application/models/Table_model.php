@@ -720,7 +720,7 @@ class Table_model extends CI_Model {
 		}	
 	}
 
-    function export_class_table($ClassId)
+    function export_class_table($ClassId,$filename)
     {
         // check if isuploaded = true;
         $this->db->where('Id',$ClassId);
@@ -730,7 +730,7 @@ class Table_model extends CI_Model {
         if ($class->IsUploaded)
         {
 
-            return "File has already been exported. Another copy will be given";
+            return "You have already uploaded this file.";
         }
         else
         {
@@ -738,13 +738,15 @@ class Table_model extends CI_Model {
             $date = getdate();
             $d = $date['year']."-".$date['mon']."-".$date['mday'];
             $obj = array(
-                    'IsUploaded' => true,
-                    'DateUploaded' => $d, // get date today
+        		'Filename' => $filename,
+                'IsUploaded' => true,
+                'DateUploaded' => $d, // get date today
+                    
             );
             $this->db->where('Id', $ClassId);
             $this->db->update('class', $obj); 
             
-            return "File Successfully exported.";
+            return "Class entry has been successfully recorded.";
         }
 
     }
