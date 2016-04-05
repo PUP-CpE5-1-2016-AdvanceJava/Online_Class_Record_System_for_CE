@@ -2,6 +2,8 @@
 var module_type;
 var type_of_table;
 var classId;
+var classBlock;
+var classSubj;
 var midtermCounter=0;
 var finalsCounter=0;
 //---variables for lab table---//
@@ -140,6 +142,8 @@ function get_class_table(link)
         module_type = response['Class']['ModuleType'];
         classId = response['Class']['ClassId'];
         type_of_table = response['table_type'];
+        classBlock = response['Class']['ClassBlock'];
+        classSubj = response['Subject'];
         var table = $('div#table-content-wrapper');
         table.empty();
         if (response['table_type'] == "main_table")
@@ -939,8 +943,8 @@ function get_class_table(link)
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right;'><div id='save-upload-normal'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button><button class='btn btn-primary ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></div>\
-                          <div id='save-upload-res'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-floppy-o'></i></button><button class='btn btn-primary ' id = 'table-upload-button' type='submit'><i class='fa fa-upload'></i></button></div></span></h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
+                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -1070,7 +1074,7 @@ function get_class_table(link)
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
                           <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
+                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -1191,7 +1195,7 @@ function get_class_table(link)
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
                           <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          </span></h3>\
+                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -1452,6 +1456,15 @@ function get_class_id()
     return classId;
 }
 
+function get_class_block()
+{
+    return classBlock;
+}
+
+function get_class_subj()
+{
+    return classSubj;
+}
 var modal = document.getElementById('table-alert-modal');
 // Get the <span> element that closes the modal
 var cancel = document.getElementById("table-cancel-btn");

@@ -70,6 +70,7 @@
             </div>
         </div> 
     </div>
+
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/jsPDF/jspdf.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/jsPDF/faker.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/jsPDF/jspdf.plugin.autotable.js"></script>
