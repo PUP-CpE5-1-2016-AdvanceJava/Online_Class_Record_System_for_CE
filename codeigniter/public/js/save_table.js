@@ -1,6 +1,6 @@
 function getAllData(id)
 {
-	$("#save-button").attr('disabled', 'disabled');
+	$("#table-save-button").attr('disabled', 'disabled');
 	$('#status').html("Recording... this may take a few seconds.");
 	
 	// initialize necessary variables

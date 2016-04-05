@@ -158,8 +158,9 @@ function get_class_table(link)
                           <div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-info' id = 'table-compute-button' type='submit'><i class='fa fa-check'></i> Compute</button>\
+                          <button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='return getAllData("+ response.class_id +");'><i class='fa fa-check'></i> Save</button>\
+                          <button class='btn btn-primary' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -325,8 +326,9 @@ function get_class_table(link)
                 table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-info' id = 'table-compute-button' type='submit'><i class='fa fa-check'></i> Compute</button>\
+                          <button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='return getAllData("+ response.class_id +");'><i class='fa fa-check'></i> Save</button>\
+                          <button class='btn btn-primary' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -444,7 +446,9 @@ function get_class_table(link)
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-info' id = 'table-compute-button' type='submit'><i class='fa fa-check'></i> Compute</button>\
+                          <button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='return getAllData("+ response.class_id +");'><i class='fa fa-check'></i> Save</button>\
+                          <button class='btn btn-primary' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -543,11 +547,7 @@ function get_class_table(link)
 		// append compute and save buttons
         if (response['table_type'] != "final_table")
         {
-			table.append("<button type='button' id='compute-button' name='compute-button'>Compute</button>\
-						<button type='button' id='save-button' onclick='return getAllData("+ response.class_id +");'  name='save-button'>Save</button>\
-						<input type='hidden' id='tableType' name='tableType' value='"+ response['Class']['ModuleType']+"'></input>\
-						<input type='hidden' id='sheetType' name='sheetType' value='"+ response['table_type']+"'></input>\
-						<p id='status'></p>");
+			table.append("<p id='status'></p>");
 		}
 		fillTable(response);
 		console.log('debug');
