@@ -1066,7 +1066,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
                 ctr_module++;
                 });
-                table.append("<script type='text/javascript' src='/js/tooltip_lec.js'></script>\
+                table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
             }
             else
@@ -1185,7 +1185,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
             });
-            table.append("<script type='text/javascript' src='/js/tooltip_lab.js'></script>\
+            table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
             }
         }
@@ -1238,7 +1238,7 @@ function get_class_table(link)
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
                 });
-            table.append("<script type='text/javascript' src='/js/tooltip_attendance.js'></script>");
+            table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             table.append("<script type='text/javascript' src='/js/table.js'></script>");
         }
         else if (response['table_type'] == "final_table")
