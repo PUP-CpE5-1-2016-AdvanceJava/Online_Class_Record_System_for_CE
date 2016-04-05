@@ -730,7 +730,7 @@ class Table_model extends CI_Model {
         if ($class->IsUploaded)
         {
 
-            return getdate();
+            return "File has already been exported. Another copy will be given";
         }
         else
         {
