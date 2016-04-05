@@ -202,12 +202,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_assign_cols; i++) 
                 {
-                    mid_assign_items_str += "<td contenteditable='true' id='table-items-mid-assign"+(i+1)+"'>"+response['assign_mid_items'][i]+"</td>";
+                    mid_assign_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-assign"+(i+1)+"'>"+response['assign_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_assign_items_str = "<td contenteditable='true' id='table-items-mid-assign1'></td>";
+                mid_assign_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-assign1'></td>";
             }
 
             if (response['assign_mid_score'].length > 0)
@@ -216,7 +216,7 @@ function get_class_table(link)
                 response.assign_mid_score.forEach(function(assign){
                     for (var i = 0; i <  mid_assign_cols; i++) 
                     {
-                        mid_assign_score_str[x_assign_mid] += "<td contenteditable='true' id='table-score-mid-assign"+(i+1)+"'>"+assign[i]+"</td>";
+                        mid_assign_score_str[x_assign_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-assign"+(i+1)+"'>"+assign[i]+"</td>";
                     }
                     x_assign_mid++;
                 });
@@ -227,7 +227,7 @@ function get_class_table(link)
                 response.Student.forEach(function(assign){
                     for (var i = 0; i <  mid_assign_cols; i++) 
                     {
-                        mid_assign_score_str[x_assign_mid] += "<td contenteditable='true' id='table-score-mid-assign"+(i+1)+"'></td>";
+                        mid_assign_score_str[x_assign_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-assign"+(i+1)+"'></td>";
                     }
                     x_assign_mid++;
                 });
@@ -261,12 +261,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_sw_cols; i++) 
                 {
-                    mid_sw_items_str += "<td contenteditable='true' id='table-items-mid-sw"+(i+1)+"'>"+response['sw_mid_items'][i]+"</td>";
+                    mid_sw_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-sw"+(i+1)+"'>"+response['sw_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_sw_items_str = "<td contenteditable='true' id='table-items-mid-sw1'></td>";
+                mid_sw_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-sw1'></td>";
             }
 
             if (response['sw_mid_score'].length > 0)
@@ -275,7 +275,7 @@ function get_class_table(link)
                 response.sw_mid_score.forEach(function(sw){
                     for (var i = 0; i <  mid_sw_cols; i++) 
                     {
-                        mid_sw_score_str[x_sw_mid] += "<td contenteditable='true' id='table-score-mid-sw"+(i+1)+"'>"+sw[i]+"</td>";
+                        mid_sw_score_str[x_sw_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-sw"+(i+1)+"'>"+sw[i]+"</td>";
                     }
                     x_sw_mid++;
                 });
@@ -286,7 +286,7 @@ function get_class_table(link)
                 response.Student.forEach(function(sw){
                     for (var i = 0; i <  mid_sw_cols; i++) 
                     {
-                        mid_sw_score_str[x_sw_mid] += "<td contenteditable='true' id='table-score-mid-sw"+(i+1)+"'></td>";
+                        mid_sw_score_str[x_sw_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-sw"+(i+1)+"'></td>";
                     }
                     x_sw_mid++;
                 });
@@ -320,12 +320,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_ex_cols; i++) 
                 {
-                    mid_ex_items_str += "<td contenteditable='true' id='table-items-mid-ex"+(i+1)+"'>"+response['ex_mid_items'][i]+"</td>";
+                    mid_ex_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-ex"+(i+1)+"'>"+response['ex_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_ex_items_str = "<td contenteditable='true' id='table-items-mid-ex1'></td>";
+                mid_ex_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-ex1'></td>";
             }
 
             if (response['ex_mid_score'].length > 0)
@@ -334,7 +334,7 @@ function get_class_table(link)
                 response.ex_mid_score.forEach(function(ex){
                     for (var i = 0; i <  mid_ex_cols; i++) 
                     {
-                        mid_ex_score_str[x_ex_mid] += "<td contenteditable='true' id='table-score-mid-ex"+(i+1)+"'>"+ex[i]+"</td>";
+                        mid_ex_score_str[x_ex_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-ex"+(i+1)+"'>"+ex[i]+"</td>";
                     }
                     x_ex_mid++;
                 });
@@ -345,7 +345,7 @@ function get_class_table(link)
                 response.Student.forEach(function(ex){
                     for (var i = 0; i <  mid_ex_cols; i++) 
                     {
-                        mid_ex_score_str[x_ex_mid] += "<td contenteditable='true' id='table-score-mid-ex"+(i+1)+"'></td>";
+                        mid_ex_score_str[x_ex_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-ex"+(i+1)+"'></td>";
                     }
                     x_ex_mid++;
                 });
@@ -379,12 +379,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_rec_cols; i++) 
                 {
-                    mid_rec_items_str += "<td contenteditable='true' id='table-items-mid-rec"+(i+1)+"'>"+response['rec_mid_items'][i]+"</td>";
+                    mid_rec_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-rec"+(i+1)+"'>"+response['rec_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_rec_items_str = "<td contenteditable='true' id='table-items-mid-rec1'></td>";
+                mid_rec_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-rec1'></td>";
             }
 
             if (response['rec_mid_score'].length > 0)
@@ -393,7 +393,7 @@ function get_class_table(link)
                 response.rec_mid_score.forEach(function(rec){
                     for (var i = 0; i <  mid_rec_cols; i++) 
                     {
-                        mid_rec_score_str[x_rec_mid] += "<td contenteditable='true' id='table-score-mid-rec"+(i+1)+"'>"+rec[i]+"</td>";
+                        mid_rec_score_str[x_rec_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-rec"+(i+1)+"'>"+rec[i]+"</td>";
                     }
                     x_rec_mid++;
                 });
@@ -404,7 +404,7 @@ function get_class_table(link)
                 response.Student.forEach(function(rec){
                     for (var i = 0; i <  mid_rec_cols; i++) 
                     {
-                        mid_rec_score_str[x_rec_mid] += "<td contenteditable='true' id='table-score-mid-rec"+(i+1)+"'></td>";
+                        mid_rec_score_str[x_rec_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-rec"+(i+1)+"'></td>";
                     }
                     x_rec_mid++;
                 });
@@ -438,12 +438,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_quiz_cols; i++) 
                 {
-                    mid_quiz_items_str += "<td contenteditable='true' id='table-items-mid-quiz"+(i+1)+"'>"+response['quiz_mid_items'][i]+"</td>";
+                    mid_quiz_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-quiz"+(i+1)+"'>"+response['quiz_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_quiz_items_str = "<td contenteditable='true' id='table-items-mid-quiz1'></td>";
+                mid_quiz_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-quiz1'></td>";
             }
 
             if (response['quiz_mid_score'].length > 0)
@@ -452,7 +452,7 @@ function get_class_table(link)
                 response.quiz_mid_score.forEach(function(quiz){
                     for (var i = 0; i <  mid_quiz_cols; i++) 
                     {
-                        mid_quiz_score_str[x_quiz_mid] += "<td contenteditable='true' id='table-score-mid-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
+                        mid_quiz_score_str[x_quiz_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
                     }
                     x_quiz_mid++;
                 });
@@ -463,7 +463,7 @@ function get_class_table(link)
                 response.Student.forEach(function(quiz){
                     for (var i = 0; i <  mid_quiz_cols; i++) 
                     {
-                        mid_quiz_score_str[x_quiz_mid] += "<td contenteditable='true' id='table-score-mid-quiz"+(i+1)+"'></td>";
+                        mid_quiz_score_str[x_quiz_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-quiz"+(i+1)+"'></td>";
                     }
                     x_quiz_mid++;
                 });
@@ -497,12 +497,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_le_cols; i++) 
                 {
-                    mid_le_items_str += "<td contenteditable='true' id='table-items-mid-le"+(i+1)+"'>"+response['le_mid_items'][i]+"</td>";
+                    mid_le_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-le"+(i+1)+"'>"+response['le_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_le_items_str = "<td contenteditable='true' id='table-items-mid-le1'></td>";
+                mid_le_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-le1'></td>";
             }
 
             if (response['le_mid_score'].length > 0)
@@ -511,7 +511,7 @@ function get_class_table(link)
                 response.le_mid_score.forEach(function(le){
                     for (var i = 0; i <  mid_le_cols; i++) 
                     {
-                        mid_le_score_str[x_le_mid] += "<td contenteditable='true' id='table-score-mid-le"+(i+1)+"'>"+le[i]+"</td>";
+                        mid_le_score_str[x_le_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-le"+(i+1)+"'>"+le[i]+"</td>";
                     }
                     x_le_mid++;
                 });
@@ -522,7 +522,7 @@ function get_class_table(link)
                 response.Student.forEach(function(le){
                     for (var i = 0; i <  mid_le_cols; i++) 
                     {
-                        mid_le_score_str[x_le_mid] += "<td contenteditable='true' id='table-score-mid-le"+(i+1)+"'></td>";
+                        mid_le_score_str[x_le_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-le"+(i+1)+"'></td>";
                     }
                     x_le_mid++;
                 });
@@ -531,18 +531,18 @@ function get_class_table(link)
             /*mexam MIDTERM STRING INITIALIZATION*/
             if (response['mexam_mid_items'].length > 0)
             {
-                mid_mexam_items_str = "<td contenteditable='true' id='table-items-mid-mexam'>"+response['mexam_mid_items'][0]+"</td>";
+                mid_mexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-mexam'>"+response['mexam_mid_items'][0]+"</td>";
             }
             else
             {
-                mid_mexam_items_str = "<td contenteditable='true' id='table-items-mid-mexam'></td>";
+                mid_mexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-mexam'></td>";
             }
 
             if (response['mexam_mid_score'].length > 0)
             {
                 var x_mexam_mid = 0;
                 response.mexam_mid_score.forEach(function(mexam){
-                    mid_mexam_score_str[x_mexam_mid] = "<td contenteditable='true' id='table-score-mid-mexam'>"+mexam+"</td>";
+                    mid_mexam_score_str[x_mexam_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-mexam'>"+mexam+"</td>";
                     x_mexam_mid++;
                 });
             }
@@ -550,7 +550,7 @@ function get_class_table(link)
             {
                 var x_mexam_mid = 0;
                 response.Student.forEach(function(mexam){
-                    mid_mexam_score_str[x_mexam_mid] = "<td contenteditable='true' id='table-score-mid-mexam'></td>";
+                    mid_mexam_score_str[x_mexam_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-mexam'></td>";
                     x_mexam_mid++;
                 });
             }
@@ -587,12 +587,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_assign_cols; i++) 
                 {
-                    final_assign_items_str += "<td contenteditable='true' id='table-items-final-assign"+(i+1)+"'>"+response['assign_final_items'][i]+"</td>";
+                    final_assign_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-assign"+(i+1)+"'>"+response['assign_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_assign_items_str = "<td contenteditable='true' id='table-items-final-assign1'></td>";
+                final_assign_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-assign1'></td>";
             }
 
             if (response['assign_final_score'].length > 0)
@@ -601,7 +601,7 @@ function get_class_table(link)
                 response.assign_final_score.forEach(function(assign){
                     for (var i = 0; i <  final_assign_cols; i++) 
                     {
-                        final_assign_score_str[x_assign_final] += "<td contenteditable='true' id='table-score-final-assign"+(i+1)+"'>"+assign[i]+"</td>";
+                        final_assign_score_str[x_assign_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-assign"+(i+1)+"'>"+assign[i]+"</td>";
                     }
                     x_assign_final++;
                 });
@@ -612,7 +612,7 @@ function get_class_table(link)
                 response.Student.forEach(function(assign){
                     for (var i = 0; i <  final_assign_cols; i++) 
                     {
-                        final_assign_score_str[x_assign_final] += "<td contenteditable='true' id='table-score-final-assign"+(i+1)+"'></td>";
+                        final_assign_score_str[x_assign_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-assign"+(i+1)+"'></td>";
                     }
                     x_assign_final++;
                 });
@@ -646,12 +646,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_sw_cols; i++) 
                 {
-                    final_sw_items_str += "<td contenteditable='true' id='table-items-final-sw"+(i+1)+"'>"+response['sw_final_items'][i]+"</td>";
+                    final_sw_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-sw"+(i+1)+"'>"+response['sw_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_sw_items_str = "<td contenteditable='true' id='table-items-final-sw1'></td>";
+                final_sw_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-sw1'></td>";
             }
 
             if (response['sw_final_score'].length > 0)
@@ -660,7 +660,7 @@ function get_class_table(link)
                 response.sw_final_score.forEach(function(sw){
                     for (var i = 0; i <  final_sw_cols; i++) 
                     {
-                        final_sw_score_str[x_sw_final] += "<td contenteditable='true' id='table-score-final-sw"+(i+1)+"'>"+sw[i]+"</td>";
+                        final_sw_score_str[x_sw_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-sw"+(i+1)+"'>"+sw[i]+"</td>";
                     }
                     x_sw_final++;
                 });
@@ -671,7 +671,7 @@ function get_class_table(link)
                 response.Student.forEach(function(sw){
                     for (var i = 0; i <  final_sw_cols; i++) 
                     {
-                        final_sw_score_str[x_sw_final] += "<td contenteditable='true' id='table-score-final-sw"+(i+1)+"'></td>";
+                        final_sw_score_str[x_sw_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-sw"+(i+1)+"'></td>";
                     }
                     x_sw_final++;
                 });
@@ -705,12 +705,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_ex_cols; i++) 
                 {
-                    final_ex_items_str += "<td contenteditable='true' id='table-items-final-ex"+(i+1)+"'>"+response['ex_final_items'][i]+"</td>";
+                    final_ex_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-ex"+(i+1)+"'>"+response['ex_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_ex_items_str = "<td contenteditable='true' id='table-items-final-ex1'></td>";
+                final_ex_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-ex1'></td>";
             }
 
             if (response['ex_final_score'].length > 0)
@@ -719,7 +719,7 @@ function get_class_table(link)
                 response.ex_final_score.forEach(function(ex){
                     for (var i = 0; i <  final_ex_cols; i++) 
                     {
-                        final_ex_score_str[x_ex_final] += "<td contenteditable='true' id='table-score-final-ex"+(i+1)+"'>"+ex[i]+"</td>";
+                        final_ex_score_str[x_ex_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-ex"+(i+1)+"'>"+ex[i]+"</td>";
                     }
                     x_ex_final++;
                 });
@@ -730,7 +730,7 @@ function get_class_table(link)
                 response.Student.forEach(function(ex){
                     for (var i = 0; i <  final_ex_cols; i++) 
                     {
-                        final_ex_score_str[x_ex_final] += "<td contenteditable='true' id='table-score-final-ex"+(i+1)+"'></td>";
+                        final_ex_score_str[x_ex_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-ex"+(i+1)+"'></td>";
                     }
                     x_ex_final++;
                 });
@@ -764,12 +764,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_rec_cols; i++) 
                 {
-                    final_rec_items_str += "<td contenteditable='true' id='table-items-final-rec"+(i+1)+"'>"+response['rec_final_items'][i]+"</td>";
+                    final_rec_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-rec"+(i+1)+"'>"+response['rec_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_rec_items_str = "<td contenteditable='true' id='table-items-final-rec1'></td>";
+                final_rec_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-rec1'></td>";
             }
 
             if (response['rec_final_score'].length > 0)
@@ -778,7 +778,7 @@ function get_class_table(link)
                 response.rec_final_score.forEach(function(rec){
                     for (var i = 0; i <  final_rec_cols; i++) 
                     {
-                        final_rec_score_str[x_rec_final] += "<td contenteditable='true' id='table-score-final-rec"+(i+1)+"'>"+rec[i]+"</td>";
+                        final_rec_score_str[x_rec_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-rec"+(i+1)+"'>"+rec[i]+"</td>";
                     }
                     x_rec_final++;
                 });
@@ -789,7 +789,7 @@ function get_class_table(link)
                 response.Student.forEach(function(rec){
                     for (var i = 0; i <  final_rec_cols; i++) 
                     {
-                        final_rec_score_str[x_rec_final] += "<td contenteditable='true' id='table-score-final-rec"+(i+1)+"'></td>";
+                        final_rec_score_str[x_rec_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-rec"+(i+1)+"'></td>";
                     }
                     x_rec_final++;
                 });
@@ -823,12 +823,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_quiz_cols; i++) 
                 {
-                    final_quiz_items_str += "<td contenteditable='true' id='table-items-final-quiz"+(i+1)+"'>"+response['quiz_final_items'][i]+"</td>";
+                    final_quiz_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-quiz"+(i+1)+"'>"+response['quiz_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_quiz_items_str = "<td contenteditable='true' id='table-items-final-quiz1'></td>";
+                final_quiz_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-quiz1'></td>";
             }
 
             if (response['quiz_final_score'].length > 0)
@@ -837,7 +837,7 @@ function get_class_table(link)
                 response.quiz_final_score.forEach(function(quiz){
                     for (var i = 0; i <  final_quiz_cols; i++) 
                     {
-                        final_quiz_score_str[x_quiz_final] += "<td contenteditable='true' id='table-score-final-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
+                        final_quiz_score_str[x_quiz_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
                     }
                     x_quiz_final++;
                 });
@@ -848,7 +848,7 @@ function get_class_table(link)
                 response.Student.forEach(function(quiz){
                     for (var i = 0; i <  final_quiz_cols; i++) 
                     {
-                        final_quiz_score_str[x_quiz_final] += "<td contenteditable='true' id='table-score-final-quiz"+(i+1)+"'></td>";
+                        final_quiz_score_str[x_quiz_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-quiz"+(i+1)+"'></td>";
                     }
                     x_quiz_final++;
                 });
@@ -882,12 +882,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_le_cols; i++) 
                 {
-                    final_le_items_str += "<td contenteditable='true' id='table-items-final-le"+(i+1)+"'>"+response['le_final_items'][i]+"</td>";
+                    final_le_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-le"+(i+1)+"'>"+response['le_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_le_items_str = "<td contenteditable='true' id='table-items-final-le1'></td>";
+                final_le_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-le1'></td>";
             }
 
             if (response['le_final_score'].length > 0)
@@ -896,7 +896,7 @@ function get_class_table(link)
                 response.le_final_score.forEach(function(le){
                     for (var i = 0; i <  final_le_cols; i++) 
                     {
-                        final_le_score_str[x_le_final] += "<td contenteditable='true' id='table-score-final-le"+(i+1)+"'>"+le[i]+"</td>";
+                        final_le_score_str[x_le_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-le"+(i+1)+"'>"+le[i]+"</td>";
                     }
                     x_le_final++;
                 });
@@ -907,7 +907,7 @@ function get_class_table(link)
                 response.Student.forEach(function(le){
                     for (var i = 0; i <  final_le_cols; i++) 
                     {
-                        final_le_score_str[x_le_final] += "<td contenteditable='true' id='table-score-final-le"+(i+1)+"'></td>";
+                        final_le_score_str[x_le_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-le"+(i+1)+"'></td>";
                     }
                     x_le_final++;
                 });
@@ -916,18 +916,18 @@ function get_class_table(link)
             /*fexam finalTERM STRING INITIALIZATION*/
             if (response['fexam_final_items'].length > 0)
             {
-                final_fexam_items_str = "<td contenteditable='true' id='table-items-final-fexam'>"+response['fexam_final_items'][0]+"</td>";
+                final_fexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-fexam'>"+response['fexam_final_items'][0]+"</td>";
             }
             else
             {
-                final_fexam_items_str = "<td contenteditable='true' id='table-items-final-fexam'></td>";
+                final_fexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-fexam'></td>";
             }
 
             if (response['fexam_final_score'].length > 0)
             {
                 var x_fexam_final = 0;
                 response.fexam_final_score.forEach(function(fexam){
-                    final_fexam_score_str[x_fexam_final] = "<td contenteditable='true' id='table-score-final-fexam'>"+fexam+"</td>";
+                    final_fexam_score_str[x_fexam_final] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-fexam'>"+fexam+"</td>";
                     x_fexam_final++;
                 });
             }
@@ -935,7 +935,7 @@ function get_class_table(link)
             {
                 var x_fexam_final = 0;
                 response.Student.forEach(function(fexam){
-                    final_fexam_score_str[x_fexam_final] = "<td contenteditable='true' id='table-score-final-fexam'></td>";
+                    final_fexam_score_str[x_fexam_final] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-fexam'></td>";
                     x_fexam_final++;
                 });
             }
@@ -1021,22 +1021,22 @@ function get_class_table(link)
                                         <tbody>\
                                             <tr  id='table-items-wrapper' class='num-items'>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                <td contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+mid_ex_items_str+mid_rec_items_str+"\
-                                                <td contenteditable='false' id='table-items-mid-cs-total'></td>\
-                                                <td contenteditable='false' id='table-items-mid-cs-rating'></td>"+mid_quiz_items_str+mid_le_items_str+"\
-                                                <td contenteditable='false' id='table-items-mid-ql-total'></td>\
-                                                <td contenteditable='false' id='table-items-mid-ql-rating'></td>"+mid_mexam_items_str+"\
-                                                <td contenteditable='false' id='table-items-mexam-rating'></td>\
-                                                <td contenteditable='false'></td>\
-                                                <td contenteditable='false' id='border-bold'></td>\
-                                                <td contenteditable='false' id='table-items-final-att1'></td>"+final_assign_items_str+final_sw_items_str+final_ex_items_str+final_rec_items_str+"\
-                                                <td contenteditable='false' id='table-items-final-cs-total'></td>\
-                                                <td contenteditable='false' id='table-items-final-cs-rating'></td>"+final_quiz_items_str+final_le_items_str+"\
-                                                <td contenteditable='false' id='table-items-final-ql-total'></td>\
-                                                <td contenteditable='false' id='table-items-final-ql-rating'></td>"+final_fexam_items_str+"\
-                                                <td contenteditable='false' id='table-items-fexam-rating'></td>\
-                                                <td contenteditable='false'></td>\
-                                                <td contenteditable='false'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+mid_ex_items_str+mid_rec_items_str+"\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-cs-total'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-cs-rating'></td>"+mid_quiz_items_str+mid_le_items_str+"\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-ql-total'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-ql-rating'></td>"+mid_mexam_items_str+"\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mexam-rating'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='border-bold'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-att1'></td>"+final_assign_items_str+final_sw_items_str+final_ex_items_str+final_rec_items_str+"\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-cs-total'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-cs-rating'></td>"+final_quiz_items_str+final_le_items_str+"\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-ql-total'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-ql-rating'></td>"+final_fexam_items_str+"\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-fexam-rating'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             </tr>\
                                         </tbody>\
                                     </table>\
@@ -1048,22 +1048,22 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td contenteditable='false' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+mid_mexam_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false' id='border-bold'></td>\
-                                            <td contenteditable='false' id='table-score-final-att1'></td>"+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+final_fexam_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td></tr>");
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+mid_mexam_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='border-bold'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-att1'></td>"+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+final_fexam_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
                 ctr_module++;
                 });
                 table.append("<script type='text/javascript' src='/js/tooltip_lec.js'></script>\
@@ -1130,28 +1130,28 @@ function get_class_table(link)
                                                 <tbody>\
                                                 <tr id='table-items-wrapper'  class='table-student-num-name'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                    <td contenteditable='true' id='table-items-mid-lab1'></td>\
-                                                    <td contenteditable='false' id='table-items-mid-lb-total'></td>\
-                                                    <td contenteditable='false' id='table-items-mid-lb-rating'></td>\
-                                                    <td contenteditable='true' id='table-items-mid-prac1'></td>\
-                                                    <td contenteditable='false' id='table-items-mid-prc-total'></td>\
-                                                    <td contenteditable='false' id='table-items-mid-prc-rating'></td>\
-                                                    <td contenteditable='true' id='table-items-mid-proj1'></td>\
-                                                    <td contenteditable='false' id='table-items-mid-prj-total'></td>\
-                                                    <td contenteditable='false' id='table-items-mid-prj-rating'></td>\
-                                                    <td contenteditable='false'></td>\
-                                                    <td id='border-bold' contenteditable='false'></td>\
-                                                    <td contenteditable='true' id='table-items-final-lab1'></td>\
-                                                    <td contenteditable='false' id='table-items-final-lb-total'></td>\
-                                                    <td contenteditable='false' id='table-items-final-lb-rating'></td>\
-                                                    <td contenteditable='true' id='table-items-final-prac1'></td>\
-                                                    <td contenteditable='false' id='table-items-final-prc-total'></td>\
-                                                    <td contenteditable='false' id='table-items-final-prc-rating'></td>\
-                                                    <td contenteditable='true' id='table-items-final-proj1'></td>\
-                                                    <td contenteditable='false' id='table-items-final-prj-total'></td>\
-                                                    <td contenteditable='false' id='table-items-final-prj-rating'></td>\
-                                                    <td contenteditable='false'></td>\
-                                                    <td contenteditable='false'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab1'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-total'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-rating'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-prac1'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prc-total'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prc-rating'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-proj1'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prj-total'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prj-rating'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-lab1'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-lb-total'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-lb-rating'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-prac1'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prc-total'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prc-rating'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-proj1'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prj-total'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prj-rating'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                                 </tr>\
                                             </tbody>\
                                     </table>\
@@ -1162,28 +1162,28 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td contenteditable='true' id='table-score-mid-lab1'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='true' id='table-score-mid-prac1'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='true' id='table-score-mid-proj1'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td id='border-bold' contenteditable='false'></td>\
-                                            <td contenteditable='true' id='table-score-final-lab1'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='true' id='table-score-final-prac1'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='true' id='table-score-final-proj1'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td></tr>");
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-lab1'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-prac1'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-proj1'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-lab1'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-prac1'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-proj1'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
             });
             table.append("<script type='text/javascript' src='/js/tooltip_lab.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
@@ -1271,9 +1271,9 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='border-left' name='stud-name'>"+stud.full_name+"</td>\
                                             <td id='border-bold' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td></tr>");
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
                 });
         }
 
@@ -1518,7 +1518,7 @@ function add_column(parent)
 
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td data-container='body' data-html='true' data-placement='bottom'  id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 15 column is allowed on this table.");
         return;
@@ -1560,8 +1560,8 @@ function add_column(parent)
             }
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+items).after($("<td id='"+newItems+"' contenteditable='true'></td>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
+            $("tr td#"+items).after($("<td data-container='body' data-html='true' data-placement='bottom' id='"+newItems+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td data-container='body' data-html='true' data-placement='bottom' id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
     }
@@ -1648,37 +1648,38 @@ function add_column(parent)
 
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
-            $("tr td#"+items).after($("<td id='"+newItems+"' contenteditable='true'></td>"));
-            $("tr td#"+score).after($("<td id='"+newScore+"' contenteditable='true'></td>"));
+            $("tr td#"+items).after($("<td data-container='body' data-html='true' data-placement='bottom' id='"+newItems+"' contenteditable='true'></td>"));
+            $("tr td#"+score).after($("<td data-container='body' data-html='true' data-placement='bottom' id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
     }
     //---to reinstantiate tooltip on added columns---//
-    $('table td').each(function(){
-        $(this).addClass("current-test");
-        $parent = $(this).parent();
-        $parent.addClass("current-test-parent");
-        $studno = $parent.find('td:eq(0)').html();
-        $studname = $parent.find('td:eq(1)').html();
-        $index = $(".current-test-parent td").index($(".current-test"));
-        if($(this).is('[id*="table-items"]')){
-            $head = $("#table-module th:eq("+($index)+")").html();
-        //console.log($("#table-module th:eq("+($index-1)+")").html());
-        }else{
-            $head = $("#table-module th:eq("+($index-1)+")").html();
-        }
-        $(this).attr({
-            "data-toggle":"tooltip",
-            "data-container":"body",
-            "data-html":"true",
-            "data-placement":"bottom",
-            "title":$head +"<br>"+$studno+"<br>"+$studname
-        })
-        $(this).removeClass("current-test");
-        $parent.removeClass("current-test-parent");
-        // 
-    });
-    $('[data-toggle="tooltip"]').tooltip();
+    addTooltip();
+    // $('table td').each(function(){
+    //     $(this).addClass("current-test");
+    //     $parent = $(this).parent();
+    //     $parent.addClass("current-test-parent");
+    //     $studno = $parent.find('td:eq(0)').html();
+    //     $studname = $parent.find('td:eq(1)').html();
+    //     $index = $(".current-test-parent td").index($(".current-test"));
+    //     if($(this).is('[id*="table-items"]')){
+    //         $head = $("#table-module th:eq("+($index)+")").html();
+    //     //console.log($("#table-module th:eq("+($index-1)+")").html());
+    //     }else{
+    //         $head = $("#table-module th:eq("+($index-1)+")").html();
+    //     }
+    //     $(this).attr({
+    //         "data-toggle":"tooltip",
+    //         "data-container":"body",
+    //         "data-html":"true",
+    //         "data-placement":"bottom",
+    //         "title":$head +"<br>"+$studno+"<br>"+$studname
+    //     })
+    //     $(this).removeClass("current-test");
+    //     $parent.removeClass("current-test-parent");
+    //     // 
+    // });
+    // $('[data-toggle="tooltip"]').tooltip();
 }
 
 /*DEL BUTTON*/
