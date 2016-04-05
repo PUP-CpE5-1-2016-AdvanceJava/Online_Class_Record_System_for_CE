@@ -170,7 +170,7 @@ $(document).ready(function(){
 		// 		console.log(response);
 		// 	}
 		// })
-	console.log(data);
+		console.log(data);
 		$.ajax({
 			url: 'save_table',
 			type: "POST",
@@ -184,6 +184,55 @@ $(document).ready(function(){
 			}
 		})
 	})
+
+    $('div h3 span button#table-upload-button').click(function(e){
+    	console.log("upload pdf");
+	    //getting values of current time for generating the file name
+	    var classId = get_class_id();
+	    var classBlock = get_class_block();
+		var classSubj = get_class_subj();
+	    var dt = new Date();
+	    var day = dt.getDate();
+	    var month = dt.getMonth() + 1;
+	    var year = dt.getFullYear();
+	    var hour = dt.getHours();
+	    var mins = dt.getMinutes();
+	    var postfix = day + "." + month + "." + year + "_" + hour + "." + mins;
+	    //creating a temporary HTML link element (they support setting file names)
+	    var a = document.createElement('a');
+	    //getting data from our div that contains the HTML table
+	    var data_type = 'data:application/vnd.ms-excel;charset=utf-8';
+	    
+	    var table_html = $('table#table-wrapper')[0].outerHTML;
+	//    table_html = table_html.replace(/ /g, '%20');
+	    table_html = table_html.replace(/<tfoot[\s\S.]*tfoot>/gmi, '');
+	    
+	    var css_html = '<style>td {border: 0.5pt solid #c0c0c0} .tRight { text-align:right} .tLeft { text-align:left} </style>';
+	//    css_html = css_html.replace(/ /g, '%20');
+		var data = '<html><head>' + css_html + '</' + 'head><body>' + table_html + '</body></html>'
+	    var encoded = encodeURIComponent(data);
+	    a.href = data_type + ',' + encoded;
+	    var link = classSubj+'__'+classBlock +'__'+ postfix + '.xls';
+
+	    $.ajax({
+			url: 'export_table',
+			type: "POST",
+			dataType: 'json',
+			data: {'classId':classId},
+			cache: false,
+    		// contentType: "application/jsonrequest; charset=utf-8",
+			success: function(res) {
+			    //setting the file name
+			    a.download = link;
+			    // triggering the function
+			    a.click();
+			    alert(res['status']);
+			    // just in case, prevent default behaviour
+			    e.preventDefault();
+			}
+		})
+
+    })
 	// Send all data through ajax.
 	// Return a status of completion
 })

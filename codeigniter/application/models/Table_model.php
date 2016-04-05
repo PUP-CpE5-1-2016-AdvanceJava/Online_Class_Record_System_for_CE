@@ -720,6 +720,34 @@ class Table_model extends CI_Model {
 		}	
 	}
 
+    function export_class_table($ClassId)
+    {
+        // check if isuploaded = true;
+        $this->db->where('Id',$ClassId);
+        $qry = $this->db->get('class');
+        $class = $qry->row();
+
+        if ($class->IsUploaded)
+        {
+
+            return getdate();
+        }
+        else
+        {
+            // make isUploaded = true
+            $date = getdate();
+            $d = $date['year']."-".$date['mon']."-".$date['mday'];
+            $obj = array(
+                    'IsUploaded' => true,
+                    'DateUploaded' => $d, // get date today
+            );
+            $this->db->where('Id', $ClassId);
+            $this->db->update('class', $obj); 
+            
+            return "File Successfully exported.";
+        }
+
+    }
 	function get_stud_id($ClassId)
 	{
 		$this->db->select('Id')->from('students')->where('ClassId',$ClassId);

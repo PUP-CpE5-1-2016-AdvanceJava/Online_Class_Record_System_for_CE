@@ -400,6 +400,15 @@ class User extends CI_Controller
 	    echo json_encode($data);
 	}
 
+	public function export_table()
+	{
+		$this->load->model('Table_model');
+		$data['status'] = $this->Table_model->export_class_table($this->input->post('classId'));
+
+		header('Content-Type: application/json');
+	    echo json_encode($data);
+	}
+
 	public function logout()
 	{
 		// destroy session if user logout
