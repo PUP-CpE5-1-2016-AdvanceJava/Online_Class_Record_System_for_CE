@@ -4,6 +4,7 @@ var type_of_table;
 var classId;
 var classBlock;
 var classSubj;
+var classSched;
 var midtermCounter=0;
 var finalsCounter=0;
 //---variables for lab table---//
@@ -144,6 +145,7 @@ function get_class_table(link)
         type_of_table = response['table_type'];
         classBlock = response['Class']['ClassBlock'];
         classSubj = response['Subject'];
+        classSched = response['Class']['Schedule'];
         var table = $('div#table-content-wrapper');
         table.empty();
         if (response['table_type'] == "main_table")
@@ -1465,6 +1467,11 @@ function get_class_block()
 function get_class_subj()
 {
     return classSubj;
+}
+
+function get_class_sched()
+{
+    return classSched;
 }
 var modal = document.getElementById('table-alert-modal');
 // Get the <span> element that closes the modal
