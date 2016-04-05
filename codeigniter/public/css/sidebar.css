@@ -36,7 +36,7 @@
 /*MODIFIED WRAPPERS*/
 #footer-wrapper{ margin-top: 0px; }
 #main-content-wrapper{ padding-left: 0px; padding-right: 0; }
-#main-col-wrapper{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 1263px;}
+#main-col-wrapper{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; max-width: 1076px;}
 li { list-style-type: none; }
 
 /*------------------MEDIA QUERIES-----------------*/
