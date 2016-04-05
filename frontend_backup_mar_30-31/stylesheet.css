@@ -24,6 +24,7 @@
 #navbar-subtabs p{line-height: .75; padding: 0;}
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
+
 /*FOOTER*/
 #footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px;}
 #footer-details {text-align: left; }
@@ -36,7 +37,7 @@
 /*UNIVERSAL end*/
 
 /*LOGIN CONTENT*/
-#login-body-wrapper {background: url("pupfreshres.jpg"); background-position: center 10%; background-repeat: no-repeat; background-attachment: fixed; 
+#login-body-wrapper {background: url("pupfreshres.jpg"); background-position: center 50%; background-repeat: no-repeat; background-attachment: fixed; 
 					background-size: cover; }
 #login-title-wrapper{margin-top: 150px;}
 /*#login-title-wrapper span{background: rgba(0,0,0,.50);}*/

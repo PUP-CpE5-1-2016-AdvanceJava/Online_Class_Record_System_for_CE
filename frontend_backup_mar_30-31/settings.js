@@ -1,15 +1,6 @@
 $(document).ready(function(){
 	//---Faculty and Chairperson Change Password---//
 	$('form#settings-change-pw').submit(function(){
-		var confirm_pw = $("form div input[name='conf_new_pw']").val();
-		var new_pw = $("form div input[name='new_pw']").val();
-
-		if (confirm_pw != new_pw)
-		{
-			alert("New password and Confirm password does'nt match");
-			return;
-		}
-
 		var link = $(this).attr('name');
 		var data = $(event.target).serializeArray();
 		$.post(link,data,function(response){
@@ -67,10 +58,11 @@ $(document).ready(function(){
 		})
 		return false;
 	})
-
+	
 	$("#settings-choose-file-button").change(function () {
         var fileName = $(this).val().replace('C:\\fakepath\\', '');
         $("#file-upload-filename").html(fileName);
 	});
+
 
 })

@@ -1,7 +1,10 @@
     <div class = "container" id = "home-wrapper">
         <div class "row">
-            <div class = "col-md-12" id = "home-wrapper-title">
+            <div class = "col-md-2" id = "home-wrapper-title">
                 <span>UPDATES</span> 
+            </div>
+            <div class = "col-md-10" id = "home-wrapper-title">
+                <button class="btn btn-default" id="pdf-button">SAVE AS PDF</button>
             </div>
         </div>
 
@@ -43,7 +46,12 @@
                                             foreach ($data2["class"] as $class)
                                             {
                                                         echo               "<a href='#' class='list-group-item list-group-item-success'>".$class['c_block'];
-                                                        if ($class['c_isUploaded'] == true) echo "<span class='label label-success'>Submitted</span>";
+                                                        if ($class['c_isUploaded'] == true) 
+                                                        {
+                                                            echo "<span class='label label-success'>";
+                                                            echo $class['c_dateUploaded'];
+                                                            echo"</span>";
+                                                        }
                                                         echo               "</a>";
                                             }            
                                             echo                     "</div>";
@@ -62,3 +70,8 @@
             </div>
         </div> 
     </div>
+
+    <script type="text/javascript" src="<?php base_url(); ?>/plugins/jsPDF/jspdf.min.js"></script>
+    <script type="text/javascript" src="<?php base_url(); ?>/plugins/jsPDF/faker.min.js"></script>
+    <script type="text/javascript" src="<?php base_url(); ?>/plugins/jsPDF/jspdf.plugin.autotable.js"></script>
+    <script type="text/javascript" src="<?php base_url(); ?>/js/report-pdf.js"></script>

@@ -1,5 +1,5 @@
 /*TABLE CONTENT WRAPPER*/ 
-#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; overflow-y: hidden; margin-left: 0;}
+#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; margin-left: 0;}
 #table-content-wrapper span{font-size: 3vw; font-family: 'Source Sans Pro', sans-serif; color: #333; }
 #table-content-wrapper h2{ font-weight: 600;}
 #table-content-wrapper .row{ margin: 0px;}
@@ -31,21 +31,21 @@ hr{ margin: 0px; border-top: 2px solid #61605e; }
 h4 span{ font-family: inherit; font-size: inherit !important;}
 #table-yes-btn {background-color: red; color: #fff; border: none; padding: 5px; width: 70px; font-size: 15px; margin-top: 10%; border-radius: 2px;}
 #table-cancel-btn {background-color: gray; color: #fff; border: none; padding: 5px; width: 70px; font-size: 15px; margin-top: 10%; border-radius: 2px; margin-left: 10%;}
-
+#table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
+#table-lab1-button-del, #table-prac1-button-del, #table-proj1-button-del, #table-lab2-button-del, #table-prac2-button-del,
+	#table-proj2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
 
 #table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
 #table-midterm, #table-finals{ border: solid 2px gray}
 #table-blank{ border-top: solid 2px gray;}
-
 #table-lab1-button, #table-prac1-button, #table-proj1-button, #table-lab2-button, #table-prac2-button, #table-proj2-button {background: none; font-size: 20px; padding: 0 3;}
-#table-mid-lab-button-del, #table-mid-prac-button-del, #table-mid-proj-button-del, #table-final-lab-button-del, #table-final-prac-button-del, #table-final-proj-button-del
-	{background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-lab1-button-del, #table-prac1-button-del, #table-proj1-button-del, #table-lab2-button-del, #table-prac2-button-del, #table-proj2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
 #table-items-wrapper tr:nth-child(1),#table-items-wrapper tr:nth-child(1) { width: 23px;}
 #table-att1-button, #table-att2-button{background: none; font-size: 20px; padding: 0 3;}
-#table-mid-att-button-del, #table-final-att-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
-#table-mid-assign-button-del, #table-mid-sw-button-del, #table-mid-ex-button-del, #table-mid-rec-button-del, #table-mid-quiz-button-del, #table-mid-le-button-del,
-	#table-final-assign-button-del, #table-final-sw-button-del, #table-final-ex-button-del, #table-final-rec-button-del, #table-final-quiz-button-del,
-	#table-final-le-button-del {background: none; font-size: 20px; padding: 5px 10px 5px 10px; display: none;}
+#table-att1-button-del, #table-att2-button-del {background: none; font-size: 20px; padding: 0 3; display: none;}
+#table-assign1-button-del, #table-sw1-button-del, #table-ex1-button-del, #table-rec1-button-del, #table-quiz1-button-del, #table-le1-button-del, #table-assign2-button-del,
+	#table-sw2-button-del, #table-ex2-button-del, #table-rec2-button-del, #table-quiz2-button-del, #table-le2-button-del {background: none; font-size: 20px;
+	padding: 5px 10px 5px 10px; display: none;}
 
 #border-left, #table-student, #table-blank2, #table-items, #table-blank{ border-left: solid 2px gray !important;}
 #border-both{ border-left: solid 2px gray !important; border-right: solid 2px gray !important; }
@@ -59,7 +59,7 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 .table-wrapper { overflow-x:scroll; overflow-y:visible; margin-left: 10%;}
 .fa-plus-circle{color: #4BA301;} 
 .fa-minus-circle{color: red;}
-.border-bold, #border-bold, #table-name, #table-blank2, #table-items, #table-header-mid-overall-grade{ border-right: solid 2px gray}
+.border-bold, #border-bold, #table-name, #table-blank2, #table-items{ border-right: solid 2px gray}
 
 
 /* ALERT MODAL */
@@ -68,9 +68,5 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 #modal-text { background-color: #fefefe; margin: auto; padding: 20px; border: 1px solid #888; width: 10%; text-align:center; position: relative;}
 
 /*Fixed cell */
-.table-items-assign-mid, .table-items-seatwork-mid, .table-items-exercise-mid, .table-items-recitation-mid, .table-items-quiz-mid, .table-items-longExam-mid,
-	.table-items-midterm-score, .table-items-assign-finals, .table-items-seatwork-finals, .table-items-exercise-finals, .table-items-recitation-finals,
-	.table-items-quiz-finals, .table-items-longExam-finals,.table-items-finals-score, .table-items-lab-mid, .table-items-prac-mid, .table-items-proj-mid,
-	.table-items-lab-finals, .table-items-prac-finals, .table-items-proj-finals, .num-items td, .stud-att-date-midterm, .stud-att-date-finals, .num-items
-	{ overflow: hidden; white-space: nowrap; word-wrap: break-word; max-width: 30px; max-height: 1em;}
+.table-student-assign-mid, .table-student-seatwork-mid, .table-student-exercise-mid, .table-student-recitation-mid, .table-student-quiz-mid, .table-student-longExam-mid,.table-student-midterm-score, .table-student-assign-finals, .table-student-seatwork-finals, .table-student-exercise-finals, .table-student-recitation-finals, .table-student-quiz-finals, .table-student-longExam-finals,.table-student-finals-score, .table-student-lab-mid, .table-student-prac-mid, .table-student-proj-mid, .table-student-lab-finals, .table-student-prac-finals, .table-student-proj-finals, .table-student-num-name td, .table-student-attendance-mid, .table-student-attendance-finals{ overflow: hidden; white-space: nowrap; word-wrap: break-word; max-width: 30px; max-height: 1em;}
 .table-student-number, .table-student-name{width:150px !important;}

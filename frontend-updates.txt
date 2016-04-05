@@ -1,0 +1,10 @@
+April 5, 2016
+-fixed responsiveness for all pages
+-"choose file" for uploading pdf modified in setting.js
+-fixed input field in login page not showing in firefox
+-fixed footer min-height when there are no table
+-admin home page background changed to #E4E4E4
+
+
+*classes still not added
+*updates are from march 29 upto april 2 commits by frontend

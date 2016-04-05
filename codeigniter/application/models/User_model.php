@@ -86,7 +86,8 @@ class User_model extends CI_Model
     			$class[$i] = array(
     				'c_block' => $rowClass->ClassBlock,
     				'c_id' => $rowClass->Id,
-    				'c_isUploaded' => $rowClass->IsUploaded
+    				'c_isUploaded' => $rowClass->IsUploaded,
+    				'c_dateUploaded' => $rowClass->DateUploaded
     			);
 
     			//fetch modules

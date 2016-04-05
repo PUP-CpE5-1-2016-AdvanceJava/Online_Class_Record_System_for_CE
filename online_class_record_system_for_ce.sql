@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2016 at 01:10 PM
+-- Generation Time: Apr 05, 2016 at 03:12 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -28,11 +28,90 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `assignment` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `AssignNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assignment`
+--
+
+INSERT INTO `assignment` (`Id`, `StudId`, `AssignNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, 1.00, NULL, 'Midterm'),
+(2, 2, 1, 2.00, NULL, 'Midterm'),
+(3, 3, 1, 3.00, NULL, 'Midterm'),
+(4, 4, 1, 4.00, NULL, 'Midterm'),
+(5, 5, 1, 5.00, NULL, 'Midterm'),
+(6, 6, 1, 0.00, NULL, 'Midterm'),
+(7, 7, 1, 0.00, NULL, 'Midterm'),
+(8, 8, 1, 0.00, NULL, 'Midterm'),
+(9, 9, 1, 0.00, NULL, 'Midterm'),
+(10, 10, 1, 0.00, NULL, 'Midterm'),
+(11, 11, 1, 0.00, NULL, 'Midterm'),
+(12, 12, 1, 0.00, NULL, 'Midterm'),
+(13, 13, 1, 0.00, NULL, 'Midterm'),
+(14, 14, 1, 0.00, NULL, 'Midterm'),
+(15, 15, 1, 0.00, NULL, 'Midterm'),
+(16, 16, 1, 0.00, NULL, 'Midterm'),
+(17, 17, 1, 0.00, NULL, 'Midterm'),
+(18, 18, 1, 0.00, NULL, 'Midterm'),
+(19, 19, 1, 0.00, NULL, 'Midterm'),
+(20, 20, 1, 0.00, NULL, 'Midterm'),
+(21, 21, 1, 0.00, NULL, 'Midterm'),
+(22, 22, 1, 0.00, NULL, 'Midterm'),
+(23, 23, 1, 0.00, NULL, 'Midterm'),
+(24, 24, 1, 0.00, NULL, 'Midterm'),
+(25, 25, 1, 0.00, NULL, 'Midterm'),
+(26, 26, 1, 0.00, NULL, 'Midterm'),
+(27, 27, 1, 0.00, NULL, 'Midterm'),
+(28, 28, 1, 0.00, NULL, 'Midterm'),
+(29, 29, 1, 0.00, NULL, 'Midterm'),
+(30, 30, 1, 0.00, NULL, 'Midterm'),
+(31, 31, 1, 0.00, NULL, 'Midterm'),
+(32, 32, 1, 0.00, NULL, 'Midterm'),
+(33, 33, 1, 0.00, NULL, 'Midterm'),
+(34, 34, 1, 0.00, NULL, 'Midterm'),
+(35, 35, 1, 0.00, NULL, 'Midterm'),
+(36, 36, 1, 0.00, NULL, 'Midterm'),
+(37, 1, 1, 1.00, NULL, 'Finals'),
+(38, 2, 1, 2.00, NULL, 'Finals'),
+(39, 3, 1, 3.00, NULL, 'Finals'),
+(40, 4, 1, 4.00, NULL, 'Finals'),
+(41, 5, 1, 5.00, NULL, 'Finals'),
+(42, 6, 1, 0.00, NULL, 'Finals'),
+(43, 7, 1, 0.00, NULL, 'Finals'),
+(44, 8, 1, 0.00, NULL, 'Finals'),
+(45, 9, 1, 0.00, NULL, 'Finals'),
+(46, 10, 1, 0.00, NULL, 'Finals'),
+(47, 11, 1, 0.00, NULL, 'Finals'),
+(48, 12, 1, 0.00, NULL, 'Finals'),
+(49, 13, 1, 0.00, NULL, 'Finals'),
+(50, 14, 1, 0.00, NULL, 'Finals'),
+(51, 15, 1, 0.00, NULL, 'Finals'),
+(52, 16, 1, 0.00, NULL, 'Finals'),
+(53, 17, 1, 0.00, NULL, 'Finals'),
+(54, 18, 1, 0.00, NULL, 'Finals'),
+(55, 19, 1, 0.00, NULL, 'Finals'),
+(56, 20, 1, 0.00, NULL, 'Finals'),
+(57, 21, 1, 0.00, NULL, 'Finals'),
+(58, 22, 1, 0.00, NULL, 'Finals'),
+(59, 23, 1, 0.00, NULL, 'Finals'),
+(60, 24, 1, 0.00, NULL, 'Finals'),
+(61, 25, 1, 0.00, NULL, 'Finals'),
+(62, 26, 1, 0.00, NULL, 'Finals'),
+(63, 27, 1, 0.00, NULL, 'Finals'),
+(64, 28, 1, 0.00, NULL, 'Finals'),
+(65, 29, 1, 0.00, NULL, 'Finals'),
+(66, 30, 1, 0.00, NULL, 'Finals'),
+(67, 31, 1, 0.00, NULL, 'Finals'),
+(68, 32, 1, 0.00, NULL, 'Finals'),
+(69, 33, 1, 0.00, NULL, 'Finals'),
+(70, 34, 1, 0.00, NULL, 'Finals'),
+(71, 35, 1, 0.00, NULL, 'Finals'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -42,12 +121,91 @@ CREATE TABLE IF NOT EXISTS `assignment` (
 
 CREATE TABLE IF NOT EXISTS `attendance` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Status` varchar(50) NOT NULL,
-  `Score` int(11) NOT NULL,
-  `Rating` int(11) NOT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `StudId` int(11) NOT NULL,
+  `AttNum` int(11) NOT NULL,
+  `Status` varchar(50) DEFAULT NULL,
+  `Score` float NOT NULL,
+  `Rating` float DEFAULT NULL,
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `attendance`
+--
+
+INSERT INTO `attendance` (`Id`, `StudId`, `AttNum`, `Status`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, NULL, 0, NULL, 'Midterm'),
+(2, 1, 1, NULL, 0, NULL, 'Finals'),
+(3, 2, 1, NULL, 0, NULL, 'Midterm'),
+(4, 2, 1, NULL, 0, NULL, 'Finals'),
+(5, 3, 1, NULL, 0, NULL, 'Midterm'),
+(6, 3, 1, NULL, 0, NULL, 'Finals'),
+(7, 4, 1, NULL, 0, NULL, 'Midterm'),
+(8, 4, 1, NULL, 0, NULL, 'Finals'),
+(9, 5, 1, NULL, 0, NULL, 'Midterm'),
+(10, 5, 1, NULL, 0, NULL, 'Finals'),
+(11, 6, 1, NULL, 0, NULL, 'Midterm'),
+(12, 6, 1, NULL, 0, NULL, 'Finals'),
+(13, 7, 1, NULL, 0, NULL, 'Midterm'),
+(14, 7, 1, NULL, 0, NULL, 'Finals'),
+(15, 8, 1, NULL, 0, NULL, 'Midterm'),
+(16, 8, 1, NULL, 0, NULL, 'Finals'),
+(17, 9, 1, NULL, 0, NULL, 'Midterm'),
+(18, 9, 1, NULL, 0, NULL, 'Finals'),
+(19, 10, 1, NULL, 0, NULL, 'Midterm'),
+(20, 10, 1, NULL, 0, NULL, 'Finals'),
+(21, 11, 1, NULL, 0, NULL, 'Midterm'),
+(22, 11, 1, NULL, 0, NULL, 'Finals'),
+(23, 12, 1, NULL, 0, NULL, 'Midterm'),
+(24, 12, 1, NULL, 0, NULL, 'Finals'),
+(25, 13, 1, NULL, 0, NULL, 'Midterm'),
+(26, 13, 1, NULL, 0, NULL, 'Finals'),
+(27, 14, 1, NULL, 0, NULL, 'Midterm'),
+(28, 14, 1, NULL, 0, NULL, 'Finals'),
+(29, 15, 1, NULL, 0, NULL, 'Midterm'),
+(30, 15, 1, NULL, 0, NULL, 'Finals'),
+(31, 16, 1, NULL, 0, NULL, 'Midterm'),
+(32, 16, 1, NULL, 0, NULL, 'Finals'),
+(33, 17, 1, NULL, 0, NULL, 'Midterm'),
+(34, 17, 1, NULL, 0, NULL, 'Finals'),
+(35, 18, 1, NULL, 0, NULL, 'Midterm'),
+(36, 18, 1, NULL, 0, NULL, 'Finals'),
+(37, 19, 1, NULL, 0, NULL, 'Midterm'),
+(38, 19, 1, NULL, 0, NULL, 'Finals'),
+(39, 20, 1, NULL, 0, NULL, 'Midterm'),
+(40, 20, 1, NULL, 0, NULL, 'Finals'),
+(41, 21, 1, NULL, 0, NULL, 'Midterm'),
+(42, 21, 1, NULL, 0, NULL, 'Finals'),
+(43, 22, 1, NULL, 0, NULL, 'Midterm'),
+(44, 22, 1, NULL, 0, NULL, 'Finals'),
+(45, 23, 1, NULL, 0, NULL, 'Midterm'),
+(46, 23, 1, NULL, 0, NULL, 'Finals'),
+(47, 24, 1, NULL, 0, NULL, 'Midterm'),
+(48, 24, 1, NULL, 0, NULL, 'Finals'),
+(49, 25, 1, NULL, 0, NULL, 'Midterm'),
+(50, 25, 1, NULL, 0, NULL, 'Finals'),
+(51, 26, 1, NULL, 0, NULL, 'Midterm'),
+(52, 26, 1, NULL, 0, NULL, 'Finals'),
+(53, 27, 1, NULL, 0, NULL, 'Midterm'),
+(54, 27, 1, NULL, 0, NULL, 'Finals'),
+(55, 28, 1, NULL, 0, NULL, 'Midterm'),
+(56, 28, 1, NULL, 0, NULL, 'Finals'),
+(57, 29, 1, NULL, 0, NULL, 'Midterm'),
+(58, 29, 1, NULL, 0, NULL, 'Finals'),
+(59, 30, 1, NULL, 0, NULL, 'Midterm'),
+(60, 30, 1, NULL, 0, NULL, 'Finals'),
+(61, 31, 1, NULL, 0, NULL, 'Midterm'),
+(62, 31, 1, NULL, 0, NULL, 'Finals'),
+(63, 32, 1, NULL, 0, NULL, 'Midterm'),
+(64, 32, 1, NULL, 0, NULL, 'Finals'),
+(65, 33, 1, NULL, 0, NULL, 'Midterm'),
+(66, 33, 1, NULL, 0, NULL, 'Finals'),
+(67, 34, 1, NULL, 0, NULL, 'Midterm'),
+(68, 34, 1, NULL, 0, NULL, 'Finals'),
+(69, 35, 1, NULL, 0, NULL, 'Midterm'),
+(70, 35, 1, NULL, 0, NULL, 'Finals'),
+(71, 36, 1, NULL, 0, NULL, 'Midterm'),
+(72, 36, 1, NULL, 0, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -60,15 +218,7 @@ CREATE TABLE IF NOT EXISTS `calendar` (
   `UserId` int(11) NOT NULL,
   `Date` date NOT NULL,
   `Event` varchar(300) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `calendar`
---
-
-INSERT INTO `calendar` (`Id`, `UserId`, `Date`, `Event`) VALUES
-(1, 2, '2016-03-22', 'OCR DEFENSE'),
-(2, 2, '2016-03-23', 'HOLY WEDNESDAY');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -86,18 +236,17 @@ CREATE TABLE IF NOT EXISTS `class` (
   `YrSem` varchar(100) NOT NULL,
   `Schedule` varchar(100) NOT NULL,
   `Filename` varchar(100) NOT NULL,
-  `IsUploaded` tinyint(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `IsUploaded` tinyint(1) NOT NULL,
+  `DateUploaded` date NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `class`
 --
 
-INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStudents`, `Passers`, `YrSem`, `Schedule`, `Filename`, `IsUploaded`) VALUES
-(1, 1, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', '', 1),
-(2, 2, 'BSCOE 2-3', 'Lab', 45, NULL, 'Second Semester 2015-16', 'S/S 07:30AM-10:30AM/10:30AM-01:30PM', '', 1),
-(3, 3, 'BSCOE 3-5', 'Lec', 51, NULL, 'Second Semester 2015-16', 'T/F 02:00PM-05:00PM/02:00PM-05:00PM', '', 0),
-(4, 4, 'BSCOE 5-3', 'Lab', 49, NULL, 'Second Semester 2015-16', 'M 03:00PM-06:00PM', '', 0);
+INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStudents`, `Passers`, `YrSem`, `Schedule`, `Filename`, `IsUploaded`, `DateUploaded`) VALUES
+(1, 1, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', '', 1, '2016-04-11'),
+(2, 2, 'BSCOE 2-3', 'Lab', 45, NULL, 'Second Semester 2015-16', 'S/S 07:30AM-10:30AM/10:30AM-01:30PM', '', 1, '2016-04-05');
 
 -- --------------------------------------------------------
 
@@ -107,11 +256,90 @@ INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStuden
 
 CREATE TABLE IF NOT EXISTS `exercises` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `ExNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `exercises`
+--
+
+INSERT INTO `exercises` (`Id`, `StudId`, `ExNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, 1.00, NULL, 'Midterm'),
+(2, 2, 1, 2.00, NULL, 'Midterm'),
+(3, 3, 1, 3.00, NULL, 'Midterm'),
+(4, 4, 1, 4.00, NULL, 'Midterm'),
+(5, 5, 1, 5.00, NULL, 'Midterm'),
+(6, 6, 1, 0.00, NULL, 'Midterm'),
+(7, 7, 1, 0.00, NULL, 'Midterm'),
+(8, 8, 1, 0.00, NULL, 'Midterm'),
+(9, 9, 1, 0.00, NULL, 'Midterm'),
+(10, 10, 1, 0.00, NULL, 'Midterm'),
+(11, 11, 1, 0.00, NULL, 'Midterm'),
+(12, 12, 1, 0.00, NULL, 'Midterm'),
+(13, 13, 1, 0.00, NULL, 'Midterm'),
+(14, 14, 1, 0.00, NULL, 'Midterm'),
+(15, 15, 1, 0.00, NULL, 'Midterm'),
+(16, 16, 1, 0.00, NULL, 'Midterm'),
+(17, 17, 1, 0.00, NULL, 'Midterm'),
+(18, 18, 1, 0.00, NULL, 'Midterm'),
+(19, 19, 1, 0.00, NULL, 'Midterm'),
+(20, 20, 1, 0.00, NULL, 'Midterm'),
+(21, 21, 1, 0.00, NULL, 'Midterm'),
+(22, 22, 1, 0.00, NULL, 'Midterm'),
+(23, 23, 1, 0.00, NULL, 'Midterm'),
+(24, 24, 1, 0.00, NULL, 'Midterm'),
+(25, 25, 1, 0.00, NULL, 'Midterm'),
+(26, 26, 1, 0.00, NULL, 'Midterm'),
+(27, 27, 1, 0.00, NULL, 'Midterm'),
+(28, 28, 1, 0.00, NULL, 'Midterm'),
+(29, 29, 1, 0.00, NULL, 'Midterm'),
+(30, 30, 1, 0.00, NULL, 'Midterm'),
+(31, 31, 1, 0.00, NULL, 'Midterm'),
+(32, 32, 1, 0.00, NULL, 'Midterm'),
+(33, 33, 1, 0.00, NULL, 'Midterm'),
+(34, 34, 1, 0.00, NULL, 'Midterm'),
+(35, 35, 1, 0.00, NULL, 'Midterm'),
+(36, 36, 1, 0.00, NULL, 'Midterm'),
+(37, 1, 1, 1.00, NULL, 'Finals'),
+(38, 2, 1, 2.00, NULL, 'Finals'),
+(39, 3, 1, 3.00, NULL, 'Finals'),
+(40, 4, 1, 4.00, NULL, 'Finals'),
+(41, 5, 1, 5.00, NULL, 'Finals'),
+(42, 6, 1, 0.00, NULL, 'Finals'),
+(43, 7, 1, 0.00, NULL, 'Finals'),
+(44, 8, 1, 0.00, NULL, 'Finals'),
+(45, 9, 1, 0.00, NULL, 'Finals'),
+(46, 10, 1, 0.00, NULL, 'Finals'),
+(47, 11, 1, 0.00, NULL, 'Finals'),
+(48, 12, 1, 0.00, NULL, 'Finals'),
+(49, 13, 1, 0.00, NULL, 'Finals'),
+(50, 14, 1, 0.00, NULL, 'Finals'),
+(51, 15, 1, 0.00, NULL, 'Finals'),
+(52, 16, 1, 0.00, NULL, 'Finals'),
+(53, 17, 1, 0.00, NULL, 'Finals'),
+(54, 18, 1, 0.00, NULL, 'Finals'),
+(55, 19, 1, 0.00, NULL, 'Finals'),
+(56, 20, 1, 0.00, NULL, 'Finals'),
+(57, 21, 1, 0.00, NULL, 'Finals'),
+(58, 22, 1, 0.00, NULL, 'Finals'),
+(59, 23, 1, 0.00, NULL, 'Finals'),
+(60, 24, 1, 0.00, NULL, 'Finals'),
+(61, 25, 1, 0.00, NULL, 'Finals'),
+(62, 26, 1, 0.00, NULL, 'Finals'),
+(63, 27, 1, 0.00, NULL, 'Finals'),
+(64, 28, 1, 0.00, NULL, 'Finals'),
+(65, 29, 1, 0.00, NULL, 'Finals'),
+(66, 30, 1, 0.00, NULL, 'Finals'),
+(67, 31, 1, 0.00, NULL, 'Finals'),
+(68, 32, 1, 0.00, NULL, 'Finals'),
+(69, 33, 1, 0.00, NULL, 'Finals'),
+(70, 34, 1, 0.00, NULL, 'Finals'),
+(71, 35, 1, 0.00, NULL, 'Finals'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -133,13 +361,6 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 
 INSERT INTO `faculty` (`UserId`, `Background`, `FName`, `MName`, `LName`) VALUES
 (2, 'qweqwe', 'qweqweas', 'asdsad', 'qweqe'),
-(4, 'asdsad', 'asdas', 'qwewqe', 'asdsad'),
-(5, 'qeqw', 'asd', 'aas', 'sd'),
-(6, 'asda', 'qweqw', 'asd', 'asdasd'),
-(7, 'Hayahay', 'Testfirst', 'Testmiddle', 'Testlast'),
-(8, 'qwee', 'asdas', 'qweqwe', 'asdsd'),
-(9, 'qweqwe', 'sdsad', 'qweqwe', 'sadasd'),
-(10, 'asdasd', 'qwea', 'sdasd', 'qwewe'),
 (12, 'Cute', 'Remedios', 'Ggggg', 'Ado'),
 (13, 'Handsome', 'Arlene', 'Sssss', 'Canlas'),
 (14, 'Cutest', 'Pedrito Jr.', 'Nnnn', 'Tenerife'),
@@ -153,10 +374,52 @@ INSERT INTO `faculty` (`UserId`, `Background`, `FName`, `MName`, `LName`) VALUES
 
 CREATE TABLE IF NOT EXISTS `final_exam` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `final_exam`
+--
+
+INSERT INTO `final_exam` (`Id`, `StudId`, `Score`, `Rating`) VALUES
+(1, 1, 1.00, NULL),
+(2, 2, 2.00, NULL),
+(3, 3, 3.00, NULL),
+(4, 4, 4.00, NULL),
+(5, 5, 5.00, NULL),
+(6, 6, 0.00, NULL),
+(7, 7, 0.00, NULL),
+(8, 8, 0.00, NULL),
+(9, 9, 0.00, NULL),
+(10, 10, 0.00, NULL),
+(11, 11, 0.00, NULL),
+(12, 12, 0.00, NULL),
+(13, 13, 0.00, NULL),
+(14, 14, 0.00, NULL),
+(15, 15, 0.00, NULL),
+(16, 16, 0.00, NULL),
+(17, 17, 0.00, NULL),
+(18, 18, 0.00, NULL),
+(19, 19, 0.00, NULL),
+(20, 20, 0.00, NULL),
+(21, 21, 0.00, NULL),
+(22, 22, 0.00, NULL),
+(23, 23, 0.00, NULL),
+(24, 24, 0.00, NULL),
+(25, 25, 0.00, NULL),
+(26, 26, 0.00, NULL),
+(27, 27, 0.00, NULL),
+(28, 28, 0.00, NULL),
+(29, 29, 0.00, NULL),
+(30, 30, 0.00, NULL),
+(31, 31, 0.00, NULL),
+(32, 32, 0.00, NULL),
+(33, 33, 0.00, NULL),
+(34, 34, 0.00, NULL),
+(35, 35, 0.00, NULL),
+(36, 36, 0.00, NULL);
 
 -- --------------------------------------------------------
 
@@ -165,24 +428,99 @@ CREATE TABLE IF NOT EXISTS `final_exam` (
 --
 
 CREATE TABLE IF NOT EXISTS `grades` (
-`Id` int(11) NOT NULL,
   `StudId` int(11) NOT NULL,
-  `MidTermGrade` int(11) NOT NULL,
-  `FinalGrade` int(11) NOT NULL,
-  `TotalGrade` int(11) NOT NULL,
-  `GradeRemarks` varchar(50) NOT NULL
+  `MidTermGrade` float NOT NULL,
+  `FinalGrade` float NOT NULL,
+  `TotalGrade` float NOT NULL,
+  `GradeRemarks` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `grades_id`
+-- Dumping data for table `grades`
 --
 
-CREATE TABLE IF NOT EXISTS `grades_id` (
-`Id` int(11) NOT NULL,
-  `StudId` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `grades` (`StudId`, `MidTermGrade`, `FinalGrade`, `TotalGrade`, `GradeRemarks`) VALUES
+(1, 0, 0, 0, NULL),
+(2, 0, 0, 0, NULL),
+(3, 0, 0, 0, NULL),
+(4, 0, 0, 0, NULL),
+(5, 0, 0, 0, NULL),
+(6, 0, 0, 0, NULL),
+(7, 0, 0, 0, NULL),
+(8, 0, 0, 0, NULL),
+(9, 0, 0, 0, NULL),
+(10, 0, 0, 0, NULL),
+(11, 0, 0, 0, NULL),
+(12, 0, 0, 0, NULL),
+(13, 0, 0, 0, NULL),
+(14, 0, 0, 0, NULL),
+(15, 0, 0, 0, NULL),
+(16, 0, 0, 0, NULL),
+(17, 0, 0, 0, NULL),
+(18, 0, 0, 0, NULL),
+(19, 0, 0, 0, NULL),
+(20, 0, 0, 0, NULL),
+(21, 0, 0, 0, NULL),
+(22, 0, 0, 0, NULL),
+(23, 0, 0, 0, NULL),
+(24, 0, 0, 0, NULL),
+(25, 0, 0, 0, NULL),
+(26, 0, 0, 0, NULL),
+(27, 0, 0, 0, NULL),
+(28, 0, 0, 0, NULL),
+(29, 0, 0, 0, NULL),
+(30, 0, 0, 0, NULL),
+(31, 0, 0, 0, NULL),
+(32, 0, 0, 0, NULL),
+(33, 0, 0, 0, NULL),
+(34, 0, 0, 0, NULL),
+(35, 0, 0, 0, NULL),
+(36, 0, 0, 0, NULL),
+(37, 0, 0, 0, NULL),
+(38, 0, 0, 0, NULL),
+(39, 0, 0, 0, NULL),
+(40, 0, 0, 0, NULL),
+(41, 0, 0, 0, NULL),
+(42, 0, 0, 0, NULL),
+(43, 0, 0, 0, NULL),
+(44, 0, 0, 0, NULL),
+(45, 0, 0, 0, NULL),
+(46, 0, 0, 0, NULL),
+(47, 0, 0, 0, NULL),
+(48, 0, 0, 0, NULL),
+(49, 0, 0, 0, NULL),
+(50, 0, 0, 0, NULL),
+(51, 0, 0, 0, NULL),
+(52, 0, 0, 0, NULL),
+(53, 0, 0, 0, NULL),
+(54, 0, 0, 0, NULL),
+(55, 0, 0, 0, NULL),
+(56, 0, 0, 0, NULL),
+(57, 0, 0, 0, NULL),
+(58, 0, 0, 0, NULL),
+(59, 0, 0, 0, NULL),
+(60, 0, 0, 0, NULL),
+(61, 0, 0, 0, NULL),
+(62, 0, 0, 0, NULL),
+(63, 0, 0, 0, NULL),
+(64, 0, 0, 0, NULL),
+(65, 0, 0, 0, NULL),
+(66, 0, 0, 0, NULL),
+(67, 0, 0, 0, NULL),
+(68, 0, 0, 0, NULL),
+(69, 0, 0, 0, NULL),
+(70, 0, 0, 0, NULL),
+(71, 0, 0, 0, NULL),
+(72, 0, 0, 0, NULL),
+(73, 0, 0, 0, NULL),
+(74, 0, 0, 0, NULL),
+(75, 0, 0, 0, NULL),
+(76, 0, 0, 0, NULL),
+(77, 0, 0, 0, NULL),
+(78, 0, 0, 0, NULL),
+(79, 0, 0, 0, NULL),
+(80, 0, 0, 0, NULL),
+(81, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -232,11 +570,108 @@ INSERT INTO `labmodperc` (`Id`, `PracExam`, `Project`, `Lab_MachineEx`) VALUES
 
 CREATE TABLE IF NOT EXISTS `lab_act` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `LabNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lab_act`
+--
+
+INSERT INTO `lab_act` (`Id`, `StudId`, `LabNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 37, 1, 0.00, NULL, 'Midterm'),
+(2, 37, 1, 0.00, NULL, 'Finals'),
+(3, 38, 1, 0.00, NULL, 'Midterm'),
+(4, 38, 1, 0.00, NULL, 'Finals'),
+(5, 39, 1, 0.00, NULL, 'Midterm'),
+(6, 39, 1, 0.00, NULL, 'Finals'),
+(7, 40, 1, 0.00, NULL, 'Midterm'),
+(8, 40, 1, 0.00, NULL, 'Finals'),
+(9, 41, 1, 0.00, NULL, 'Midterm'),
+(10, 41, 1, 0.00, NULL, 'Finals'),
+(11, 42, 1, 0.00, NULL, 'Midterm'),
+(12, 42, 1, 0.00, NULL, 'Finals'),
+(13, 43, 1, 0.00, NULL, 'Midterm'),
+(14, 43, 1, 0.00, NULL, 'Finals'),
+(15, 44, 1, 0.00, NULL, 'Midterm'),
+(16, 44, 1, 0.00, NULL, 'Finals'),
+(17, 45, 1, 0.00, NULL, 'Midterm'),
+(18, 45, 1, 0.00, NULL, 'Finals'),
+(19, 46, 1, 0.00, NULL, 'Midterm'),
+(20, 46, 1, 0.00, NULL, 'Finals'),
+(21, 47, 1, 0.00, NULL, 'Midterm'),
+(22, 47, 1, 0.00, NULL, 'Finals'),
+(23, 48, 1, 0.00, NULL, 'Midterm'),
+(24, 48, 1, 0.00, NULL, 'Finals'),
+(25, 49, 1, 0.00, NULL, 'Midterm'),
+(26, 49, 1, 0.00, NULL, 'Finals'),
+(27, 50, 1, 0.00, NULL, 'Midterm'),
+(28, 50, 1, 0.00, NULL, 'Finals'),
+(29, 51, 1, 0.00, NULL, 'Midterm'),
+(30, 51, 1, 0.00, NULL, 'Finals'),
+(31, 52, 1, 0.00, NULL, 'Midterm'),
+(32, 52, 1, 0.00, NULL, 'Finals'),
+(33, 53, 1, 0.00, NULL, 'Midterm'),
+(34, 53, 1, 0.00, NULL, 'Finals'),
+(35, 54, 1, 0.00, NULL, 'Midterm'),
+(36, 54, 1, 0.00, NULL, 'Finals'),
+(37, 55, 1, 0.00, NULL, 'Midterm'),
+(38, 55, 1, 0.00, NULL, 'Finals'),
+(39, 56, 1, 0.00, NULL, 'Midterm'),
+(40, 56, 1, 0.00, NULL, 'Finals'),
+(41, 57, 1, 0.00, NULL, 'Midterm'),
+(42, 57, 1, 0.00, NULL, 'Finals'),
+(43, 58, 1, 0.00, NULL, 'Midterm'),
+(44, 58, 1, 0.00, NULL, 'Finals'),
+(45, 59, 1, 0.00, NULL, 'Midterm'),
+(46, 59, 1, 0.00, NULL, 'Finals'),
+(47, 60, 1, 0.00, NULL, 'Midterm'),
+(48, 60, 1, 0.00, NULL, 'Finals'),
+(49, 61, 1, 0.00, NULL, 'Midterm'),
+(50, 61, 1, 0.00, NULL, 'Finals'),
+(51, 62, 1, 0.00, NULL, 'Midterm'),
+(52, 62, 1, 0.00, NULL, 'Finals'),
+(53, 63, 1, 0.00, NULL, 'Midterm'),
+(54, 63, 1, 0.00, NULL, 'Finals'),
+(55, 64, 1, 0.00, NULL, 'Midterm'),
+(56, 64, 1, 0.00, NULL, 'Finals'),
+(57, 65, 1, 0.00, NULL, 'Midterm'),
+(58, 65, 1, 0.00, NULL, 'Finals'),
+(59, 66, 1, 0.00, NULL, 'Midterm'),
+(60, 66, 1, 0.00, NULL, 'Finals'),
+(61, 67, 1, 0.00, NULL, 'Midterm'),
+(62, 67, 1, 0.00, NULL, 'Finals'),
+(63, 68, 1, 0.00, NULL, 'Midterm'),
+(64, 68, 1, 0.00, NULL, 'Finals'),
+(65, 69, 1, 0.00, NULL, 'Midterm'),
+(66, 69, 1, 0.00, NULL, 'Finals'),
+(67, 70, 1, 0.00, NULL, 'Midterm'),
+(68, 70, 1, 0.00, NULL, 'Finals'),
+(69, 71, 1, 0.00, NULL, 'Midterm'),
+(70, 71, 1, 0.00, NULL, 'Finals'),
+(71, 72, 1, 0.00, NULL, 'Midterm'),
+(72, 72, 1, 0.00, NULL, 'Finals'),
+(73, 73, 1, 0.00, NULL, 'Midterm'),
+(74, 73, 1, 0.00, NULL, 'Finals'),
+(75, 74, 1, 0.00, NULL, 'Midterm'),
+(76, 74, 1, 0.00, NULL, 'Finals'),
+(77, 75, 1, 0.00, NULL, 'Midterm'),
+(78, 75, 1, 0.00, NULL, 'Finals'),
+(79, 76, 1, 0.00, NULL, 'Midterm'),
+(80, 76, 1, 0.00, NULL, 'Finals'),
+(81, 77, 1, 0.00, NULL, 'Midterm'),
+(82, 77, 1, 0.00, NULL, 'Finals'),
+(83, 78, 1, 0.00, NULL, 'Midterm'),
+(84, 78, 1, 0.00, NULL, 'Finals'),
+(85, 79, 1, 0.00, NULL, 'Midterm'),
+(86, 79, 1, 0.00, NULL, 'Finals'),
+(87, 80, 1, 0.00, NULL, 'Midterm'),
+(88, 80, 1, 0.00, NULL, 'Finals'),
+(89, 81, 1, 0.00, NULL, 'Midterm'),
+(90, 81, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -267,11 +702,90 @@ INSERT INTO `lectmodperc` (`Id`, `Attendance`, `ClassStanding`, `QuizzesLExam`, 
 
 CREATE TABLE IF NOT EXISTS `long_exam` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `LExamNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `long_exam`
+--
+
+INSERT INTO `long_exam` (`Id`, `StudId`, `LExamNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, 1.00, NULL, 'Midterm'),
+(2, 2, 1, 2.00, NULL, 'Midterm'),
+(3, 3, 1, 3.00, NULL, 'Midterm'),
+(4, 4, 1, 4.00, NULL, 'Midterm'),
+(5, 5, 1, 5.00, NULL, 'Midterm'),
+(6, 6, 1, 0.00, NULL, 'Midterm'),
+(7, 7, 1, 0.00, NULL, 'Midterm'),
+(8, 8, 1, 0.00, NULL, 'Midterm'),
+(9, 9, 1, 0.00, NULL, 'Midterm'),
+(10, 10, 1, 0.00, NULL, 'Midterm'),
+(11, 11, 1, 0.00, NULL, 'Midterm'),
+(12, 12, 1, 0.00, NULL, 'Midterm'),
+(13, 13, 1, 0.00, NULL, 'Midterm'),
+(14, 14, 1, 0.00, NULL, 'Midterm'),
+(15, 15, 1, 0.00, NULL, 'Midterm'),
+(16, 16, 1, 0.00, NULL, 'Midterm'),
+(17, 17, 1, 0.00, NULL, 'Midterm'),
+(18, 18, 1, 0.00, NULL, 'Midterm'),
+(19, 19, 1, 0.00, NULL, 'Midterm'),
+(20, 20, 1, 0.00, NULL, 'Midterm'),
+(21, 21, 1, 0.00, NULL, 'Midterm'),
+(22, 22, 1, 0.00, NULL, 'Midterm'),
+(23, 23, 1, 0.00, NULL, 'Midterm'),
+(24, 24, 1, 0.00, NULL, 'Midterm'),
+(25, 25, 1, 0.00, NULL, 'Midterm'),
+(26, 26, 1, 0.00, NULL, 'Midterm'),
+(27, 27, 1, 0.00, NULL, 'Midterm'),
+(28, 28, 1, 0.00, NULL, 'Midterm'),
+(29, 29, 1, 0.00, NULL, 'Midterm'),
+(30, 30, 1, 0.00, NULL, 'Midterm'),
+(31, 31, 1, 0.00, NULL, 'Midterm'),
+(32, 32, 1, 0.00, NULL, 'Midterm'),
+(33, 33, 1, 0.00, NULL, 'Midterm'),
+(34, 34, 1, 0.00, NULL, 'Midterm'),
+(35, 35, 1, 0.00, NULL, 'Midterm'),
+(36, 36, 1, 0.00, NULL, 'Midterm'),
+(37, 1, 1, 1.00, NULL, 'Finals'),
+(38, 2, 1, 2.00, NULL, 'Finals'),
+(39, 3, 1, 3.00, NULL, 'Finals'),
+(40, 4, 1, 4.00, NULL, 'Finals'),
+(41, 5, 1, 5.00, NULL, 'Finals'),
+(42, 6, 1, 0.00, NULL, 'Finals'),
+(43, 7, 1, 0.00, NULL, 'Finals'),
+(44, 8, 1, 0.00, NULL, 'Finals'),
+(45, 9, 1, 0.00, NULL, 'Finals'),
+(46, 10, 1, 0.00, NULL, 'Finals'),
+(47, 11, 1, 0.00, NULL, 'Finals'),
+(48, 12, 1, 0.00, NULL, 'Finals'),
+(49, 13, 1, 0.00, NULL, 'Finals'),
+(50, 14, 1, 0.00, NULL, 'Finals'),
+(51, 15, 1, 0.00, NULL, 'Finals'),
+(52, 16, 1, 0.00, NULL, 'Finals'),
+(53, 17, 1, 0.00, NULL, 'Finals'),
+(54, 18, 1, 0.00, NULL, 'Finals'),
+(55, 19, 1, 0.00, NULL, 'Finals'),
+(56, 20, 1, 0.00, NULL, 'Finals'),
+(57, 21, 1, 0.00, NULL, 'Finals'),
+(58, 22, 1, 0.00, NULL, 'Finals'),
+(59, 23, 1, 0.00, NULL, 'Finals'),
+(60, 24, 1, 0.00, NULL, 'Finals'),
+(61, 25, 1, 0.00, NULL, 'Finals'),
+(62, 26, 1, 0.00, NULL, 'Finals'),
+(63, 27, 1, 0.00, NULL, 'Finals'),
+(64, 28, 1, 0.00, NULL, 'Finals'),
+(65, 29, 1, 0.00, NULL, 'Finals'),
+(66, 30, 1, 0.00, NULL, 'Finals'),
+(67, 31, 1, 0.00, NULL, 'Finals'),
+(68, 32, 1, 0.00, NULL, 'Finals'),
+(69, 33, 1, 0.00, NULL, 'Finals'),
+(70, 34, 1, 0.00, NULL, 'Finals'),
+(71, 35, 1, 0.00, NULL, 'Finals'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -281,67 +795,278 @@ CREATE TABLE IF NOT EXISTS `long_exam` (
 
 CREATE TABLE IF NOT EXISTS `midterm_exam` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `midterm_exam`
+--
+
+INSERT INTO `midterm_exam` (`Id`, `StudId`, `Score`, `Rating`) VALUES
+(1, 1, 1.00, NULL),
+(2, 2, 2.00, NULL),
+(3, 3, 3.00, NULL),
+(4, 4, 4.00, NULL),
+(5, 5, 5.00, NULL),
+(6, 6, 0.00, NULL),
+(7, 7, 0.00, NULL),
+(8, 8, 0.00, NULL),
+(9, 9, 0.00, NULL),
+(10, 10, 0.00, NULL),
+(11, 11, 0.00, NULL),
+(12, 12, 0.00, NULL),
+(13, 13, 0.00, NULL),
+(14, 14, 0.00, NULL),
+(15, 15, 0.00, NULL),
+(16, 16, 0.00, NULL),
+(17, 17, 0.00, NULL),
+(18, 18, 0.00, NULL),
+(19, 19, 0.00, NULL),
+(20, 20, 0.00, NULL),
+(21, 21, 0.00, NULL),
+(22, 22, 0.00, NULL),
+(23, 23, 0.00, NULL),
+(24, 24, 0.00, NULL),
+(25, 25, 0.00, NULL),
+(26, 26, 0.00, NULL),
+(27, 27, 0.00, NULL),
+(28, 28, 0.00, NULL),
+(29, 29, 0.00, NULL),
+(30, 30, 0.00, NULL),
+(31, 31, 0.00, NULL),
+(32, 32, 0.00, NULL),
+(33, 33, 0.00, NULL),
+(34, 34, 0.00, NULL),
+(35, 35, 0.00, NULL),
+(36, 36, 0.00, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `moduleitems`
+-- Table structure for table `mod_assign`
 --
 
-CREATE TABLE IF NOT EXISTS `moduleitems` (
+CREATE TABLE IF NOT EXISTS `mod_assign` (
 `Id` int(11) NOT NULL,
   `ClassId` int(11) NOT NULL,
+  `AssignNum` int(11) NOT NULL,
+  `AssignItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_assign`
+--
+
+INSERT INTO `mod_assign` (`Id`, `ClassId`, `AssignNum`, `AssignItems`, `Sem`) VALUES
+(1, 1, 1, 100, 'Midterm'),
+(2, 1, 1, 200, 'Finals');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_att`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_att` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `AttNum` int(11) NOT NULL,
   `AttDate` date NOT NULL,
-  `AssignNum` smallint(6) NOT NULL,
-  `AssignItems` smallint(6) NOT NULL,
-  `SeatworkNum` smallint(6) NOT NULL,
-  `SeatworkItems` smallint(6) NOT NULL,
-  `ExNum` smallint(6) NOT NULL,
-  `ExItems` smallint(6) NOT NULL,
-  `LabNum` smallint(6) NOT NULL,
-  `LabItems` smallint(6) NOT NULL,
-  `RecitationNum` smallint(6) NOT NULL,
-  `RecitationItems` smallint(6) NOT NULL,
-  `ProjINum` smallint(6) NOT NULL,
-  `ProjItems` smallint(6) NOT NULL,
-  `QuizNum` smallint(6) NOT NULL,
-  `QuizItems` smallint(6) NOT NULL,
-  `LExamNum` smallint(6) NOT NULL,
-  `LExamItems` smallint(6) NOT NULL,
-  `PracExamNum` smallint(6) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_ex`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_ex` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `ExNum` int(11) NOT NULL,
+  `ExItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_ex`
+--
+
+INSERT INTO `mod_ex` (`Id`, `ClassId`, `ExNum`, `ExItems`, `Sem`) VALUES
+(1, 1, 1, 100, 'Midterm'),
+(2, 1, 1, 200, 'Finals');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_fe`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_fe` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `FExamItems` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_fe`
+--
+
+INSERT INTO `mod_fe` (`Id`, `ClassId`, `FExamItems`) VALUES
+(1, 1, 200);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_lab`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_lab` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `LabNum` int(11) NOT NULL,
+  `LabItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_le`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_le` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `LExamNum` int(11) NOT NULL,
+  `LExamItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_le`
+--
+
+INSERT INTO `mod_le` (`Id`, `ClassId`, `LExamNum`, `LExamItems`, `Sem`) VALUES
+(1, 1, 1, 100, 'Midterm'),
+(2, 1, 1, 200, 'Finals');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_me`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_me` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `MExamItems` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_me`
+--
+
+INSERT INTO `mod_me` (`Id`, `ClassId`, `MExamItems`) VALUES
+(1, 1, 100);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_prac`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_prac` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `PracExamNum` int(11) NOT NULL,
   `PracExamItems` int(11) NOT NULL,
-  `MExamItems` smallint(6) NOT NULL,
-  `FExamItems` smallint(6) NOT NULL
+  `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `module_items`
+-- Table structure for table `mod_proj`
 --
 
-CREATE TABLE IF NOT EXISTS `module_items` (
+CREATE TABLE IF NOT EXISTS `mod_proj` (
 `Id` int(11) NOT NULL,
   `ClassId` int(11) NOT NULL,
-  `Module` varchar(60) DEFAULT NULL,
-  `Items` smallint(6) DEFAULT '0'
+  `ProjNum` int(11) NOT NULL,
+  `ProjItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `module_items_id`
+-- Table structure for table `mod_quiz`
 --
 
-CREATE TABLE IF NOT EXISTS `module_items_id` (
+CREATE TABLE IF NOT EXISTS `mod_quiz` (
 `Id` int(11) NOT NULL,
   `ClassId` int(11) NOT NULL,
-  `Module` varchar(60) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `QuizNum` int(11) NOT NULL,
+  `QuizItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_quiz`
+--
+
+INSERT INTO `mod_quiz` (`Id`, `ClassId`, `QuizNum`, `QuizItems`, `Sem`) VALUES
+(1, 1, 1, 100, 'Midterm'),
+(2, 1, 1, 200, 'Finals');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_rec`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_rec` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `RecNum` int(11) NOT NULL,
+  `RecItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_rec`
+--
+
+INSERT INTO `mod_rec` (`Id`, `ClassId`, `RecNum`, `RecItems`, `Sem`) VALUES
+(1, 1, 1, 100, 'Midterm'),
+(2, 1, 1, 200, 'Finals');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mod_sw`
+--
+
+CREATE TABLE IF NOT EXISTS `mod_sw` (
+`Id` int(11) NOT NULL,
+  `ClassId` int(11) NOT NULL,
+  `SWNum` int(11) NOT NULL,
+  `SWItems` int(11) NOT NULL,
+  `Sem` varchar(50) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_sw`
+--
+
+INSERT INTO `mod_sw` (`Id`, `ClassId`, `SWNum`, `SWItems`, `Sem`) VALUES
+(1, 1, 1, 100, 'Midterm'),
+(2, 1, 1, 200, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -351,11 +1076,108 @@ CREATE TABLE IF NOT EXISTS `module_items_id` (
 
 CREATE TABLE IF NOT EXISTS `prac_exam` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `PracNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `prac_exam`
+--
+
+INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 37, 1, 0.00, NULL, 'Midterm'),
+(2, 37, 1, 0.00, NULL, 'Finals'),
+(3, 38, 1, 0.00, NULL, 'Midterm'),
+(4, 38, 1, 0.00, NULL, 'Finals'),
+(5, 39, 1, 0.00, NULL, 'Midterm'),
+(6, 39, 1, 0.00, NULL, 'Finals'),
+(7, 40, 1, 0.00, NULL, 'Midterm'),
+(8, 40, 1, 0.00, NULL, 'Finals'),
+(9, 41, 1, 0.00, NULL, 'Midterm'),
+(10, 41, 1, 0.00, NULL, 'Finals'),
+(11, 42, 1, 0.00, NULL, 'Midterm'),
+(12, 42, 1, 0.00, NULL, 'Finals'),
+(13, 43, 1, 0.00, NULL, 'Midterm'),
+(14, 43, 1, 0.00, NULL, 'Finals'),
+(15, 44, 1, 0.00, NULL, 'Midterm'),
+(16, 44, 1, 0.00, NULL, 'Finals'),
+(17, 45, 1, 0.00, NULL, 'Midterm'),
+(18, 45, 1, 0.00, NULL, 'Finals'),
+(19, 46, 1, 0.00, NULL, 'Midterm'),
+(20, 46, 1, 0.00, NULL, 'Finals'),
+(21, 47, 1, 0.00, NULL, 'Midterm'),
+(22, 47, 1, 0.00, NULL, 'Finals'),
+(23, 48, 1, 0.00, NULL, 'Midterm'),
+(24, 48, 1, 0.00, NULL, 'Finals'),
+(25, 49, 1, 0.00, NULL, 'Midterm'),
+(26, 49, 1, 0.00, NULL, 'Finals'),
+(27, 50, 1, 0.00, NULL, 'Midterm'),
+(28, 50, 1, 0.00, NULL, 'Finals'),
+(29, 51, 1, 0.00, NULL, 'Midterm'),
+(30, 51, 1, 0.00, NULL, 'Finals'),
+(31, 52, 1, 0.00, NULL, 'Midterm'),
+(32, 52, 1, 0.00, NULL, 'Finals'),
+(33, 53, 1, 0.00, NULL, 'Midterm'),
+(34, 53, 1, 0.00, NULL, 'Finals'),
+(35, 54, 1, 0.00, NULL, 'Midterm'),
+(36, 54, 1, 0.00, NULL, 'Finals'),
+(37, 55, 1, 0.00, NULL, 'Midterm'),
+(38, 55, 1, 0.00, NULL, 'Finals'),
+(39, 56, 1, 0.00, NULL, 'Midterm'),
+(40, 56, 1, 0.00, NULL, 'Finals'),
+(41, 57, 1, 0.00, NULL, 'Midterm'),
+(42, 57, 1, 0.00, NULL, 'Finals'),
+(43, 58, 1, 0.00, NULL, 'Midterm'),
+(44, 58, 1, 0.00, NULL, 'Finals'),
+(45, 59, 1, 0.00, NULL, 'Midterm'),
+(46, 59, 1, 0.00, NULL, 'Finals'),
+(47, 60, 1, 0.00, NULL, 'Midterm'),
+(48, 60, 1, 0.00, NULL, 'Finals'),
+(49, 61, 1, 0.00, NULL, 'Midterm'),
+(50, 61, 1, 0.00, NULL, 'Finals'),
+(51, 62, 1, 0.00, NULL, 'Midterm'),
+(52, 62, 1, 0.00, NULL, 'Finals'),
+(53, 63, 1, 0.00, NULL, 'Midterm'),
+(54, 63, 1, 0.00, NULL, 'Finals'),
+(55, 64, 1, 0.00, NULL, 'Midterm'),
+(56, 64, 1, 0.00, NULL, 'Finals'),
+(57, 65, 1, 0.00, NULL, 'Midterm'),
+(58, 65, 1, 0.00, NULL, 'Finals'),
+(59, 66, 1, 0.00, NULL, 'Midterm'),
+(60, 66, 1, 0.00, NULL, 'Finals'),
+(61, 67, 1, 0.00, NULL, 'Midterm'),
+(62, 67, 1, 0.00, NULL, 'Finals'),
+(63, 68, 1, 0.00, NULL, 'Midterm'),
+(64, 68, 1, 0.00, NULL, 'Finals'),
+(65, 69, 1, 0.00, NULL, 'Midterm'),
+(66, 69, 1, 0.00, NULL, 'Finals'),
+(67, 70, 1, 0.00, NULL, 'Midterm'),
+(68, 70, 1, 0.00, NULL, 'Finals'),
+(69, 71, 1, 0.00, NULL, 'Midterm'),
+(70, 71, 1, 0.00, NULL, 'Finals'),
+(71, 72, 1, 0.00, NULL, 'Midterm'),
+(72, 72, 1, 0.00, NULL, 'Finals'),
+(73, 73, 1, 0.00, NULL, 'Midterm'),
+(74, 73, 1, 0.00, NULL, 'Finals'),
+(75, 74, 1, 0.00, NULL, 'Midterm'),
+(76, 74, 1, 0.00, NULL, 'Finals'),
+(77, 75, 1, 0.00, NULL, 'Midterm'),
+(78, 75, 1, 0.00, NULL, 'Finals'),
+(79, 76, 1, 0.00, NULL, 'Midterm'),
+(80, 76, 1, 0.00, NULL, 'Finals'),
+(81, 77, 1, 0.00, NULL, 'Midterm'),
+(82, 77, 1, 0.00, NULL, 'Finals'),
+(83, 78, 1, 0.00, NULL, 'Midterm'),
+(84, 78, 1, 0.00, NULL, 'Finals'),
+(85, 79, 1, 0.00, NULL, 'Midterm'),
+(86, 79, 1, 0.00, NULL, 'Finals'),
+(87, 80, 1, 0.00, NULL, 'Midterm'),
+(88, 80, 1, 0.00, NULL, 'Finals'),
+(89, 81, 1, 0.00, NULL, 'Midterm'),
+(90, 81, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -365,11 +1187,108 @@ CREATE TABLE IF NOT EXISTS `prac_exam` (
 
 CREATE TABLE IF NOT EXISTS `project` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `ProjNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`Id`, `StudId`, `ProjNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 37, 1, 0.00, NULL, 'Midterm'),
+(2, 37, 1, 0.00, NULL, 'Finals'),
+(3, 38, 1, 0.00, NULL, 'Midterm'),
+(4, 38, 1, 0.00, NULL, 'Finals'),
+(5, 39, 1, 0.00, NULL, 'Midterm'),
+(6, 39, 1, 0.00, NULL, 'Finals'),
+(7, 40, 1, 0.00, NULL, 'Midterm'),
+(8, 40, 1, 0.00, NULL, 'Finals'),
+(9, 41, 1, 0.00, NULL, 'Midterm'),
+(10, 41, 1, 0.00, NULL, 'Finals'),
+(11, 42, 1, 0.00, NULL, 'Midterm'),
+(12, 42, 1, 0.00, NULL, 'Finals'),
+(13, 43, 1, 0.00, NULL, 'Midterm'),
+(14, 43, 1, 0.00, NULL, 'Finals'),
+(15, 44, 1, 0.00, NULL, 'Midterm'),
+(16, 44, 1, 0.00, NULL, 'Finals'),
+(17, 45, 1, 0.00, NULL, 'Midterm'),
+(18, 45, 1, 0.00, NULL, 'Finals'),
+(19, 46, 1, 0.00, NULL, 'Midterm'),
+(20, 46, 1, 0.00, NULL, 'Finals'),
+(21, 47, 1, 0.00, NULL, 'Midterm'),
+(22, 47, 1, 0.00, NULL, 'Finals'),
+(23, 48, 1, 0.00, NULL, 'Midterm'),
+(24, 48, 1, 0.00, NULL, 'Finals'),
+(25, 49, 1, 0.00, NULL, 'Midterm'),
+(26, 49, 1, 0.00, NULL, 'Finals'),
+(27, 50, 1, 0.00, NULL, 'Midterm'),
+(28, 50, 1, 0.00, NULL, 'Finals'),
+(29, 51, 1, 0.00, NULL, 'Midterm'),
+(30, 51, 1, 0.00, NULL, 'Finals'),
+(31, 52, 1, 0.00, NULL, 'Midterm'),
+(32, 52, 1, 0.00, NULL, 'Finals'),
+(33, 53, 1, 0.00, NULL, 'Midterm'),
+(34, 53, 1, 0.00, NULL, 'Finals'),
+(35, 54, 1, 0.00, NULL, 'Midterm'),
+(36, 54, 1, 0.00, NULL, 'Finals'),
+(37, 55, 1, 0.00, NULL, 'Midterm'),
+(38, 55, 1, 0.00, NULL, 'Finals'),
+(39, 56, 1, 0.00, NULL, 'Midterm'),
+(40, 56, 1, 0.00, NULL, 'Finals'),
+(41, 57, 1, 0.00, NULL, 'Midterm'),
+(42, 57, 1, 0.00, NULL, 'Finals'),
+(43, 58, 1, 0.00, NULL, 'Midterm'),
+(44, 58, 1, 0.00, NULL, 'Finals'),
+(45, 59, 1, 0.00, NULL, 'Midterm'),
+(46, 59, 1, 0.00, NULL, 'Finals'),
+(47, 60, 1, 0.00, NULL, 'Midterm'),
+(48, 60, 1, 0.00, NULL, 'Finals'),
+(49, 61, 1, 0.00, NULL, 'Midterm'),
+(50, 61, 1, 0.00, NULL, 'Finals'),
+(51, 62, 1, 0.00, NULL, 'Midterm'),
+(52, 62, 1, 0.00, NULL, 'Finals'),
+(53, 63, 1, 0.00, NULL, 'Midterm'),
+(54, 63, 1, 0.00, NULL, 'Finals'),
+(55, 64, 1, 0.00, NULL, 'Midterm'),
+(56, 64, 1, 0.00, NULL, 'Finals'),
+(57, 65, 1, 0.00, NULL, 'Midterm'),
+(58, 65, 1, 0.00, NULL, 'Finals'),
+(59, 66, 1, 0.00, NULL, 'Midterm'),
+(60, 66, 1, 0.00, NULL, 'Finals'),
+(61, 67, 1, 0.00, NULL, 'Midterm'),
+(62, 67, 1, 0.00, NULL, 'Finals'),
+(63, 68, 1, 0.00, NULL, 'Midterm'),
+(64, 68, 1, 0.00, NULL, 'Finals'),
+(65, 69, 1, 0.00, NULL, 'Midterm'),
+(66, 69, 1, 0.00, NULL, 'Finals'),
+(67, 70, 1, 0.00, NULL, 'Midterm'),
+(68, 70, 1, 0.00, NULL, 'Finals'),
+(69, 71, 1, 0.00, NULL, 'Midterm'),
+(70, 71, 1, 0.00, NULL, 'Finals'),
+(71, 72, 1, 0.00, NULL, 'Midterm'),
+(72, 72, 1, 0.00, NULL, 'Finals'),
+(73, 73, 1, 0.00, NULL, 'Midterm'),
+(74, 73, 1, 0.00, NULL, 'Finals'),
+(75, 74, 1, 0.00, NULL, 'Midterm'),
+(76, 74, 1, 0.00, NULL, 'Finals'),
+(77, 75, 1, 0.00, NULL, 'Midterm'),
+(78, 75, 1, 0.00, NULL, 'Finals'),
+(79, 76, 1, 0.00, NULL, 'Midterm'),
+(80, 76, 1, 0.00, NULL, 'Finals'),
+(81, 77, 1, 0.00, NULL, 'Midterm'),
+(82, 77, 1, 0.00, NULL, 'Finals'),
+(83, 78, 1, 0.00, NULL, 'Midterm'),
+(84, 78, 1, 0.00, NULL, 'Finals'),
+(85, 79, 1, 0.00, NULL, 'Midterm'),
+(86, 79, 1, 0.00, NULL, 'Finals'),
+(87, 80, 1, 0.00, NULL, 'Midterm'),
+(88, 80, 1, 0.00, NULL, 'Finals'),
+(89, 81, 1, 0.00, NULL, 'Midterm'),
+(90, 81, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -379,11 +1298,90 @@ CREATE TABLE IF NOT EXISTS `project` (
 
 CREATE TABLE IF NOT EXISTS `quizzes` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `QuizNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `quizzes`
+--
+
+INSERT INTO `quizzes` (`Id`, `StudId`, `QuizNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, 1.00, NULL, 'Midterm'),
+(2, 2, 1, 2.00, NULL, 'Midterm'),
+(3, 3, 1, 3.00, NULL, 'Midterm'),
+(4, 4, 1, 4.00, NULL, 'Midterm'),
+(5, 5, 1, 5.00, NULL, 'Midterm'),
+(6, 6, 1, 0.00, NULL, 'Midterm'),
+(7, 7, 1, 0.00, NULL, 'Midterm'),
+(8, 8, 1, 0.00, NULL, 'Midterm'),
+(9, 9, 1, 0.00, NULL, 'Midterm'),
+(10, 10, 1, 0.00, NULL, 'Midterm'),
+(11, 11, 1, 0.00, NULL, 'Midterm'),
+(12, 12, 1, 0.00, NULL, 'Midterm'),
+(13, 13, 1, 0.00, NULL, 'Midterm'),
+(14, 14, 1, 0.00, NULL, 'Midterm'),
+(15, 15, 1, 0.00, NULL, 'Midterm'),
+(16, 16, 1, 0.00, NULL, 'Midterm'),
+(17, 17, 1, 0.00, NULL, 'Midterm'),
+(18, 18, 1, 0.00, NULL, 'Midterm'),
+(19, 19, 1, 0.00, NULL, 'Midterm'),
+(20, 20, 1, 0.00, NULL, 'Midterm'),
+(21, 21, 1, 0.00, NULL, 'Midterm'),
+(22, 22, 1, 0.00, NULL, 'Midterm'),
+(23, 23, 1, 0.00, NULL, 'Midterm'),
+(24, 24, 1, 0.00, NULL, 'Midterm'),
+(25, 25, 1, 0.00, NULL, 'Midterm'),
+(26, 26, 1, 0.00, NULL, 'Midterm'),
+(27, 27, 1, 0.00, NULL, 'Midterm'),
+(28, 28, 1, 0.00, NULL, 'Midterm'),
+(29, 29, 1, 0.00, NULL, 'Midterm'),
+(30, 30, 1, 0.00, NULL, 'Midterm'),
+(31, 31, 1, 0.00, NULL, 'Midterm'),
+(32, 32, 1, 0.00, NULL, 'Midterm'),
+(33, 33, 1, 0.00, NULL, 'Midterm'),
+(34, 34, 1, 0.00, NULL, 'Midterm'),
+(35, 35, 1, 0.00, NULL, 'Midterm'),
+(36, 36, 1, 0.00, NULL, 'Midterm'),
+(37, 1, 1, 1.00, NULL, 'Finals'),
+(38, 2, 1, 2.00, NULL, 'Finals'),
+(39, 3, 1, 3.00, NULL, 'Finals'),
+(40, 4, 1, 4.00, NULL, 'Finals'),
+(41, 5, 1, 5.00, NULL, 'Finals'),
+(42, 6, 1, 0.00, NULL, 'Finals'),
+(43, 7, 1, 0.00, NULL, 'Finals'),
+(44, 8, 1, 0.00, NULL, 'Finals'),
+(45, 9, 1, 0.00, NULL, 'Finals'),
+(46, 10, 1, 0.00, NULL, 'Finals'),
+(47, 11, 1, 0.00, NULL, 'Finals'),
+(48, 12, 1, 0.00, NULL, 'Finals'),
+(49, 13, 1, 0.00, NULL, 'Finals'),
+(50, 14, 1, 0.00, NULL, 'Finals'),
+(51, 15, 1, 0.00, NULL, 'Finals'),
+(52, 16, 1, 0.00, NULL, 'Finals'),
+(53, 17, 1, 0.00, NULL, 'Finals'),
+(54, 18, 1, 0.00, NULL, 'Finals'),
+(55, 19, 1, 0.00, NULL, 'Finals'),
+(56, 20, 1, 0.00, NULL, 'Finals'),
+(57, 21, 1, 0.00, NULL, 'Finals'),
+(58, 22, 1, 0.00, NULL, 'Finals'),
+(59, 23, 1, 0.00, NULL, 'Finals'),
+(60, 24, 1, 0.00, NULL, 'Finals'),
+(61, 25, 1, 0.00, NULL, 'Finals'),
+(62, 26, 1, 0.00, NULL, 'Finals'),
+(63, 27, 1, 0.00, NULL, 'Finals'),
+(64, 28, 1, 0.00, NULL, 'Finals'),
+(65, 29, 1, 0.00, NULL, 'Finals'),
+(66, 30, 1, 0.00, NULL, 'Finals'),
+(67, 31, 1, 0.00, NULL, 'Finals'),
+(68, 32, 1, 0.00, NULL, 'Finals'),
+(69, 33, 1, 0.00, NULL, 'Finals'),
+(70, 34, 1, 0.00, NULL, 'Finals'),
+(71, 35, 1, 0.00, NULL, 'Finals'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -393,11 +1391,90 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
 
 CREATE TABLE IF NOT EXISTS `recitation` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `RecNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `recitation`
+--
+
+INSERT INTO `recitation` (`Id`, `StudId`, `RecNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, 1.00, NULL, 'Midterm'),
+(2, 2, 1, 2.00, NULL, 'Midterm'),
+(3, 3, 1, 3.00, NULL, 'Midterm'),
+(4, 4, 1, 4.00, NULL, 'Midterm'),
+(5, 5, 1, 5.00, NULL, 'Midterm'),
+(6, 6, 1, 0.00, NULL, 'Midterm'),
+(7, 7, 1, 0.00, NULL, 'Midterm'),
+(8, 8, 1, 0.00, NULL, 'Midterm'),
+(9, 9, 1, 0.00, NULL, 'Midterm'),
+(10, 10, 1, 0.00, NULL, 'Midterm'),
+(11, 11, 1, 0.00, NULL, 'Midterm'),
+(12, 12, 1, 0.00, NULL, 'Midterm'),
+(13, 13, 1, 0.00, NULL, 'Midterm'),
+(14, 14, 1, 0.00, NULL, 'Midterm'),
+(15, 15, 1, 0.00, NULL, 'Midterm'),
+(16, 16, 1, 0.00, NULL, 'Midterm'),
+(17, 17, 1, 0.00, NULL, 'Midterm'),
+(18, 18, 1, 0.00, NULL, 'Midterm'),
+(19, 19, 1, 0.00, NULL, 'Midterm'),
+(20, 20, 1, 0.00, NULL, 'Midterm'),
+(21, 21, 1, 0.00, NULL, 'Midterm'),
+(22, 22, 1, 0.00, NULL, 'Midterm'),
+(23, 23, 1, 0.00, NULL, 'Midterm'),
+(24, 24, 1, 0.00, NULL, 'Midterm'),
+(25, 25, 1, 0.00, NULL, 'Midterm'),
+(26, 26, 1, 0.00, NULL, 'Midterm'),
+(27, 27, 1, 0.00, NULL, 'Midterm'),
+(28, 28, 1, 0.00, NULL, 'Midterm'),
+(29, 29, 1, 0.00, NULL, 'Midterm'),
+(30, 30, 1, 0.00, NULL, 'Midterm'),
+(31, 31, 1, 0.00, NULL, 'Midterm'),
+(32, 32, 1, 0.00, NULL, 'Midterm'),
+(33, 33, 1, 0.00, NULL, 'Midterm'),
+(34, 34, 1, 0.00, NULL, 'Midterm'),
+(35, 35, 1, 0.00, NULL, 'Midterm'),
+(36, 36, 1, 0.00, NULL, 'Midterm'),
+(37, 1, 1, 1.00, NULL, 'Finals'),
+(38, 2, 1, 2.00, NULL, 'Finals'),
+(39, 3, 1, 3.00, NULL, 'Finals'),
+(40, 4, 1, 4.00, NULL, 'Finals'),
+(41, 5, 1, 5.00, NULL, 'Finals'),
+(42, 6, 1, 0.00, NULL, 'Finals'),
+(43, 7, 1, 0.00, NULL, 'Finals'),
+(44, 8, 1, 0.00, NULL, 'Finals'),
+(45, 9, 1, 0.00, NULL, 'Finals'),
+(46, 10, 1, 0.00, NULL, 'Finals'),
+(47, 11, 1, 0.00, NULL, 'Finals'),
+(48, 12, 1, 0.00, NULL, 'Finals'),
+(49, 13, 1, 0.00, NULL, 'Finals'),
+(50, 14, 1, 0.00, NULL, 'Finals'),
+(51, 15, 1, 0.00, NULL, 'Finals'),
+(52, 16, 1, 0.00, NULL, 'Finals'),
+(53, 17, 1, 0.00, NULL, 'Finals'),
+(54, 18, 1, 0.00, NULL, 'Finals'),
+(55, 19, 1, 0.00, NULL, 'Finals'),
+(56, 20, 1, 0.00, NULL, 'Finals'),
+(57, 21, 1, 0.00, NULL, 'Finals'),
+(58, 22, 1, 0.00, NULL, 'Finals'),
+(59, 23, 1, 0.00, NULL, 'Finals'),
+(60, 24, 1, 0.00, NULL, 'Finals'),
+(61, 25, 1, 0.00, NULL, 'Finals'),
+(62, 26, 1, 0.00, NULL, 'Finals'),
+(63, 27, 1, 0.00, NULL, 'Finals'),
+(64, 28, 1, 0.00, NULL, 'Finals'),
+(65, 29, 1, 0.00, NULL, 'Finals'),
+(66, 30, 1, 0.00, NULL, 'Finals'),
+(67, 31, 1, 0.00, NULL, 'Finals'),
+(68, 32, 1, 0.00, NULL, 'Finals'),
+(69, 33, 1, 0.00, NULL, 'Finals'),
+(70, 34, 1, 0.00, NULL, 'Finals'),
+(71, 35, 1, 0.00, NULL, 'Finals'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -407,11 +1484,90 @@ CREATE TABLE IF NOT EXISTS `recitation` (
 
 CREATE TABLE IF NOT EXISTS `seatwork` (
 `Id` int(11) NOT NULL,
-  `StudGradeId` int(11) NOT NULL,
-  `Score` float(5,2) DEFAULT NULL,
+  `StudId` int(11) NOT NULL,
+  `SWNum` int(11) NOT NULL,
+  `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
-  `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Sem` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seatwork`
+--
+
+INSERT INTO `seatwork` (`Id`, `StudId`, `SWNum`, `Score`, `Rating`, `Sem`) VALUES
+(1, 1, 1, 1.00, NULL, 'Midterm'),
+(2, 2, 1, 2.00, NULL, 'Midterm'),
+(3, 3, 1, 3.00, NULL, 'Midterm'),
+(4, 4, 1, 4.00, NULL, 'Midterm'),
+(5, 5, 1, 5.00, NULL, 'Midterm'),
+(6, 6, 1, 0.00, NULL, 'Midterm'),
+(7, 7, 1, 0.00, NULL, 'Midterm'),
+(8, 8, 1, 0.00, NULL, 'Midterm'),
+(9, 9, 1, 0.00, NULL, 'Midterm'),
+(10, 10, 1, 0.00, NULL, 'Midterm'),
+(11, 11, 1, 0.00, NULL, 'Midterm'),
+(12, 12, 1, 0.00, NULL, 'Midterm'),
+(13, 13, 1, 0.00, NULL, 'Midterm'),
+(14, 14, 1, 0.00, NULL, 'Midterm'),
+(15, 15, 1, 0.00, NULL, 'Midterm'),
+(16, 16, 1, 0.00, NULL, 'Midterm'),
+(17, 17, 1, 0.00, NULL, 'Midterm'),
+(18, 18, 1, 0.00, NULL, 'Midterm'),
+(19, 19, 1, 0.00, NULL, 'Midterm'),
+(20, 20, 1, 0.00, NULL, 'Midterm'),
+(21, 21, 1, 0.00, NULL, 'Midterm'),
+(22, 22, 1, 0.00, NULL, 'Midterm'),
+(23, 23, 1, 0.00, NULL, 'Midterm'),
+(24, 24, 1, 0.00, NULL, 'Midterm'),
+(25, 25, 1, 0.00, NULL, 'Midterm'),
+(26, 26, 1, 0.00, NULL, 'Midterm'),
+(27, 27, 1, 0.00, NULL, 'Midterm'),
+(28, 28, 1, 0.00, NULL, 'Midterm'),
+(29, 29, 1, 0.00, NULL, 'Midterm'),
+(30, 30, 1, 0.00, NULL, 'Midterm'),
+(31, 31, 1, 0.00, NULL, 'Midterm'),
+(32, 32, 1, 0.00, NULL, 'Midterm'),
+(33, 33, 1, 0.00, NULL, 'Midterm'),
+(34, 34, 1, 0.00, NULL, 'Midterm'),
+(35, 35, 1, 0.00, NULL, 'Midterm'),
+(36, 36, 1, 0.00, NULL, 'Midterm'),
+(37, 1, 1, 1.00, NULL, 'Finals'),
+(38, 2, 1, 2.00, NULL, 'Finals'),
+(39, 3, 1, 3.00, NULL, 'Finals'),
+(40, 4, 1, 4.00, NULL, 'Finals'),
+(41, 5, 1, 5.00, NULL, 'Finals'),
+(42, 6, 1, 0.00, NULL, 'Finals'),
+(43, 7, 1, 0.00, NULL, 'Finals'),
+(44, 8, 1, 0.00, NULL, 'Finals'),
+(45, 9, 1, 0.00, NULL, 'Finals'),
+(46, 10, 1, 0.00, NULL, 'Finals'),
+(47, 11, 1, 0.00, NULL, 'Finals'),
+(48, 12, 1, 0.00, NULL, 'Finals'),
+(49, 13, 1, 0.00, NULL, 'Finals'),
+(50, 14, 1, 0.00, NULL, 'Finals'),
+(51, 15, 1, 0.00, NULL, 'Finals'),
+(52, 16, 1, 0.00, NULL, 'Finals'),
+(53, 17, 1, 0.00, NULL, 'Finals'),
+(54, 18, 1, 0.00, NULL, 'Finals'),
+(55, 19, 1, 0.00, NULL, 'Finals'),
+(56, 20, 1, 0.00, NULL, 'Finals'),
+(57, 21, 1, 0.00, NULL, 'Finals'),
+(58, 22, 1, 0.00, NULL, 'Finals'),
+(59, 23, 1, 0.00, NULL, 'Finals'),
+(60, 24, 1, 0.00, NULL, 'Finals'),
+(61, 25, 1, 0.00, NULL, 'Finals'),
+(62, 26, 1, 0.00, NULL, 'Finals'),
+(63, 27, 1, 0.00, NULL, 'Finals'),
+(64, 28, 1, 0.00, NULL, 'Finals'),
+(65, 29, 1, 0.00, NULL, 'Finals'),
+(66, 30, 1, 0.00, NULL, 'Finals'),
+(67, 31, 1, 0.00, NULL, 'Finals'),
+(68, 32, 1, 0.00, NULL, 'Finals'),
+(69, 33, 1, 0.00, NULL, 'Finals'),
+(70, 34, 1, 0.00, NULL, 'Finals'),
+(71, 35, 1, 0.00, NULL, 'Finals'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -426,7 +1582,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `MName` varchar(100) NOT NULL,
   `LName` varchar(100) NOT NULL,
   `StudentNumber` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
@@ -513,107 +1669,7 @@ INSERT INTO `students` (`Id`, `ClassId`, `FName`, `MName`, `LName`, `StudentNumb
 (78, 2, 'steven joe ', 'lomeda', 'rebullido', '2014-01078-MN-0'),
 (79, 2, 'clarisse ann ', 'sending', 'temporosa', '2014-02062-MN-0'),
 (80, 2, 'ryan jasper ', 'villapando', 'tupaz', '2014-01306-MN-0'),
-(81, 2, 'philip nathan ', 'paler', 'yaun', '2014-03599-MN-0'),
-(82, 3, 'eleazar ', 'rueda', 'año', '2013-06388-MN-0'),
-(83, 3, 'rafael christian sto. ', 'domingo', 'aguilar', '2013-07302-MN-0'),
-(84, 3, 'jazz joel de ', 'guzman', 'alvarez', '2013-00782-MN-0'),
-(85, 3, 'jon vincent ', 'austria', 'angat', '2013-01169-MN-0'),
-(86, 3, 'daryl don ', 'armenion', 'arce', '2013-03923-MN-0'),
-(87, 3, 'michael eugene ', 'maquiñana', 'asinas', '2013-05973-MN-0'),
-(88, 3, 'kimberly ', 'medina', 'azul', '2013-01565-MN-0'),
-(89, 3, 'princess nicole ', '', 'bacay', '2013-06954-MN-0'),
-(90, 3, 'ryan ', 'ginez', 'baronia', '2013-00912-MN-0'),
-(91, 3, 'john jerald ', 'gutierrez', 'bautista', '2013-06258-MN-0'),
-(92, 3, 'jason edward ', 'vergara', 'bio', '2013-04376-MN-0'),
-(93, 3, 'vince orvhict ', 'villena', 'blando', '2013-07806-MN-0'),
-(94, 3, 'reynell ', 'cortiguierra', 'bobihis', '2013-05528-MN-0'),
-(95, 3, 'francess marie ', 'amis', 'busalpa', '2013-06206-MN-0'),
-(96, 3, 'humphrey ', 'buan', 'calalin jr.', '2013-03512-MN-0'),
-(97, 3, 'ephraim joel ', 'martinez', 'capistrano', '2013-03669-MN-0'),
-(98, 3, 'jon rhozze ', 'panlaqui', 'de jesus', '2013-03756-MN-0'),
-(99, 3, 'aldrin ', 'nadres', 'de ramos', '2013-02290-MN-0'),
-(100, 3, 'neil carlo ', 'baluyot', 'del mundo', '2013-00900-MN-0'),
-(101, 3, 'jessieca ', 'baldonado', 'diano', '2013-01442-MN-0'),
-(102, 3, 'maria aubrey ', 'almiï¿½e', 'eleria', '2013-02476-MN-0'),
-(103, 3, 'jerwin russell ', '', 'esmalla', '2013-03169-MN-0'),
-(104, 3, 'prince deozel ', 'mercado', 'espiritu', '2013-03132-MN-0'),
-(105, 3, 'mark joshua ', 'olegario', 'francisco', '2013-02256-MN-0'),
-(106, 3, 'judylene ', 'umali', 'gabia', '2013-06070-MN-0'),
-(107, 3, 'lloyd ', 'gomez', 'gabriel', '2013-01450-MN-0'),
-(108, 3, 'clarisse ', 'ibasco', 'ibasco', '2013-03193-MN-0'),
-(109, 3, 'reynaldo ', 'acilo', 'ilagan', '2013-01364-MN-0'),
-(110, 3, 'sonny boy de ', 'luna', 'italio', '2013-06398-MN-0'),
-(111, 3, 'joseph ', 'rojas', 'lat', '2013-07452-MN-0'),
-(112, 3, 'christine  joyce ', 'pastrana', 'llanes', '2013-03144-MN-0'),
-(113, 3, 'kenneth ', 'marin', 'lobaton', '2013-03563-MN-0'),
-(114, 3, 'florevi dela ', 'cruz', 'lopez', '2013-02641-MN-0'),
-(115, 3, 'merynelle ', 'dichoso', 'lopez', '2013-03358-MN-0'),
-(116, 3, 'abigail dela ', 'torre', 'macasinag', '2013-01451-MN-0'),
-(117, 3, 'john karl ', 'labiste', 'malabanan', '2013-00817-MN-0'),
-(118, 3, 'john peter ', 'falculan', 'mendoza', '2013-06330-MN-0'),
-(119, 3, 'dale ivan ', 'mora', 'merza', '2013-01445-MN-0'),
-(120, 3, 'john israel ', 'mellendrez', 'mesajon', '2013-03008-MN-0'),
-(121, 3, 'miguelito ', 'labrador', 'mullion', '2013-05440-MN-0'),
-(122, 3, 'rollen joy ', 'sarmiento', 'nabia', '2013-03336-MN-0'),
-(123, 3, 'jennilene ', 'ausa', 'pol', '2013-01726-MN-0'),
-(124, 3, 'rick anthony ', 'espino', 'policarpio', '2013-07420-MN-0'),
-(125, 3, 'kevin red ', 'bersamina', 'salamat', '2013-05800-MN-0'),
-(126, 3, 'rofherson ', 'canones', 'suzon', '2013-00785-MN-0'),
-(127, 3, 'mary mariel ', 'martinez', 'teodoro', '2013-02176-MN-0'),
-(128, 3, 'miguel san ', 'buenaventura', 'turqueza', '2013-04658-MN-0'),
-(129, 3, 'rovien ', 'palmes', 'vargas', '2013-03581-MN-0'),
-(130, 3, 'nica chloie ', 'garcia', 'yecla', '2013-04190-MN-0'),
-(131, 3, 'hanah mae ', 'pilapil', 'zamora', '2013-00734-MN-0'),
-(132, 4, 'jeadalyn ', 'penoliar', 'adique', '2011-03257-MN-0'),
-(133, 4, 'lexter james ', 'madrigal', 'alegre', '2011-01392-MN-0'),
-(134, 4, 'randell ', 'onia', 'arga', '2011-02368-MN-0'),
-(135, 4, 'harold ', 'taroy', 'asuncion', '2011-02404-MN-0'),
-(136, 4, 'kevin jasper ', 'callejas', 'bahia', '2011-02178-MN-0'),
-(137, 4, 'krizza mae ', 'almirañez', 'baterina', '2011-01121-MN-0'),
-(138, 4, 'eljun ', 'dizon', 'belen', '2011-01069-MN-0'),
-(139, 4, 'grace loraine ', 'magturo', 'borres', '2011-03486-MN-0'),
-(140, 4, 'noel ', 'bagual', 'cabullo jr.', '2011-00102-MN-0'),
-(141, 4, 'liezel ', 'escanilla', 'castro', '2011-01765-MN-0'),
-(142, 4, 'allan paolo ', 'virly', 'ching', '2011-01305-MN-0'),
-(143, 4, 'gilbert ', 'formoso', 'clemente', '2011-03580-MN-0'),
-(144, 4, 'christopher justine ', 'asuncion', 'cunanan', '2011-01400-MN-0'),
-(145, 4, 'julius ', 'corpus', 'dacanay', '2011-02069-MN-0'),
-(146, 4, 'jayson ', 'flores', 'dacumos', '2011-04842-MN-0'),
-(147, 4, 'patricia ', 'sison', 'dela cruz', '2011-01973-MN-0'),
-(148, 4, 'john james nixon ', 'rellosa', 'dolliente', '2011-03163-MN-0'),
-(149, 4, 'veron emil ', 'almiñe', 'eleria', '2011-07801-MN-0'),
-(150, 4, 'michael joshua ', 'gervacio', 'eresuela', '2011-04344-MN-0'),
-(151, 4, 'nia bernise ', 'fulgosino', 'fabay', '2011-00590-MN-0'),
-(152, 4, 'jhon jourel ', 'miranda', 'flores', '2011-01303-MN-0'),
-(153, 4, 'angela ', 'concepcion', 'gener', '2011-02821-MN-0'),
-(154, 4, 'kenneth uriel ', 'manaluz', 'gomez', '2011-03815-MN-0'),
-(155, 4, 'niccolo san ', 'miguel', 'huidem', '2010-06237-MN-0'),
-(156, 4, 'jeff ray ', 'llarenas', 'largo', '2011-05172-MN-0'),
-(157, 4, 'jeffsey ', 'corre', 'legaspi', '2011-00068-MN-0'),
-(158, 4, 'jeff levie ', 'edejer', 'leona', '2011-00579-MN-0'),
-(159, 4, 'john franz ', 'mansalapus', 'logmao', '2011-03164-MN-0'),
-(160, 4, 'edsel roldan ', 'estrada', 'magura', '2011-02670-MN-0'),
-(161, 4, 'marie carissa ', 'begonte', 'mantala', '2011-02786-MN-0'),
-(162, 4, 'christelle arissa ', 'adalim', 'montales', '2011-04068-MN-0'),
-(163, 4, 'michael angelo ', 'bauding', 'natanawan', '2011-04887-MN-0'),
-(164, 4, 'joey aries ', 'aglibot', 'nera', '2011-03813-MN-0'),
-(165, 4, 'gladys ', 'tapar', 'obmerga', '2011-04544-MN-0'),
-(166, 4, 'renzo ', 'ignacio', 'orpiada', '2011-03543-MN-0'),
-(167, 4, 'pinky ', 'solas', 'pal-lingayan', '2011-01942-MN-0'),
-(168, 4, 'gerome adriane ', 'manikad', 'prianes', '2011-08784-MN-0'),
-(169, 4, 'jehrliten ', 'felicilda', 'salvador', '2011-00866-MN-0'),
-(170, 4, 'mae antonette ', 'reyes', 'sanoy', '2011-02379-MN-0'),
-(171, 4, 'gabrielle anne san ', 'luis', 'silvestre', '2010-04784-MN-0'),
-(172, 4, 'yrick storme ', 'leopoldo', 'son', '2011-05188-MN-0'),
-(173, 4, 'jenrie ', 'ladimora', 'subaran', '2011-02832-MN-0'),
-(174, 4, 'gadfrey ajerico ', 'tamesis', 'sumague', '2011-02632-MN-0'),
-(175, 4, 'jennifer ', 'jamon', 'tolentino', '2011-02803-MN-0'),
-(176, 4, 'emmanuel daryl ', 'espera', 'umali', '2011-04353-MN-0'),
-(177, 4, 'ynah carrielle ', 'rosal', 'umayam', '2011-03717-MN-0'),
-(178, 4, 'ervin miguel ', 'lozada', 'varias', '2011-00491-MN-0'),
-(179, 4, 'sunshine ', 'babon', 'venus', '2011-02355-MN-0'),
-(180, 4, 'janet ', 'labodit', 'visaya', '2011-01360-MN-0'),
-(181, 3, 'Juan', 'Kk', 'Dela Cruz', '2011-01115-MN-0');
+(81, 2, 'philip nathan ', 'paler', 'yaun', '2014-03599-MN-0');
 
 -- --------------------------------------------------------
 
@@ -625,7 +1681,7 @@ CREATE TABLE IF NOT EXISTS `subjects` (
 `Id` int(11) NOT NULL,
   `UserId` int(11) NOT NULL,
   `SubjectTitle` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjects`
@@ -633,9 +1689,7 @@ CREATE TABLE IF NOT EXISTS `subjects` (
 
 INSERT INTO `subjects` (`Id`, `UserId`, `SubjectTitle`) VALUES
 (1, 12, 'BSCOE Elec4 Bscoe Elective 4'),
-(2, 12, 'COEN 3054 Data Structures And Algorithm Analysis'),
-(3, 15, 'COEN 3134 Logic Circuits And Switching Theory'),
-(4, 15, 'COEN 3291 Computer Seminar And Field Trips');
+(2, 12, 'COEN 3054 Data Structures And Algorithm Analysis');
 
 -- --------------------------------------------------------
 
@@ -710,18 +1764,6 @@ ALTER TABLE `final_exam`
  ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `grades`
---
-ALTER TABLE `grades`
- ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `grades_id`
---
-ALTER TABLE `grades_id`
- ADD PRIMARY KEY (`Id`);
-
---
 -- Indexes for table `grading_system`
 --
 ALTER TABLE `grading_system`
@@ -746,21 +1788,75 @@ ALTER TABLE `midterm_exam`
  ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `moduleitems`
+-- Indexes for table `mod_assign`
 --
-ALTER TABLE `moduleitems`
+ALTER TABLE `mod_assign`
  ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `module_items`
+-- Indexes for table `mod_att`
 --
-ALTER TABLE `module_items`
+ALTER TABLE `mod_att`
  ADD PRIMARY KEY (`Id`);
 
 --
--- Indexes for table `module_items_id`
+-- Indexes for table `mod_ex`
 --
-ALTER TABLE `module_items_id`
+ALTER TABLE `mod_ex`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_fe`
+--
+ALTER TABLE `mod_fe`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_lab`
+--
+ALTER TABLE `mod_lab`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_le`
+--
+ALTER TABLE `mod_le`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_me`
+--
+ALTER TABLE `mod_me`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_prac`
+--
+ALTER TABLE `mod_prac`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_proj`
+--
+ALTER TABLE `mod_proj`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_quiz`
+--
+ALTER TABLE `mod_quiz`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_rec`
+--
+ALTER TABLE `mod_rec`
+ ADD PRIMARY KEY (`Id`);
+
+--
+-- Indexes for table `mod_sw`
+--
+ALTER TABLE `mod_sw`
  ADD PRIMARY KEY (`Id`);
 
 --
@@ -819,42 +1915,32 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `calendar`
 --
 ALTER TABLE `calendar`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `class`
 --
 ALTER TABLE `class`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `exercises`
 --
 ALTER TABLE `exercises`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `final_exam`
 --
 ALTER TABLE `final_exam`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `grades`
---
-ALTER TABLE `grades`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `grades_id`
---
-ALTER TABLE `grades_id`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
 -- AUTO_INCREMENT for table `grading_system`
 --
@@ -864,67 +1950,112 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT for table `lab_act`
 --
 ALTER TABLE `lab_act`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `long_exam`
 --
 ALTER TABLE `long_exam`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `midterm_exam`
 --
 ALTER TABLE `midterm_exam`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
+--
+-- AUTO_INCREMENT for table `mod_assign`
+--
+ALTER TABLE `mod_assign`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mod_att`
+--
+ALTER TABLE `mod_att`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `moduleitems`
+-- AUTO_INCREMENT for table `mod_ex`
 --
-ALTER TABLE `moduleitems`
+ALTER TABLE `mod_ex`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mod_fe`
+--
+ALTER TABLE `mod_fe`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mod_lab`
+--
+ALTER TABLE `mod_lab`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `module_items`
+-- AUTO_INCREMENT for table `mod_le`
 --
-ALTER TABLE `module_items`
+ALTER TABLE `mod_le`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mod_me`
+--
+ALTER TABLE `mod_me`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `mod_prac`
+--
+ALTER TABLE `mod_prac`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `module_items_id`
+-- AUTO_INCREMENT for table `mod_proj`
 --
-ALTER TABLE `module_items_id`
+ALTER TABLE `mod_proj`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `mod_quiz`
+--
+ALTER TABLE `mod_quiz`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mod_rec`
+--
+ALTER TABLE `mod_rec`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `mod_sw`
+--
+ALTER TABLE `mod_sw`
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `prac_exam`
 --
 ALTER TABLE `prac_exam`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=91;
 --
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `recitation`
 --
 ALTER TABLE `recitation`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `seatwork`
 --
 ALTER TABLE `seatwork`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=182;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -6,6 +6,7 @@ class Upload_model extends CI_Model {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->model('Grades_model');
 	}
 	
 	function save_data($file,$module,$UserId)
@@ -15,7 +16,7 @@ class Upload_model extends CI_Model {
 
 		if (file_exists('resources/uploads/'. $name) || $file["classlist"]["type"] != "application/pdf")
 		{
-			return false;
+			return "PDF has not been uploaded. Invalid file type or file already exists.";
 		}
 		move_uploaded_file($temp, "resources/uploads/".$name);
 
@@ -30,6 +31,7 @@ class Upload_model extends CI_Model {
 		$data = $pdfdata->output();
 		//get max count for the loop later
 		$count = count($data["studs"]);
+		$num_students = $count/2;
 
 		//---get subj title---//
 		$s = $this->slugify($data["info"][5]);
@@ -59,16 +61,19 @@ class Upload_model extends CI_Model {
 			'SubjectId' => $SubjectId,
 			'ClassBlock' => $class_block,
 			'ModuleType' => $module,
-			'NumOfStudents' => $count/2,
+			'NumOfStudents' => $num_students,
 			'YrSem' => $class_yr_sem,
 			'Schedule' => $class_schedule,
 		);
 		$this->db->insert('class',$class);
 		$ClassId = $this->db->insert_id();
 
+		$init_att = false; $init_assign = false; $init_sw = false; $init_ex= false; $init_rec = false; $init_quiz = false; $init_le = false; $init_mexam = false; $init_fexam = false;
+		$init_lab = false; $init_prac = false; $init_proj = false;
+	
 		for ($c=0; $c < $count; $c+=2) 
 		{ 	
-			//---block of code for getting first,middle and last name---//
+			//---block of code for getting first;middle and last name---//
 			$text = strtolower($data["studs"][$c+1]);
 			$text = utf8_encode($text); // to read special characters ñ
 			$name = explode(',',$text);
@@ -96,8 +101,57 @@ class Upload_model extends CI_Model {
 				'StudentNumber' => $stud_num, 
 			);
 			$this->db->insert('students',$student);
+			//get student id and insert to 'grades table'
+			$stud_id = $this->db->insert_id();
+			$this->Grades_model->init_grades($stud_id);
+			//know the module to be used 'Lec' or 'Lab'
+			//if 'Lec'
+			if ($module == 'Lec')
+			{
+				if ($init_att == false)
+					//insert att
+					$init_att = $this->Grades_model->init_att($stud_id,$num_students);
+				if ($init_assign == false)
+					//insert assign
+					$init_assign = $this->Grades_model->init_assign($stud_id,$num_students);
+				if ($init_sw == false)
+					//insert sw
+					$init_sw = $this->Grades_model->init_sw($stud_id,$num_students);
+				if ($init_ex == false)
+					//insert ex
+					$init_ex = $this->Grades_model->init_ex($stud_id,$num_students);
+				if ($init_rec == false)
+					//insert rec
+					$init_rec = $this->Grades_model->init_rec($stud_id,$num_students);
+				if ($init_quiz == false)
+					//insert quiz
+					$init_quiz = $this->Grades_model->init_quiz($stud_id,$num_students);
+				if ($init_le == false)
+					//insert le
+					$init_le = $this->Grades_model->init_le($stud_id,$num_students);
+				if ($init_mexam == false)
+					//insert midterm exam
+					$init_mexam = $this->Grades_model->init_mexam($stud_id,$num_students);
+				if ($init_fexam == false)
+					//insert final exam
+					$init_fexam = $this->Grades_model->init_fexam($stud_id,$num_students);
+			}
+			//else 'Lab'
+			else
+			{
+				if ($init_lab == false)
+					//insert lab/machine ex
+					$init_lab = $this->Grades_model->init_lab($stud_id,$num_students);
+				if ($init_prac == false)
+					//insert prac exam
+					$init_prac = $this->Grades_model->init_prac($stud_id,$num_students);
+				if ($init_proj == false)
+					//insert proj
+					$init_proj = $this->Grades_model->init_proj($stud_id,$num_students);
+			}
+				
 		}
-		return true;
+		return "PDF has been successfully uploaded.";
 	}
 
 	function slugify($text)

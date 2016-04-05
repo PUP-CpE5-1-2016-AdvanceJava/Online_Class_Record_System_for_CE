@@ -6,9 +6,10 @@ class User extends CI_Controller
 		parent::__construct(); //calling initial function
 		//calling pre-defined libraries
 		//kailangan ng libraries para magamit ung ibang function
+		ini_set('max_execution_time', 0); 
 		$this->load->library('form_validation'); 
 		$this->load->library('session');
-		$this->load->model('user_model');
+		$this->load->model('User_model');
 		$this->load->helper('url');
 	}
 
@@ -32,7 +33,6 @@ class User extends CI_Controller
     	{
 			//get user id
     		$userId = $this->session->userdata('Id');
-			$this->load->model('User_model'); // load the model to be used
 			$this->load->model('Faculty_model'); // load the model to be used
 			//get the username and usertype
 			$user['user'] = array(
@@ -43,6 +43,7 @@ class User extends CI_Controller
     		if ($this->session->userdata('UserType') == "Faculty")
     		{
 				//get the subjects taken
+
 				$data['subj'] = $this->User_model->getUserSubjs($userId);
 				//call the pages and include variables
 				$this->load->view('templates/header',$user);
@@ -203,7 +204,7 @@ class User extends CI_Controller
 		else if($this->form_validation->run() == TRUE)
 		{
 			// check if user is registered
-			$auth = $this->user_model->login($this->input->post('login_username'),$this->input->post('login_password'));
+			$auth = $this->User_model->login($this->input->post('login_username'),$this->input->post('login_password'));
 			if($auth == TRUE)
 			{
 				// authentication is correct
@@ -257,42 +258,22 @@ class User extends CI_Controller
 		// $temp = $_FILES["classlist"]["tmp_name"];
 		$module = $this->input->post('module_type');
 		// move_uploaded_file($temp, "resources/uploads/".$name);
-		$status = $this->Upload_model->save_data($file,$module,$this->session->userdata('Id'));
+		$data['status'] = $this->Upload_model->save_data($file,$module,$this->session->userdata('Id'));
 		$user['user'] = array(
 			'Username' => $this->session->userdata('Username'),
 			'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
 			'ActiveHeader' => "settings",
 			'UserType' => $this->session->userdata('UserType')
 		);
-		if ($status == TRUE)
-		{
-			$data['status'] ="PDF has been successfully uploaded.";
-			if ($this->session->userdata('Id')!="")
-	    	{
-				$this->load->view('templates/header',$user);
-				$this->load->view('pages/settings',$data);
-				$this->load->view('templates/footer');
-			}
-			else 
-			{
-				$this->load->view("pages/login_view");
-			}
+		if ($this->session->userdata('Id')!="")
+    	{
+			$this->load->view('templates/header',$user);
+			$this->load->view('pages/faculty_settings_page',$data);
+			$this->load->view('templates/footer');
 		}
-		else
+		else 
 		{
-			//notification for user
-			$data['status'] ="PDF has not been uploaded. Invalid file type or file already exists.";
-			if ($this->session->userdata('Id')!="")
-	    	{
-	    		//to go in the settings tab
-				$this->load->view('templates/header',$user);
-				$this->load->view('pages/settings',$data);
-				$this->load->view('templates/footer');
-			}
-			else 
-			{
-				$this->load->view("pages/login_view");
-			}
+			$this->load->view("pages/login_view");
 		}
 	}
 
@@ -332,7 +313,7 @@ class User extends CI_Controller
 		}
 		else
 		{
-			$this->user_model->register_user();
+			$this->User_model->register_user();
 			$this->load->view('pages/success');
 		}
 	}
@@ -350,7 +331,7 @@ class User extends CI_Controller
 		}
 		else
 		{
-			$this->user_model->save_settings($this->session->userdata('Id'));
+			$this->User_model->save_settings($this->session->userdata('Id'));
 			redirect(site_url('user/home'));
 		}
 	}	
@@ -377,7 +358,7 @@ class User extends CI_Controller
 		}
 		else if ($todo == "create_acc")
 		{
-			$this->user_model->register_user();
+			$this->User_model->register_user();
 			$data["status"] = "OK";
 			header('Content-Type: application/json');
 	    	echo json_encode($data);
@@ -403,6 +384,27 @@ class User extends CI_Controller
 		// $section = $this->input->post('section');
 		$this->load->model('Faculty_model');
 		$data["status"] = $this->Faculty_model->insert_student($this->input->post());
+		header('Content-Type: application/json');
+	    echo json_encode($data);
+	}
+
+	public function save_table()
+	{
+		// $before = memory_get_usage();
+		$this->load->model('Table_model');
+		$data["info"] = $this->Table_model->save_table_data($this->input->post());
+		// $after = memory_get_usage();
+		// $data["memory"] = ($after - $before);
+		$data["status"] = "OK";
+		header('Content-Type: application/json');
+	    echo json_encode($data);
+	}
+
+	public function export_table()
+	{
+		$this->load->model('Table_model');
+		$data['status'] = $this->Table_model->export_class_table($this->input->post('classId'));
+
 		header('Content-Type: application/json');
 	    echo json_encode($data);
 	}
