@@ -36,7 +36,7 @@
 /*UNIVERSAL end*/
 
 /*LOGIN CONTENT*/
-#login-body-wrapper {background: url("pupfreshres.jpg"); background-position: center 50%; background-repeat: no-repeat; background-attachment: fixed; 
+#login-body-wrapper {background: url("pupfreshres.jpg"); background-position: center 10%; background-repeat: no-repeat; background-attachment: fixed; 
 					background-size: cover; }
 #login-title-wrapper{margin-top: 150px;}
 /*#login-title-wrapper span{background: rgba(0,0,0,.50);}*/
