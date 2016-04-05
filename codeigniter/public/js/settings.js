@@ -68,5 +68,9 @@ $(document).ready(function(){
 		return false;
 	})
 
+	$("#settings-choose-file-button").change(function () {
+        var fileName = $(this).val().replace('C:\\fakepath\\', '');
+        $("#file-upload-filename").html(fileName);
+	});
 
 })
