@@ -103,7 +103,7 @@ $(document).ready(function(){
 			lab_final_num = getModuleCounter("Lab","final","val");
 			prac_final_num = getModuleCounter("Prac","final","val");
 			proj_final_num = getModuleCounter("Proj","final","val");
-
+			
 			for(var i in cells)
 			{
 				if (cells[i].id.indexOf("table-score-mid-lab") != -1 || cells[i].id.indexOf("table-items-mid-lab") != -1) lab_mid_data[lab_mid_data.length] = cells[i].textContent;

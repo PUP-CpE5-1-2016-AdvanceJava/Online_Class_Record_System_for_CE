@@ -83,6 +83,11 @@ class Table_model extends CI_Model {
 
 
         $lab_mid_num = 0;$lab_mid_items = array();$lab_mid_score = array();
+        $prac_mid_num = 0;$prac_mid_items = array();$prac_mid_score = array();
+        $proj_mid_num = 0;$proj_mid_items = array();$proj_mid_score = array();
+        $lab_final_num = 0;$lab_final_items = array();$lab_final_score = array();
+        $prac_final_num = 0;$prac_final_items = array();$prac_final_score = array();
+        $proj_final_num = 0;$proj_final_items = array();$proj_final_score = array();
 
     	foreach ($query->result() as $row) 
     	{	
@@ -599,6 +604,178 @@ class Table_model extends CI_Model {
                         $lab_mid_score[$i][$y] = "0.00";
                     }
                 }
+
+                //---prac_mid ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Midterm');
+                $query_module = $this->db->get('mod_prac');
+                $prac_mid_num = $query_module->num_rows();
+                if ($prac_mid_num > 0)
+                {
+                    $prac_items = $query_module->result_array();
+                    for ($x=0; $x < $prac_mid_num; $x++) 
+                    { 
+                        $prac_mid_items[$x] = $prac_items[$x]["PracExamItems"];
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Midterm');
+                $query_prac_score = $this->db->get('prac_exam');
+                $prac_mid_score_num = $query_prac_score->num_rows();
+                if ($prac_mid_score_num > 0)
+                {
+                    $prac_score = $query_prac_score->result_array();
+                    for ($y=0; $y < $prac_mid_num; $y++) 
+                    { 
+                        $prac_mid_score[$i][$y] = $prac_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $prac_mid_num; $y++) 
+                    { 
+                        $prac_mid_score[$i][$y] = "0.00";
+                    }
+                }
+
+                 //---proj_mid ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Midterm');
+                $query_module = $this->db->get('mod_proj');
+                $proj_mid_num = $query_module->num_rows();
+                if ($proj_mid_num > 0)
+                {
+                    $proj_items = $query_module->result_array();
+                    for ($x=0; $x < $proj_mid_num; $x++) 
+                    { 
+                        $proj_mid_items[$x] = $proj_items[$x]["ProjItems"];
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Midterm');
+                $query_proj_score = $this->db->get('project');
+                $proj_mid_score_num = $query_proj_score->num_rows();
+                if ($proj_mid_score_num > 0)
+                {
+                    $proj_score = $query_proj_score->result_array();
+                    for ($y=0; $y < $proj_mid_num; $y++) 
+                    { 
+                        $proj_mid_score[$i][$y] = $proj_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $proj_mid_num; $y++) 
+                    { 
+                        $proj_mid_score[$i][$y] = "0.00";
+                    }
+                }
+
+
+                //---lab_final ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Finals');
+                $query_module = $this->db->get('mod_lab');
+                $lab_final_num = $query_module->num_rows();
+                if ($lab_final_num > 0)
+                {
+                    $lab_items = $query_module->result_array();
+                    for ($x=0; $x < $lab_final_num; $x++) 
+                    { 
+                        $lab_final_items[$x] = $lab_items[$x]["LabItems"];
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Finals');
+                $query_lab_score = $this->db->get('lab_act');
+                $lab_final_score_num = $query_lab_score->num_rows();
+                if ($lab_final_score_num > 0)
+                {
+                    $lab_score = $query_lab_score->result_array();
+                    for ($y=0; $y < $lab_final_num; $y++) 
+                    { 
+                        $lab_final_score[$i][$y] = $lab_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $lab_final_num; $y++) 
+                    { 
+                        $lab_final_score[$i][$y] = "0.00";
+                    }
+                }
+
+                //---prac_final ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Finals');
+                $query_module = $this->db->get('mod_prac');
+                $prac_final_num = $query_module->num_rows();
+                if ($prac_final_num > 0)
+                {
+                    $prac_items = $query_module->result_array();
+                    for ($x=0; $x < $prac_final_num; $x++) 
+                    { 
+                        $prac_final_items[$x] = $prac_items[$x]["PracExamItems"];
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Finals');
+                $query_prac_score = $this->db->get('prac_exam');
+                $prac_final_score_num = $query_prac_score->num_rows();
+                if ($prac_final_score_num > 0)
+                {
+                    $prac_score = $query_prac_score->result_array();
+                    for ($y=0; $y < $prac_final_num; $y++) 
+                    { 
+                        $prac_final_score[$i][$y] = $prac_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $prac_final_num; $y++) 
+                    { 
+                        $prac_final_score[$i][$y] = "0.00";
+                    }
+                }
+
+                 //---proj_final ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Finals');
+                $query_module = $this->db->get('mod_proj');
+                $proj_final_num = $query_module->num_rows();
+                if ($proj_final_num > 0)
+                {
+                    $proj_items = $query_module->result_array();
+                    for ($x=0; $x < $proj_final_num; $x++) 
+                    { 
+                        $proj_final_items[$x] = $proj_items[$x]["ProjItems"];
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Finals');
+                $query_proj_score = $this->db->get('project');
+                $proj_final_score_num = $query_proj_score->num_rows();
+                if ($proj_final_score_num > 0)
+                {
+                    $proj_score = $query_proj_score->result_array();
+                    for ($y=0; $y < $proj_final_num; $y++) 
+                    { 
+                        $proj_final_score[$i][$y] = $proj_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $proj_final_num; $y++) 
+                    { 
+                        $proj_final_score[$i][$y] = "0.00";
+                    }
+                }
+
             }
     		$i++;
     	}
@@ -650,6 +827,21 @@ class Table_model extends CI_Model {
             'lab_mid_num' => $lab_mid_num,
             'lab_mid_items' => $lab_mid_items,
             'lab_mid_score' => $lab_mid_score,
+            'prac_mid_num' => $prac_mid_num,
+            'prac_mid_items' => $prac_mid_items,
+            'prac_mid_score' => $prac_mid_score,
+            'proj_mid_num' => $proj_mid_num,
+            'proj_mid_items' => $proj_mid_items,
+            'proj_mid_score' => $proj_mid_score,
+            'lab_final_num' => $lab_final_num,
+            'lab_final_items' => $lab_final_items,
+            'lab_final_score' => $lab_final_score,
+            'prac_final_num' => $prac_final_num,
+            'prac_final_items' => $prac_final_items,
+            'prac_final_score' => $prac_final_score,
+            'proj_final_num' => $proj_final_num,
+            'proj_final_items' => $proj_final_items,
+            'proj_final_score' => $proj_final_score,
     	);
     	return $data;
 	}
