@@ -103,7 +103,7 @@ $(document).ready(function(){
 			lab_final_num = getModuleCounter("Lab","final","val");
 			prac_final_num = getModuleCounter("Prac","final","val");
 			proj_final_num = getModuleCounter("Proj","final","val");
-
+			
 			for(var i in cells)
 			{
 				if (cells[i].id.indexOf("table-score-mid-lab") != -1 || cells[i].id.indexOf("table-items-mid-lab") != -1) lab_mid_data[lab_mid_data.length] = cells[i].textContent;
@@ -213,25 +213,15 @@ $(document).ready(function(){
 		var data = '<html><head>' + css_html + '</' + "head><body>"+ header + table_html + '</body></html>'
 	    var encoded = encodeURIComponent(data);
 	    a.href = data_type + ',' + encoded;
-	    var link = classSubj+'__'+classBlock +'__'+ postfix + '.xls';
+	    var link = classSubj+'__'+classBlock +'__'+ classId +'__'+ postfix + '.xls';
+	    //setting the file name
+	    a.download = link;
+	    // triggering the function
+	    a.click();
+	    alert(res['status']);
+	    // just in case, prevent default behaviour
+	    e.preventDefault();
 
-	    $.ajax({
-			url: 'export_table',
-			type: "POST",
-			dataType: 'json',
-			data: {'classId':classId},
-			cache: false,
-    		// contentType: "application/jsonrequest; charset=utf-8",
-			success: function(res) {
-			    //setting the file name
-			    a.download = link;
-			    // triggering the function
-			    a.click();
-			    alert(res['status']);
-			    // just in case, prevent default behaviour
-			    e.preventDefault();
-			}
-		})
 
     })
 	// Send all data through ajax.

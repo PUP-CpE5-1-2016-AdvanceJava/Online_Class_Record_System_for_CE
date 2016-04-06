@@ -53,6 +53,14 @@ $(document).ready(function(){
 
 	//---Create Account---//
 	$('form#register-acc').submit(function(){
+		var confirm_pw = $("form div input[name='Confirm']").val();
+		var new_pw = $("form div input[name='Password']").val();
+		if (confirm_pw != new_pw)
+		{
+			alert("Faculty password and confirm password does not match");
+			return;
+		}
+
 		var data = $(event.target).serializeArray();
 		var link = $(this).attr('name');
 		$.post(link,data,function(response){

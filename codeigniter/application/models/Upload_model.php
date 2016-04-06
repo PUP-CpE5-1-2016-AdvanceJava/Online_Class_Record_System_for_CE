@@ -154,6 +154,31 @@ class Upload_model extends CI_Model {
 		return "PDF has been successfully uploaded.";
 	}
 
+	function upload_class($file)
+	{
+		$name = $file["excel_file"]["name"];
+		$temp = $file["excel_file"]["tmp_name"];
+		$arr = explode('__',$name);
+		$class_id = $arr[2];
+		$this->db->where('Id',$class_id);
+		$query = $this->db->get('class');
+		if (!$query->num_rows() > 0)
+		{
+			return "Invalid file name";
+		}
+
+		if ($file["excel_file"]["type"] != "application/vnd.ms-excel")
+		{
+			return "Excel has not been uploaded. Invalid file type.";
+		}
+		$this->load->model('Table_model');
+		$msg = $this->Table_model->export_class_table($class_id,$name);
+
+		if ($msg == "You have already uploaded this file.") return $msg;
+		else move_uploaded_file($temp, "resources/reports/".$name);
+		return $msg;
+	}
+
 	function slugify($text)
 	{ 
 	  // replace non letter or digits by -

@@ -25,18 +25,19 @@
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
 /*FOOTER*/
-#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px;}
+#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; max-height: 200px;}
 #footer-details {text-align: left; }
 #footer-details a:hover{color:#fff;}
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
 #footer-details p {color: #fff; font-size: 14px; font-family: 'Lustria', serif; font-weight: bold; }
 #footer-logo{ height: auto; float: left; padding-right: 5px;}
+/*#footer-form{ max-width: 400px;}*/
 #footer-form input, #footer-form button {border-radius: 0 !important; }
 #footer-form button {background: #504d4d; color: #e1e1e1;}
 /*UNIVERSAL end*/
 
 /*LOGIN CONTENT*/
-#login-body-wrapper {background: url("pupfreshres.jpg"); background-position: center 50%; background-repeat: no-repeat; background-attachment: fixed; 
+#login-body-wrapper {background: url("pupfreshres.jpg"); background-position: center 10%; background-repeat: no-repeat; background-attachment: fixed; 
 					background-size: cover; }
 #login-title-wrapper{margin-top: 150px;}
 /*#login-title-wrapper span{background: rgba(0,0,0,.50);}*/
@@ -95,6 +96,8 @@
 /*FOOTER FIX AT BOTTOM - SOLUTION*/
 #table-content-wrapper, #sidebar-content-wrapper { min-height: 500px;}
 
+/*.row{margin-right: 0}*/
+
 /*------------------MEDIA QUERIES-----------------*/
 
 
@@ -126,7 +129,7 @@
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-details span{display:block;}
-	#footer-logo{display: none;}
+	#footer-logo{display: none !important;}
 
 }
 
@@ -155,7 +158,7 @@
 
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
-	#footer-logo{display: none;}
+	#footer-logo{display: none !important;}
 
 	/*CALENDAR	*/
 	#calendar-h2-month{font-size: 32px;}
@@ -211,12 +214,12 @@
 	/*FOOTER*/
 	#footer-details{display:block; text-align: center;}
 	#footer-details span{display:block;}
-	#footer-logo{display: none;}
+	#footer-logo{display: none !important;}
 	
 	/*CALENDAR*/
 	#calendar-h2-month{font-size: 30px;}
 	#today-button{padding: 0px 14px!important; }
-	#event-title h2 {font-size:28px;}
+	#event-title h2 {font-size:20px;}
 	#current-event-date{font-size: 16px;}
 	#year-button{width: 70%; font-size: 12px !important; padding: 5px;}
 	#month-button{width: 70%; font-size: 12px !important; padding: 5px}
@@ -253,7 +256,7 @@
 	#footer-details{display:block; text-align: center;}
 	#footer-details span{display:block; font-size:13px;}
 	#footer-details p{font-size:12px;}
-	#footer-logo{display: none;}
+	#footer-logo{display: none !important;}
 
 	/*LOGIN CONTENT*/
 	#login-form-wrapper{margin-bottom: 80px;}
@@ -282,8 +285,8 @@
 	#calendar-h2-month{font-size: 22px;}
 	#calendar-days{font-size: 12px;}
 	#calendar-tbody tr td{height:70px!important; max-height: 70px;}
-	#event-title h2 {font-size:24px;}
-	#current-event-date{font-size: 14px;}
+	#event-title h2 {font-size:16px;}
+	#current-event-date{font-size: 12px;}
 	#button-group1{padding:0;}
 	#button-group2{padding:0;}
 	#back span{font-size: .7em;} 

@@ -75,6 +75,13 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="Confirm" class="col-sm-2 control-label">Confirm Password</label>
+                                            <div class="col-sm-10">
+                                                <input type="password" class="form-control" id="Password" placeholder="Confirm Password" name="Confirm">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="Info" class="col-sm-2 control-label">Personal Info</label>
                                             <div class="col-sm-10">
                                                 <textarea id = "Info" class="form-control" type = "text" rows="4" style = "height: 100px; resize:none;" placeholder="Personal Information"  name="PersonalInfo" required></textarea>
