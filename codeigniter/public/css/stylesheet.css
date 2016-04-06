@@ -31,6 +31,7 @@
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
 #footer-details p {color: #fff; font-size: 14px; font-family: 'Lustria', serif; font-weight: bold; }
 #footer-logo{ height: auto; float: left; padding-right: 5px;}
+#footer-form{ max-width: 400px;}
 #footer-form input, #footer-form button {border-radius: 0 !important; }
 #footer-form button {background: #504d4d; color: #e1e1e1;}
 /*UNIVERSAL end*/

@@ -1,5 +1,5 @@
 /*TABLE CONTENT WRAPPER*/ 
-#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; overflow-y: hidden; margin-left: 0;}
+#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; margin-left: 0;}
 #table-content-wrapper span{font-size: 3vw; font-family: 'Source Sans Pro', sans-serif; color: #333; }
 #table-content-wrapper h2{ font-weight: 600;}
 #table-content-wrapper .row{ margin: 0px;}
