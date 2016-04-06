@@ -1056,8 +1056,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
                 ctr_module++;
                 });
-                table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
-                                <script type='text/javascript' src='/js/table.js'></script>");
+                table.append("<script type='text/javascript' src='/js/table.js'></script>");
             }
             else
             {
