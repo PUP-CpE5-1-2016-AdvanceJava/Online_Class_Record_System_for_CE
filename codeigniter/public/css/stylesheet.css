@@ -25,13 +25,13 @@
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
 /*FOOTER*/
-#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; height: 116px;}
+#footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; max-height: 116px;}
 #footer-details {text-align: left; }
 #footer-details a:hover{color:#fff;}
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
 #footer-details p {color: #fff; font-size: 14px; font-family: 'Lustria', serif; font-weight: bold; }
 #footer-logo{ height: auto; float: left; padding-right: 5px;}
-#footer-form{ max-width: 400px;}
+/*#footer-form{ max-width: 400px;}*/
 #footer-form input, #footer-form button {border-radius: 0 !important; }
 #footer-form button {background: #504d4d; color: #e1e1e1;}
 /*UNIVERSAL end*/
