@@ -1206,7 +1206,7 @@ function get_class_table(link)
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                             <thead>\
                                                 <tr>\
-                                                    <th colspan='2' id='border-bold' class='border-left'></th>\
+                                                    <th colspan='2' id='table-att-blank' class='border-left'></th>\
                                                     <th colspan='3' class='text-center' id='table-mid-att'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                     <th colspan='3' class='text-center' id='table-final-att'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 </tr>\
@@ -1256,11 +1256,11 @@ function get_class_table(link)
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                                 <tr>\
                                                     <tr>\
-                                                        <th class='text-center'>Student Number</th>\
-                                                        <th class='text-center'>Name</th>\
-                                                        <th class='text-center'>Midterm Grade</th>\
-                                                        <th class='text-center'>Final Grade</th>\
-                                                        <th class='text-center'>Grade</th>\
+                                                        <th class='text-center' id='table-final-num'>Student Number</th>\
+                                                        <th class='text-center' id='table-final-name'>Name</th>\
+                                                        <th class='text-center' id='table-final-mid'>Midterm Grade</th>\
+                                                        <th class='text-center' id='table-final-final'>Final Grade</th>\
+                                                        <th class='text-center' id='table-final-grade'>Grade</th>\
                                                     </tr>\
                                                 </tr>\
                                         </table>\
