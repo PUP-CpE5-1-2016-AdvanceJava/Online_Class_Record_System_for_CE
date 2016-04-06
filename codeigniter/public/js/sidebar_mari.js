@@ -409,7 +409,7 @@ function get_class_table(link)
         else if (response['table_type'] == "attendance_table")
         {
             // 'Attendance table' please edit classes for responsive //
-            table.html(" <input type='hidden' id='attendance_sheet' value='attendance'>\
+            table.html(" <input type='hidden' id='sheetType' value='attendance_table'>\
                          <div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\

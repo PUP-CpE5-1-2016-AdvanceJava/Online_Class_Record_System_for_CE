@@ -30,7 +30,7 @@ var return_object = {};
 
 		this.records = {};
 
-        if (document.getElementById('attendance_sheet'))
+        if ($('#sheetType').val() == "attendance_table")
         {
                 
                 $('table .stud-record').each(function() {
