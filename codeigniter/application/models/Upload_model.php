@@ -158,6 +158,10 @@ class Upload_model extends CI_Model {
 	{
 		$name = $file["excel_file"]["name"];
 		$temp = $file["excel_file"]["tmp_name"];
+		if ($file["excel_file"]["type"] != "application/vnd.ms-excel")
+		{
+			return "Excel has not been uploaded. Invalid file type.";
+		}
 		$arr = explode('__',$name);
 		$class_id = $arr[2];
 		$this->db->where('Id',$class_id);
@@ -165,11 +169,6 @@ class Upload_model extends CI_Model {
 		if (!$query->num_rows() > 0)
 		{
 			return "Invalid file name";
-		}
-
-		if ($file["excel_file"]["type"] != "application/vnd.ms-excel")
-		{
-			return "Excel has not been uploaded. Invalid file type.";
 		}
 		$this->load->model('Table_model');
 		$msg = $this->Table_model->export_class_table($class_id,$name);
