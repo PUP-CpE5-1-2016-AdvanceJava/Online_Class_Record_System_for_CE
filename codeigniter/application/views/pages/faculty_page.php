@@ -47,7 +47,7 @@
         </div>
 
     <!-- TABLE CONTENT WRAPPER -->
-    <div class = "container" id = "table-content-wrapper">
+    <div id = "table-content-wrapper">
         <!-- <div class="row">
             <h2>BSCPE 5-1</h2>
             <hr>
