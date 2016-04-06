@@ -214,7 +214,7 @@ var return_object = {};
                 if ($(this).hasClass('table-items-assign-mid')) {
                     value = $(this).html().replace('<br>', '');
                     
-                    checkIfValid(value, mother, target, "midterm assignment");
+                    checkIfValid(value, mother, target, "midterm assignment", 0);
                     
                     // push cell value to 'assignment' array of 'items' object
                     target.records.midterm.assignment.push(value);
@@ -222,17 +222,17 @@ var return_object = {};
 
                 else if ($(this).hasClass('table-items-seatwork-mid')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "midterm seatwork");
+                    checkIfValid(value, mother, target, "midterm seatwork", 0);
                     target.records.midterm.seatwork.push(value);
                 }
                 else if ($(this).hasClass('table-items-exercise-mid')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "midterm exercise");
+                    checkIfValid(value, mother, target, "midterm exercise", 0);
                     target.records.midterm.exercise.push(value);
                 }
                 else if ($(this).hasClass('table-items-recitation-mid')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "midterm recitation");
+                    checkIfValid(value, mother, target, "midterm recitation", 0);
                     target.records.midterm.recitation.push(value);
                 }
                 else if ($(this).hasClass('table-items-standing-total-mid') && !$(mother).hasClass('num-items')) {
@@ -241,18 +241,22 @@ var return_object = {};
                     total_cs_cols = total_cs_cols + num_items_obj.midterm.exercise.length + num_items_obj.midterm.recitation.length;
 
                     for (var i = 0; i < num_items_obj.midterm.assignment.length; i++) {
+                        checkIfValid(target.records.midterm.assignment[i], mother, target, "midterm assignment", num_items_obj.midterm.assignment[i]);
                         mid_standing_total = mid_standing_total + (target.records.midterm.assignment[i]/num_items_obj.midterm.assignment[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.midterm.seatwork.length; i++) {
+                        checkIfValid(target.records.midterm.seatwork[i], mother, target, "midterm seatwork", num_items_obj.midterm.seatwork[i]);
                         mid_standing_total = mid_standing_total + (target.records.midterm.seatwork[i]/num_items_obj.midterm.seatwork[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.midterm.exercise.length; i++) {
+                        checkIfValid(target.records.midterm.exercise[i], mother, target, "midterm exercise", num_items_obj.midterm.exercise[i]);
                         mid_standing_total = mid_standing_total + (target.records.midterm.exercise[i]/num_items_obj.midterm.exercise[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.midterm.recitation.length; i++) {
+                        checkIfValid(target.records.midterm.recitation[i], mother, target, "midterm recitation", num_items_obj.midterm.recitation[i]);
                         mid_standing_total = mid_standing_total + (target.records.midterm.recitation[i]/num_items_obj.midterm.recitation[i]);
                     }
 
@@ -270,12 +274,12 @@ var return_object = {};
 
                 else if ($(this).hasClass('table-items-quiz-mid')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "midterm quiz");
+                    checkIfValid(value, mother, target, "midterm quiz", 0);
                     target.records.midterm.quiz.push(value);
                 }
                 else if ($(this).hasClass('table-items-longExam-mid')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "midterm LE");
+                    checkIfValid(value, mother, target, "midterm LE", 0);
                     target.records.midterm.long_exam.push(value);
                 }
 
@@ -284,10 +288,12 @@ var return_object = {};
                     var total_qzle_cols = num_items_obj.midterm.quiz.length + num_items_obj.midterm.long_exam.length;
 
                     for (var i = 0; i < num_items_obj.midterm.quiz.length; i++) {
+                        checkIfValid(target.records.midterm.quiz[i], mother, target, "midterm quiz", num_items_obj.midterm.quiz[i]);
                         mid_qzle_total = mid_qzle_total + (target.records.midterm.quiz[i] / num_items_obj.midterm.quiz[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.midterm.long_exam.length; i++) {
+                        checkIfValid(target.records.midterm.long_exam[i], mother, target, "midterm LE", num_items_obj.midterm.long_exam[i]);
                         mid_qzle_total = mid_qzle_total + (target.records.midterm.long_exam[i] / num_items_obj.midterm.long_exam[i]);
                     }
 
@@ -304,12 +310,13 @@ var return_object = {};
 
                 else if ($(this).hasClass('table-items-midterm-score')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "midterm exam");
+                    checkIfValid(value, mother, target, "midterm exam", 0);
                     target.records.midterm.term_exam = value;
                     num_items_obj.midterm.term_exam = value;
                 }
 
                 else if ($(this).hasClass('table-items-midterm-percent') && !$(mother).hasClass('num-items')) {
+                    checkIfValid(target.records.midterm.term_exam, mother, target, "midterm exam", num_items_obj.midterm.term_exam);
                     var exam_percent = (target.records.midterm.term_exam / num_items_obj.midterm.term_exam) * 40;
                     target.records.midterm.exam_percent = exam_percent;
                     $(this).append("<td></td>").text(exam_percent + "%");
@@ -350,22 +357,22 @@ var return_object = {};
 
                 else if ($(this).hasClass('table-items-assign-finals')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final quiz");
+                    checkIfValid(value, mother, target, "final quiz", 0);
                     target.records.finals.assignment.push(value);
                 }
                 else if ($(this).hasClass('table-items-seatwork-finals')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final seatwork");
-                    target.records.finals.seatwork.push(($(this).html()).replace('<br>', ''));
+                    checkIfValid(value, mother, target, "final seatwork", 0);
+                    target.records.finals.seatwork.push(value);
                 }
                 else if ($(this).hasClass('table-items-exercise-finals')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final exercise");
+                    checkIfValid(value, mother, target, "final exercise", 0);
                     target.records.finals.exercise.push(value);
                 }
                 else if ($(this).hasClass('table-items-recitation-finals')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final recitation");
+                    checkIfValid(value, mother, target, "final recitation", 0);
                     target.records.finals.recitation.push();
                 }
 
@@ -375,18 +382,22 @@ var return_object = {};
                     total_cs_cols = total_cs_cols + num_items_obj.finals.exercise.length + num_items_obj.finals.recitation.length;
 
                     for (var i = 0; i < num_items_obj.finals.assignment.length; i++) {
+                        checkIfValid(target.records.finals.assignment[i], mother, target, "final assignment", num_items_obj.finals.assignment[i]);
                         fin_standing_total = fin_standing_total + (target.records.finals.assignment[i]/num_items_obj.finals.assignment[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.finals.seatwork.length; i++) {
+                        checkIfValid(target.records.finals.seatwork[i], mother, target, "final seatwork", num_items_obj.finals.seatwork[i]);
                         fin_standing_total = fin_standing_total + (target.records.finals.seatwork[i]/num_items_obj.finals.seatwork[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.finals.exercise.length; i++) {
+                        checkIfValid(target.records.finals.exercise[i], mother, target, "final exercise", num_items_obj.finals.exercise[i]);
                         fin_standing_total = fin_standing_total + (target.records.finals.exercise[i]/num_items_obj.finals.exercise[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.finals.recitation.length; i++) {
+                        checkIfValid(target.records.finals.recitation[i], mother, target, "final recitation", num_items_obj.finals.recitation[i]);
                         fin_standing_total = fin_standing_total + (target.records.finals.recitation[i]/num_items_obj.finals.recitation[i]);
                     }
 
@@ -403,12 +414,12 @@ var return_object = {};
 
                 else if ($(this).hasClass('table-items-quiz-finals')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final quiz");
+                    checkIfValid(value, mother, target, "final quiz", 0);
                     target.records.finals.quiz.push(value);
                 }
                 else if ($(this).hasClass('table-items-longExam-finals')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final LE");
+                    checkIfValid(value, mother, target, "final LE", 0);
                     target.records.finals.long_exam.push(value);
                 }
 
@@ -417,11 +428,13 @@ var return_object = {};
                     var total_qzle_cols = num_items_obj.finals.quiz.length + num_items_obj.finals.long_exam.length;
 
                     for (var i = 0; i < num_items_obj.finals.quiz.length; i++) {
-                        fin_qzle_total = fin_qzle_total + (target.records.finals.quiz[i] / num_items_obj.finals.quiz[i])
+                        checkIfValid(target.records.finals.quiz[i], mother, target, "final quiz", num_items_obj.finals.quiz[i]);
+                        fin_qzle_total = fin_qzle_total + (target.records.finals.quiz[i] / num_items_obj.finals.quiz[i]);
                     }
 
                     for (var i = 0; i < num_items_obj.finals.long_exam.length; i++) {
-                        fin_qzle_total = fin_qzle_total + (target.records.finals.long_exam[i] / num_items_obj.finals.long_exam[i])
+                        checkIfValid(target.records.finals.long_exam[i], mother, target, "final LE", num_items_obj.finals.long_exam[i]);
+                        fin_qzle_total = fin_qzle_total + (target.records.finals.long_exam[i] / num_items_obj.finals.long_exam[i]);
                     }
 
                     fin_qzle_total = (fin_qzle_total/total_qzle_cols) * 100;
@@ -437,11 +450,12 @@ var return_object = {};
 
                 else if ($(this).hasClass('table-items-finals-score')) {
                     value = $(this).html().replace('<br>', '');
-                    checkIfValid(value, mother, target, "final exam");
-                    target.records.finals.term_exam = (value);
+                    checkIfValid(value, mother, target, "final exam", 0);
+                    target.records.finals.term_exam = value;
                 }
 
                 else if ($(this).hasClass('table-items-finals-percent') && !$(mother).hasClass('num-items')) {
+                    checkIfValid(target.records.finals.term_exam, mother, target, "final exam", num_items_obj.finals.term_exam);
                     var exam_percent = (target.records.finals.term_exam/num_items_obj.finals.term_exam) * 40;
                     target.records.finals.exam_percent = exam_percent;
                     $(this).append("<td></td>").text(exam_percent + "%");
@@ -529,13 +543,14 @@ var return_object = {};
 	}
 
 	Laboratory.prototype.initialize = function (mother, child, target) {
+        
         var value = '';
         
 		$(mother).find(child).each(function() {
             
 			if ($(this).hasClass('table-items-lab-mid')) {
                 value = $(this).html().replace('<br>', '');
-                checkIfValid(value, mother, target, "midterm laboratory");
+                checkIfValid(value, mother, target, "midterm laboratory", 0);
 				target.records.midterm.lab.push(value);
 			} 
             
@@ -543,6 +558,7 @@ var return_object = {};
 				var lab_total = 0;
                 
 				for (var i = 0; i < target.records.midterm.lab.length; i++) {
+                    checkIfValid(target.records.midterm.lab[i], mother, target, "midterm laboratory", num_items_obj.midterm.lab[i]);
 					lab_total = lab_total + (target.records.midterm.lab[i] / num_items_obj.midterm.lab[i]);
 				}
                 
@@ -561,13 +577,14 @@ var return_object = {};
             
             else if ($(this).hasClass('table-items-prac-mid')) {
                 value = $(this).html().replace('<br>', '');
-                checkIfValid(value, mother, target, "midterm practical");
+                checkIfValid(value, mother, target, "midterm practical", 0);
 				target.records.midterm.practical.push(($(this).html()).replace('<br>', ''));
 			} 
             
             else if ($(this).hasClass('table-items-prac-total-mid') && !$(mother).hasClass('num-items')) {
 				var prac_total = 0;
 				for (var i = 0; i < target.records.midterm.practical.length; i++) {
+                    checkIfValid(target.records.midterm.practical[i], mother, target, "midterm practical", num_items_obj.midterm.practical[i]);
 					prac_total = prac_total + (target.records.midterm.practical[i] / num_items_obj.midterm.practical[i]);
 				}
                 
@@ -585,13 +602,14 @@ var return_object = {};
             
             else if ($(this).hasClass('table-items-proj-mid')) {
                 value = $(this).html().replace('<br>', '');
-                checkIfValid(value, mother, target, "midterm project");
+                checkIfValid(value, mother, target, "midterm project", 0);
 				target.records.midterm.project.push(($(this).html()).replace('<br>', ''));
 			} 
             
             else if ($(this).hasClass('table-items-proj-total-mid') && !$(mother).hasClass('num-items')) {
 				var proj_total = 0;
 				for (var i = 0; i < target.records.midterm.project.length; i++) {
+                    checkIfValid(target.records.midterm.project[i], mother, target, "midterm project", num_items_obj.midterm.project[i]);
 					proj_total = proj_total + (target.records.midterm.project[i] / num_items_obj.midterm.project[i]);
 				}
                 
@@ -641,13 +659,14 @@ var return_object = {};
 
 			else if ($(this).hasClass('table-items-lab-finals')) {
                 value = $(this).html().replace('<br>', '');
-                checkIfValid(value, mother, target, "final laboratory");
+                checkIfValid(value, mother, target, "final laboratory", 0);
 				target.records.finals.lab.push(value);
 			} 
             
             else if ($(this).hasClass('table-items-lab-total-finals') && !$(mother).hasClass('num-items')) {
 				var lab_total = 0;
 				for (var i = 0; i < target.records.finals.lab.length; i++) {
+                    checkIfValid(target.records.finals.lab[i], mother, target, "final laboratory", num_items_obj.finals.lab[i]);
 					lab_total = lab_total + (target.records.finals.lab[i] / target.records.finals.lab[i]);
 				}
 				lab_total = (lab_total / target.records.finals.lab.length) * 100;
@@ -664,13 +683,14 @@ var return_object = {};
             
             else if ($(this).hasClass('table-items-prac-finals')) {
                 value = $(this).html().replace('<br>', '');
-                checkIfValid(value, mother, target, "final practical");
+                checkIfValid(value, mother, target, "final practical", 0);
 				target.records.finals.practical.push(value);
 			} 
             
             else if ($(this).hasClass('table-items-prac-total-finals') && !$(mother).hasClass('num-items')) {
 				var prac_total = 0;
 				for (var i = 0; i < target.records.finals.practical.length; i++) {
+                    checkIfValid(target.records.finals.practical[i], mother, target, "final practical", num_items_obj.finals.practical[i]);
 					prac_total = prac_total + (target.records.finals.practical[i] / target.records.finals.practical[i]);
 				}
 				prac_total = (prac_total / target.records.finals.practical.length) * 100;
@@ -686,13 +706,14 @@ var return_object = {};
             
             else if ($(this).hasClass('table-items-proj-finals')) {
                 value = $(this).html().replace('<br>', '');
-                checkIfValid(value, mother, target, "final project");
+                checkIfValid(value, mother, target, "final project", 0);
 				target.records.finals.project.push(value);
 			} 
             
             else if ($(this).hasClass('table-items-proj-total-finals') && !$(mother).hasClass('num-items')) {
 				var proj_total = 0;
 				for (var i = 0; i < target.records.finals.project.length; i++) {
+                    checkIfValid(target.records.finals.project[i], mother, target, "final project", num_items_obj.finals.project[i]);
 					proj_total = proj_total + (target.records.finals.project[i] / target.records.finals.project[i]);
 				}
 				proj_total = (proj_total/target.records.finals.project.length) * 100;
@@ -860,9 +881,9 @@ var return_object = {};
 }
 
 // error checking
-function checkIfValid(value, mother, target, field)
+function checkIfValid(value, mother, target, field, check)
 {
-    if ((isNaN(value)) || (value === ''))
+    if (isNaN(value) || (value === ''))
     {
         if (mother === 'table .num-items')
         {
@@ -873,6 +894,11 @@ function checkIfValid(value, mother, target, field)
         {
             throw "Invalid value on a " + field + " score of student " + target.name + ".";
         }                                          
+     }
+     
+     else if ((check < value) && (check !== 0))
+     {
+         throw "The " + field + " of student " + target.name + " is much larger than its number-of-items.";
      }
 }
 
