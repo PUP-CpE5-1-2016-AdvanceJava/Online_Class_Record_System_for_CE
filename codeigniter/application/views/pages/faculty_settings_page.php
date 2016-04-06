@@ -126,7 +126,7 @@
                                         <label for="settings-choose-file-button" class="btn btn-primary" id = "settings-choose-file-button"><b> Choose File...</b></label>
                                         <label class="file-upload-filename" id="file-upload-filename">No File Selected</label>
                                         <input id="settings-upload-button-input" name="classlist" type="submit" />
-                                        <button for="settings-upload-button" type="submit" class="btn btn-primary" id = "settings-upload-button"/> <i class = "fa fa-upload"></i>Upload</button>
+                                        <button for="settings-upload-button" type="submit" class="btn btn-primary" id = "settings-upload-button"/> <i class = "fa fa-upload" style="margin-right:5px;"></i>Upload</button>
                                         <span><b> Module Type: </b></span>
                                         <select class = "form-control" id = "settings-adding-select" name="module_type" required>
                                             <option selected disabled>Please Select</option>
