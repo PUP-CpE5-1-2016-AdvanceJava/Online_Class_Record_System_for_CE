@@ -162,14 +162,6 @@ $(document).ready(function(){
 				'att_final_num':att_final_num,
 			}
 		}
-
-		// var link = 'save_table';
-		// $.post(link,data,function(response){
-		// 	if (response.status == "OK")
-		// 	{
-		// 		console.log(response);
-		// 	}
-		// })
 		console.log(data);
 		$.ajax({
 			url: 'save_table',

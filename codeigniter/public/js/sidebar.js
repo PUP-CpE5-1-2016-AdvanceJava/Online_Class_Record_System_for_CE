@@ -129,8 +129,6 @@ function get_class_table(link)
         //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
         module_type;
         //---variables for att table---//
-        attCounter1=1;
-        attCounter2=1;
         module_type = response['Class']['ModuleType'];
         classId = response['Class']['ClassId'];
         type_of_table = response['table_type'];
@@ -1503,9 +1501,103 @@ function get_class_table(link)
         else if (response['table_type'] == "attendance_table")
         {
             // 'Attendance table' please edit classes for responsive //
-            var midterm_cols = 3,final_cols = 3;
+            var midterm_cols = 2,final_cols = 2;
             var mid_att_header_str = "",mid_att_score_str = [];
             var final_att_header_str = "",final_att_score_str = [];
+
+            /*lab MIDTERM STRING INITIALIZATION*/
+            if (response['att_mid_num'] > 0)
+            {
+                midterm_cols += response['att_mid_num'];
+                attCounter1 = response['att_mid_num'];
+            }
+            else 
+            {
+                midterm_cols++;
+                attCounter1 = 1;
+            }
+            
+            if (response['att_mid_items'].length > 0)
+            {
+                for (var i = 0; i <  midterm_cols-2; i++) 
+                {
+                    mid_att_header_str += "<th class='fixed-width' class='text-center' id='table-header-mid-att"+(i+1)+"' contenteditable='true'>"+response['att_mid_items'][i]+"</th>";
+                }
+            }
+            else
+            {
+                mid_att_header_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-att1'>Att 1</td>";
+            }
+
+            if (response['att_mid_score'].length > 0)
+            {
+                var x_att_mid = 0;
+                response.att_mid_score.forEach(function(att){
+                    for (var i = 0; i <  midterm_cols-2; i++) 
+                    {
+                        mid_att_score_str[x_att_mid] += "<td class='fixed-width' contenteditable='true' id='table-score-mid-att"+(i+1)+"'>"+att[i]+"</td>";
+                    }
+                    x_att_mid++;
+                });
+            }
+            else
+            {
+                var x_att_mid = 0;
+                response.Student.forEach(function(att){
+                    for (var i = 0; i <  midterm_cols-2; i++) 
+                    {
+                        mid_att_score_str[x_att_mid] += "<td class='fixed-width' contenteditable='true' id='table-score-mid-att"+(i+1)+"'></td>";
+                    }
+                    x_att_mid++;
+                });
+            }
+
+            /*lab Finals STRING INITIALIZATION*/
+            if (response['att_mid_num'] > 0)
+            {
+                final_cols += response['att_mid_num'];
+                attCounter2 = response['att_mid_num'];
+            }
+            else 
+            {
+                final_cols++;
+                attCounter2 = 1;
+            }
+            
+            if (response['att_final_items'].length > 0)
+            {
+                for (var i = 0; i <  final_cols-2; i++) 
+                {
+                    final_att_header_str += "<th class='fixed-width' class='text-center' id='table-header-final-att"+(i+1)+"' contenteditable='true'>"+response['att_final_items'][i]+"</th>";
+                }
+            }
+            else
+            {
+                final_att_header_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-att1'>Att 1</td>";
+            }
+
+            if (response['att_final_score'].length > 0)
+            {
+                var x_att_final = 0;
+                response.att_final_score.forEach(function(att){
+                    for (var i = 0; i <  final_cols-2; i++) 
+                    {
+                        final_att_score_str[x_att_final] += "<td class='fixed-width' contenteditable='true' id='table-score-final-att"+(i+1)+"'>"+att[i]+"</td>";
+                    }
+                    x_att_final++;
+                });
+            }
+            else
+            {
+                var x_att_final = 0;
+                response.Student.forEach(function(att){
+                    for (var i = 0; i <  final_cols-2; i++) 
+                    {
+                        final_att_score_str[x_att_final] += "<td class='fixed-width' contenteditable='true' id='table-score-final-att"+(i+1)+"'></td>";
+                    }
+                    x_att_final++;
+                });
+            }
             
             module_type = "attendance";
             table.html("<div class='row'>\
@@ -1521,17 +1613,15 @@ function get_class_table(link)
                                         <table class='table table-striped table-bordered' id='table-wrapper'>\
                                             <thead>\
                                                 <tr>\
-                                                    <th colspan='2' id='table-att-blank' class='border-left'></th>\
-                                                    <th colspan='3' class='text-center' id='table-mid-att'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
-                                                    <th colspan='3' class='text-center' id='table-final-att'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='2' id='border-bold' class='border-left'></th>\
+                                                    <th colspan='"+midterm_cols+"' class='text-center' id='table-mid-att'>MIDTERMS<a class='btn' id='table-att1-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></a><a class='btn' id='table-mid-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
+                                                    <th colspan='"+final_cols+"' class='text-center' id='table-final-att'>FINALS<a class='btn' id='table-att2-button' onclick='add_column($(this).parent());'><acronym title='ADD COLUMN'><i class='fa fa-plus-circle'></i></acronym></a><a class='btn' id='table-final-att-button-del' onclick='del_column($(this).parent());'><acronym title='DELETE COLUMN'><i class='fa fa-minus-circle'></i></acronym></a></th>\
                                                 </tr>\
                                                 <tr id='table-module'>\
                                                     <th class='text-center border-left'>Student Number</th>\
-                                                    <th class='text-center' id='border-bold'>Name</th>\
-                                                    <th class='fixed-width' class='text-center' id='table-header-mid-att1' contenteditable='true'>Att 1</th>\
+                                                    <th class='text-center' id='border-bold'>Name</th>"+mid_att_header_str+"\
                                                     <th class='text-center'>Total</th>\
-                                                    <th class='text-center'>10%</th>\
-                                                    <th class='fixed-width' class='text-center' id='table-header-final-att1' contenteditable='true'>Att 1</th>\
+                                                    <th class='text-center'>10%</th>"+final_att_header_str+"\
                                                     <th class='text-center'>Total</th>\
                                                     <th class='text-center'>10%</th>\
                                                 </tr>\
@@ -1543,17 +1633,16 @@ function get_class_table(link)
                                 </div>\
                         </div>\
                       </div>");
+            var ctr_module = 0;
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td class='fixed-width' contenteditable='true' id='table-score-mid-att1'></td>\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_att_score_str[ctr_module]+"\
                                             <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>\
-                                            <td class='fixed-width' contenteditable='true' id='table-score-final-att1'></td>\
+                                            <td contenteditable='false'></td>"+final_att_score_str[ctr_module]+"\
                                             <td contenteditable='false'></td>\
                                             <td contenteditable='false'></td></tr>");
+            ctr_module++;
                 });
-            table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             table.append("<script type='text/javascript' src='/js/table.js'></script>");
         }
         else if (response['table_type'] == "final_table")

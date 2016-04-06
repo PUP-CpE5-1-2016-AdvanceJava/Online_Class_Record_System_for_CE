@@ -89,6 +89,9 @@ class Table_model extends CI_Model {
         $prac_final_num = 0;$prac_final_items = array();$prac_final_score = array();
         $proj_final_num = 0;$proj_final_items = array();$proj_final_score = array();
 
+        $att_mid_num = 0;$att_mid_items = array();$att_mid_score = array();
+        $att_final_num = 0;$att_final_items = array();$att_final_score = array();
+
     	foreach ($query->result() as $row) 
     	{	
     		// combine to make full name and to capital first letter of each name
@@ -568,6 +571,81 @@ class Table_model extends CI_Model {
 	    				$fexam_final_score[$i][$y] = "0.00";
 	    			}
     			}
+
+
+                 //---att_mid ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Midterm');
+                $query_module = $this->db->get('mod_att');
+                $att_mid_num = $query_module->num_rows();
+                if ($att_mid_num > 0)
+                {
+                    $att_items = $query_module->result_array();
+                    for ($x=0; $x < $att_mid_num; $x++) 
+                    { 
+                        $date = date('M-d-Y',strtotime($att_items[$x]["AttDate"]));
+                        $arr = explode('-', $date);
+                        $converted_date = $this->getMonth($arr[0])." ".(int)$arr[1].", ".$arr[2];
+                        $att_mid_items[$x] = $converted_date;
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Midterm');
+                $query_att_score = $this->db->get('attendance');
+                $att_mid_score_num = $query_att_score->num_rows();
+                if ($att_mid_score_num > 0)
+                {
+                    $att_score = $query_att_score->result_array();
+                    for ($y=0; $y < $att_mid_num; $y++) 
+                    { 
+                        $att_mid_score[$i][$y] = $att_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $att_mid_num; $y++) 
+                    { 
+                        $att_mid_score[$i][$y] = "0.00";
+                    }
+                }
+
+                //---att_final ---//
+                $this->db->where('ClassId',$block->Id);
+                $this->db->where('Sem','Finals');
+                $query_module = $this->db->get('mod_att');
+                $att_final_num = $query_module->num_rows();
+                if ($att_final_num > 0)
+                {
+                    $att_items = $query_module->result_array();
+                    for ($x=0; $x < $att_final_num; $x++) 
+                    { 
+                        $date = date('M-d-Y',strtotime($att_items[$x]["AttDate"]));
+                        $arr = explode('-', $date);
+                        $converted_date = $this->getMonth($arr[0])." ".(int)$arr[1].", ".$arr[2];
+                        $att_final_items[$x] = $converted_date;
+                    }
+                }
+
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Finals');
+                $query_att_score = $this->db->get('attendance');
+                $att_final_score_num = $query_att_score->num_rows();
+                if ($att_final_score_num > 0)
+                {
+                    $att_score = $query_att_score->result_array();
+                    for ($y=0; $y < $att_final_num; $y++) 
+                    { 
+                        $att_final_score[$i][$y] = $att_score[$y]["Score"];
+                    }
+                }
+                else
+                {
+                    for ($y=0; $y < $att_final_num; $y++) 
+                    { 
+                        $att_final_score[$i][$y] = "0.00";
+                    }
+                }
     		}
             else if ($block->ModuleType == 'Lab')
             {
@@ -775,7 +853,6 @@ class Table_model extends CI_Model {
                         $proj_final_score[$i][$y] = "0.00";
                     }
                 }
-
             }
     		$i++;
     	}
@@ -842,6 +919,12 @@ class Table_model extends CI_Model {
             'proj_final_num' => $proj_final_num,
             'proj_final_items' => $proj_final_items,
             'proj_final_score' => $proj_final_score,
+            'att_mid_num' => $att_mid_num,
+            'att_mid_items' => $att_mid_items,
+            'att_mid_score' => $att_mid_score,
+            'att_final_num' => $att_final_num,
+            'att_final_items' => $att_final_items,
+            'att_final_score' => $att_final_score,
     	);
     	return $data;
 	}
@@ -938,7 +1021,7 @@ class Table_model extends CI_Model {
 
 			return "lab saved";
 		}
-		else
+		else if ($data['module'] == 'attendance')
 		{
 			//else attendance
 			$att_mid_data = explode('-', $data['att_mid_data']);
@@ -991,5 +1074,46 @@ class Table_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+    function getMonth($mon)
+    {
+        if ($mon == "Jan") {
+            return "January";
+        }
+        else if ($mon == "Feb") {
+            return "February";
+        }
+        else if ($mon == "Mar") {
+            return "March";
+        }
+        else if ($mon == "Apr") {
+            return "April";
+        }
+        else if ($mon == "May") {
+            return "May";
+        }
+        else if ($mon == "Jun") {
+            return "June";
+        }
+        else if ($mon == "Jul") {
+            return "July";
+        }
+        else if ($mon == "Aug") {
+            return "August";
+        }
+        else if ($mon == "Sep") {
+            return "September";
+        }
+        else if ($mon == "Oct") {
+            return "October";
+        }
+        else if ($mon == "Nov") {
+            return "November";
+        }
+        else if ($mon == "Dec") {
+            return "December";
+        }
+        return "";
+    }
 }
 ?>
