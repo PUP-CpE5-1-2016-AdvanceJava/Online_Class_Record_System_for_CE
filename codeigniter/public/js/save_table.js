@@ -52,7 +52,15 @@ var return_object = {};
                 this.records = new Lecture();
             
                 //  get number-of-items values from .num-items <tr>
-                this.records.initialize('table .num-items' , 'td', this);
+                try
+                {
+                    this.records.initialize('table .num-items' , 'td', this);
+                }    
+                catch(err)
+                {
+                    alert(err);
+                    return;
+                }
                 num_items_obj = self.records;
                 
                 // get student name, number, and raw scores from .stud-record <tr>
@@ -62,9 +70,19 @@ var return_object = {};
 
                     student.name = $(this).find('.stud-name').html();
                     student.num = $(this).find('.stud-num').html();
-
+                   
                     student.records = new Lecture();
-                    student.records.initialize('table .'+student.num, 'td', student);
+                    
+                    try
+                    {
+                        student.records.initialize('table .'+student.num, 'td', student); 
+                    }
+                    
+                    catch(err)
+                    {
+                        alert(err);
+                        return false;   
+                    }
 
                     self.students.push(student);
                 });	
@@ -162,253 +180,283 @@ var return_object = {};
 
 	/** initialize method **/
 	Lecture.prototype.initialize = function (mother, child, target) {
-        
-		// process 'child' element on 'mother'
-		$(mother).find(child).each(function() {
-
-			// if current mother has a .table-items-assign-mid child
-			if ($(this).hasClass('table-items-assign-mid')) {
-				// push cell value to 'assignment' array of 'items' object
-				target.records.midterm.assignment.push(($(this).html()).replace('<br>', ''));
-			}
-
-			else if ($(this).hasClass('table-items-seatwork-mid')) {
-				target.records.midterm.seatwork.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-exercise-mid')) {
-				target.records.midterm.exercise.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-recitation-mid')) {
-				target.records.midterm.recitation.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-standing-total-mid') && !$(mother).hasClass('num-items')) {
-				var mid_standing_total = 0;
-				var total_cs_cols = num_items_obj.midterm.assignment.length + num_items_obj.midterm.seatwork.length;
-				total_cs_cols = total_cs_cols + num_items_obj.midterm.exercise.length + num_items_obj.midterm.recitation.length;
-
-				for (var i = 0; i < num_items_obj.midterm.assignment.length; i++) {
-					mid_standing_total = mid_standing_total + (target.records.midterm.assignment[i]/num_items_obj.midterm.assignment[i]);
-				}
-
-				for (var i = 0; i < num_items_obj.midterm.seatwork.length; i++) {
-					mid_standing_total = mid_standing_total + (target.records.midterm.seatwork[i]/num_items_obj.midterm.seatwork[i]);
-				}
-
-				for (var i = 0; i < num_items_obj.midterm.exercise.length; i++) {
-					mid_standing_total = mid_standing_total + (target.records.midterm.exercise[i]/num_items_obj.midterm.exercise[i]);
-				}
-
-				for (var i = 0; i < num_items_obj.midterm.recitation.length; i++) {
-					mid_standing_total = mid_standing_total + (target.records.midterm.recitation[i]/num_items_obj.midterm.recitation[i]);
-				}
-
-				mid_standing_total = (mid_standing_total/total_cs_cols) * 100;
-				target.records.midterm.standing = mid_standing_total;
-				$(this).append("<td></td>").text(mid_standing_total);
+            // process 'child' element on 'mother'
+            $(mother).find(child).each(function() {
+                var value = '';
                 
-			}
+                // if current mother has a .table-items-assign-mid child
+                if ($(this).hasClass('table-items-assign-mid')) {
+                    value = $(this).html().replace('<br>', '');
+                    
+                    checkIfValid(value, mother, target, "midterm assignment");
+                    
+                    // push cell value to 'assignment' array of 'items' object
+                    target.records.midterm.assignment.push(value);
+                }
 
-			else if ($(this).hasClass('table-items-standing-percent-mid') && !$(mother).hasClass('num-items')) {
-				var cs_mid_percent = target.records.midterm.standing * 0.2;
-				target.records.midterm.cs_percent = cs_mid_percent;
-				$(this).append("<td></td>").text(cs_mid_percent + "%");
-			}
+                else if ($(this).hasClass('table-items-seatwork-mid')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "midterm seatwork");
+                    target.records.midterm.seatwork.push(value);
+                }
+                else if ($(this).hasClass('table-items-exercise-mid')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "midterm exercise");
+                    target.records.midterm.exercise.push(value);
+                }
+                else if ($(this).hasClass('table-items-recitation-mid')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "midterm recitation");
+                    target.records.midterm.recitation.push(value);
+                }
+                else if ($(this).hasClass('table-items-standing-total-mid') && !$(mother).hasClass('num-items')) {
+                    var mid_standing_total = 0;
+                    var total_cs_cols = num_items_obj.midterm.assignment.length + num_items_obj.midterm.seatwork.length;
+                    total_cs_cols = total_cs_cols + num_items_obj.midterm.exercise.length + num_items_obj.midterm.recitation.length;
 
-			else if ($(this).hasClass('table-items-quiz-mid')) {
-				target.records.midterm.quiz.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-longExam-mid')) {
-				target.records.midterm.long_exam.push(($(this).html()).replace('<br>', ''));
-			}
+                    for (var i = 0; i < num_items_obj.midterm.assignment.length; i++) {
+                        mid_standing_total = mid_standing_total + (target.records.midterm.assignment[i]/num_items_obj.midterm.assignment[i]);
+                    }
 
-			else if ($(this).hasClass('table-items-quiz-longExam-total-mid') && !$(mother).hasClass('num-items')) {
-				var mid_qzle_total = 0;
-				var total_qzle_cols = num_items_obj.midterm.quiz.length + num_items_obj.midterm.long_exam.length;
+                    for (var i = 0; i < num_items_obj.midterm.seatwork.length; i++) {
+                        mid_standing_total = mid_standing_total + (target.records.midterm.seatwork[i]/num_items_obj.midterm.seatwork[i]);
+                    }
 
-				for (var i = 0; i < num_items_obj.midterm.quiz.length; i++) {
-					mid_qzle_total = mid_qzle_total + (target.records.midterm.quiz[i] / num_items_obj.midterm.quiz[i]);
-				}
+                    for (var i = 0; i < num_items_obj.midterm.exercise.length; i++) {
+                        mid_standing_total = mid_standing_total + (target.records.midterm.exercise[i]/num_items_obj.midterm.exercise[i]);
+                    }
 
-				for (var i = 0; i < num_items_obj.midterm.long_exam.length; i++) {
-					mid_qzle_total = mid_qzle_total + (target.records.midterm.long_exam[i] / num_items_obj.midterm.long_exam[i]);
-				}
+                    for (var i = 0; i < num_items_obj.midterm.recitation.length; i++) {
+                        mid_standing_total = mid_standing_total + (target.records.midterm.recitation[i]/num_items_obj.midterm.recitation[i]);
+                    }
 
-				mid_qzle_total = (mid_qzle_total/total_qzle_cols) * 100;
-				target.records.midterm.qzle_total = mid_qzle_total;
-				$(this).append("<td></td>").text(mid_qzle_total);
-			}
+                    mid_standing_total = (mid_standing_total/total_cs_cols) * 100;
+                    target.records.midterm.standing = mid_standing_total;
+                    $(this).append("<td></td>").text(mid_standing_total);
+                    
+                }
 
-			else if ($(this).hasClass('table-items-quiz-longExam-percent-mid') && !$(mother).hasClass('num-items')) {
-				var qzle_mid_percent = target.records.midterm.qzle_total * 0.3;
-				target.records.midterm.qzle_percent = qzle_mid_percent;
-				$(this).append("<td></td>").text(qzle_mid_percent + "%");
-			}
+                else if ($(this).hasClass('table-items-standing-percent-mid') && !$(mother).hasClass('num-items')) {
+                    var cs_mid_percent = target.records.midterm.standing * 0.2;
+                    target.records.midterm.cs_percent = cs_mid_percent;
+                    $(this).append("<td></td>").text(cs_mid_percent + "%");
+                }
 
-			else if ($(this).hasClass('table-items-midterm-score')) {
-				target.records.midterm.term_exam = $(this).html().replace('<br>', '');
-                num_items_obj.midterm.term_exam = $(this).html().replace('<br>', '');
-			}
+                else if ($(this).hasClass('table-items-quiz-mid')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "midterm quiz");
+                    target.records.midterm.quiz.push(value);
+                }
+                else if ($(this).hasClass('table-items-longExam-mid')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "midterm LE");
+                    target.records.midterm.long_exam.push(value);
+                }
 
-			else if ($(this).hasClass('table-items-midterm-percent') && !$(mother).hasClass('num-items')) {
-				var exam_percent = (target.records.midterm.term_exam / num_items_obj.midterm.term_exam) * 40;
-				target.records.midterm.exam_percent = exam_percent;
-				$(this).append("<td></td>").text(exam_percent + "%");
-			}
+                else if ($(this).hasClass('table-items-quiz-longExam-total-mid') && !$(mother).hasClass('num-items')) {
+                    var mid_qzle_total = 0;
+                    var total_qzle_cols = num_items_obj.midterm.quiz.length + num_items_obj.midterm.long_exam.length;
 
-			else if ($(this).hasClass('table-items-midterm-grade') && !$(mother).hasClass('num-items')) {
-				var midterm_grade = target.records.midterm.exam_percent + target.records.midterm.qzle_percent + target.records.midterm.cs_percent + target.records.midterm.att_percent;
-				target.records.midterm.grade = midterm_grade;
-				$(this).append("<td></td>").text(midterm_grade + "%");
-			}
+                    for (var i = 0; i < num_items_obj.midterm.quiz.length; i++) {
+                        mid_qzle_total = mid_qzle_total + (target.records.midterm.quiz[i] / num_items_obj.midterm.quiz[i]);
+                    }
 
-			else if ($(this).hasClass('table-items-midterm-rating') && !$(mother).hasClass('num-items')) {
-				var rating = 0;
-				if (97 <= target.records.midterm.grade && target.records.midterm.grade <= 100) {
-					rating = 1;
-				}	else if (94 <= target.records.midterm.grade && target.records.midterm.grade <= 96) {
-					rating = 1.25;
-				} else if (91 <= target.records.midterm.grade && target.records.midterm.grade <= 93) {
-					rating = 1.5;
-				} else if (88 <= target.records.midterm.grade && target.records.midterm.grade <= 90) {
-					rating = 1.75;
-				} else if (85 <= target.records.midterm.grade && target.records.midterm.grade <= 87) {
-					rating = 2.0;
-				} else if (82 <= target.records.midterm.grade && target.records.midterm.grade <= 84) {
-					rating = 2.25;
-				} else if (79 <= target.records.midterm.grade && target.records.midterm.grade <= 81) {
-					rating = 2.5;
-				} else if (76 <= target.records.midterm.grade && target.records.midterm.grade <= 78) {
-					rating = 2.75;
-				} else if (target.records.midterm.grade == 75) {
-					rating = 3.0;
-				} else if (target.records.midterm.grade <= 74) {
-					rating = 5.0;
-				}
-				target.records.midterm.rating = rating;
-				$(this).append("<td></td>").text(rating);
-			}
+                    for (var i = 0; i < num_items_obj.midterm.long_exam.length; i++) {
+                        mid_qzle_total = mid_qzle_total + (target.records.midterm.long_exam[i] / num_items_obj.midterm.long_exam[i]);
+                    }
 
-			else if ($(this).hasClass('table-items-assign-finals')) {
-				target.records.finals.assignment.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-seatwork-finals')) {
-				target.records.finals.seatwork.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-exercise-finals')) {
-				target.records.finals.exercise.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-recitation-finals')) {
-				target.records.finals.recitation.push(($(this).html()).replace('<br>', ''));
-			}
+                    mid_qzle_total = (mid_qzle_total/total_qzle_cols) * 100;
+                    target.records.midterm.qzle_total = mid_qzle_total;
+                    $(this).append("<td></td>").text(mid_qzle_total);
+                }
 
-			else if ($(this).hasClass('table-items-standing-total-finals') && !$(mother).hasClass('num-items')) {
-				var fin_standing_total = 0;
-				var total_cs_cols = num_items_obj.finals.assignment.length + num_items_obj.finals.seatwork.length;
-				total_cs_cols = total_cs_cols + num_items_obj.finals.exercise.length + num_items_obj.finals.recitation.length;
+                else if ($(this).hasClass('table-items-quiz-longExam-percent-mid') && !$(mother).hasClass('num-items')) {
+                    var qzle_mid_percent = target.records.midterm.qzle_total * 0.3;
+                    target.records.midterm.qzle_percent = qzle_mid_percent;
+                    $(this).append("<td></td>").text(qzle_mid_percent + "%");
+                }
 
-				for (var i = 0; i < num_items_obj.finals.assignment.length; i++) {
-					fin_standing_total = fin_standing_total + (target.records.finals.assignment[i]/num_items_obj.finals.assignment[i]);
-				}
+                else if ($(this).hasClass('table-items-midterm-score')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "midterm exam");
+                    target.records.midterm.term_exam = value;
+                    num_items_obj.midterm.term_exam = value;
+                }
 
-				for (var i = 0; i < num_items_obj.finals.seatwork.length; i++) {
-					fin_standing_total = fin_standing_total + (target.records.finals.seatwork[i]/num_items_obj.finals.seatwork[i]);
-				}
+                else if ($(this).hasClass('table-items-midterm-percent') && !$(mother).hasClass('num-items')) {
+                    var exam_percent = (target.records.midterm.term_exam / num_items_obj.midterm.term_exam) * 40;
+                    target.records.midterm.exam_percent = exam_percent;
+                    $(this).append("<td></td>").text(exam_percent + "%");
+                }
 
-				for (var i = 0; i < num_items_obj.finals.exercise.length; i++) {
-					fin_standing_total = fin_standing_total + (target.records.finals.exercise[i]/num_items_obj.finals.exercise[i]);
-				}
+                else if ($(this).hasClass('table-items-midterm-grade') && !$(mother).hasClass('num-items')) {
+                    var midterm_grade = target.records.midterm.exam_percent + target.records.midterm.qzle_percent + target.records.midterm.cs_percent + target.records.midterm.att_percent;
+                    target.records.midterm.grade = midterm_grade;
+                    $(this).append("<td></td>").text(midterm_grade + "%");
+                }
 
-				for (var i = 0; i < num_items_obj.finals.recitation.length; i++) {
-					fin_standing_total = fin_standing_total + (target.records.finals.recitation[i]/num_items_obj.finals.recitation[i]);
-				}
+                else if ($(this).hasClass('table-items-midterm-rating') && !$(mother).hasClass('num-items')) {
+                    var rating = 0;
+                    if (97 <= target.records.midterm.grade && target.records.midterm.grade <= 100) {
+                        rating = 1;
+                    }	else if (94 <= target.records.midterm.grade && target.records.midterm.grade <= 96) {
+                        rating = 1.25;
+                    } else if (91 <= target.records.midterm.grade && target.records.midterm.grade <= 93) {
+                        rating = 1.5;
+                    } else if (88 <= target.records.midterm.grade && target.records.midterm.grade <= 90) {
+                        rating = 1.75;
+                    } else if (85 <= target.records.midterm.grade && target.records.midterm.grade <= 87) {
+                        rating = 2.0;
+                    } else if (82 <= target.records.midterm.grade && target.records.midterm.grade <= 84) {
+                        rating = 2.25;
+                    } else if (79 <= target.records.midterm.grade && target.records.midterm.grade <= 81) {
+                        rating = 2.5;
+                    } else if (76 <= target.records.midterm.grade && target.records.midterm.grade <= 78) {
+                        rating = 2.75;
+                    } else if (target.records.midterm.grade == 75) {
+                        rating = 3.0;
+                    } else if (target.records.midterm.grade <= 74) {
+                        rating = 5.0;
+                    }
+                    target.records.midterm.rating = rating;
+                    $(this).append("<td></td>").text(rating);
+                }
 
-				fin_standing_total = (fin_standing_total/total_cs_cols) * 100;
-				target.records.finals.standing = fin_standing_total;
-				$(this).append("<td></td>").text(fin_standing_total);
-			}
+                else if ($(this).hasClass('table-items-assign-finals')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final quiz");
+                    target.records.finals.assignment.push(value);
+                }
+                else if ($(this).hasClass('table-items-seatwork-finals')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final seatwork");
+                    target.records.finals.seatwork.push(($(this).html()).replace('<br>', ''));
+                }
+                else if ($(this).hasClass('table-items-exercise-finals')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final exercise");
+                    target.records.finals.exercise.push(value);
+                }
+                else if ($(this).hasClass('table-items-recitation-finals')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final recitation");
+                    target.records.finals.recitation.push();
+                }
 
-			else if ($(this).hasClass('table-items-standing-percent-finals') && !$(mother).hasClass('num-items')) {
-				var cs_fin_percent = target.records.finals.standing * 0.2;
-				target.records.finals.cs_percent = cs_fin_percent;
-				$(this).append("<td></td>").text(cs_fin_percent + "%");
-			}
+                else if ($(this).hasClass('table-items-standing-total-finals') && !$(mother).hasClass('num-items')) {
+                    var fin_standing_total = 0;
+                    var total_cs_cols = num_items_obj.finals.assignment.length + num_items_obj.finals.seatwork.length;
+                    total_cs_cols = total_cs_cols + num_items_obj.finals.exercise.length + num_items_obj.finals.recitation.length;
 
-			else if ($(this).hasClass('table-items-quiz-finals')) {
-				target.records.finals.quiz.push(($(this).html()).replace('<br>', ''));
-			}
-			else if ($(this).hasClass('table-items-longExam-finals')) {
-				target.records.finals.long_exam.push(($(this).html()).replace('<br>', ''));
-			}
+                    for (var i = 0; i < num_items_obj.finals.assignment.length; i++) {
+                        fin_standing_total = fin_standing_total + (target.records.finals.assignment[i]/num_items_obj.finals.assignment[i]);
+                    }
 
-			else if ($(this).hasClass('table-items-quiz-longExam-total-finals') && !$(mother).hasClass('num-items')) {
-				var fin_qzle_total = 0;
-				var total_qzle_cols = num_items_obj.finals.quiz.length + num_items_obj.finals.long_exam.length;
+                    for (var i = 0; i < num_items_obj.finals.seatwork.length; i++) {
+                        fin_standing_total = fin_standing_total + (target.records.finals.seatwork[i]/num_items_obj.finals.seatwork[i]);
+                    }
 
-				for (var i = 0; i < num_items_obj.finals.quiz.length; i++) {
-					fin_qzle_total = fin_qzle_total + (target.records.finals.quiz[i] / num_items_obj.finals.quiz[i])
-				}
+                    for (var i = 0; i < num_items_obj.finals.exercise.length; i++) {
+                        fin_standing_total = fin_standing_total + (target.records.finals.exercise[i]/num_items_obj.finals.exercise[i]);
+                    }
 
-				for (var i = 0; i < num_items_obj.finals.long_exam.length; i++) {
-					fin_qzle_total = fin_qzle_total + (target.records.finals.long_exam[i] / num_items_obj.finals.long_exam[i])
-				}
+                    for (var i = 0; i < num_items_obj.finals.recitation.length; i++) {
+                        fin_standing_total = fin_standing_total + (target.records.finals.recitation[i]/num_items_obj.finals.recitation[i]);
+                    }
 
-				fin_qzle_total = (fin_qzle_total/total_qzle_cols) * 100;
-				target.records.finals.qzle_total = fin_qzle_total;
-				$(this).append("<td></td>").text(fin_qzle_total);
-			}
+                    fin_standing_total = (fin_standing_total/total_cs_cols) * 100;
+                    target.records.finals.standing = fin_standing_total;
+                    $(this).append("<td></td>").text(fin_standing_total);
+                }
 
-			else if ($(this).hasClass('table-items-quiz-longExam-percent-finals') && !$(mother).hasClass('num-items')) {
-				var qzle_fin_percent = target.records.finals.qzle_total * 0.3;
-				target.records.finals.qzle_percent = qzle_fin_percent;
-				$(this).append("<td></td>").text(qzle_fin_percent + "%");
-			}
+                else if ($(this).hasClass('table-items-standing-percent-finals') && !$(mother).hasClass('num-items')) {
+                    var cs_fin_percent = target.records.finals.standing * 0.2;
+                    target.records.finals.cs_percent = cs_fin_percent;
+                    $(this).append("<td></td>").text(cs_fin_percent + "%");
+                }
 
-			else if ($(this).hasClass('table-items-finals-score')) {
-				target.records.finals.term_exam = ($(this).html()).replace('<br>', '');
-			}
+                else if ($(this).hasClass('table-items-quiz-finals')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final quiz");
+                    target.records.finals.quiz.push(value);
+                }
+                else if ($(this).hasClass('table-items-longExam-finals')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final LE");
+                    target.records.finals.long_exam.push(value);
+                }
 
-			else if ($(this).hasClass('table-items-finals-percent') && !$(mother).hasClass('num-items')) {
-				var exam_percent = (target.records.finals.term_exam/num_items_obj.finals.term_exam) * 40;
-				target.records.finals.exam_percent = exam_percent;
-				$(this).append("<td></td>").text(exam_percent + "%");
-			}
+                else if ($(this).hasClass('table-items-quiz-longExam-total-finals') && !$(mother).hasClass('num-items')) {
+                    var fin_qzle_total = 0;
+                    var total_qzle_cols = num_items_obj.finals.quiz.length + num_items_obj.finals.long_exam.length;
 
-			else if ($(this).hasClass('table-items-finals-grade') && !$(mother).hasClass('num-items')) {
-				var finals_grade = target.records.finals.exam_percent + target.records.finals.qzle_percent + target.records.finals.cs_percent + target.records.finals.att_percent;
-				target.records.finals.grade = finals_grade;
-				$(this).append("<td></td>").text(finals_grade + "%");
-			}
+                    for (var i = 0; i < num_items_obj.finals.quiz.length; i++) {
+                        fin_qzle_total = fin_qzle_total + (target.records.finals.quiz[i] / num_items_obj.finals.quiz[i])
+                    }
 
-			else if ($(this).hasClass('table-items-finals-rating') && !$(mother).hasClass('num-items')) {
-				var rating = 0;
-				if (97 <= target.records.finals.grade && target.records.finals.grade <= 100) {
-					rating = 1.0;
-				}	else if (94 <= target.records.finals.grade && target.records.finals.grade <= 96) {
-					rating = 1.25;
-				} else if (91 <= target.records.finals.grade && target.records.finals.grade <= 93) {
-					rating = 1.5;
-				} else if (88 <= target.records.finals.grade && target.records.finals.grade <= 90) {
-					rating = 1.75;
-				} else if (85 <= target.records.finals.grade && target.records.finals.grade <= 87) {
-					rating = 2.0;
-				} else if (82 <= target.records.finals.grade && target.records.finals.grade <= 84) {
-					rating = 2.25;
-				} else if (79 <= target.records.finals.grade && target.records.finals.grade <= 81) {
-					rating = 2.5;
-				} else if (76 <= target.records.finals.grade && target.records.finals.grade <= 78) {
-					rating = 2.75;
-				} else if (target.records.finals.grade == 75) {
-					rating = 3.0;
-				} else if (target.records.finals.grade <= 74) {
-					rating = 5.0;
-				}
+                    for (var i = 0; i < num_items_obj.finals.long_exam.length; i++) {
+                        fin_qzle_total = fin_qzle_total + (target.records.finals.long_exam[i] / num_items_obj.finals.long_exam[i])
+                    }
 
-				target.records.finals.rating = rating;
-				$(this).append("<td></td>").text(rating);
-			}
+                    fin_qzle_total = (fin_qzle_total/total_qzle_cols) * 100;
+                    target.records.finals.qzle_total = fin_qzle_total;
+                    $(this).append("<td></td>").text(fin_qzle_total);
+                }
 
-		});
-	};
+                else if ($(this).hasClass('table-items-quiz-longExam-percent-finals') && !$(mother).hasClass('num-items')) {
+                    var qzle_fin_percent = target.records.finals.qzle_total * 0.3;
+                    target.records.finals.qzle_percent = qzle_fin_percent;
+                    $(this).append("<td></td>").text(qzle_fin_percent + "%");
+                }
+
+                else if ($(this).hasClass('table-items-finals-score')) {
+                    value = $(this).html().replace('<br>', '');
+                    checkIfValid(value, mother, target, "final exam");
+                    target.records.finals.term_exam = (value);
+                }
+
+                else if ($(this).hasClass('table-items-finals-percent') && !$(mother).hasClass('num-items')) {
+                    var exam_percent = (target.records.finals.term_exam/num_items_obj.finals.term_exam) * 40;
+                    target.records.finals.exam_percent = exam_percent;
+                    $(this).append("<td></td>").text(exam_percent + "%");
+                }
+
+                else if ($(this).hasClass('table-items-finals-grade') && !$(mother).hasClass('num-items')) {
+                    var finals_grade = target.records.finals.exam_percent + target.records.finals.qzle_percent + target.records.finals.cs_percent + target.records.finals.att_percent;
+                    target.records.finals.grade = finals_grade;
+                    $(this).append("<td></td>").text(finals_grade + "%");
+                }
+
+                else if ($(this).hasClass('table-items-finals-rating') && !$(mother).hasClass('num-items')) {
+                    var rating = 0;
+                    if (97 <= target.records.finals.grade && target.records.finals.grade <= 100) {
+                        rating = 1.0;
+                    }	else if (94 <= target.records.finals.grade && target.records.finals.grade <= 96) {
+                        rating = 1.25;
+                    } else if (91 <= target.records.finals.grade && target.records.finals.grade <= 93) {
+                        rating = 1.5;
+                    } else if (88 <= target.records.finals.grade && target.records.finals.grade <= 90) {
+                        rating = 1.75;
+                    } else if (85 <= target.records.finals.grade && target.records.finals.grade <= 87) {
+                        rating = 2.0;
+                    } else if (82 <= target.records.finals.grade && target.records.finals.grade <= 84) {
+                        rating = 2.25;
+                    } else if (79 <= target.records.finals.grade && target.records.finals.grade <= 81) {
+                        rating = 2.5;
+                    } else if (76 <= target.records.finals.grade && target.records.finals.grade <= 78) {
+                        rating = 2.75;
+                    } else if (target.records.finals.grade == 75) {
+                        rating = 3.0;
+                    } else if (target.records.finals.grade <= 74) {
+                        rating = 5.0;
+                    }
+
+                    target.records.finals.rating = rating;
+                    $(this).append("<td></td>").text(rating);
+                }
+
+		    });
+    };
     /*** END LECTURE INITIALIZE ***/
     
 
@@ -768,6 +816,25 @@ var return_object = {};
 	//  alert(subject.students[0].name);
 	//  alert(subject.students[0].code);
 	return return_object;
+    
+    
+}
+
+// error checking
+function checkIfValid(value, mother, target, field)
+{
+    if ((isNaN(value)) || (value === ''))
+    {
+        if (mother === 'table .num-items')
+        {
+            throw "Invalid value on the number-of-items of a " + field + ".";                         
+        }
+                        
+        else
+        {
+            throw "Invalid value on a " + field + " score of student " + target.name + ".";
+        }                                          
+     }
 }
 
 function saveComputedData(id) {
