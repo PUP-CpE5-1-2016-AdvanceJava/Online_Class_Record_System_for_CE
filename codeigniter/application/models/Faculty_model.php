@@ -81,4 +81,42 @@ class Faculty_model extends CI_Model
 		$this->db->update('class', $object);
 		return;
 	}
+
+	function get_archive($dept)
+	{
+		$this->db->select('*')->from('class')->where('IsUploaded',TRUE);
+		$query = $this->db->get();
+		if (!$query->num_rows() > 0) return null;
+		$i = 0;
+		$base = base_url();
+		$path = $base.'resources/reports/';
+		foreach ($query->result_array() as $class) {
+			if ($dept)
+			{
+				//check if same department
+				$subj_id = $class["SubjectId"];
+				$this->db->where('Id',$subj_id);
+				$query_subj = $this->db->get('subjects');
+
+				$subj = $query_subj->row();
+
+				$user_id = $subj->UserId;
+				$this->db->where('Id',$user_id);
+				$query_users = $this->db->get('users');
+
+				$user = $query_users->row();
+
+				if ($dept == $user->UserDept)
+				{
+					$data[$class["Filename"]] = $path.$class["Filename"];
+				}
+			}
+			else
+			{
+				$data[$class["Filename"]] = $path.$class["Filename"];
+			}
+			
+		}
+		return $data;
+	}
 }
