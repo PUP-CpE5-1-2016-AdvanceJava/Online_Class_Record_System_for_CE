@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2016 at 03:01 AM
+-- Generation Time: Apr 06, 2016 at 03:55 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -127,23 +127,23 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   `Score` float NOT NULL,
   `Rating` float DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attendance`
 --
 
 INSERT INTO `attendance` (`Id`, `StudId`, `AttNum`, `Status`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, NULL, 0, NULL, 'Midterm'),
-(2, 1, 1, NULL, 0, NULL, 'Finals'),
-(3, 2, 1, NULL, 0, NULL, 'Midterm'),
-(4, 2, 1, NULL, 0, NULL, 'Finals'),
-(5, 3, 1, NULL, 0, NULL, 'Midterm'),
-(6, 3, 1, NULL, 0, NULL, 'Finals'),
-(7, 4, 1, NULL, 0, NULL, 'Midterm'),
-(8, 4, 1, NULL, 0, NULL, 'Finals'),
-(9, 5, 1, NULL, 0, NULL, 'Midterm'),
-(10, 5, 1, NULL, 0, NULL, 'Finals'),
+(1, 1, 1, NULL, 1, NULL, 'Midterm'),
+(2, 1, 1, NULL, 1, NULL, 'Finals'),
+(3, 2, 1, NULL, 2, NULL, 'Midterm'),
+(4, 2, 1, NULL, 2, NULL, 'Finals'),
+(5, 3, 1, NULL, 3, NULL, 'Midterm'),
+(6, 3, 1, NULL, 3, NULL, 'Finals'),
+(7, 4, 1, NULL, 4, NULL, 'Midterm'),
+(8, 4, 1, NULL, 4, NULL, 'Finals'),
+(9, 5, 1, NULL, 5, NULL, 'Midterm'),
+(10, 5, 1, NULL, 5, NULL, 'Finals'),
 (11, 6, 1, NULL, 0, NULL, 'Midterm'),
 (12, 6, 1, NULL, 0, NULL, 'Finals'),
 (13, 7, 1, NULL, 0, NULL, 'Midterm'),
@@ -205,7 +205,79 @@ INSERT INTO `attendance` (`Id`, `StudId`, `AttNum`, `Status`, `Score`, `Rating`,
 (69, 35, 1, NULL, 0, NULL, 'Midterm'),
 (70, 35, 1, NULL, 0, NULL, 'Finals'),
 (71, 36, 1, NULL, 0, NULL, 'Midterm'),
-(72, 36, 1, NULL, 0, NULL, 'Finals');
+(72, 36, 1, NULL, 0, NULL, 'Finals'),
+(73, 1, 2, NULL, 1.5, NULL, 'Midterm'),
+(74, 2, 2, NULL, 2, NULL, 'Midterm'),
+(75, 3, 2, NULL, 3, NULL, 'Midterm'),
+(76, 4, 2, NULL, 4, NULL, 'Midterm'),
+(77, 5, 2, NULL, 5, NULL, 'Midterm'),
+(78, 6, 2, NULL, 0, NULL, 'Midterm'),
+(79, 7, 2, NULL, 0, NULL, 'Midterm'),
+(80, 8, 2, NULL, 0, NULL, 'Midterm'),
+(81, 9, 2, NULL, 0, NULL, 'Midterm'),
+(82, 10, 2, NULL, 0, NULL, 'Midterm'),
+(83, 11, 2, NULL, 0, NULL, 'Midterm'),
+(84, 12, 2, NULL, 0, NULL, 'Midterm'),
+(85, 13, 2, NULL, 0, NULL, 'Midterm'),
+(86, 14, 2, NULL, 0, NULL, 'Midterm'),
+(87, 15, 2, NULL, 0, NULL, 'Midterm'),
+(88, 16, 2, NULL, 0, NULL, 'Midterm'),
+(89, 17, 2, NULL, 0, NULL, 'Midterm'),
+(90, 18, 2, NULL, 0, NULL, 'Midterm'),
+(91, 19, 2, NULL, 0, NULL, 'Midterm'),
+(92, 20, 2, NULL, 0, NULL, 'Midterm'),
+(93, 21, 2, NULL, 0, NULL, 'Midterm'),
+(94, 22, 2, NULL, 0, NULL, 'Midterm'),
+(95, 23, 2, NULL, 0, NULL, 'Midterm'),
+(96, 24, 2, NULL, 0, NULL, 'Midterm'),
+(97, 25, 2, NULL, 0, NULL, 'Midterm'),
+(98, 26, 2, NULL, 0, NULL, 'Midterm'),
+(99, 27, 2, NULL, 0, NULL, 'Midterm'),
+(100, 28, 2, NULL, 0, NULL, 'Midterm'),
+(101, 29, 2, NULL, 0, NULL, 'Midterm'),
+(102, 30, 2, NULL, 0, NULL, 'Midterm'),
+(103, 31, 2, NULL, 0, NULL, 'Midterm'),
+(104, 32, 2, NULL, 0, NULL, 'Midterm'),
+(105, 33, 2, NULL, 0, NULL, 'Midterm'),
+(106, 34, 2, NULL, 0, NULL, 'Midterm'),
+(107, 35, 2, NULL, 0, NULL, 'Midterm'),
+(108, 36, 2, NULL, 0, NULL, 'Midterm'),
+(109, 1, 2, NULL, 1.5, NULL, 'Finals'),
+(110, 2, 2, NULL, 2, NULL, 'Finals'),
+(111, 3, 2, NULL, 3, NULL, 'Finals'),
+(112, 4, 2, NULL, 4, NULL, 'Finals'),
+(113, 5, 2, NULL, 5, NULL, 'Finals'),
+(114, 6, 2, NULL, 0, NULL, 'Finals'),
+(115, 7, 2, NULL, 0, NULL, 'Finals'),
+(116, 8, 2, NULL, 0, NULL, 'Finals'),
+(117, 9, 2, NULL, 0, NULL, 'Finals'),
+(118, 10, 2, NULL, 0, NULL, 'Finals'),
+(119, 11, 2, NULL, 0, NULL, 'Finals'),
+(120, 12, 2, NULL, 0, NULL, 'Finals'),
+(121, 13, 2, NULL, 0, NULL, 'Finals'),
+(122, 14, 2, NULL, 0, NULL, 'Finals'),
+(123, 15, 2, NULL, 0, NULL, 'Finals'),
+(124, 16, 2, NULL, 0, NULL, 'Finals'),
+(125, 17, 2, NULL, 0, NULL, 'Finals'),
+(126, 18, 2, NULL, 0, NULL, 'Finals'),
+(127, 19, 2, NULL, 0, NULL, 'Finals'),
+(128, 20, 2, NULL, 0, NULL, 'Finals'),
+(129, 21, 2, NULL, 0, NULL, 'Finals'),
+(130, 22, 2, NULL, 0, NULL, 'Finals'),
+(131, 23, 2, NULL, 0, NULL, 'Finals'),
+(132, 24, 2, NULL, 0, NULL, 'Finals'),
+(133, 25, 2, NULL, 0, NULL, 'Finals'),
+(134, 26, 2, NULL, 0, NULL, 'Finals'),
+(135, 27, 2, NULL, 0, NULL, 'Finals'),
+(136, 28, 2, NULL, 0, NULL, 'Finals'),
+(137, 29, 2, NULL, 0, NULL, 'Finals'),
+(138, 30, 2, NULL, 0, NULL, 'Finals'),
+(139, 31, 2, NULL, 0, NULL, 'Finals'),
+(140, 32, 2, NULL, 0, NULL, 'Finals'),
+(141, 33, 2, NULL, 0, NULL, 'Finals'),
+(142, 34, 2, NULL, 0, NULL, 'Finals'),
+(143, 35, 2, NULL, 0, NULL, 'Finals'),
+(144, 36, 2, NULL, 0, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -966,7 +1038,17 @@ CREATE TABLE IF NOT EXISTS `mod_att` (
   `AttNum` int(11) NOT NULL,
   `AttDate` date NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mod_att`
+--
+
+INSERT INTO `mod_att` (`Id`, `ClassId`, `AttNum`, `AttDate`, `Sem`) VALUES
+(1, 1, 1, '2016-04-06', 'Midterm'),
+(2, 1, 1, '2016-04-06', 'Finals'),
+(3, 1, 2, '2016-04-07', 'Midterm'),
+(4, 1, 2, '2016-04-07', 'Finals');
 
 -- --------------------------------------------------------
 
@@ -2220,7 +2302,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=145;
 --
 -- AUTO_INCREMENT for table `calendar`
 --
@@ -2270,7 +2352,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `mod_att`
 --
 ALTER TABLE `mod_att`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `mod_ex`
 --
