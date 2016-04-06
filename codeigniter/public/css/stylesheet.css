@@ -218,7 +218,7 @@
 	/*CALENDAR*/
 	#calendar-h2-month{font-size: 30px;}
 	#today-button{padding: 0px 14px!important; }
-	#event-title h2 {font-size:28px;}
+	#event-title h2 {font-size:20px;}
 	#current-event-date{font-size: 16px;}
 	#year-button{width: 70%; font-size: 12px !important; padding: 5px;}
 	#month-button{width: 70%; font-size: 12px !important; padding: 5px}
@@ -284,8 +284,8 @@
 	#calendar-h2-month{font-size: 22px;}
 	#calendar-days{font-size: 12px;}
 	#calendar-tbody tr td{height:70px!important; max-height: 70px;}
-	#event-title h2 {font-size:24px;}
-	#current-event-date{font-size: 14px;}
+	#event-title h2 {font-size:16px;}
+	#current-event-date{font-size: 12px;}
 	#button-group1{padding:0;}
 	#button-group2{padding:0;}
 	#back span{font-size: .7em;} 
