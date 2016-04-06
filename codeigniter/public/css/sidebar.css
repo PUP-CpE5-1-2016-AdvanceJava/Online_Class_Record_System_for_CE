@@ -18,7 +18,7 @@
 #sidebar-wrapper ul{ margin: 0px; padding: 0px; font-size: 1.6em; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #9f9e9c; width: 300px; }
 #sidebar-wrapper ul i{ padding: 0px 10px;}
 #sidebar-wrapper ul li{ font-size: 0.7em; padding-left: 10px; }
-#sidebar-wrapper a:link, #sidebar-wrapper a:visited{ text-decoration: none; }
+#sidebar-wrapper a:link, #sidebar-wrapper a:visited{ text-decoration: none; padding-right: 57px; }
 
 /*ACCORDION STYLES*/
 .icon-class-record:before { content: "\e900";}
@@ -35,8 +35,8 @@
 
 /*MODIFIED WRAPPERS*/
 #footer-wrapper{ margin-top: 0px; }
-#main-content-wrapper{ padding-left: 0px; padding-right: 0; }
-#main-col-wrapper{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; max-width: 1076px;}
+#main-content-wrapper{ padding-left: 0px; padding-right: 0; overflow-x: hidden;}
+#main-col-wrapper{ display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; width: 1263px; overflow-x: hidden;}
 li { list-style-type: none; }
 
 /*------------------MEDIA QUERIES-----------------*/
@@ -64,11 +64,12 @@ li { list-style-type: none; }
 	#sidebar-subMenu a.hideOverflow{font-size: 13px}
 	#sidebar-item{font-size: 12px}
 	#sidebar-wrapper{width: 310px;}
+	/*#sidebar-wrapper.collapsed{ width: 60px !important; }*/
 	
 }
 @media only screen and (max-width:480px) {
 	.icon-class-record , .icon-modules{font-size: 15px}
-
+	/*#sidebar-wrapper.collapsed{ width: 77px !important; }*/
 	#sidebar-menu{font-size: 14px}
 	#sidebar-subMenu a.hideOverflow{font-size: 11px}
 	#sidebar-item{font-size: 10px}
