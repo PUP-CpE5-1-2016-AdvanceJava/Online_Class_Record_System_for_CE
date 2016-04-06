@@ -95,6 +95,8 @@
 /*FOOTER FIX AT BOTTOM - SOLUTION*/
 #table-content-wrapper, #sidebar-content-wrapper { min-height: 500px;}
 
+.row{margin-right: 0}
+
 /*------------------MEDIA QUERIES-----------------*/
 
 
