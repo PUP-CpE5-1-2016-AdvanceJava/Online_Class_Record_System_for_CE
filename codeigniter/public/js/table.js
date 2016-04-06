@@ -162,7 +162,6 @@ $(document).ready(function(){
 				'att_final_num':att_final_num,
 			}
 		}
-		console.log(data);
 		$.ajax({
 			url: 'save_table',
 			type: "POST",
@@ -171,14 +170,12 @@ $(document).ready(function(){
 			cache: false,
     		// contentType: "application/jsonrequest; charset=utf-8",
 			success: function(res) {
-				console.log(res);
 				alert("Table has been saved.")
 			}
 		})
 	})
 
     $('div h3 span button#table-upload-button').click(function(e){
-    	console.log("upload pdf");
 	    //getting values of current time for generating the file name
 	    var classId = get_class_id();
 	    var classBlock = get_class_block();

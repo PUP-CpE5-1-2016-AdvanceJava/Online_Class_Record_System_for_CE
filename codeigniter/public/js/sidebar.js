@@ -119,7 +119,6 @@ function get_class_table(link)
     {
       if (response.status == 'OK')
       {
-        console.log(response);
         //--clear sidebars content ang table content first to avoid bugs--//
         $("ul>li[name='sheet_submenu']").empty();
         $("ul>li[name='module_submenu']").empty();
@@ -930,8 +929,6 @@ function get_class_table(link)
             }
             midtermCounter = response['assign_mid_num']+response['sw_mid_num']+response['ex_mid_num']+response['rec_mid_num']+response['quiz_mid_num']+response['le_mid_num'] - 6;
             finalsCounter = response['assign_final_num']+response['sw_final_num']+response['ex_final_num']+response['rec_final_num']+response['quiz_final_num']+response['le_final_num'] - 6;
-            console.log("final_cs_cols:"+final_cs_cols);
-            console.log("final_qle_cols:"+final_qle_cols);
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
@@ -1960,7 +1957,7 @@ function add_column(parent)
                     $(this).attr('colspan',term_span);
                 });
             }
-            console.log(midtermCounter);
+
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"'>"+ label +" "+ label_num + "</th>"));
             $("tr td#"+items).after($("<td data-container='body' data-html='true' data-placement='bottom' id='"+newItems+"' contenteditable='true'></td>"));
