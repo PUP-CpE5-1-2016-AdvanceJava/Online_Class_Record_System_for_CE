@@ -1,5 +1,5 @@
 function getAllData() {
-    
+console.log('compute');    
     
 var target = {};
 var num_items_obj = {};
