@@ -883,7 +883,7 @@ var return_object = {};
 // error checking
 function checkIfValid(value, mother, target, field, check)
 {
-    if (isNaN(value) || (value === ''))
+    /*if (isNaN(value) || (value === ''))
     {
         if (mother === 'table .num-items')
         {
@@ -899,7 +899,7 @@ function checkIfValid(value, mother, target, field, check)
      else if ((check < value) && (check !== 0))
      {
          throw "The " + field + " of student " + target.name + " is much larger than its number-of-items.";
-     }
+     }*/
 }
 
 function saveComputedData(id) {
