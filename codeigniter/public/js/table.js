@@ -6,7 +6,8 @@
 $(document).ready(function(){
 	/*---SAVING TABLE DATA---*/
 	// Capture data on table when button save is clicked.
-	$('div>h3>span>button#table-save-button').click(function(){
+	$('span button#table-save-button').click(function(){
+		console.log("save");
 		var assign_mid_num,sw_mid_num,ex_mid_num,rec_mid_num,quiz_mid_num,le_mid_num;
 		var assign_final_num,sw_final_num,ex_final_num,rec_final_num,quiz_final_num,le_final_num;
 		var lab_mid_num,prac_mid_num,proj_mid_num;
@@ -162,7 +163,6 @@ $(document).ready(function(){
 				'att_final_num':att_final_num,
 			}
 		}
-		console.log(data);
 		$.ajax({
 			url: 'save_table',
 			type: "POST",
@@ -171,14 +171,12 @@ $(document).ready(function(){
 			cache: false,
     		// contentType: "application/jsonrequest; charset=utf-8",
 			success: function(res) {
-				console.log(res);
 				alert("Table has been saved.")
 			}
 		})
 	})
 
-    $('div h3 span button#table-upload-button').click(function(e){
-    	console.log("upload pdf");
+    $('span button#table-upload-button').click(function(e){
 	    //getting values of current time for generating the file name
 	    var classId = get_class_id();
 	    var classBlock = get_class_block();

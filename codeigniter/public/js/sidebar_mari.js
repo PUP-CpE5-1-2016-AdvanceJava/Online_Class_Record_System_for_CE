@@ -122,7 +122,7 @@ function get_class_table(link)
 						  <div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Compute</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
@@ -242,7 +242,6 @@ function get_class_table(link)
                                         </tr>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>\
                                 <script type='text/javascript' src='/js/save_table.js'></script>\
                             </div>\
@@ -293,7 +292,7 @@ function get_class_table(link)
                           <div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Compute</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
@@ -372,8 +371,8 @@ function get_class_table(link)
                                             </tr>\
                                     </table>\
                                 </div>\
-                                <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>\
+                                <script type='text/javascript' src='/js/save_table.js'></script>\
                             </div>\
                         </div>\
                       </div>");
@@ -403,7 +402,6 @@ function get_class_table(link)
                                             <td contenteditable='false' class='table-items-finals-grade'></td>\
                                             <td contenteditable='false' class='table-items-finals-rating'></td></tr>");
                 });
-            $('div#include_tooltip').append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
         }
         else if (response['table_type'] == "attendance_table")
@@ -413,7 +411,7 @@ function get_class_table(link)
                          <div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' id = 'table-save-button' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Save</button>\
+                          <h3>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span style='float:right'><button class='btn btn-success ' type='submit' onclick='getAllData()'><i class='fa fa-check'></i> Compute</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Upload</button></span></h3>\
                         </div><br>\
                         <div class='row'>\
@@ -440,7 +438,7 @@ function get_class_table(link)
                                             </tr>\
                                         </table>\
                                     </div>\
-                                    <script type='text/javascript' src='/js/tooltipMarci.js'></script>\
+                                    <script type='text/javascript' src='/js/save_table.js'></script>\
                                 </div>\
                         </div>\
                       </div>");
