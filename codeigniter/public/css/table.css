@@ -97,6 +97,7 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 	/*TABLE SAVE & UPLOAD BUTTONS*/
 	#table-save-button{position: static; margin-left: 10px; font-size: 15px;}
 	#table-upload-button{position: static; margin-left: 10px; font-size: 15px;}
+	#table-compute-button{font-size: 15px;}
 }
 @media only screen and (max-width:480px) {
 	#table-content-wrapper{padding-left: 10px;}
@@ -104,6 +105,7 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 	/*TABLE SAVE & UPLOAD BUTTONS*/
 	#table-save-button{position: static; margin-left: 30px; font-size: 10px; margin-top: 10px;}
 	#table-upload-button{position: static; font-size: 10px; margin-top: 10px;}
+	#table-compute-button{font-size: 10px; margin-top: 10px;}
 	#table-h3{max-width: 270px}
 
 }
