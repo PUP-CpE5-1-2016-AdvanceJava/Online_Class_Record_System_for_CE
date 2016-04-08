@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2016 at 03:55 PM
+-- Generation Time: Apr 08, 2016 at 03:06 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `assignment` (
 --
 
 INSERT INTO `assignment` (`Id`, `StudId`, `AssignNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 1.00, NULL, 'Midterm'),
-(2, 2, 1, 2.00, NULL, 'Midterm'),
+(1, 1, 1, 20.00, NULL, 'Midterm'),
+(2, 2, 1, 10.00, NULL, 'Midterm'),
 (3, 3, 1, 3.00, NULL, 'Midterm'),
 (4, 4, 1, 4.00, NULL, 'Midterm'),
 (5, 5, 1, 5.00, NULL, 'Midterm'),
@@ -340,8 +340,8 @@ CREATE TABLE IF NOT EXISTS `exercises` (
 --
 
 INSERT INTO `exercises` (`Id`, `StudId`, `ExNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 1.00, NULL, 'Midterm'),
-(2, 2, 1, 2.00, NULL, 'Midterm'),
+(1, 1, 1, 20.00, NULL, 'Midterm'),
+(2, 2, 1, 30.00, NULL, 'Midterm'),
 (3, 3, 1, 3.00, NULL, 'Midterm'),
 (4, 4, 1, 4.00, NULL, 'Midterm'),
 (5, 5, 1, 5.00, NULL, 'Midterm'),
@@ -876,8 +876,8 @@ CREATE TABLE IF NOT EXISTS `long_exam` (
 --
 
 INSERT INTO `long_exam` (`Id`, `StudId`, `LExamNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 1.00, NULL, 'Midterm'),
-(2, 2, 1, 2.00, NULL, 'Midterm'),
+(1, 1, 1, 50.00, NULL, 'Midterm'),
+(2, 2, 1, 20.00, NULL, 'Midterm'),
 (3, 3, 1, 3.00, NULL, 'Midterm'),
 (4, 4, 1, 4.00, NULL, 'Midterm'),
 (5, 5, 1, 5.00, NULL, 'Midterm'),
@@ -967,40 +967,40 @@ CREATE TABLE IF NOT EXISTS `midterm_exam` (
 --
 
 INSERT INTO `midterm_exam` (`Id`, `StudId`, `Score`, `Rating`) VALUES
-(1, 1, 1.00, NULL),
-(2, 2, 2.00, NULL),
-(3, 3, 3.00, NULL),
-(4, 4, 4.00, NULL),
-(5, 5, 5.00, NULL),
+(1, 1, 50.00, NULL),
+(2, 2, 80.00, NULL),
+(3, 3, 40.00, NULL),
+(4, 4, 120.00, NULL),
+(5, 5, 40.00, NULL),
 (6, 6, 0.00, NULL),
-(7, 7, 0.00, NULL),
+(7, 7, 40.00, NULL),
 (8, 8, 0.00, NULL),
-(9, 9, 0.00, NULL),
-(10, 10, 0.00, NULL),
-(11, 11, 0.00, NULL),
+(9, 9, 80.00, NULL),
+(10, 10, 1.00, NULL),
+(11, 11, 40.00, NULL),
 (12, 12, 0.00, NULL),
-(13, 13, 0.00, NULL),
+(13, 13, 4.00, NULL),
 (14, 14, 0.00, NULL),
 (15, 15, 0.00, NULL),
 (16, 16, 0.00, NULL),
-(17, 17, 0.00, NULL),
-(18, 18, 0.00, NULL),
+(17, 17, 5.00, NULL),
+(18, 18, 2.00, NULL),
 (19, 19, 0.00, NULL),
 (20, 20, 0.00, NULL),
-(21, 21, 0.00, NULL),
+(21, 21, 10.00, NULL),
 (22, 22, 0.00, NULL),
 (23, 23, 0.00, NULL),
 (24, 24, 0.00, NULL),
-(25, 25, 0.00, NULL),
-(26, 26, 0.00, NULL),
+(25, 25, 20.00, NULL),
+(26, 26, 0.10, NULL),
 (27, 27, 0.00, NULL),
 (28, 28, 0.00, NULL),
-(29, 29, 0.00, NULL),
+(29, 29, 30.00, NULL),
 (30, 30, 0.00, NULL),
 (31, 31, 0.00, NULL),
 (32, 32, 0.00, NULL),
 (33, 33, 0.00, NULL),
-(34, 34, 0.00, NULL),
+(34, 34, 0.12, NULL),
 (35, 35, 0.00, NULL),
 (36, 36, 0.00, NULL);
 
@@ -1216,7 +1216,7 @@ CREATE TABLE IF NOT EXISTS `mod_quiz` (
   `QuizNum` int(11) NOT NULL,
   `QuizItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mod_quiz`
@@ -1224,7 +1224,8 @@ CREATE TABLE IF NOT EXISTS `mod_quiz` (
 
 INSERT INTO `mod_quiz` (`Id`, `ClassId`, `QuizNum`, `QuizItems`, `Sem`) VALUES
 (1, 1, 1, 100, 'Midterm'),
-(2, 1, 1, 200, 'Finals');
+(2, 1, 1, 200, 'Finals'),
+(3, 1, 2, 100, 'Midterm');
 
 -- --------------------------------------------------------
 
@@ -1685,15 +1686,15 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quizzes`
 --
 
 INSERT INTO `quizzes` (`Id`, `StudId`, `QuizNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 1.00, NULL, 'Midterm'),
-(2, 2, 1, 2.00, NULL, 'Midterm'),
+(1, 1, 1, 50.00, NULL, 'Midterm'),
+(2, 2, 1, 20.00, NULL, 'Midterm'),
 (3, 3, 1, 3.00, NULL, 'Midterm'),
 (4, 4, 1, 4.00, NULL, 'Midterm'),
 (5, 5, 1, 5.00, NULL, 'Midterm'),
@@ -1763,7 +1764,43 @@ INSERT INTO `quizzes` (`Id`, `StudId`, `QuizNum`, `Score`, `Rating`, `Sem`) VALU
 (69, 33, 1, 0.00, NULL, 'Finals'),
 (70, 34, 1, 0.00, NULL, 'Finals'),
 (71, 35, 1, 0.00, NULL, 'Finals'),
-(72, 36, 1, 0.00, NULL, 'Finals');
+(72, 36, 1, 0.00, NULL, 'Finals'),
+(73, 1, 2, 50.00, NULL, 'Midterm'),
+(74, 2, 2, 10.00, NULL, 'Midterm'),
+(75, 3, 2, 0.00, NULL, 'Midterm'),
+(76, 4, 2, 0.00, NULL, 'Midterm'),
+(77, 5, 2, 0.00, NULL, 'Midterm'),
+(78, 6, 2, 0.00, NULL, 'Midterm'),
+(79, 7, 2, 0.00, NULL, 'Midterm'),
+(80, 8, 2, 0.00, NULL, 'Midterm'),
+(81, 9, 2, 0.00, NULL, 'Midterm'),
+(82, 10, 2, 0.00, NULL, 'Midterm'),
+(83, 11, 2, 0.00, NULL, 'Midterm'),
+(84, 12, 2, 0.00, NULL, 'Midterm'),
+(85, 13, 2, 0.00, NULL, 'Midterm'),
+(86, 14, 2, 0.00, NULL, 'Midterm'),
+(87, 15, 2, 0.00, NULL, 'Midterm'),
+(88, 16, 2, 0.00, NULL, 'Midterm'),
+(89, 17, 2, 0.00, NULL, 'Midterm'),
+(90, 18, 2, 0.00, NULL, 'Midterm'),
+(91, 19, 2, 0.00, NULL, 'Midterm'),
+(92, 20, 2, 0.00, NULL, 'Midterm'),
+(93, 21, 2, 0.00, NULL, 'Midterm'),
+(94, 22, 2, 0.00, NULL, 'Midterm'),
+(95, 23, 2, 0.00, NULL, 'Midterm'),
+(96, 24, 2, 0.00, NULL, 'Midterm'),
+(97, 25, 2, 0.00, NULL, 'Midterm'),
+(98, 26, 2, 0.00, NULL, 'Midterm'),
+(99, 27, 2, 0.00, NULL, 'Midterm'),
+(100, 28, 2, 0.00, NULL, 'Midterm'),
+(101, 29, 2, 0.00, NULL, 'Midterm'),
+(102, 30, 2, 0.00, NULL, 'Midterm'),
+(103, 31, 2, 0.00, NULL, 'Midterm'),
+(104, 32, 2, 0.00, NULL, 'Midterm'),
+(105, 33, 2, 0.00, NULL, 'Midterm'),
+(106, 34, 2, 0.00, NULL, 'Midterm'),
+(107, 35, 2, 0.00, NULL, 'Midterm'),
+(108, 36, 2, 0.00, NULL, 'Midterm');
 
 -- --------------------------------------------------------
 
@@ -1785,8 +1822,8 @@ CREATE TABLE IF NOT EXISTS `recitation` (
 --
 
 INSERT INTO `recitation` (`Id`, `StudId`, `RecNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 1.00, NULL, 'Midterm'),
-(2, 2, 1, 2.00, NULL, 'Midterm'),
+(1, 1, 1, 20.00, NULL, 'Midterm'),
+(2, 2, 1, 40.00, NULL, 'Midterm'),
 (3, 3, 1, 3.00, NULL, 'Midterm'),
 (4, 4, 1, 4.00, NULL, 'Midterm'),
 (5, 5, 1, 5.00, NULL, 'Midterm'),
@@ -1878,8 +1915,8 @@ CREATE TABLE IF NOT EXISTS `seatwork` (
 --
 
 INSERT INTO `seatwork` (`Id`, `StudId`, `SWNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 1.00, NULL, 'Midterm'),
-(2, 2, 1, 2.00, NULL, 'Midterm'),
+(1, 1, 1, 20.00, NULL, 'Midterm'),
+(2, 2, 1, 20.00, NULL, 'Midterm'),
 (3, 3, 1, 3.00, NULL, 'Midterm'),
 (4, 4, 1, 4.00, NULL, 'Midterm'),
 (5, 5, 1, 5.00, NULL, 'Midterm'),
@@ -2392,7 +2429,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 -- AUTO_INCREMENT for table `mod_quiz`
 --
 ALTER TABLE `mod_quiz`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `mod_rec`
 --
@@ -2417,7 +2454,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=181;
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=109;
 --
 -- AUTO_INCREMENT for table `recitation`
 --

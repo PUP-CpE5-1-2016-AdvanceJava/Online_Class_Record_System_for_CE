@@ -5,6 +5,7 @@ var classId;
 var classBlock;
 var classSubj;
 var classSched;
+var classPop;
 var midtermCounter=0;
 var finalsCounter=0;
 //---variables for lab table---//
@@ -134,6 +135,7 @@ function get_class_table(link)
         classBlock = response['Class']['ClassBlock'];
         classSubj = response['Subject'];
         classSched = response['Class']['Schedule'];
+        classPop = response['Class']['NumOfStudents'];
         var table = $('div#table-content-wrapper');
         table.empty();
         if (response['table_type'] == "main_table")
@@ -932,7 +934,7 @@ function get_class_table(link)
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3><span><button class='btn btn-success' onclick='getAllData()' type='submit'><i class='fa fa-check'></i> Compute</button>\
+                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3><span><button class='btn btn-success' onclick='computeGrade()' type='submit'><i class='fa fa-check'></i> Compute</button>\
                           <button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button>\
                           </span>\
@@ -1038,25 +1040,25 @@ function get_class_table(link)
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid'></td>"+mid_mexam_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-percent'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-grade'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid' id='table-score-mid-cs-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid' id='table-score-mid-cs-rating'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid' id='table-score-mid-qle-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-score-mid-qle-rating'></td>"+mid_mexam_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-percent' id='table-scr-mid-mexam-rating'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-grade' id='table-scr-mid-midterm-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='border-bold' class='table-items-midterm-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-finals' id='table-score-final-att1'></td>"+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals'></td>"+final_fexam_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-grade'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-score-final-cs-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-score-final-cs-rating'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-score-final-qle-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-score-final-qle-rating'></td>"+final_fexam_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent' id='table-scr-final-fexam-rating'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-grade' id='table-scr-final-finals-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-rating'></td></tr>");
                 ctr_module++;
                 });
                 table.append("<script type='text/javascript' src='/js/table.js'></script>\
-                    <script type='text/javascript' src='/js/save_table.js'></script>");
+                    <script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
             else
             {
@@ -1874,6 +1876,11 @@ function get_class_subj()
 function get_class_sched()
 {
     return classSched;
+}
+
+function get_class_pop()
+{
+    return classPop;
 }
 
 function get_class_name(label,label_num,term)

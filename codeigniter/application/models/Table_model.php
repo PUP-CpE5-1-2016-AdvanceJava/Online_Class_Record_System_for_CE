@@ -20,6 +20,7 @@ class Table_model extends CI_Model {
 			'Schedule' => $block->Schedule,
 			'ModuleType' => $block->ModuleType,
 			'ClassId' => $block->Id,
+            'NumOfStudents' => $block->NumOfStudents,
 		);
 		//--get module--//
 		if ($block->ModuleType == "Lec") 
