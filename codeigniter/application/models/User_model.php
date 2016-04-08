@@ -156,6 +156,7 @@ class User_model extends CI_Model
 	{
 		if ($UserDept == "none")
 		{
+
 			$this->db->where("UserType","Faculty");
 			$validate = $this->db->get("users");
 
@@ -174,6 +175,7 @@ class User_model extends CI_Model
 		else 
 		{
 			$this->db->where("UserType","Faculty");
+			$this->db->where("UserDept",$UserDept);
 			$validate = $this->db->get("users");
 
 			if($validate->num_rows()<=0)

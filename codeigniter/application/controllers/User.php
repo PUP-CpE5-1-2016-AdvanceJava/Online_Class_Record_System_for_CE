@@ -287,7 +287,7 @@ class User extends CI_Controller
 			'Username' => $this->session->userdata('Username'),
 			'Fullname' => $this->Faculty_model->get_fac_name($this->session->userdata('Id')),
 			'ActiveHeader' => "settings",
-			'UserType' => $this->session->userdata('UserType')
+			'type' => $this->session->userdata('UserType')
 		);
 		if ($this->session->userdata('Id')!="")
     	{

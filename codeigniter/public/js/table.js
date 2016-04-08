@@ -26,6 +26,7 @@ $(document).ready(function(){
 
 		var cells = Array.prototype.slice.call(document.getElementById("table-wrapper").getElementsByTagName("td"));
 		var module = get_module_type();
+		console.log(module);
 		var classId = get_class_id();
 		if (module == "Lec")
 		{
@@ -204,12 +205,11 @@ $(document).ready(function(){
 		var data = '<html><head>' + css_html + '</' + "head><body>"+ header + table_html + '</body></html>'
 	    var encoded = encodeURIComponent(data);
 	    a.href = data_type + ',' + encoded;
-	    var link = classSubj+'__'+classBlock +'__'+ classId +'__'+ postfix + '.xls';
+	    var link = classSubj+'__'+module+'__'+classBlock +'__'+ classId +'__'+ postfix + '.xls';
 	    //setting the file name
 	    a.download = link;
 	    // triggering the function
 	    a.click();
-	    alert(res['status']);
 	    // just in case, prevent default behaviour
 	    e.preventDefault();
 
