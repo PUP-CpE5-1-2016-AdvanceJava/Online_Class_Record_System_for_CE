@@ -1,5 +1,5 @@
 /*TABLE CONTENT WRAPPER*/ 
-#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; margin-left: 0; max-width: 1200px; margin-right: 0; }
+#table-content-wrapper {padding:20px 0px 200px 30px; overflow-x: hidden; margin-left: 0; max-width: 1200px; margin-right: 0; width: 100%; }
 #table-content-wrapper span{font-size: 3vw; font-family: 'Source Sans Pro', sans-serif; color: #333; }
 #table-content-wrapper h2{ font-weight: 600;}
 #table-content-wrapper .row{ margin: 0px;}
@@ -97,13 +97,16 @@ h4 span{ font-family: inherit; font-size: inherit !important;}
 	/*TABLE SAVE & UPLOAD BUTTONS*/
 	#table-save-button{position: static; margin-left: 10px; font-size: 15px;}
 	#table-upload-button{position: static; margin-left: 10px; font-size: 15px;}
+	#table-compute-button{font-size: 15px;}
 }
 @media only screen and (max-width:480px) {
 	#table-content-wrapper{padding-left: 10px;}
 
 	/*TABLE SAVE & UPLOAD BUTTONS*/
-	#table-save-button{position: static; margin-left: 20px; font-size: 15px; margin-top: 10px;}
-	#table-upload-button{position: static; font-size: 15px; margin-top: 10px;}
-	#table-h3{max-width: 250px}
+	#table-save-button{position: static; margin-left: 10px; font-size: 10px; margin-top: 10px;}
+	#table-upload-button{position: static; font-size: 10px; margin-top: 10px;}
+	#table-compute-button{font-size: 10px; margin-top: 10px;}
+	#table-h3{max-width: 270px}
 
 }
+

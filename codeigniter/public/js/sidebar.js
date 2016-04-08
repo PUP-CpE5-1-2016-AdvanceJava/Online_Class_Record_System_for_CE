@@ -934,7 +934,11 @@ function get_class_table(link)
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
+<<<<<<< HEAD
                           <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3><span><button class='btn btn-success' onclick='computeGrade()' type='submit'><i class='fa fa-check'></i> Compute</button>\
+=======
+                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3><span><button id='table-compute-button' class='btn btn-success' onclick='getAllData()' type='submit'><i class='fa fa-check'></i> Compute</button>\
+>>>>>>> 8ea7bc1f71e1f81bf30bae2200f08d4a8ad84624
                           <button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button>\
                           </span>\
