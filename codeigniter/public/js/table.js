@@ -357,15 +357,27 @@ function computeGrade()
 			t++;
 		})
 
-		var h = 0;
+		
 		// midterm grade
-
+		var h = 0;
 		$('tr td#table-scr-mid-midterm-rating').each(function()
 		{
 			var grade = 0;
 			if (att_rating[h] > 0) grade = att_rating[h] + qle_rating[h] + cs_rating[h] + mid_rating[h];
 			else grade = qle_rating[h] + cs_rating[h] + mid_rating[h];
 			$(this).html(grade.toFixed(3));
+			h++;
+		})
+
+		// midterm mark
+		var h = 0;
+		$('tr td#table-midterm-grade').each(function()
+		{
+			var grade = 0;
+			if (att_rating[h] > 0) grade = att_rating[h] + qle_rating[h] + cs_rating[h] + mid_rating[h];
+			else grade = qle_rating[h] + cs_rating[h] + mid_rating[h];
+			var mark = get_grade(grade);
+			$(this).html(mark);
 			h++;
 		})
 
@@ -451,13 +463,24 @@ function computeGrade()
 
 		var h = 0;
 		// finalterm grade
-
 		$('tr td#table-scr-final-finals-rating').each(function()
 		{
 			var grade = 0;
 			if (att_rating[h] > 0) grade = att_rating[h] + qle_rating[h] + cs_rating[h] + final_rating[h];
 			else grade = qle_rating[h] + cs_rating[h] + final_rating[h];
 			$(this).html(grade.toFixed(3));
+			h++;
+		})
+
+		// finals mark
+		var h = 0;
+		$('tr td#table-finals-grade').each(function()
+		{
+			var grade = 0;
+			if (att_rating[h] > 0) grade = att_rating[h] + qle_rating[h] + cs_rating[h] + mid_rating[h];
+			else grade = qle_rating[h] + cs_rating[h] + mid_rating[h];
+			var mark = get_grade(grade);
+			$(this).html(mark);
 			h++;
 		})
 
@@ -750,5 +773,20 @@ function get_att_val(status)
 	if (status == "P" || status == "p") return 	100;
 	else if (status == "L" || status == "l") return 66.7;
 	else if (status == "A" || status == "a") return 0;
-	return
+	return;
+}
+
+function get_grade(rating)
+{
+	if (parseInt(rating) >= 97) return 1.0;
+	else if (parseInt(rating) >= 94 && parseInt(rating) <= 96) return 1.25;
+	else if (parseInt(rating) >= 91 && parseInt(rating) <= 93) return 1.5;
+	else if (parseInt(rating) >= 88 && parseInt(rating) <= 90) return 1.75;
+	else if (parseInt(rating) >= 85 && parseInt(rating) <= 87) return 2.0;
+	else if (parseInt(rating) >= 82 && parseInt(rating) <= 84) return 2.25;
+	else if (parseInt(rating) >= 79 && parseInt(rating) <= 81) return 2.5;
+	else if (parseInt(rating) >= 76 && parseInt(rating) <= 78) return 2.75;
+	else if (parseInt(rating) == 75) return 3.0;
+	else if (parseInt(rating) <= 74) return 5.0;
+	return;
 }

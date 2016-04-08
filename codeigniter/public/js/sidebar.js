@@ -1046,7 +1046,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-score-mid-qle-rating'></td>"+mid_mexam_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-percent' id='table-scr-mid-mexam-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-grade' id='table-scr-mid-midterm-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='border-bold' class='table-items-midterm-rating'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-midterm-grade'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-finals' id='table-score-final-att1'></td>"+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-score-final-cs-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-score-final-cs-rating'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
@@ -1054,7 +1054,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-score-final-qle-rating'></td>"+final_fexam_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent' id='table-scr-final-fexam-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-grade' id='table-scr-final-finals-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-rating'></td></tr>");
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-rating' id='table-finals-grade'></td></tr>");
                 ctr_module++;
                 });
                 table.append("<script type='text/javascript' src='/js/table.js'></script>\
@@ -1485,7 +1485,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-mid-midterm-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false'></td>"+final_lab_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false' id='table-midterm-grade'></td>"+final_lab_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-rating'></td>"+final_prac_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-total'></td>\
@@ -1493,7 +1493,7 @@ function get_class_table(link)
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-final-finals-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-finals-grade'></td></tr>");
                 ctr_module++;
             });
             
