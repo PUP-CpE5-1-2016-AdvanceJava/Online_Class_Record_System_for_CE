@@ -298,7 +298,7 @@ function computeGrade()
 			var total = 0;
 			total = (assign_total[i] + sw_total[i] + ex_total[i] + rec_total[i]) / 4
 			cs_total[i] = total;
-			cs_rating[i] = total / 20;
+			cs_rating[i] = total * .20;
 		};
 		// write scores in table
 		var t = 0;
@@ -324,7 +324,7 @@ function computeGrade()
 			var total = 0;
 			total = (quiz_total[i] + le_total[i]) / 2;
 			qle_total[i] = total;
-			qle_rating[i] = total / 30;
+			qle_rating[i] = total * .30;
 		};
 
 		// write scores in table
@@ -346,7 +346,7 @@ function computeGrade()
 		var mid_rating = [];
 		for (var i = 0; i < classPop; i++) 
 		{
-			mid_rating[i] = mid_total[i] / 40;
+			mid_rating[i] = mid_total[i] * .40;
 		};
 		var t = 0;
 
@@ -389,7 +389,7 @@ function computeGrade()
 			var total = 0;
 			total = (assign_total[i] + sw_total[i] + ex_total[i] + rec_total[i]) / 4
 			cs_total[i] = total;
-			cs_rating[i] = total / 20;
+			cs_rating[i] = total * .20;
 		};
 		// write scores in table
 		var t = 0;
@@ -415,7 +415,7 @@ function computeGrade()
 			var total = 0;
 			total = (quiz_total[i] + le_total[i]) / 2;
 			qle_total[i] = total;
-			qle_rating[i] = total / 30;
+			qle_rating[i] = total * .30;
 		};
 
 		// write scores in table
@@ -438,7 +438,7 @@ function computeGrade()
 		var final_rating = [];
 		for (var i = 0; i < classPop; i++) 
 		{
-			final_rating[i] = final_total[i] / 40;
+			final_rating[i] = final_total[i] * .40;
 		};
 		var t = 0;
 
