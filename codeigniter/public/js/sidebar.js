@@ -1404,6 +1404,7 @@ function get_class_table(link)
                           <button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
                           <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button>\
                           </span>\
+                          </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
                                 <div class='container-fluid'>\
@@ -1507,7 +1508,7 @@ function get_class_table(link)
             var mid_att_header_str = "",mid_att_score_str = [];
             var final_att_header_str = "",final_att_score_str = [];
 
-            /*lab MIDTERM STRING INITIALIZATION*/
+            /*att MIDTERM STRING INITIALIZATION*/
             if (response['att_mid_num'] > 0)
             {
                 midterm_cols += response['att_mid_num'];
@@ -1528,7 +1529,7 @@ function get_class_table(link)
             }
             else
             {
-                mid_att_header_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-att1'>Att 1</td>";
+                mid_att_header_str = "<th data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-header-mid-att1'>Att 1</td>";
             }
 
             if (response['att_mid_score'].length > 0)
@@ -1554,11 +1555,11 @@ function get_class_table(link)
                 });
             }
 
-            /*lab Finals STRING INITIALIZATION*/
-            if (response['att_mid_num'] > 0)
+            /*att Finals STRING INITIALIZATION*/
+            if (response['att_final_num'] > 0)
             {
-                final_cols += response['att_mid_num'];
-                attCounter2 = response['att_mid_num'];
+                final_cols += response['att_final_num'];
+                attCounter2 = response['att_final_num'];
             }
             else 
             {
@@ -1575,7 +1576,7 @@ function get_class_table(link)
             }
             else
             {
-                final_att_header_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-att1'>Att 1</td>";
+                final_att_header_str = "<th data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-header-final-att1'>Att 1</td>";
             }
 
             if (response['att_final_score'].length > 0)
@@ -1602,11 +1603,15 @@ function get_class_table(link)
             }
             
             module_type = "attendance";
+            finalsCounter = response['att_final_num'] - 1;
+            midtermCounter = response['att_mid_num'] - 1;
             table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button></span></h3>\
+                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3><span><button id='table-compute-button' class='btn btn-success' onclick='computeGrade()' type='submit'><i class='fa fa-check'></i> Compute</button>\
+                          <button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
+                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button>\
+                          </span>\
                         </div><br>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
@@ -1639,10 +1644,10 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_att_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td>"+final_att_score_str[ctr_module]+"\
-                                            <td contenteditable='false'></td>\
-                                            <td contenteditable='false'></td></tr>");
+                                            <td contenteditable='false' id='table-scr-mid-att-total'></td>\
+                                            <td contenteditable='false' id='table-scr-mid-att-rating'></td>"+final_att_score_str[ctr_module]+"\
+                                            <td contenteditable='false' id='table-scr-final-att-total'></td>\
+                                            <td contenteditable='false' id='table-scr-final-att-rating'></td></tr>");
             ctr_module++;
                 });
             table.append("<script type='text/javascript' src='/js/table.js'></script>");
@@ -1956,6 +1961,9 @@ function add_column(parent)
                 newHeader = array[0]+"-header-"+array[1]+"-"+module+counter;
                 newScore = array[0]+"-score-"+array[1]+"-"+module+counter;
             });
+            console.log(header);
+            console.log(score);
+            console.log(label_num);
 
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));

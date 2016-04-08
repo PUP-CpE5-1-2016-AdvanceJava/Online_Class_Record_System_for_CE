@@ -163,6 +163,7 @@ $(document).ready(function(){
 				'att_final_num':att_final_num,
 			}
 		}
+		console.log(data);
 		$.ajax({
 			url: 'save_table',
 			type: "POST",
@@ -304,13 +305,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-mid-cs-total').each(function()
 		{
-			$(this).html(cs_total[t]);
+			$(this).html(cs_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-mid-cs-rating').each(function()
 		{
-			$(this).html(cs_rating[r]);
+			$(this).html(cs_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -331,13 +332,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-mid-qle-total').each(function()
 		{
-			$(this).html(qle_total[t]);
+			$(this).html(qle_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-mid-qle-rating').each(function()
 		{
-			$(this).html(qle_rating[r]);
+			$(this).html(qle_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -352,7 +353,7 @@ function computeGrade()
 
 		$('tr td#table-scr-mid-mexam-rating').each(function()
 		{
-			$(this).html(mid_rating[t]);
+			$(this).html(mid_rating[t].toFixed(3));
 			t++;
 		})
 
@@ -364,7 +365,7 @@ function computeGrade()
 			var grade = 0;
 			if (att_rating[h] > 0) grade = att_rating[h] + qle_rating[h] + cs_rating[h] + mid_rating[h];
 			else grade = qle_rating[h] + cs_rating[h] + mid_rating[h];
-			$(this).html(grade);
+			$(this).html(grade.toFixed(3));
 			h++;
 		})
 
@@ -395,13 +396,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-final-cs-total').each(function()
 		{
-			$(this).html(cs_total[t]);
+			$(this).html(cs_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-final-cs-rating').each(function()
 		{
-			$(this).html(cs_rating[r]);
+			$(this).html(cs_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -422,13 +423,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-final-qle-total').each(function()
 		{
-			$(this).html(qle_total[t]);
+			$(this).html(qle_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-final-qle-rating').each(function()
 		{
-			$(this).html(qle_rating[r]);
+			$(this).html(qle_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -444,7 +445,7 @@ function computeGrade()
 
 		$('tr td#table-scr-final-fexam-rating').each(function()
 		{
-			$(this).html(final_rating[t]);
+			$(this).html(final_rating[t].toFixed(3));
 			t++;
 		})
 
@@ -456,7 +457,7 @@ function computeGrade()
 			var grade = 0;
 			if (att_rating[h] > 0) grade = att_rating[h] + qle_rating[h] + cs_rating[h] + final_rating[h];
 			else grade = qle_rating[h] + cs_rating[h] + final_rating[h];
-			$(this).html(grade);
+			$(this).html(grade.toFixed(3));
 			h++;
 		})
 
@@ -494,13 +495,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-mid-lb-total').each(function()
 		{
-			$(this).html(lab_total[t]);
+			$(this).html(lab_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-mid-lb-rating').each(function()
 		{
-			$(this).html(lab_rating[r]);
+			$(this).html(lab_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -517,13 +518,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-mid-prc-total').each(function()
 		{
-			$(this).html(prac_total[t]);
+			$(this).html(prac_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-mid-prc-rating').each(function()
 		{
-			$(this).html(prac_rating[r]);
+			$(this).html(prac_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -540,13 +541,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-mid-prj-total').each(function()
 		{
-			$(this).html(proj_total[t]);
+			$(this).html(proj_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-mid-prj-rating').each(function()
 		{
-			$(this).html(proj_rating[r]);
+			$(this).html(proj_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -556,7 +557,7 @@ function computeGrade()
 		$('tr td#table-scr-mid-midterm-rating').each(function()
 		{
 			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
-			$(this).html(grade);
+			$(this).html(grade.toFixed(3));
 			h++;
 		})
 
@@ -574,13 +575,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-final-lb-total').each(function()
 		{
-			$(this).html(lab_total[t]);
+			$(this).html(lab_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-final-lb-rating').each(function()
 		{
-			$(this).html(lab_rating[r]);
+			$(this).html(lab_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -597,13 +598,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-final-prc-total').each(function()
 		{
-			$(this).html(prac_total[t]);
+			$(this).html(prac_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-final-prc-rating').each(function()
 		{
-			$(this).html(prac_rating[r]);
+			$(this).html(prac_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -620,13 +621,13 @@ function computeGrade()
 		var t = 0;
 		$('tr td#table-score-final-prj-total').each(function()
 		{
-			$(this).html(proj_total[t]);
+			$(this).html(proj_total[t].toFixed(3));
 			t++;
 		})
 		var r = 0;
 		$('tr td#table-score-final-prj-rating').each(function()
 		{
-			$(this).html(proj_rating[r]);
+			$(this).html(proj_rating[r].toFixed(3));
 			r++;
 		})
 
@@ -636,7 +637,7 @@ function computeGrade()
 		$('tr td#table-scr-final-finals-rating').each(function()
 		{
 			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
-			$(this).html(grade);
+			$(this).html(grade.toFixed(3));
 			h++;
 		})
 		
@@ -658,16 +659,66 @@ function computeGrade()
 			if (cells[i].id.indexOf("table-score-mid-att") != -1) att_mid_data[att_mid_data.length] = cells[i].textContent;
 			if (cells[i].id.indexOf("table-score-final-att") != -1) att_final_data[att_final_data.length] = cells[i].textContent;
 		}
-		var data = {
-			'classId':classId,
-			'module':module,
-			//---put all datas in a dictionary---//
-			'att_mid_data':att_mid_data.join("-"),
-			'att_final_data':att_final_data.join("-"),
-			//---put also the number of modules---//
-			'att_mid_num':att_mid_num,
-			'att_final_num':att_final_num,
-		}
+		// MIDTERM 
+		// midterm att computation
+		// var att_scores = compute_module(classPop,att_mid_num,att_mid_data);
+		var att_total = [];
+		var att_rating = [];
+		var ctr = att_mid_num;
+		for (var i = 0; i < classPop; i++) 
+		{
+			var score = 0;
+			for (var j = 0; j < att_mid_num; j++) 
+			{
+				score += get_att_val(att_mid_data[ctr+j]);
+			};
+			att_total[i] = score / att_mid_num;
+			att_rating[i] = (score / att_mid_num) * .10;
+			ctr+=att_mid_num;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-scr-mid-att-total').each(function()
+		{
+			$(this).html(att_total[t].toFixed(3));
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-scr-mid-att-rating').each(function()
+		{
+			$(this).html(att_rating[r].toFixed(3));
+			r++;
+		})
+
+		// FINAL 
+		// final att computation
+		var att_total = [];
+		var att_rating = [];
+		var ctr = att_final_num;
+		for (var i = 0; i < classPop; i++) 
+		{
+			var score = 0;
+			for (var j = 0; j < att_final_num; j++) 
+			{
+				score += get_att_val(att_final_data[ctr+j]);
+			};
+			att_total[i] = score / att_final_num;
+			att_rating[i] = (score / att_final_num) * .10;
+			ctr+=att_final_num;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-scr-final-att-total').each(function()
+		{
+			$(this).html(att_total[t].toFixed(3));
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-scr-final-att-rating').each(function()
+		{
+			$(this).html(att_rating[r].toFixed(3));
+			r++;
+		})
 	}
 }
 
@@ -692,4 +743,12 @@ function compute_module(pop,num,data)
 		ctr+=num;
 	};
 	return total;
+}
+
+function get_att_val(status)
+{
+	if (status == "P" || status == "p") return 	100;
+	else if (status == "L" || status == "l") return 66.7;
+	else if (status == "A" || status == "a") return 0;
+	return
 }

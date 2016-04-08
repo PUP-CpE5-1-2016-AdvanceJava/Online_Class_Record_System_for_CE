@@ -716,7 +716,7 @@ class ModuleScores_model extends CI_Model {
 					$obj_score_ins[$y+$index] = array(
 						'StudId' => $stud_id[$y]['Id'],
 						'AttNum' => $x+1,
-						'Score' => floatval($data_mid[$score_ref_counter]),	
+						'Score' => $data_mid[$score_ref_counter],	
 						'Sem' => 'Midterm',
 					);	
 				}
@@ -725,7 +725,7 @@ class ModuleScores_model extends CI_Model {
 					$rowatt = $validate->row();
 					$obj_score_up[$y+$index] = array(
 						'Id' => $rowatt->Id,
-						'Score' => floatval($data_mid[$score_ref_counter]),
+						'Score' => $data_mid[$score_ref_counter],
 					);
 				}
 			}
@@ -748,7 +748,7 @@ class ModuleScores_model extends CI_Model {
 					$obj_score_ins[$k+$index] = array(
 						'StudId' => $stud_id[$y]['Id'],
 						'AttNum' => $x+1,
-						'Score' => floatval($data_final[$score_ref_counter]),	
+						'Score' => $data_final[$score_ref_counter],	
 						'Sem' => 'Finals',
 					);	
 				}
@@ -757,7 +757,7 @@ class ModuleScores_model extends CI_Model {
 					$rowatt = $validate->row();
 					$obj_score_up[$k+$index] = array(
 						'Id' => $rowatt->Id,
-						'Score' => floatval($data_final[$score_ref_counter]),
+						'Score' => $data_final[$score_ref_counter],
 					);
 				}
 			}
