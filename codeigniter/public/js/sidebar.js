@@ -1400,9 +1400,10 @@ function get_class_table(link)
                 table.html("<div class='row'>\
                           <h2>"+response['Class']['ClassBlock']+"</h2>\
                           <h6>"+response['Class']['Schedule']+"</h6><hr>\
-                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"<span><button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
-                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button></span></h3>\
-                        </div><br>\
+                          <h3 id='table-h3'>"+response['Subject']+"("+response['Class']['ModuleType']+")"+"</h3><span><button id='table-compute-button' class='btn btn-success' onclick='computeGrade()' type='submit'><i class='fa fa-check'></i> Compute</button>\
+                          <button class='btn btn-success ' id = 'table-save-button' type='submit'><i class='fa fa-check'></i> Save</button>\
+                          <button class='btn btn-info ' id = 'table-upload-button' type='submit'><i class='fa fa-check'></i> Export</button>\
+                          </span>\
                         <div class='row'>\
                             <div class='col-lg-12 col-md-12'>\
                                 <div class='container-fluid'>\
@@ -1476,21 +1477,21 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_lab_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+mid_prac_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+mid_proj_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-lb-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-lb-rating'></td>"+mid_prac_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prc-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prc-rating'></td>"+mid_proj_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-rating'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-mid-midterm-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false'></td>"+final_lab_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+final_prac_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>"+final_proj_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-rating'></td>"+final_prac_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-rating'></td>"+final_proj_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-total'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-rating'></td>\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-final-finals-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td></tr>");
                 ctr_module++;
             });

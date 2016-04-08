@@ -278,7 +278,7 @@ function computeGrade()
 			if (cells[i].id.indexOf("table-score-final-fexam") != -1 || cells[i].id.indexOf("table-items-final-fexam") != -1) fexam_final_data[fexam_final_data.length] = cells[i].textContent;
 		}
 		//MIDTERM
-		// midterm class standing computation
+		
 		var att_rating = [];
 		var r = 0;
 		$('tr td#table-score-mid-att1').each(function()
@@ -286,7 +286,7 @@ function computeGrade()
 			att_rating[r] = parseFloat($(this).html());
 			r++;
 		})
-
+		// midterm class standing computation
 		var assign_total = compute_module(classPop,assign_mid_num,assign_mid_data);
 		var sw_total = compute_module(classPop,sw_mid_num,sw_mid_data);
 		var ex_total = compute_module(classPop,ex_mid_num,ex_mid_data);
@@ -480,25 +480,166 @@ function computeGrade()
 			if (cells[i].id.indexOf("table-score-final-prac") != -1 || cells[i].id.indexOf("table-items-final-prac") != -1) prac_final_data[prac_final_data.length] = cells[i].textContent;
 			if (cells[i].id.indexOf("table-score-final-proj") != -1 || cells[i].id.indexOf("table-items-final-proj") != -1) proj_final_data[proj_final_data.length] = cells[i].textContent;
 		}
+		// MIDTERM 
+		// midterm lab computation
+		var lab_scores = compute_module(classPop,lab_mid_num,lab_mid_data);
+		var lab_total = [];
+		var lab_rating = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			lab_total[i] = lab_scores[i];
+			lab_rating[i] = lab_scores[i] * .45;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-score-mid-lb-total').each(function()
+		{
+			$(this).html(lab_total[t]);
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-score-mid-lb-rating').each(function()
+		{
+			$(this).html(lab_rating[r]);
+			r++;
+		})
 
-		var data = {
-			'classId':classId,
-			'module':module,
-			//---put all datas in a dictionary---//
-			'lab_mid_data':lab_mid_data.join("-"),
-			'prac_mid_data':prac_mid_data.join("-"),
-			'proj_mid_data':proj_mid_data.join("-"),
-			'lab_final_data':lab_final_data.join("-"),
-			'prac_final_data':prac_final_data.join("-"),
-			'proj_final_data':proj_final_data.join("-"),
-			//---put also the number of modules---//
-			'lab_mid_num':lab_mid_num,
-			'prac_mid_num':prac_mid_num,
-			'proj_mid_num':proj_mid_num,
-			'lab_final_num':lab_final_num,
-			'prac_final_num':prac_final_num,
-			'proj_final_num':proj_final_num,
-		}
+		// midterm prac computation
+		var prac_scores = compute_module(classPop,prac_mid_num,prac_mid_data);
+		var prac_total = [];
+		var prac_rating = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			prac_total[i] = prac_scores[i];
+			prac_rating[i] = prac_scores[i] * .25;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-score-mid-prc-total').each(function()
+		{
+			$(this).html(prac_total[t]);
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-score-mid-prc-rating').each(function()
+		{
+			$(this).html(prac_rating[r]);
+			r++;
+		})
+
+		// midterm proj computation
+		var proj_scores = compute_module(classPop,proj_mid_num,proj_mid_data);
+		var proj_total = [];
+		var proj_rating = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			proj_total[i] = proj_scores[i];
+			proj_rating[i] = proj_scores[i] * .30;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-score-mid-prj-total').each(function()
+		{
+			$(this).html(proj_total[t]);
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-score-mid-prj-rating').each(function()
+		{
+			$(this).html(proj_rating[r]);
+			r++;
+		})
+
+		// midterm grade
+		var grade = 0;
+		var h = 0;
+		$('tr td#table-scr-mid-midterm-rating').each(function()
+		{
+			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
+			$(this).html(grade);
+			h++;
+		})
+
+		// FINAL 
+		// final lab computation
+		var lab_scores = compute_module(classPop,lab_final_num,lab_final_data);
+		var lab_total = [];
+		var lab_rating = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			lab_total[i] = lab_scores[i];
+			lab_rating[i] = lab_scores[i] * .45;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-score-final-lb-total').each(function()
+		{
+			$(this).html(lab_total[t]);
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-score-final-lb-rating').each(function()
+		{
+			$(this).html(lab_rating[r]);
+			r++;
+		})
+
+		// final prac computation
+		var prac_scores = compute_module(classPop,prac_final_num,prac_final_data);
+		var prac_total = [];
+		var prac_rating = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			prac_total[i] = prac_scores[i];
+			prac_rating[i] = prac_scores[i] * .25;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-score-final-prc-total').each(function()
+		{
+			$(this).html(prac_total[t]);
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-score-final-prc-rating').each(function()
+		{
+			$(this).html(prac_rating[r]);
+			r++;
+		})
+
+		// final proj computation
+		var proj_scores = compute_module(classPop,proj_final_num,proj_final_data);
+		var proj_total = [];
+		var proj_rating = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			proj_total[i] = proj_scores[i];
+			proj_rating[i] = proj_scores[i] * .30;
+		};
+		// write scores in table
+		var t = 0;
+		$('tr td#table-score-final-prj-total').each(function()
+		{
+			$(this).html(proj_total[t]);
+			t++;
+		})
+		var r = 0;
+		$('tr td#table-score-final-prj-rating').each(function()
+		{
+			$(this).html(proj_rating[r]);
+			r++;
+		})
+
+		// final grade
+		var grade = 0;
+		var h = 0;
+		$('tr td#table-scr-final-finals-rating').each(function()
+		{
+			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
+			$(this).html(grade);
+			h++;
+		})
+		
 	}
 	else
 	{
