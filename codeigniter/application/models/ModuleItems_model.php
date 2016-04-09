@@ -785,7 +785,7 @@ class ModuleItems_model extends CI_Model {
 		return true;
 	}
 
-	function ins_mod_att($ClassId,$data,$att_mid_num,$att_final_num,$stud_id,$data_mid,$data_final)
+	function ins_mod_att($ClassId,$data,$att_mid_num,$att_final_num,$stud_id,$data_mid,$data_final,$rating_mid,$rating_final)
 	{
 		$mod_att_ins = array();
 		$mod_att_up = array();
@@ -867,7 +867,7 @@ class ModuleItems_model extends CI_Model {
 		}
 		if (sizeof($mod_att_ins) > 0) $this->db->insert_batch('mod_att', $mod_att_ins);
 		if (sizeof($mod_att_up) > 0) $this->db->update_batch('mod_att', $mod_att_up,'Id');
-		$this->ModuleScores_model->save_mid_att_score($att_mid_num,$att_final_num,$stud_id,$data_mid,$data_final);
+		$this->ModuleScores_model->save_mid_att_score($att_mid_num,$att_final_num,$stud_id,$data_mid,$data_final,$rating_mid,$rating_final);
 		return true;
 	}
 }

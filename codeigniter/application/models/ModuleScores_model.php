@@ -691,7 +691,7 @@ class ModuleScores_model extends CI_Model {
 		return true;
 	}
 
-	function save_mid_att_score($att_mid_num,$att_final_num,$stud_id,$data_mid,$data_final)
+	function save_mid_att_score($att_mid_num,$att_final_num,$stud_id,$data_mid,$data_final,$rating_mid,$rating_final)
 	{
 		/* GET THE SCORES*/
 		// for loop < $att_mid_num
@@ -717,6 +717,7 @@ class ModuleScores_model extends CI_Model {
 						'StudId' => $stud_id[$y]['Id'],
 						'AttNum' => $x+1,
 						'Score' => $data_mid[$score_ref_counter],	
+						'Rating' => $rating_mid[$y],
 						'Sem' => 'Midterm',
 					);	
 				}
@@ -726,6 +727,7 @@ class ModuleScores_model extends CI_Model {
 					$obj_score_up[$y+$index] = array(
 						'Id' => $rowatt->Id,
 						'Score' => $data_mid[$score_ref_counter],
+						'Rating' => $rating_mid[$y],
 					);
 				}
 			}
@@ -749,6 +751,7 @@ class ModuleScores_model extends CI_Model {
 						'StudId' => $stud_id[$y]['Id'],
 						'AttNum' => $x+1,
 						'Score' => $data_final[$score_ref_counter],	
+						'Rating' => $rating_final[$y],
 						'Sem' => 'Finals',
 					);	
 				}
@@ -758,6 +761,7 @@ class ModuleScores_model extends CI_Model {
 					$obj_score_up[$k+$index] = array(
 						'Id' => $rowatt->Id,
 						'Score' => $data_final[$score_ref_counter],
+						'Rating' => $rating_final[$y],
 					);
 				}
 			}

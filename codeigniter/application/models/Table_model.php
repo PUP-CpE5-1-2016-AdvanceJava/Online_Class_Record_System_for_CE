@@ -70,6 +70,7 @@ class Table_model extends CI_Model {
     	$rec_mid_num = 0;$rec_mid_items = array();$rec_mid_score = array();
     	$quiz_mid_num = 0;$quiz_mid_items = array();$quiz_mid_score = array();
     	$le_mid_num = 0;$le_mid_items = array();$le_mid_score = array();
+        $att_mid_rating = []; $att_final_rating = [];
 
     	$mexam_mid_num = 0;$mexam_mid_items = array();$mexam_mid_score = array();
 
@@ -103,6 +104,36 @@ class Table_model extends CI_Model {
     		);
     		if ($block->ModuleType == 'Lec')
     		{
+                //---attendance ratings---//
+                    //midterm
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Midterm');
+                $query_att_rating = $this->db->get('attendance');
+                $att_mid_rating_num = $query_att_rating->num_rows();
+                if ($att_mid_rating_num > 0)
+                {
+                    $att_rating = $query_att_rating->row();
+                    $att_mid_rating[$i] = $att_rating->Rating;
+                }
+                else
+                {
+                    $att_mid_rating[$i] = "0.00";
+                }
+                    //finals
+                $this->db->where('StudId',$row->Id);
+                $this->db->where('Sem','Finals');
+                $query_att_rating = $this->db->get('attendance');
+                $att_final_rating_num = $query_att_rating->num_rows();
+                if ($att_final_rating_num > 0)
+                {
+                    $att_rating = $query_att_rating->row();
+                    $att_final_rating[$i] = $att_rating->Rating;
+                }
+                else
+                {
+                    $att_final_rating[$i] = "0.00";
+                }
+
     			//---assign_mid ---//
     			$this->db->where('ClassId',$block->Id);
     			$this->db->where('Sem','Midterm');
@@ -926,6 +957,8 @@ class Table_model extends CI_Model {
             'att_final_num' => $att_final_num,
             'att_final_items' => $att_final_items,
             'att_final_score' => $att_final_score,
+            'att_mid_rating' => $att_mid_rating,
+            'att_final_rating' => $att_final_rating,
     	);
     	return $data;
 	}
@@ -1027,12 +1060,14 @@ class Table_model extends CI_Model {
 			//else attendance
 			$att_mid_data = explode('-', $data['att_mid_data']);
 			$att_final_data = explode('-', $data['att_final_data']);
+            $att_mid_rating = explode('-', $data['att_mid_rating']);
+            $att_final_rating = explode('-', $data['att_final_rating']);
 
 			/*att_num (midterm and final)*/
 			for ($i=0; $i <$data['att_mid_num'] ; $i++) { $arr[$i] = $att_mid_data[$i]; } 
 			$mid_final_len = sizeof($arr)+$data['att_final_num'];
 			for ($j=sizeof($arr),$k=0; $j < $mid_final_len; $j++,$k++) { $arr[$j] = $att_final_data[$k];}
-			$this->ModuleItems_model->ins_mod_att($data['classId'],$arr,$data['att_mid_num'],$data['att_final_num'],$stud_id,$att_mid_data,$att_final_data);
+			$this->ModuleItems_model->ins_mod_att($data['classId'],$arr,$data['att_mid_num'],$data['att_final_num'],$stud_id,$att_mid_data,$att_final_data,$att_mid_rating,$att_final_rating);
 
 			return "att saved";
 		}	

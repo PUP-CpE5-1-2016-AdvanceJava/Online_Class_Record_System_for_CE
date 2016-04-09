@@ -140,6 +140,8 @@ $(document).ready(function(){
 		{
 			att_mid_num = getModuleCounter("Att","mid","val");
 			att_final_num = getModuleCounter("Att","final","val");
+			att_mid_rating = [];
+			att_final_rating = [];
 			//---get also th for attendance to get the header values---//
 			var thcells = Array.prototype.slice.call(document.getElementById("table-wrapper").getElementsByTagName("th"));
 			for(var k in thcells)
@@ -152,6 +154,8 @@ $(document).ready(function(){
 			{
 				if (cells[i].id.indexOf("table-score-mid-att") != -1) att_mid_data[att_mid_data.length] = cells[i].textContent;
 				if (cells[i].id.indexOf("table-score-final-att") != -1) att_final_data[att_final_data.length] = cells[i].textContent;
+				if (cells[i].id.indexOf("table-scr-mid-att-rating") != -1) att_mid_rating[att_mid_rating.length] = cells[i].textContent;
+				if (cells[i].id.indexOf("table-scr-final-att-rating") != -1) att_final_rating[att_final_rating.length] = cells[i].textContent;
 			}
 			var data = {
 				'classId':classId,
@@ -159,6 +163,8 @@ $(document).ready(function(){
 				//---put all datas in a dictionary---//
 				'att_mid_data':att_mid_data.join("-"),
 				'att_final_data':att_final_data.join("-"),
+				'att_mid_rating':att_mid_rating.join("-"),
+				'att_final_rating':att_final_rating.join("-"),
 				//---put also the number of modules---//
 				'att_mid_num':att_mid_num,
 				'att_final_num':att_final_num,

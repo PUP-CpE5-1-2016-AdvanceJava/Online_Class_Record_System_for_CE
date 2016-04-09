@@ -125,6 +125,7 @@ function get_class_table(link)
         $("ul>li[name='module_submenu']").empty();
         $('div#table-content-wrapper').empty();
         $('tbody#stud_table').empty();
+        console.log(response);
         /*INITIALIZE COUNTERS FOR TABLE*/
         //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
         module_type;
@@ -144,7 +145,7 @@ function get_class_table(link)
             {
             // 'Lecture table' please edit classes for responsive //
             var midterm_cols = 9,mid_cs_cols = 2,mid_qle_cols = 2;
-
+            var mid_att_score_str = [];
             var mid_assign_cols,mid_assign_header_str = "",mid_assign_items_str = "",mid_assign_score_str = [];
             var mid_sw_cols,mid_sw_header_str = "",mid_sw_items_str = "",mid_sw_score_str = [];
             var mid_ex_cols,mid_ex_header_str = "",mid_ex_items_str = "",mid_ex_score_str = [];
@@ -155,7 +156,7 @@ function get_class_table(link)
             var mid_mexam_items_str = "",mid_mexam_score_str = [];
 
             var final_cols = 9,final_cs_cols = 2,final_qle_cols = 2;
-
+            var final_att_score_str = [];
             var final_assign_cols,final_assign_header_str = "",final_assign_items_str = "",final_assign_score_str = [];
             var final_sw_cols,final_sw_header_str = "",final_sw_items_str = "",final_sw_score_str = [];
             var final_ex_cols,final_ex_header_str = "",final_ex_items_str = "",final_ex_score_str = [];
@@ -164,6 +165,43 @@ function get_class_table(link)
             var final_le_cols,final_le_header_str = "",final_le_items_str = "",final_le_score_str = [];
 
             var final_fexam_items_str = "",final_fexam_score_str = [];
+            /*ATTENDANCE INITIALIZATION*/
+                //midterm
+            if (response['att_mid_rating'].length > 0)
+            {
+                var x_att_mid = 0;
+                response.att_mid_rating.forEach(function(att){
+                    mid_att_score_str[x_att_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'>"+att+"</td>";
+                    x_att_mid++;
+                });
+            }
+            else
+            {
+                var x_att_mid = 0;
+                response.Student.forEach(function(att){
+                    mid_att_score_str[x_att_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'></td>";
+                    x_att_mid++;
+                });
+            }
+                //finals
+            if (response['att_final_rating'].length > 0)
+            {
+                var x_att_final = 0;
+                response.att_final_rating.forEach(function(att){
+                    final_att_score_str[x_att_final] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-final' id='table-score-final-att1'>"+att+"</td>";
+                    x_att_final++;
+                });
+            }
+            else
+            {
+                var x_att_final = 0;
+                response.Student.forEach(function(att){
+                    final_att_score_str[x_att_final] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-final' id='table-score-final-att1'></td>";
+                    x_att_final++;
+                });
+            }
+            // console.log(mid_att_score_str);
+
             /*ASSIGN MIDTERM STRING INITIALIZATION*/
             if (response['assign_mid_num'] > 0)
             {
@@ -1038,16 +1076,14 @@ function get_class_table(link)
             var ctr_module = 0;
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'></td>"+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_att_score_str[ctr_module]+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid' id='table-score-mid-cs-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid' id='table-score-mid-cs-rating'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid' id='table-score-mid-qle-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-score-mid-qle-rating'></td>"+mid_mexam_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-percent' id='table-scr-mid-mexam-rating'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-grade' id='table-scr-mid-midterm-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-midterm-grade'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-finals' id='table-score-final-att1'></td>"+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
+                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-midterm-grade'></td>"+final_att_score_str[ctr_module]+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-score-final-cs-total'></td>\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-score-final-cs-rating'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
                                             <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-score-final-qle-total'></td>\
