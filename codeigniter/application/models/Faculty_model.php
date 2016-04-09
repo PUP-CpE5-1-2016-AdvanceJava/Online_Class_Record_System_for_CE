@@ -67,6 +67,15 @@ class Faculty_model extends CI_Model
 			'StudentNumber' => $arr['stud_num'],
 		);
 		$this->db->insert('students',$dataStudent);
+		$stud_id = $this->db->insert_id();
+		//insert 1 grade entry
+		$grade = array(
+			'StudId' => $stud_id,
+			'MidTermGrade' => 0,
+			'FinalGrade' => 0,
+			'TotalGrade' => 0,
+		);
+		$this->db->insert('grades',$grade);
 		//update num of students in that class
 		$this->update_class_population($class->Id,$class->NumOfStudents);
 		return "OK";

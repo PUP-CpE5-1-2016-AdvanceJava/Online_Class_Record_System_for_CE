@@ -93,7 +93,7 @@ class Table_model extends CI_Model {
 
         $att_mid_num = 0;$att_mid_items = array();$att_mid_score = array();
         $att_final_num = 0;$att_final_items = array();$att_final_score = array();
-
+        $midterm_mid_rating = []; $finals_final_rating = [];
     	foreach ($query->result() as $row) 
     	{	
     		// combine to make full name and to capital first letter of each name
@@ -367,9 +367,6 @@ class Table_model extends CI_Model {
 	    			}
     			}
 				
-
-
-
 
 				//---assign_final ---//
     			$this->db->where('ClassId',$block->Id);
@@ -678,6 +675,22 @@ class Table_model extends CI_Model {
                         $att_final_score[$i][$y] = "0.00";
                     }
                 }
+
+                //--- total grade ratings---//
+                $this->db->where('StudId', $row->Id);
+                $query = $this->db->get('grades');
+                if ($query->num_rows() > 0)
+                {
+                    $grade = $query->row();
+                    $midterm_mid_rating[$i] = $grade->MidTermGrade;
+                    $finals_final_rating[$i] = $grade->FinalGrade;
+                }
+                else
+                {
+                    $midterm_mid_rating[$i] = 0;
+                    $finals_final_rating[$i] = 0;
+                }
+                
     		}
             else if ($block->ModuleType == 'Lab')
             {
@@ -885,6 +898,21 @@ class Table_model extends CI_Model {
                         $proj_final_score[$i][$y] = "0.00";
                     }
                 }
+
+                //--- total grade ratings---//
+                $this->db->where('StudId', $row->Id);
+                $query = $this->db->get('grades');
+                if ($query->num_rows() > 0)
+                {
+                    $grade = $query->row();
+                    $midterm_mid_rating[$i] = $grade->MidTermGrade;
+                    $finals_final_rating[$i] = $grade->FinalGrade;
+                }
+                else
+                {
+                    $midterm_mid_rating[$i] = 0;
+                    $finals_final_rating[$i] = 0;
+                }
             }
     		$i++;
     	}
@@ -959,6 +987,8 @@ class Table_model extends CI_Model {
             'att_final_score' => $att_final_score,
             'att_mid_rating' => $att_mid_rating,
             'att_final_rating' => $att_final_rating,
+            'midterm_mid_rating' => $midterm_mid_rating,
+            'finals_final_rating' => $finals_final_rating,
     	);
     	return $data;
 	}
@@ -983,6 +1013,8 @@ class Table_model extends CI_Model {
 			$le_final_data = explode('-', $data['le_final_data']);
 			$mexam_mid_data = explode('-', $data['mexam_mid_data']);
 			$fexam_final_data = explode('-', $data['fexam_final_data']);
+            $midterm_mid_data = explode('-', $data['midterm_mid_data']);
+            $finals_final_data = explode('-', $data['finals_final_data']);
 
 			//get each total items based on module number
 			
@@ -1023,8 +1055,9 @@ class Table_model extends CI_Model {
 			$this->ModuleItems_model->ins_mod_le($data['classId'],$arr6,$data['le_mid_num'],$data['le_final_num'],$stud_id,$le_mid_data,$le_final_data);
 
 			$this->ModuleItems_model->ins_mod_major($data['classId'],$mexam_mid_data[0],$fexam_final_data[0],$stud_id,$mexam_mid_data,$fexam_final_data);
+            $this->ModuleItems_model->ins_grade($stud_id,$midterm_mid_data,$finals_final_data);
 			// save module numbers and total items
-			return $stud_id;
+			return "lec saved";
 		}
 		else if ($data['module'] == 'Lab')
 		{
@@ -1034,6 +1067,8 @@ class Table_model extends CI_Model {
 			$prac_final_data = explode('-', $data['prac_final_data']);
 			$proj_mid_data = explode('-', $data['proj_mid_data']);
 			$proj_final_data = explode('-', $data['proj_final_data']);
+            $midterm_mid_data = explode('-', $data['midterm_mid_data']);
+            $finals_final_data = explode('-', $data['finals_final_data']);
 
 			/*lab_num (midterm and final)*/
 			for ($i=0; $i <$data['lab_mid_num'] ; $i++) { $arr[$i] = $lab_mid_data[$i]; } 
@@ -1052,6 +1087,8 @@ class Table_model extends CI_Model {
 			$mid_final_len = sizeof($arr3)+$data['proj_final_num'];
 			for ($j=sizeof($arr3),$k=0; $j < $mid_final_len; $j++,$k++) { $arr3[$j] = $proj_final_data[$k];}
 			$this->ModuleItems_model->ins_mod_proj($data['classId'],$arr3,$data['proj_mid_num'],$data['proj_final_num'],$stud_id,$proj_mid_data,$proj_final_data);
+
+            $this->ModuleItems_model->ins_grade($stud_id,$midterm_mid_data,$finals_final_data);
 
 			return "lab saved";
 		}

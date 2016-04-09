@@ -7,7 +7,6 @@ $(document).ready(function(){
 	/*---SAVING TABLE DATA---*/
 	// Capture data on table when button save is clicked.
 	$('span button#table-save-button').click(function(){
-		console.log("save");
 		var quiz_mid_num,sw_mid_num,ex_mid_num,rec_mid_num,quiz_mid_num,le_mid_num;
 		var assign_final_num,sw_final_num,ex_final_num,rec_final_num,quiz_final_num,le_final_num;
 		var lab_mid_num,prac_mid_num,proj_mid_num;
@@ -23,7 +22,7 @@ $(document).ready(function(){
 		var lab_final_data = [],prac_final_data = [],proj_final_data = [];
 
 		var att_mid_data = [], att_final_data = [];
-
+		var midterm_mid_data = [], finals_final_data = [];
 		var cells = Array.prototype.slice.call(document.getElementById("table-wrapper").getElementsByTagName("td"));
 		var module = get_module_type();
 		console.log(module);
@@ -63,6 +62,9 @@ $(document).ready(function(){
 
 				if (cells[i].id.indexOf("table-score-mid-mexam") != -1 || cells[i].id.indexOf("table-items-mid-mexam") != -1) mexam_mid_data[mexam_mid_data.length] = cells[i].textContent;
 				if (cells[i].id.indexOf("table-score-final-fexam") != -1 || cells[i].id.indexOf("table-items-final-fexam") != -1) fexam_final_data[fexam_final_data.length] = cells[i].textContent;
+
+				if (cells[i].id.indexOf("table-midterm-grade") != -1) midterm_mid_data[midterm_mid_data.length] = cells[i].textContent;
+				if (cells[i].id.indexOf("table-finals-grade") != -1) finals_final_data[finals_final_data.length] = cells[i].textContent;
 			}
 			var data = {
 				'classId':classId,
@@ -82,6 +84,8 @@ $(document).ready(function(){
 				'le_final_data':le_final_data.join("-"),
 				'mexam_mid_data':mexam_mid_data.join("-"),
 				'fexam_final_data':fexam_final_data.join("-"),
+				'midterm_mid_data':midterm_mid_data.join("-"),
+				'finals_final_data':finals_final_data.join("-"),
 				//---put also the number of modules---//
 				'assign_mid_num':assign_mid_num,
 				'sw_mid_num':sw_mid_num,
@@ -115,6 +119,9 @@ $(document).ready(function(){
 				if (cells[i].id.indexOf("table-score-final-lab") != -1 || cells[i].id.indexOf("table-items-final-lab") != -1) lab_final_data[lab_final_data.length] = cells[i].textContent;
 				if (cells[i].id.indexOf("table-score-final-prac") != -1 || cells[i].id.indexOf("table-items-final-prac") != -1) prac_final_data[prac_final_data.length] = cells[i].textContent;
 				if (cells[i].id.indexOf("table-score-final-proj") != -1 || cells[i].id.indexOf("table-items-final-proj") != -1) proj_final_data[proj_final_data.length] = cells[i].textContent;
+				
+				if (cells[i].id.indexOf("table-midterm-grade") != -1) midterm_mid_data[midterm_mid_data.length] = cells[i].textContent;
+				if (cells[i].id.indexOf("table-finals-grade") != -1) finals_final_data[finals_final_data.length] = cells[i].textContent;
 			}
 
 			var data = {
@@ -127,6 +134,8 @@ $(document).ready(function(){
 				'lab_final_data':lab_final_data.join("-"),
 				'prac_final_data':prac_final_data.join("-"),
 				'proj_final_data':proj_final_data.join("-"),
+				'midterm_mid_data':midterm_mid_data.join("-"),
+				'finals_final_data':finals_final_data.join("-"),
 				//---put also the number of modules---//
 				'lab_mid_num':lab_mid_num,
 				'prac_mid_num':prac_mid_num,
@@ -581,12 +590,23 @@ function computeGrade()
 		})
 
 		// midterm grade
-		var grade = 0;
 		var h = 0;
 		$('tr td#table-scr-mid-midterm-rating').each(function()
 		{
+			var grade = 0;
 			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
 			$(this).html(grade.toFixed(3));
+			h++;
+		})
+
+		// midterm mark
+		var h = 0;
+		$('tr td#table-midterm-grade').each(function()
+		{
+			var grade = 0;
+			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
+			var mark = get_grade(grade);
+			$(this).html(mark);
 			h++;
 		})
 
@@ -661,17 +681,29 @@ function computeGrade()
 		})
 
 		// final grade
-		var grade = 0;
+		
 		var h = 0;
 		$('tr td#table-scr-final-finals-rating').each(function()
 		{
+			var grade = 0;
 			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
 			$(this).html(grade.toFixed(3));
 			h++;
 		})
+
+		// finals mark
+		var h = 0;
+		$('tr td#table-finals-grade').each(function()
+		{
+			var grade = 0;
+			grade = lab_rating[h] + prac_rating[h] + proj_rating[h];
+			var mark = get_grade(grade);
+			$(this).html(mark);
+			h++;
+		})
 		
 	}
-	else
+	else if (module == "attendance")
 	{
 		att_mid_num = getModuleCounter("Att","mid","val");
 		att_final_num = getModuleCounter("Att","final","val");
@@ -749,6 +781,32 @@ function computeGrade()
 			r++;
 		})
 	}
+
+	else
+	{
+		var midterm_grade = [], finals_grade = [];
+		for(var i in cells)
+		{
+			if (cells[i].id.indexOf("table-midterm-grade") != -1) midterm_grade[midterm_grade.length] = cells[i].textContent;
+			if (cells[i].id.indexOf("table-finals-grade") != -1) finals_grade[finals_grade.length] = cells[i].textContent;
+		}
+
+		// get ave
+		var total_grade = [];
+		for (var i = 0; i < classPop; i++) 
+		{
+			total_grade[i] = (parseFloat(midterm_grade[i]) + parseFloat(finals_grade[i]))/2;
+		};
+
+		//write
+		var t = 0;
+		$('tr td#table-total-grade').each(function()
+		{
+			var final_mark = round_off(total_grade[t]);
+			$(this).html(final_mark);
+			t++;
+		})
+	}
 }
 
 function compute_module(pop,num,data)
@@ -794,5 +852,37 @@ function get_grade(rating)
 	else if (parseInt(rating) >= 76 && parseInt(rating) <= 78) return 2.75;
 	else if (parseInt(rating) == 75) return 3.0;
 	else if (parseInt(rating) <= 74) return 5.0;
+	return;
+}
+
+function round_off(final_grade)
+{
+	if (parseFloat(final_grade) >= 1.0 && parseFloat(final_grade) < 1.125) return 1.0;
+	else if (parseFloat(final_grade) >= 1.125 && parseFloat(final_grade) <= 1.25) return 1.25;
+
+	else if (parseFloat(final_grade) >= 1.25 && parseFloat(final_grade) < 1.375) return 1.25;
+	else if (parseFloat(final_grade) >= 1.375 && parseFloat(final_grade) <= 1.5) return 1.5;
+
+
+	else if (parseFloat(final_grade) >= 1.5 && parseFloat(final_grade) < 1.625) return 1.5;
+	else if (parseFloat(final_grade) >= 1.625 && parseFloat(final_grade) <= 1.75) return 1.75;
+
+	else if (parseFloat(final_grade) >= 1.75 && parseFloat(final_grade) < 1.875) return 1.75;
+	else if (parseFloat(final_grade) >= 1.875 && parseFloat(final_grade) <= 2.0) return 2.0;
+
+	else if (parseFloat(final_grade) >= 2.0 && parseFloat(final_grade) < 2.125) return 2.0;
+	else if (parseFloat(final_grade) >= 2.125 && parseFloat(final_grade) <= 2.25) return 2.25;
+
+	else if (parseFloat(final_grade) >= 2.25 && parseFloat(final_grade) < 2.375) return 2.25;
+	else if (parseFloat(final_grade) >= 2.375 && parseFloat(final_grade) <= 2.5) return 2.5;
+
+	else if (parseFloat(final_grade) >= 2.5 && parseFloat(final_grade) < 2.625) return 2.5;
+	else if (parseFloat(final_grade) >= 2.625 && parseFloat(final_grade) <= 2.75) return 2.75;
+
+	else if (parseFloat(final_grade) >= 2.75 && parseFloat(final_grade) < 2.875) return 2.75;
+	else if (parseFloat(final_grade) >= 2.875 && parseFloat(final_grade) <= 3.0) return 3.0;
+
+	else if (parseFloat(final_grade) >= 3.0) return 5.0;
+
 	return;
 }

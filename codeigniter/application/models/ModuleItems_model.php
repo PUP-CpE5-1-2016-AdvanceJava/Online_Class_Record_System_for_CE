@@ -533,6 +533,21 @@ class ModuleItems_model extends CI_Model {
 		return true;
 	}
 
+	function ins_grade($stud_id,$data_mid,$data_final)
+	{
+		$obj = array();
+		for ($i=0; $i < sizeof($stud_id); $i++) 
+		{ 
+			$obj[$i] = array(
+				'StudId' => $stud_id[$i]['Id'],
+				'MidTermGrade' => $data_mid[$i],
+				'FinalGrade' => $data_final[$i],
+			);
+		}
+		$this->db->update_batch('grades', $obj,'StudId');
+		return true;
+	}
+
 	function ins_mod_lab($ClassId,$data,$lab_mid_num,$lab_final_num,$stud_id,$data_mid,$data_final)
 	{
 		$mod_lab_ins = array();
