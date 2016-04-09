@@ -99,7 +99,8 @@ class Faculty_model extends CI_Model
 		$i = 0;
 		$base = base_url();
 		$path = $base.'resources/reports/';
-		foreach ($query->result_array() as $class) {
+		foreach ($query->result_array() as $class) 
+		{
 			if ($dept)
 			{
 				//check if same department
@@ -117,13 +118,27 @@ class Faculty_model extends CI_Model
 
 				if ($dept == $user->UserDept)
 				{
-					$data[$class["Filename"]] = $path.$class["Filename"];
+					$date = date('M-d-Y',strtotime($class["DateUploaded"]));
+		            $arr = explode('-', $date);
+		            $year = $arr[2];
+		            $data[$year][$i] = array(
+		            	'filepath' => $path.$class["Filename"],
+		            	'filename' => $class["Filename"],
+		            );
+					// $data[$class["Filename"]] = $path.$class["Filename"];
 				}
 			}
 			else
 			{
-				$data[$class["Filename"]] = $path.$class["Filename"];
+				$date = date('M-d-Y',strtotime($class["DateUploaded"]));
+	            $arr = explode('-', $date);
+	            $year = $arr[2];
+	            $data[$year][$i] = array(
+	            	'filepath' => $path.$class["Filename"],
+	            	'filename' => $class["Filename"],
+	            );
 			}
+            $i++;
 			
 		}
 		return $data;

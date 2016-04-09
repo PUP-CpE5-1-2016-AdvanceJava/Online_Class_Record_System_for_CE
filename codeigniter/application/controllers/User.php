@@ -162,7 +162,7 @@ class User extends CI_Controller
 			{
 				// fetch all class with IsUploaded = true
 				$dept = false;
-				$data['info'] = $this->Faculty_model->get_archive($dept);
+				$data = $this->Faculty_model->get_archive($dept);
 			}
 			else $data = null;
 
