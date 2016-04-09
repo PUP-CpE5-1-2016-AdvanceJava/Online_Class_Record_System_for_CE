@@ -27,21 +27,23 @@ function addTooltip(){
 				// "data-placement":"bottom",
 				"title":$head +"<br>"+$studno+"<br>"+$studname
 			})
+			console.log("HEY!! LEC");
 			$(this).tooltip();
 		});
 	}else{
 		$('table td:not(#table-items):not([name="stud-name"]):not([name="stud-num"]):not([data-toggle="tooltip"])').each(function(){
 			$studno = $(this).parent().find('td:eq(0)').html();
 			$studname = $(this).parent().find('td:eq(1)').html();
-			$index = $(this).index();
+			// $index = $(this).index();
 			// if($(this).is('[id*="-final"]')) $index = $index-4;
 			// if($(this).is('[id*="-att"]')) $head = 'ATTENDACE';
 			// else if($(this).is('[id$="-mid-mexam"]')){ $head = "MIDTERM EXAM SCORE"; $flag1 = $index}
 			// else if($(this).is('[id*="-mexam-rating"]')) $head = "MIDTERM EXAM PERCENTAGE";
 			// else if($(this).is('[id$="-final-fexam"]')){ $head = "FINAL EXAM SCORE"; $flag2 = $index} 
 			// else if($(this).is('[id*="-fexam-rating"]')) $head = "FINAL EXAM PERCENTAGE";
-			if($(this).closest('#table-items-wrapper').length>0) $head = $("#table-module th:eq("+($index)+")").html();
-			else $head = $("#table-module th:eq("+($index-1)+")").html();
+			// if($(this).closest('#table-items-wrapper').length>0) $head = $("#table-module th:eq("+($index)+")").html();
+			// else $head = $("#table-module th:eq("+($index-1)+")").html();
+			$head = $(this).attr("title");
 			$(this).attr({
 				"data-toggle":"tooltip",
 				// "data-container":"body",
@@ -49,6 +51,7 @@ function addTooltip(){
 				// "data-placement":"bottom",
 				"title":$head +"<br>"+$studno+"<br>"+$studname
 			})
+			console.log("HEY!! LAB");
 			$(this).tooltip();
 		});		
 	}
