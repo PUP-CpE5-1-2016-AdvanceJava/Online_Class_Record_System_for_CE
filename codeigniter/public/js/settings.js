@@ -73,4 +73,9 @@ $(document).ready(function(){
         $("#file-upload-filename").html(fileName);
 	});
 
+	$("#settings-choose-file-button-xls").change(function () {
+        var fileName = $(this).val().replace('C:\\fakepath\\', '');
+        $("#file-upload-filename-xls").html(fileName);
+	});
+
 })

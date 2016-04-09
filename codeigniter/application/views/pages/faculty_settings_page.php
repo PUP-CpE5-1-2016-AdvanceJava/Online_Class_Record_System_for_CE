@@ -123,10 +123,10 @@
                                     <form class="form-inline" id = "settings-upload-form" enctype="multipart/form-data" action="<?=site_url('user/upload_pdf')?>" method="POST">
                                         <!-- Name of input element determines name in $_FILES array -->
                                         <input id="settings-choose-file-button" name="classlist" type="file" />
-                                        <label for="settings-choose-file-button" class="btn btn-primary" id = "settings-choose-file-button"><b> Choose File...</b></label>
+                                        <label for="settings-choose-file-button" class="btn btn-primary" id ="settings-choose-file-button"><b> Choose File...</b></label>
                                         <label class="file-upload-filename" id="file-upload-filename">No File Selected</label>
                                         <input id="settings-upload-button-input" name="classlist" type="submit" />
-                                        <button for="settings-upload-button" type="submit" class="btn btn-primary" id = "settings-upload-button"/> <i class = "fa fa-upload" style="margin-right:5px;"></i>Upload</button>
+                                        <button for="settings-upload-button" type="submit" class="btn btn-primary" id ="settings-upload-button"/> <i class = "fa fa-upload" style="margin-right:5px;"></i>Upload</button>
                                         <span><b> Module Type: </b></span>
                                         <select class = "form-control" id = "settings-adding-select" name="module_type" required>
                                             <option selected disabled>Please Select</option>
@@ -149,8 +149,10 @@
                                 <div class="list-group-item" id = "settings-panel-details">
                                     <form class="form-inline" id = "settings-upload-class-form" enctype="multipart/form-data" action="<?=site_url('user/upload_class')?>" method="POST">
                                         <!-- Name of input element determines name in $_FILES array -->
-                                        <input name="excel_file" type="file" />
-                                        <button type="submit" class="btn btn-primary" id = "settings-upload-class-button"><i class = "fa fa-upload"></i><b> Upload</b></button>
+                                        <input id="settings-choose-file-button-xls" name="excel_file" type="file" />
+                                        <label for="settings-choose-file-button-xls" class="btn btn-primary" id ="settings-choose-file-button-xls"><b> Choose File...</b></label>
+                                        <label class="file-upload-filename" id="file-upload-filename-xls">No File Selected</label>
+                                        <button type="submit" class="btn btn-primary" id ="settings-upload-class-button"><i class = "fa fa-upload"></i><b> Upload</b></button>
                                     </form>     
                                 </div>
                             </div>
