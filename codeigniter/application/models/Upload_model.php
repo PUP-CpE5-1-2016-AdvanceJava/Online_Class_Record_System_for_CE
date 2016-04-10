@@ -163,7 +163,7 @@ class Upload_model extends CI_Model {
 			return "Excel has not been uploaded. Invalid file type.";
 		}
 		$arr = explode('__',$name);
-		$class_id = $arr[2];
+		$class_id = $arr[3];
 		$this->db->where('Id',$class_id);
 		$query = $this->db->get('class');
 		if (!$query->num_rows() > 0)
