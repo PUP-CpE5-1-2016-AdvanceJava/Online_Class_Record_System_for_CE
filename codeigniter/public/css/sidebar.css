@@ -1,7 +1,7 @@
 @import '../plugins/icomoon/icon.css';
 
 /*SIDEBAR CONTENT*/
-#sidebar-wrapper{ text-transform: uppercase; font-family: 'Oswald', sans-serif; font-weight: 300; width: 300px; overflow: hidden; background-color: #2e2c2d;
+#sidebar-wrapper{ text-transform: uppercase; font-family: 'Oswald', sans-serif; font-weight: 300; width: 370px; overflow: hidden; background-color: #2e2c2d;
 				padding-right: 0px; transition: none; left: 0px; margin: 0px; opacity: 0; }
 #sidebar-wrapper.collapsed{ width: 65px !important; transition: none; left: -200px; }
 #sidebar-menu{ width: 300px; padding: 8px; cursor: pointer;color: #fff;}
