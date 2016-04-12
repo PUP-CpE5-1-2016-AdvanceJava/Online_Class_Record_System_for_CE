@@ -1,3 +1,4 @@
+// jQuery.ajax({async: true});
 /*INITIAL COUNTERS FOR TABLE*/
 var module_type;
 var type_of_table;
@@ -118,6 +119,7 @@ function get_class_table(link)
 {
   $.get(link,{},function(response)
     {
+    var start = new Date().getTime();
       if (response.status == 'OK')
       {
         //--clear sidebars content ang table content first to avoid bugs--//
@@ -125,7 +127,7 @@ function get_class_table(link)
         $("ul>li[name='module_submenu']").empty();
         $('div#table-content-wrapper').empty();
         $('tbody#stud_table').empty();
-        console.log(response);
+        //console.log(response);
         /*INITIALIZE COUNTERS FOR TABLE*/
         //--inital values will be given by database e.g. if have Lab1-Lab3 labcounter=2--//
         //---variables for att table---//
@@ -170,7 +172,7 @@ function get_class_table(link)
             {
                 var x_att_mid = 0;
                 response.att_mid_rating.forEach(function(att){
-                    mid_att_score_str[x_att_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'>"+att+"</td>";
+                    mid_att_score_str[x_att_mid] = "<td data-container='body' data-toggle='tooltip' data-html='true' data-placement='bottom' title='ATTENDACE<br>"+(response.Student[x_att_mid]).stud_num+"<br>"+(response.Student[x_att_mid]).full_name+"' contenteditable='false' class='table-items-att-mid' id='table-score-mid-att1'>"+att+"</td>";
                     x_att_mid++;
                 });
             }
@@ -179,7 +181,7 @@ function get_class_table(link)
             {
                 var x_att_final = 0;
                 response.att_final_rating.forEach(function(att){
-                    final_att_score_str[x_att_final] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-final' id='table-score-final-att1'>"+att+"</td>";
+                    final_att_score_str[x_att_final] = "<td data-container='body' data-toggle='tooltip' data-html='true' data-placement='bottom' title='ATTENDACE<br>"+(response.Student[x_att_final]).stud_num+"<br>"+(response.Student[x_att_final]).full_name+"' contenteditable='false' class='table-items-att-final' id='table-score-final-att1'>"+att+"</td>";
                     x_att_final++;
                 });
             }
@@ -213,12 +215,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_assign_cols; i++) 
                 {
-                    mid_assign_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-items-mid-assign"+(i+1)+"'>"+response['assign_mid_items'][i]+"</td>";
+                    mid_assign_items_str += "<td data-container='body' data-toggle='tooltip' title='ASSIGN "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-items-mid-assign"+(i+1)+"'>"+response['assign_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_assign_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-items-mid-assign1'></td>";
+                mid_assign_items_str = "<td data-container='body' data-toggle='tooltip' title='ASSIGN 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-items-mid-assign1'></td>";
             }
 
             if (response['assign_mid_score'].length > 0)
@@ -227,7 +229,7 @@ function get_class_table(link)
                 response.assign_mid_score.forEach(function(assign){
                     for (var i = 0; i <  mid_assign_cols; i++) 
                     {
-                        mid_assign_score_str[x_assign_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-score-mid-assign"+(i+1)+"'>"+assign[i]+"</td>";
+                        mid_assign_score_str[x_assign_mid] += "<td data-container='body' data-toggle='tooltip' title='ASSIGN "+(i+1)+"<br>"+(response.Student[x_assign_mid]).stud_num+"<br>"+(response.Student[x_assign_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-score-mid-assign"+(i+1)+"'>"+assign[i]+"</td>";
                     }
                     x_assign_mid++;
                 });
@@ -261,12 +263,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_sw_cols; i++) 
                 {
-                    mid_sw_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-mid' id='table-items-mid-sw"+(i+1)+"'>"+response['sw_mid_items'][i]+"</td>";
+                    mid_sw_items_str += "<td data-container='body' data-toggle='tooltip' title='SEATWORK "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-mid' id='table-items-mid-sw"+(i+1)+"'>"+response['sw_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_sw_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-mid' id='table-items-mid-sw1'></td>";
+                mid_sw_items_str = "<td data-container='body' data-toggle='tooltip' title='SEATWORK 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-mid' id='table-items-mid-sw1'></td>";
             }
 
             if (response['sw_mid_score'].length > 0)
@@ -275,7 +277,7 @@ function get_class_table(link)
                 response.sw_mid_score.forEach(function(sw){
                     for (var i = 0; i <  mid_sw_cols; i++) 
                     {
-                        mid_sw_score_str[x_sw_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-mid' id='table-score-mid-sw"+(i+1)+"'>"+sw[i]+"</td>";
+                        mid_sw_score_str[x_sw_mid] += "<td data-container='body' data-toggle='tooltip' title='SEATWORK "+(i+1)+"<br>"+(response.Student[x_sw_mid]).stud_num+"<br>"+(response.Student[x_sw_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-mid' id='table-score-mid-sw"+(i+1)+"'>"+sw[i]+"</td>";
                     }
                     x_sw_mid++;
                 });
@@ -309,12 +311,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_ex_cols; i++) 
                 {
-                    mid_ex_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-mid' id='table-items-mid-ex"+(i+1)+"'>"+response['ex_mid_items'][i]+"</td>";
+                    mid_ex_items_str += "<td data-container='body' data-toggle='tooltip' title='EXERCISE "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-mid' id='table-items-mid-ex"+(i+1)+"'>"+response['ex_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_ex_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-mid' id='table-items-mid-ex1'></td>";
+                mid_ex_items_str = "<td data-container='body' data-toggle='tooltip' title='EXERCISE 1<br>Number of Items'  data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-mid' id='table-items-mid-ex1'></td>";
             }
 
             if (response['ex_mid_score'].length > 0)
@@ -323,7 +325,7 @@ function get_class_table(link)
                 response.ex_mid_score.forEach(function(ex){
                     for (var i = 0; i <  mid_ex_cols; i++) 
                     {
-                        mid_ex_score_str[x_ex_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-mid' id='table-score-mid-ex"+(i+1)+"'>"+ex[i]+"</td>";
+                        mid_ex_score_str[x_ex_mid] += "<td data-container='body' data-toggle='tooltip' title='EXERCISE "+(i+1)+"<br>"+(response.Student[x_ex_mid]).stud_num+"<br>"+(response.Student[x_ex_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-mid' id='table-score-mid-ex"+(i+1)+"'>"+ex[i]+"</td>";
                     }
                     x_ex_mid++;
                 });
@@ -357,12 +359,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_rec_cols; i++) 
                 {
-                    mid_rec_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-mid' id='table-items-mid-rec"+(i+1)+"'>"+response['rec_mid_items'][i]+"</td>";
+                    mid_rec_items_str += "<td data-container='body' data-toggle='tooltip' title='RECITATION "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-mid' id='table-items-mid-rec"+(i+1)+"'>"+response['rec_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_rec_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-mid' id='table-items-mid-rec1'></td>";
+                mid_rec_items_str = "<td data-container='body' data-toggle='tooltip' title='RECITATION 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-mid' id='table-items-mid-rec1'></td>";
             }
 
             if (response['rec_mid_score'].length > 0)
@@ -371,7 +373,7 @@ function get_class_table(link)
                 response.rec_mid_score.forEach(function(rec){
                     for (var i = 0; i <  mid_rec_cols; i++) 
                     {
-                        mid_rec_score_str[x_rec_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-mid' id='table-score-mid-rec"+(i+1)+"'>"+rec[i]+"</td>";
+                        mid_rec_score_str[x_rec_mid] += "<td data-container='body' data-toggle='tooltip' title='RECITATION "+(i+1)+"<br>"+(response.Student[x_rec_mid]).stud_num+"<br>"+(response.Student[x_rec_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-mid' id='table-score-mid-rec"+(i+1)+"'>"+rec[i]+"</td>";
                     }
                     x_rec_mid++;
                 });
@@ -405,12 +407,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_quiz_cols; i++) 
                 {
-                    mid_quiz_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-mid' id='table-items-mid-quiz"+(i+1)+"'>"+response['quiz_mid_items'][i]+"</td>";
+                    mid_quiz_items_str += "<td data-container='body' data-toggle='tooltip' title='QUIZ "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-mid' id='table-items-mid-quiz"+(i+1)+"'>"+response['quiz_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_quiz_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-mid' id='table-items-mid-quiz1'></td>";
+                mid_quiz_items_str = "<td data-container='body' data-toggle='tooltip' title='QUIZ 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-mid' id='table-items-mid-quiz1'></td>";
             }
 
             if (response['quiz_mid_score'].length > 0)
@@ -419,7 +421,7 @@ function get_class_table(link)
                 response.quiz_mid_score.forEach(function(quiz){
                     for (var i = 0; i <  mid_quiz_cols; i++) 
                     {
-                        mid_quiz_score_str[x_quiz_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-mid' id='table-score-mid-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
+                        mid_quiz_score_str[x_quiz_mid] += "<td data-container='body' data-toggle='tooltip' title='QUIZ "+(i+1)+"<br>"+(response.Student[x_quiz_mid]).stud_num+"<br>"+(response.Student[x_quiz_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-mid' id='table-score-mid-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
                     }
                     x_quiz_mid++;
                 });
@@ -453,12 +455,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_le_cols; i++) 
                 {
-                    mid_le_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-mid' id='table-items-mid-le"+(i+1)+"'>"+response['le_mid_items'][i]+"</td>";
+                    mid_le_items_str += "<td data-container='body' data-toggle='tooltip' title='LONG EXAM "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-mid' id='table-items-mid-le"+(i+1)+"'>"+response['le_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_le_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-mid' id='table-items-mid-le1'></td>";
+                mid_le_items_str = "<td data-container='body' data-toggle='tooltip' title='LONG EXAM 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-mid' id='table-items-mid-le1'></td>";
             }
 
             if (response['le_mid_score'].length > 0)
@@ -467,7 +469,7 @@ function get_class_table(link)
                 response.le_mid_score.forEach(function(le){
                     for (var i = 0; i <  mid_le_cols; i++) 
                     {
-                        mid_le_score_str[x_le_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-mid' id='table-score-mid-le"+(i+1)+"'>"+le[i]+"</td>";
+                        mid_le_score_str[x_le_mid] += "<td data-container='body' data-toggle='tooltip' title='LONG EXAM "+(i+1)+"<br>"+(response.Student[x_le_mid]).stud_num+"<br>"+(response.Student[x_le_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-mid' id='table-score-mid-le"+(i+1)+"'>"+le[i]+"</td>";
                     }
                     x_le_mid++;
                 });
@@ -476,18 +478,18 @@ function get_class_table(link)
             /*mexam MIDTERM STRING INITIALIZATION*/
             if (response['mexam_mid_items'].length > 0)
             {
-                mid_mexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-midterm-grade' id='table-items-mid-mexam'>"+response['mexam_mid_items'][0]+"</td>";
+                mid_mexam_items_str = "<td data-container='body' data-toggle='tooltip' title='MT EXAM SCORE<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-midterm-grade' id='table-items-mid-mexam'>"+response['mexam_mid_items'][0]+"</td>";
             }
             else
             {
-                mid_mexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-midterm-grade' id='table-items-mid-mexam'></td>";
+                mid_mexam_items_str = "<td data-container='body' data-toggle='tooltip' title='MT EXAM SCORE<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-midterm-grade' id='table-items-mid-mexam'></td>";
             }
 
             if (response['mexam_mid_score'].length > 0)
             {
                 var x_mexam_mid = 0;
                 response.mexam_mid_score.forEach(function(mexam){
-                    mid_mexam_score_str[x_mexam_mid] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-midterm-score' id='table-score-mid-mexam'>"+mexam+"</td>";
+                    mid_mexam_score_str[x_mexam_mid] = "<td data-container='body' data-toggle='tooltip' title='MT EXAM SCORE<br>"+(response.Student[x_mexam_mid]).stud_num+"<br>"+(response.Student[x_mexam_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-midterm-score' id='table-score-mid-mexam'>"+mexam+"</td>";
                     x_mexam_mid++;
                 });
             }
@@ -520,12 +522,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_assign_cols; i++) 
                 {
-                    final_assign_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-finals' id='table-items-final-assign"+(i+1)+"'>"+response['assign_final_items'][i]+"</td>";
+                    final_assign_items_str += "<td data-container='body' data-toggle='tooltip' title='ASSIGN "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-finals' id='table-items-final-assign"+(i+1)+"'>"+response['assign_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_assign_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-finals' id='table-items-final-assign1'></td>";
+                final_assign_items_str = "<td data-container='body' data-toggle='tooltip' title='ASSIGN 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-finals' id='table-items-final-assign1'></td>";
             }
 
             if (response['assign_final_score'].length > 0)
@@ -534,7 +536,7 @@ function get_class_table(link)
                 response.assign_final_score.forEach(function(assign){
                     for (var i = 0; i <  final_assign_cols; i++) 
                     {
-                        final_assign_score_str[x_assign_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-finals' id='table-score-final-assign"+(i+1)+"'>"+assign[i]+"</td>";
+                        final_assign_score_str[x_assign_final] += "<td data-container='body' data-toggle='tooltip' title='ASSIGN "+(i+1)+"<br>"+(response.Student[x_assign_final]).stud_num+"<br>"+(response.Student[x_assign_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-finals' id='table-score-final-assign"+(i+1)+"'>"+assign[i]+"</td>";
                     }
                     x_assign_final++;
                 });
@@ -568,12 +570,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_sw_cols; i++) 
                 {
-                    final_sw_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true'class='table-items-seatwork-finals'  id='table-items-final-sw"+(i+1)+"'>"+response['sw_final_items'][i]+"</td>";
+                    final_sw_items_str += "<td data-container='body' data-toggle='tooltip' title='SEATWORK "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-finals'  id='table-items-final-sw"+(i+1)+"'>"+response['sw_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_sw_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-finals' id='table-items-final-sw1'></td>";
+                final_sw_items_str = "<td data-container='body' data-toggle='tooltip' title='SEATWORK 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-finals' id='table-items-final-sw1'></td>";
             }
 
             if (response['sw_final_score'].length > 0)
@@ -582,7 +584,7 @@ function get_class_table(link)
                 response.sw_final_score.forEach(function(sw){
                     for (var i = 0; i <  final_sw_cols; i++) 
                     {
-                        final_sw_score_str[x_sw_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-finals' id='table-score-final-sw"+(i+1)+"'>"+sw[i]+"</td>";
+                        final_sw_score_str[x_sw_final] += "<td data-container='body' data-toggle='tooltip' title='SEATWORK "+(i+1)+"<br>"+(response.Student[x_sw_final]).stud_num+"<br>"+(response.Student[x_sw_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-seatwork-finals' id='table-score-final-sw"+(i+1)+"'>"+sw[i]+"</td>";
                     }
                     x_sw_final++;
                 });
@@ -616,12 +618,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_ex_cols; i++) 
                 {
-                    final_ex_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-finals' id='table-items-final-ex"+(i+1)+"'>"+response['ex_final_items'][i]+"</td>";
+                    final_ex_items_str += "<td data-container='body' data-toggle='tooltip' title='EXERCISE "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-finals' id='table-items-final-ex"+(i+1)+"'>"+response['ex_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_ex_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-finals' id='table-items-final-ex1'></td>";
+                final_ex_items_str = "<td data-container='body' data-toggle='tooltip' title='EXERCISE 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-finals' id='table-items-final-ex1'></td>";
             }
 
             if (response['ex_final_score'].length > 0)
@@ -630,7 +632,7 @@ function get_class_table(link)
                 response.ex_final_score.forEach(function(ex){
                     for (var i = 0; i <  final_ex_cols; i++) 
                     {
-                        final_ex_score_str[x_ex_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-finals' id='table-score-final-ex"+(i+1)+"'>"+ex[i]+"</td>";
+                        final_ex_score_str[x_ex_final] += "<td data-container='body' data-toggle='tooltip' title='EXERCISE "+(i+1)+"<br>"+(response.Student[x_ex_final]).stud_num+"<br>"+(response.Student[x_ex_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-exercise-finals' id='table-score-final-ex"+(i+1)+"'>"+ex[i]+"</td>";
                     }
                     x_ex_final++;
                 });
@@ -664,12 +666,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_rec_cols; i++) 
                 {
-                    final_rec_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-finals' id='table-items-final-rec"+(i+1)+"'>"+response['rec_final_items'][i]+"</td>";
+                    final_rec_items_str += "<td data-container='body' data-toggle='tooltip' title='RECITATION "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-finals' id='table-items-final-rec"+(i+1)+"'>"+response['rec_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_rec_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-finals' id='table-items-final-rec1'></td>";
+                final_rec_items_str = "<td data-container='body' data-toggle='tooltip' title='RECITATION 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-finals' id='table-items-final-rec1'></td>";
             }
 
             if (response['rec_final_score'].length > 0)
@@ -678,7 +680,7 @@ function get_class_table(link)
                 response.rec_final_score.forEach(function(rec){
                     for (var i = 0; i <  final_rec_cols; i++) 
                     {
-                        final_rec_score_str[x_rec_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-finals' id='table-score-final-rec"+(i+1)+"'>"+rec[i]+"</td>";
+                        final_rec_score_str[x_rec_final] += "<td data-container='body' data-toggle='tooltip' title='RECITATION "+(i+1)+"<br>"+(response.Student[x_rec_final]).stud_num+"<br>"+(response.Student[x_rec_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-recitation-finals' id='table-score-final-rec"+(i+1)+"'>"+rec[i]+"</td>";
                     }
                     x_rec_final++;
                 });
@@ -712,12 +714,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_quiz_cols; i++) 
                 {
-                    final_quiz_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-finals' id='table-items-final-quiz"+(i+1)+"'>"+response['quiz_final_items'][i]+"</td>";
+                    final_quiz_items_str += "<td data-container='body' data-toggle='tooltip' title='QUIZ "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-finals' id='table-items-final-quiz"+(i+1)+"'>"+response['quiz_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_quiz_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-finals' id='table-items-final-quiz1'></td>";
+                final_quiz_items_str = "<td data-container='body' data-toggle='tooltip' title='QUIZ 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-finals' id='table-items-final-quiz1'></td>";
             }
 
             if (response['quiz_final_score'].length > 0)
@@ -726,7 +728,7 @@ function get_class_table(link)
                 response.quiz_final_score.forEach(function(quiz){
                     for (var i = 0; i <  final_quiz_cols; i++) 
                     {
-                        final_quiz_score_str[x_quiz_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-finals' id='table-score-final-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
+                        final_quiz_score_str[x_quiz_final] += "<td data-container='body' data-toggle='tooltip' title='QUIZ "+(i+1)+"<br>"+(response.Student[x_quiz_final]).stud_num+"<br>"+(response.Student[x_quiz_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-quiz-finals' id='table-score-final-quiz"+(i+1)+"'>"+quiz[i]+"</td>";
                     }
                     x_quiz_final++;
                 });
@@ -760,12 +762,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_le_cols; i++) 
                 {
-                    final_le_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-finals' id='table-items-final-le"+(i+1)+"'>"+response['le_final_items'][i]+"</td>";
+                    final_le_items_str += "<td data-container='body' data-toggle='tooltip' title='LONG EXAM "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-finals' id='table-items-final-le"+(i+1)+"'>"+response['le_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_le_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-finals' id='table-items-final-le1'></td>";
+                final_le_items_str = "<td data-container='body' data-toggle='tooltip' title='LONG EXAM 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-finals' id='table-items-final-le1'></td>";
             }
 
             if (response['le_final_score'].length > 0)
@@ -774,7 +776,7 @@ function get_class_table(link)
                 response.le_final_score.forEach(function(le){
                     for (var i = 0; i <  final_le_cols; i++) 
                     {
-                        final_le_score_str[x_le_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-finals' id='table-score-final-le"+(i+1)+"'>"+le[i]+"</td>";
+                        final_le_score_str[x_le_final] += "<td data-container='body' data-toggle='tooltip' title='LONG EXAM "+(i+1)+"<br>"+(response.Student[x_le_final]).stud_num+"<br>"+(response.Student[x_le_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-longExam-finals' id='table-score-final-le"+(i+1)+"'>"+le[i]+"</td>";
                     }
                     x_le_final++;
                 });
@@ -783,18 +785,18 @@ function get_class_table(link)
             /*fexam finalTERM STRING INITIALIZATION*/
             if (response['fexam_final_items'].length > 0)
             {
-                final_fexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-finals-score' id='table-items-final-fexam'>"+response['fexam_final_items'][0]+"</td>";
+                final_fexam_items_str = "<td data-container='body' data-toggle='tooltip' title='FT EXAM SCORE<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-finals-score' id='table-items-final-fexam'>"+response['fexam_final_items'][0]+"</td>";
             }
             else
             {
-                final_fexam_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-finals-score' id='table-items-final-fexam'></td>";
+                final_fexam_items_str = "<td data-container='body' data-toggle='tooltip' title='FT EXAM SCORE<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-finals-score' id='table-items-final-fexam'></td>";
             }
 
             if (response['fexam_final_score'].length > 0)
             {
                 var x_fexam_final = 0;
                 response.fexam_final_score.forEach(function(fexam){
-                    final_fexam_score_str[x_fexam_final] = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-finals-score' id='table-score-final-fexam'>"+fexam+"</td>";
+                    final_fexam_score_str[x_fexam_final] = "<td data-container='body' data-toggle='tooltip' title='FT EXAM SCORE<br>"+(response.Student[x_fexam_final]).stud_num+"<br>"+(response.Student[x_fexam_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-finals-score' id='table-score-final-fexam'>"+fexam+"</td>";
                     x_fexam_final++;
                 });
             }
@@ -882,22 +884,22 @@ function get_class_table(link)
                                         <tbody>\
                                             <tr  id='table-items-wrapper' class='num-items'>\
                                                 <td colspan='2' class='text-right' id='table-items'>Number of Items</td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+mid_ex_items_str+mid_rec_items_str+"\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid' id='table-items-mid-cs-total'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid' id='table-items-mid-cs-rating'></td>"+mid_quiz_items_str+mid_le_items_str+"\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid'  id='table-items-mid-ql-total'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-items-mid-ql-rating'></td>"+mid_mexam_items_str+"\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-items-mexam-rating'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='border-bold'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-finals' id='table-items-final-att1'></td>"+final_assign_items_str+final_sw_items_str+final_ex_items_str+final_rec_items_str+"\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-items-final-cs-total'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-items-final-cs-rating'></td>"+final_quiz_items_str+final_le_items_str+"\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-items-final-ql-total'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-items-final-ql-rating'></td>"+final_fexam_items_str+"\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent' id='table-items-fexam-rating'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                                <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                <td data-container='body' title='ATTENDACE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-mid' id='table-items-mid-att1'></td>"+mid_assign_items_str+mid_sw_items_str+mid_ex_items_str+mid_rec_items_str+"\
+                                                <td data-container='body' title='CLASS STANDING TOTAL<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid' id='table-items-mid-cs-total'></td>\
+                                                <td data-container='body' title='CLASS STANDING PERCENTAGE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid' id='table-items-mid-cs-rating'></td>"+mid_quiz_items_str+mid_le_items_str+"\
+                                                <td data-container='body' title='MT LONG EXAM TOTAL<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid'  id='table-items-mid-ql-total'></td>\
+                                                <td data-container='body' title='MT LONG EXAM PERCENTAGE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-items-mid-ql-rating'></td>"+mid_mexam_items_str+"\
+                                                <td data-container='body' title='MT EXAM RATING<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-items-mexam-rating'></td>\
+                                                <td data-container='body' title='MT GRADE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                <td data-container='body' title='MT RATING<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' id='border-bold'></td>\
+                                                <td data-container='body' title='ATTENDANCE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-att-finals' id='table-items-final-att1'></td>"+final_assign_items_str+final_sw_items_str+final_ex_items_str+final_rec_items_str+"\
+                                                <td data-container='body' title='CLASS STANDING TOTAL<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-items-final-cs-total'></td>\
+                                                <td data-container='body' title='CLASS STANDING PERCENTAGE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-items-final-cs-rating'></td>"+final_quiz_items_str+final_le_items_str+"\
+                                                <td data-container='body' title='FT LONG EXAM TOTAL<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-items-final-ql-total'></td>\
+                                                <td data-container='body' title='FT LONG EXAM PERCENTAGE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-items-final-ql-rating'></td>"+final_fexam_items_str+"\
+                                                <td data-container='body' title='FT EXAM RATING<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent' id='table-items-fexam-rating'></td>\
+                                                <td data-container='body' title='FT GRADE<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                <td data-container='body' title='FT RATING<br>Number of Items' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                             </tr>\
                                         </tbody>\
                                     </table>\
@@ -909,24 +911,25 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_att_score_str[ctr_module]+mid_assign_score_str[ctr_module]+mid_sw_score_str[ctr_module]+mid_ex_score_str[ctr_module]+mid_rec_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid' id='table-score-mid-cs-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid' id='table-score-mid-cs-rating'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid' id='table-score-mid-qle-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-score-mid-qle-rating'></td>"+mid_mexam_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-percent' id='table-scr-mid-mexam-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-grade' id='table-scr-mid-midterm-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-midterm-grade'></td>"+final_att_score_str[ctr_module]+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-score-final-cs-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-score-final-cs-rating'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-score-final-qle-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-score-final-qle-rating'></td>"+final_fexam_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent' id='table-scr-final-fexam-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-grade' id='table-scr-final-finals-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-rating' id='table-finals-grade'></td></tr>");
+                                            <td data-container='body' title='CLASS STANDING TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-mid' id='table-score-mid-cs-total'></td>\
+                                            <td data-container='body' title='CLASS STANDING PERCENTAGE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-mid' id='table-score-mid-cs-rating'></td>"+mid_quiz_score_str[ctr_module]+mid_le_score_str[ctr_module]+"\
+                                            <td data-container='body' title='MT LONG EXAM TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-mid' id='table-score-mid-qle-total'></td>\
+                                            <td data-container='body' title='MT LONG EXAM PERCENTAGE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-mid' id='table-score-mid-qle-rating'></td>"+mid_mexam_score_str[ctr_module]+"\
+                                            <td data-container='body' title='MT EXAM RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-percent' id='table-scr-mid-mexam-rating'></td>\
+                                            <td data-container='body' title='MT GRADE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-grade' id='table-scr-mid-midterm-rating'></td>\
+                                            <td data-container='body' title='MT RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-midterm-rating' id='table-midterm-grade'></td>"+final_att_score_str[ctr_module]+final_assign_score_str[ctr_module]+final_sw_score_str[ctr_module]+final_ex_score_str[ctr_module]+final_rec_score_str[ctr_module]+"\
+                                            <td data-container='body' title='CLASS STANDING TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-total-finals' id='table-score-final-cs-total'></td>\
+                                            <td data-container='body' title='CLASS STANDING PERCENTAGE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-standing-percent-finals' id='table-score-final-cs-rating'></td>"+final_quiz_score_str[ctr_module]+final_le_score_str[ctr_module]+"\
+                                            <td data-container='body' title='FT LONG EXAM TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-total-finals' id='table-score-final-qle-total'></td>\
+                                            <td data-container='body' title='FT LONG EXAM PERCENTAGE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-quiz-longExam-percent-finals' id='table-score-final-qle-rating'></td>"+final_fexam_score_str[ctr_module]+"\
+                                            <td data-container='body' title='FT EXAM RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-percent' id='table-scr-final-fexam-rating'></td>\
+                                            <td data-container='body' title='FT FRADE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-grade' id='table-scr-final-finals-rating'></td>\
+                                            <td data-container='body' title='FT RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-toggle='tooltip' data-html='true' data-placement='bottom' contenteditable='false' class='table-items-finals-rating' id='table-finals-grade'></td></tr>");
                 ctr_module++;
                 });
+                $('[data-toggle="tooltip"]').tooltip();
                 table.append("<script type='text/javascript' src='/js/table.js'></script>\
-                    <script type='text/javascript' src='/js/tooltipMarci.js'></script>");
+                   <script type='text/javascript' src='/js/tooltipMarci.js'></script>");
             }
             else
             {
@@ -964,12 +967,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_lab_cols-2; i++) 
                 {
-                    mid_lab_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab"+(i+1)+"'>"+response['lab_mid_items'][i]+"</td>";
+                    mid_lab_items_str += "<td data-container='body' data-toggle='tooltip' title='LABORATORY "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab"+(i+1)+"'>"+response['lab_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_lab_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab1'></td>";
+                mid_lab_items_str = "<td data-container='body' data-toggle='tooltip' title='LABORATORY 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-lab1'></td>";
             }
 
             if (response['lab_mid_score'].length > 0)
@@ -978,7 +981,7 @@ function get_class_table(link)
                 response.lab_mid_score.forEach(function(lab){
                     for (var i = 0; i <  mid_lab_cols-2; i++) 
                     {
-                        mid_lab_score_str[x_lab_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-lab"+(i+1)+"'>"+lab[i]+"</td>";
+                        mid_lab_score_str[x_lab_mid] += "<td data-container='body' data-toggle='tooltip' title='LABORATORY "+(i+1)+"<br>"+(response.Student[x_lab_mid]).stud_num+"<br>"+(response.Student[x_lab_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-lab"+(i+1)+"'>"+lab[i]+"</td>";
                     }
                     x_lab_mid++;
                 });
@@ -1006,12 +1009,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_prac_cols-2; i++) 
                 {
-                    mid_prac_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-prac"+(i+1)+"'>"+response['prac_mid_items'][i]+"</td>";
+                    mid_prac_items_str += "<td data-container='body' data-toggle='tooltip' title='PRACTICAL "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-prac"+(i+1)+"'>"+response['prac_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_prac_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-prac1'></td>";
+                mid_prac_items_str = "<td data-container='body' data-toggle='tooltip' title='PRACTICAL 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-prac1'></td>";
             }
 
             if (response['prac_mid_score'].length > 0)
@@ -1020,7 +1023,7 @@ function get_class_table(link)
                 response.prac_mid_score.forEach(function(prac){
                     for (var i = 0; i <  mid_prac_cols-2; i++) 
                     {
-                        mid_prac_score_str[x_prac_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-prac"+(i+1)+"'>"+prac[i]+"</td>";
+                        mid_prac_score_str[x_prac_mid] += "<td data-container='body' data-toggle='tooltip' title='PRACTICAL "+(i+1)+"<br>"+(response.Student[x_prac_mid]).stud_num+"<br>"+(response.Student[x_prac_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-prac"+(i+1)+"'>"+prac[i]+"</td>";
                     }
                     x_prac_mid++;
                 });
@@ -1048,12 +1051,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  mid_proj_cols-2; i++) 
                 {
-                    mid_proj_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-proj"+(i+1)+"'>"+response['proj_mid_items'][i]+"</td>";
+                    mid_proj_items_str += "<td data-container='body' data-toggle='tooltip' title='PROJECT "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-proj"+(i+1)+"'>"+response['proj_mid_items'][i]+"</td>";
                 }
             }
             else
             {
-                mid_proj_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-proj1'></td>";
+                mid_proj_items_str = "<td data-container='body' data-toggle='tooltip' title='PROJECT 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-mid-proj1'></td>";
             }
 
             if (response['proj_mid_score'].length > 0)
@@ -1062,7 +1065,7 @@ function get_class_table(link)
                 response.proj_mid_score.forEach(function(proj){
                     for (var i = 0; i <  mid_proj_cols-2; i++) 
                     {
-                        mid_proj_score_str[x_proj_mid] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-proj"+(i+1)+"'>"+proj[i]+"</td>";
+                        mid_proj_score_str[x_proj_mid] += "<td data-container='body' data-toggle='tooltip' title='PROJECT "+(i+1)+"<br>"+(response.Student[x_proj_mid]).stud_num+"<br>"+(response.Student[x_proj_mid]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-mid-proj"+(i+1)+"'>"+proj[i]+"</td>";
                     }
                     x_proj_mid++;
                 });
@@ -1090,12 +1093,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_lab_cols-2; i++) 
                 {
-                    final_lab_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-lab"+(i+1)+"'>"+response['lab_final_items'][i]+"</td>";
+                    final_lab_items_str += "<td data-container='body' data-toggle='tooltip' title='LABORATORY "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-lab"+(i+1)+"'>"+response['lab_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_lab_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-lab1'></td>";
+                final_lab_items_str = "<td data-container='body' data-toggle='tooltip' title='LABORATORY 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-lab1'></td>";
             }
 
             if (response['lab_final_score'].length > 0)
@@ -1104,7 +1107,7 @@ function get_class_table(link)
                 response.lab_final_score.forEach(function(lab){
                     for (var i = 0; i <  final_lab_cols-2; i++) 
                     {
-                        final_lab_score_str[x_lab_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-lab"+(i+1)+"'>"+lab[i]+"</td>";
+                        final_lab_score_str[x_lab_final] += "<td data-container='body' data-toggle='tooltip' title='LABORATORY "+(i+1)+"<br>"+(response.Student[x_lab_final]).stud_num+"<br>"+(response.Student[x_lab_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-lab"+(i+1)+"'>"+lab[i]+"</td>";
                     }
                     x_lab_final++;
                 });
@@ -1132,12 +1135,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_prac_cols-2; i++) 
                 {
-                    final_prac_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-prac"+(i+1)+"'>"+response['prac_final_items'][i]+"</td>";
+                    final_prac_items_str += "<td data-container='body' data-toggle='tooltip' title='PRACTICAL "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-prac"+(i+1)+"'>"+response['prac_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_prac_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-prac1'></td>";
+                final_prac_items_str = "<td data-container='body' data-toggle='tooltip' title='PRACTICAL 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-prac1'></td>";
             }
 
             if (response['prac_final_score'].length > 0)
@@ -1146,7 +1149,7 @@ function get_class_table(link)
                 response.prac_final_score.forEach(function(prac){
                     for (var i = 0; i <  final_prac_cols-2; i++) 
                     {
-                        final_prac_score_str[x_prac_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-prac"+(i+1)+"'>"+prac[i]+"</td>";
+                        final_prac_score_str[x_prac_final] += "<td data-container='body' data-toggle='tooltip' title='PRACTICAL "+(i+1)+"<br>"+(response.Student[x_prac_final]).stud_num+"<br>"+(response.Student[x_prac_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-prac"+(i+1)+"'>"+prac[i]+"</td>";
                     }
                     x_prac_final++;
                 });
@@ -1174,12 +1177,12 @@ function get_class_table(link)
             {
                 for (var i = 0; i <  final_proj_cols-2; i++) 
                 {
-                    final_proj_items_str += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-proj"+(i+1)+"'>"+response['proj_final_items'][i]+"</td>";
+                    final_proj_items_str += "<td data-container='body' data-toggle='tooltip' title='PROJECT "+(i+1)+"<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-proj"+(i+1)+"'>"+response['proj_final_items'][i]+"</td>";
                 }
             }
             else
             {
-                final_proj_items_str = "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-proj1'></td>";
+                final_proj_items_str = "<td data-container='body' data-toggle='tooltip' title='PROJECT 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' id='table-items-final-proj1'></td>";
             }
 
             if (response['proj_final_score'].length > 0)
@@ -1188,7 +1191,7 @@ function get_class_table(link)
                 response.proj_final_score.forEach(function(proj){
                     for (var i = 0; i <  final_proj_cols-2; i++) 
                     {
-                        final_proj_score_str[x_proj_final] += "<td data-container='body' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-proj"+(i+1)+"'>"+proj[i]+"</td>";
+                        final_proj_score_str[x_proj_final] += "<td data-container='body' data-toggle='tooltip' title='PROJECT "+(i+1)+"<br>"+(response.Student[x_proj_final]).stud_num+"<br>"+(response.Student[x_proj_final]).full_name+"' data-html='true' data-placement='bottom' contenteditable='true' id='table-score-final-proj"+(i+1)+"'>"+proj[i]+"</td>";
                     }
                     x_proj_final++;
                 });
@@ -1250,22 +1253,22 @@ function get_class_table(link)
                                                 <tbody>\
                                                 <tr id='table-items-wrapper'  class='table-student-num-name'>\
                                                     <td colspan='2' class='text-right' id='table-items'>Number of Items</td>"+mid_lab_items_str+"\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-total'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-rating'></td>"+mid_prac_items_str+"\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prc-total'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prc-rating'></td>"+mid_proj_items_str+"\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prj-total'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prj-rating'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false'></td>"+final_lab_items_str+"\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-lb-total'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-lb-rating'></td>"+final_prac_items_str+"\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prc-total'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prc-rating'></td>"+final_proj_items_str+"\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prj-total'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prj-rating'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
-                                                    <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='LABORATORY TOTAL<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-total'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='LABORATORY RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-lb-rating'></td>"+mid_prac_items_str+"\
+                                                    <td data-container='body' data-toggle='tooltip' title='PRACTICAL TOTAL<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prc-total'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='PRACTICAL RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prc-rating'></td>"+mid_proj_items_str+"\
+                                                    <td data-container='body' data-toggle='tooltip' title='PROJECT TOTAL<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prj-total'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='PROJECT RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-mid-prj-rating'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='MT GRADE<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='MT RATING<br>Number of Items' data-html='true' data-placement='bottom' id='border-bold' contenteditable='false'></td>"+final_lab_items_str+"\
+                                                    <td data-container='body' data-toggle='tooltip' title='LABORATORY TOTAL<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-lb-total'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='LABORATORY RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-lb-rating'></td>"+final_prac_items_str+"\
+                                                    <td data-container='body' data-toggle='tooltip' title='PRACTICAL TOTAL<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prc-total'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='PRACTICAL RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prc-rating'></td>"+final_proj_items_str+"\
+                                                    <td data-container='body' data-toggle='tooltip' title='PROJECT TOTAL<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prj-total'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='PROJECT RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false' id='table-items-final-prj-rating'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='FT GRADE<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false'></td>\
+                                                    <td data-container='body' data-toggle='tooltip' title='FT RATING<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='false'></td>\
                                                 </tr>\
                                             </tbody>\
                                     </table>\
@@ -1277,27 +1280,28 @@ function get_class_table(link)
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
                                             <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_lab_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-lb-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-lb-rating'></td>"+mid_prac_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prc-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prc-rating'></td>"+mid_proj_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-mid-midterm-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-midterm-grade'></td>"+final_lab_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-rating'></td>"+final_prac_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-rating'></td>"+final_proj_score_str[ctr_module]+"\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-total'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-final-finals-rating'></td>\
-                                            <td data-container='body' data-html='true' data-placement='bottom' contenteditable='false' id='table-finals-grade'></td></tr>");
+                                            <td data-container='body' data-toggle='tooltip' title='LABORATORY TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-lb-total'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='LABORATORY RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-lb-rating'></td>"+mid_prac_score_str[ctr_module]+"\
+                                            <td data-container='body' data-toggle='tooltip' title='PRACTICAL TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prc-total'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='PRACTICAL RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prc-rating'></td>"+mid_proj_score_str[ctr_module]+"\
+                                            <td data-container='body' data-toggle='tooltip' title='PROJECT TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-total'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='PROJECT RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-mid-prj-rating'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='MT GRADE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-mid-midterm-rating'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='MT RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-midterm-grade'></td>"+final_lab_score_str[ctr_module]+"\
+                                            <td data-container='body' data-toggle='tooltip' title='LABORATORY TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-total'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='LABORATORY RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-lb-rating'></td>"+final_prac_score_str[ctr_module]+"\
+                                            <td data-container='body' data-toggle='tooltip' title='PRACTICAL TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-total'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='PRACTICAL RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prc-rating'></td>"+final_proj_score_str[ctr_module]+"\
+                                            <td data-container='body' data-toggle='tooltip' title='PROJECT TOTAL<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-total'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='PROJECT RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-score-final-prj-rating'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='FT GRADE<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-scr-final-finals-rating'></td>\
+                                            <td data-container='body' data-toggle='tooltip' title='FT RATING<br>"+stud.stud_num+"<br>"+stud.full_name+"' data-html='true' data-placement='bottom' contenteditable='false' id='table-finals-grade'></td></tr>");
                 ctr_module++;
             });
             
             table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
+            $('[data-toggle="tooltip"]').tooltip();
             }
         }
         else if (response['table_type'] == "attendance_table")
@@ -1508,6 +1512,9 @@ function get_class_table(link)
       {
         console.log(link);
       }
+        var end = new Date().getTime();
+        var time = end - start;
+        console.log('Execution Time: ' + time);
     })
   return false;
 }
