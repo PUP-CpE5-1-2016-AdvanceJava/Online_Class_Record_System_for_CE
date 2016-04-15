@@ -39,6 +39,7 @@
     <div class = "container">
         <div class = "row" id = "navbar-normal">
             <ul class = " nav pull-left" id= "navbar-maintabs">
+                <li><a href = "team">TEAM</a></li>
                 <?php
                     if ($user['type'] != 'Faculty'):
                         ?>
