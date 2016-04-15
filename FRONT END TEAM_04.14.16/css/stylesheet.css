@@ -24,7 +24,6 @@
 #navbar-subtabs p{line-height: .75; padding: 0;}
 #active{color:#fff !important; background: #730b0a; border-bottom: 2px solid #fff !important;}
 
-
 /*FOOTER*/
 #footer-wrapper{position:relative; background:#131313; z-index: 888; bottom:0; margin-top: 100px; padding: 25px 0; }
 #footer-details {text-align: left; }

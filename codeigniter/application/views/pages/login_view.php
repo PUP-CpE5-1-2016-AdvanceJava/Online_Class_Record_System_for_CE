@@ -55,6 +55,16 @@
 		</div>
 	</div>
 
+	<div class = "container-fluid" id = "login-footer-wrapper">
+        <div class = "container">
+        	<div class="row" id = "login-footer-details-wrapper">
+                <div class="col-md-5 pull-left" id = "login-footer-details">           
+                    <p><i class="fa fa-copyright"></i> All Rights Reserved | 2016.<a href= "meet_the_team.php"> About the developers</a></p>
+                </div>
+            </div>
+        </div> 
+    </div> 
+
 	
 		<?php if (isset($error))
 		{	echo "<div class='container'>";

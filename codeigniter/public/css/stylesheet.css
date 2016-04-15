@@ -31,7 +31,6 @@
 #footer-details span{ display:inline; font-size: 18px; font-family: 'Lustria', serif; color: #fff; line-height: 2; }
 #footer-details p {color: #fff; font-size: 14px; font-family: 'Lustria', serif; font-weight: bold; }
 #footer-logo{ height: auto; float: left; padding-right: 5px;}
-/*#footer-form{ max-width: 400px;}*/
 #footer-form input, #footer-form button {border-radius: 0 !important; }
 #footer-form button {background: #504d4d; color: #e1e1e1;}
 /*UNIVERSAL end*/
@@ -52,6 +51,11 @@
 #login-form-input {padding-bottom: 5px; padding-top: 5px;}
 #login-form-input input { height: 42px;}
 #login-form-button {width:100%; margin-top: 20px;}
+#login-footer-wrapper{position:relative; background: rgba(0, 0, 0, .3); z-index: 888; bottom:0; margin-top: 91px; padding-top: 12px;  }
+#login-footer-details {text-align: left; }
+#login-footer-details a{color:#fff; font-weight: bold;}
+#login-footer-details a:hover{color:#fff;}
+#login-footer-details p {color: #fff; font-size: 12px; font-family: 'Lustria', serif; }
 /*LOGIN CONTENT end*/
 
 /*ARCHIVES CONTENT*/
