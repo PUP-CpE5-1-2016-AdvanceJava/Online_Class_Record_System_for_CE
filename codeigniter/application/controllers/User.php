@@ -206,14 +206,7 @@ class User extends CI_Controller
 
     public function team()
     {
-    	if ($this->session->userdata('Id')!="")
-    	{
-			$this->load->view('pages/meet_the_team');
-		}
-		else 
-		{
-			$this->load->view("pages/login_view");
-		}
+		$this->load->view('pages/meet_the_team');
     }
 
     public function regView($page = 'register_view')
