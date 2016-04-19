@@ -870,14 +870,14 @@ function get_class_table(link)
                                             <tr id='table-module'>\
                                                 <th colspan='2' id='table-blank2'></th>\
                                                 <th class='text-center' id='table-header-mid-att1'>10%</th>"+mid_assign_header_str+mid_sw_header_str+mid_ex_header_str+mid_rec_header_str+"\
-                                                <th class='text-center' id='table-header-mid-cs-total'>Total</th>\
+                                                <th class='text-center' id='table-header-mid-cs-total'>Average Total %</th>\
                                                 <th class='text-center' id='table-header-mid-cs-rating'>20%</th>"+mid_quiz_header_str+mid_le_header_str+"\
-                                                <th class='text-center' id='table-header-mid-ql-total'>Total</th>\
+                                                <th class='text-center' id='table-header-mid-ql-total'>Average Total %</th>\
                                                 <th class='text-center' id='table-header-mid-ql-rating'>30%</th>\
                                                 <th class='text-center' id='table-header-final-att1'>10%</th>"+final_assign_header_str+final_sw_header_str+final_ex_header_str+final_rec_header_str+"\
-                                                <th class='text-center' id='table-header-final-cs-total'>Total</th>\
+                                                <th class='text-center' id='table-header-final-cs-total'>Average Total %</th>\
                                                 <th class='text-center' id='table-header-final-cs-rating'>20%</th>"+final_quiz_header_str+final_le_header_str+"\
-                                                <th class='text-center' id='table-header-final-ql-total'>Total</th>\
+                                                <th class='text-center' id='table-header-final-ql-total'>Average Total %</th>\
                                                 <th class='text-center' id='table-header-final-ql-rating'>30%</th>\
                                             </tr>\
                                         </thead>\
@@ -1232,19 +1232,19 @@ function get_class_table(link)
                                                 </tr>\
                                                 <tr id='table-module'>\
                                                     <th colspan='2' id='table-blank2'></th>"+mid_lab_header_str+"\
-                                                    <th class='text-center' id='table-header-mid-lab-total'>Total</th>\
+                                                    <th class='text-center' id='table-header-mid-lab-total'>Average Total % </th>\
                                                     <th class='text-center' id='table-header-mid-lab-rating'>45%</th>"+mid_prac_header_str+"\
-                                                    <th class='text-center' id='table-header-mid-prac-total'>Total</th>\
+                                                    <th class='text-center' id='table-header-mid-prac-total'>Average Total %</th>\
                                                     <th class='text-center' id='table-header-mid-prac-rating'>25%</th>"+mid_proj_header_str+"\
-                                                    <th class='text-center' id='table-header-mid-proj-total'>Total</th>\
+                                                    <th class='text-center' id='table-header-mid-proj-total'>Average Total %</th>\
                                                     <th class='text-center' id='table-header-mid-proj-rating'>30%</th>\
                                                     <th class='text-center' id='table-header-mid-overall-rating'>100%</th>\
                                                     <th id='table-header-mid-overall-grade' class='text-center'>Rating</th>"+final_lab_header_str+"\
-                                                    <th class='text-center' id='table-header-final-lab-total'>Total</th>\
+                                                    <th class='text-center' id='table-header-final-lab-total'>Average Total %</th>\
                                                     <th class='text-center' id='table-header-final-lab-rating'>45%</th>"+final_prac_header_str+"\
-                                                    <th class='text-center' id='table-header-final-prac-total'>Total</th>\
+                                                    <th class='text-center' id='table-header-final-prac-total'>Average Total %</th>\
                                                     <th class='text-center' id='table-header-final-prac-rating'>25%</th>"+final_proj_header_str+"\
-                                                    <th class='text-center' id='table-header-final-proj-total'>Total</th>\
+                                                    <th class='text-center' id='table-header-final-proj-total'>Average Total %</th>\
                                                     <th class='text-center' id='table-header-final-proj-rating'>30%</th>\
                                                     <th class='text-center' id='table-header-final-overall-rating'>100%</th>\
                                                     <th id='table-header-final-overall-grade' class='text-center'>Rating</th>\
