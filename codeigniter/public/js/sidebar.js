@@ -930,6 +930,20 @@ function get_class_table(link)
                 $('[data-toggle="tooltip"]').tooltip();
                 table.append("<script type='text/javascript' src='/js/table.js'></script>\
                    <script type='text/javascript' src='/js/tooltipMarci.js'></script>");
+                $('[data-toggle="tooltip"]').tooltip();
+                // initialize del button if attendance counters > 1
+                if (assignCounter1 > 1) $('#table-mid-assign-button-del').css('display','inline-block');
+                if (assignCounter2 > 1) $('#table-final-assign-button-del').css('display','inline-block');
+                if (swCounter1 > 1) $('#table-mid-sw-button-del').css('display','inline-block');
+                if (swCounter2 > 1) $('#table-final-sw-button-del').css('display','inline-block');
+                if (exCounter1 > 1) $('#table-mid-ex-button-del').css('display','inline-block');
+                if (exCounter2 > 1) $('#table-final-ex-button-del').css('display','inline-block');
+                if (recCounter1 > 1) $('#table-mid-rec-button-del').css('display','inline-block');
+                if (recCounter2 > 1) $('#table-final-rec-button-del').css('display','inline-block');
+                if (quizCounter1 > 1) $('#table-mid-quiz-button-del').css('display','inline-block');
+                if (quizCounter2 > 1) $('#table-final-quiz-button-del').css('display','inline-block');
+                if (leCounter1 > 1) $('#table-mid-le-button-del').css('display','inline-block');
+                if (leCounter2 > 1) $('#table-final-le-button-del').css('display','inline-block');
             }
             else
             {
@@ -1302,6 +1316,13 @@ function get_class_table(link)
             table.append("<script type='text/javascript' src='/js/tooltipMarci.js'></script>\
                                 <script type='text/javascript' src='/js/table.js'></script>");
             $('[data-toggle="tooltip"]').tooltip();
+            // initialize del button if attendance counters > 1
+            if (labCounter1 > 1) $('#table-mid-lab-button-del').css('display','inline-block');
+            if (labCounter2 > 1) $('#table-final-lab-button-del').css('display','inline-block');
+            if (pracCounter1 > 1) $('#table-mid-prac-button-del').css('display','inline-block');
+            if (pracCounter2 > 1) $('#table-final-prac-button-del').css('display','inline-block');
+            if (projCounter1 > 1) $('#table-mid-proj-button-del').css('display','inline-block');
+            if (projCounter2 > 1) $('#table-final-proj-button-del').css('display','inline-block');
             }
         }
         else if (response['table_type'] == "attendance_table")
@@ -1432,6 +1453,9 @@ function get_class_table(link)
             ctr_module++;
                 });
             table.append("<script type='text/javascript' src='/js/table.js'></script>");
+            // initialize del button if attendance counters > 1
+            if (attCounter1 > 1) $('#table-mid-att-button-del').css('display','inline-block');
+            if (attCounter2 > 1) $('#table-final-att-button-del').css('display','inline-block');
         }
         else if (response['table_type'] == "final_table")
         {
@@ -1775,7 +1799,6 @@ function add_column(parent)
             $("tr td#"+score).after($("<td data-container='body' data-html='true' data-placement='bottom'  id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 15 column is allowed on this table.");
-        return;
     }
 
     if (module_type == "Lab")
@@ -1819,6 +1842,7 @@ function add_column(parent)
             $("tr td#"+score).after($("<td data-container='body' data-html='true' data-placement='bottom' id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
+        addTooltip();
     }
 
     else if (module_type == "Lec")
@@ -1908,34 +1932,8 @@ function add_column(parent)
             $("tr td#"+score).after($("<td data-container='body' data-html='true' data-placement='bottom' class='"+class_name+"' id='"+newScore+"' contenteditable='true'></td>"));
         }
         else alert("Only 10 column is allowed on this table.");
+        addTooltip();
     }
-    //---to reinstantiate tooltip on added columns---//
-    addTooltip();
-    // $('table td').each(function(){
-    //     $(this).addClass("current-test");
-    //     $parent = $(this).parent();
-    //     $parent.addClass("current-test-parent");
-    //     $studno = $parent.find('td:eq(0)').html();
-    //     $studname = $parent.find('td:eq(1)').html();
-    //     $index = $(".current-test-parent td").index($(".current-test"));
-    //     if($(this).is('[id*="table-items"]')){
-    //         $head = $("#table-module th:eq("+($index)+")").html();
-    //     //console.log($("#table-module th:eq("+($index-1)+")").html());
-    //     }else{
-    //         $head = $("#table-module th:eq("+($index-1)+")").html();
-    //     }
-    //     $(this).attr({
-    //         "data-toggle":"tooltip",
-    //         "data-container":"body",
-    //         "data-html":"true",
-    //         "data-placement":"bottom",
-    //         "title":$head +"<br>"+$studno+"<br>"+$studname
-    //     })
-    //     $(this).removeClass("current-test");
-    //     $parent.removeClass("current-test-parent");
-    //     // 
-    // });
-    // $('[data-toggle="tooltip"]').tooltip();
 }
 
 /*DEL BUTTON*/
@@ -1955,7 +1953,7 @@ function del_column(parent)
         var header = array[0]+"-header-"+array[1]+"-"+module+getModuleCounter(label,term,"val");
         var items = array[0]+"-items-"+array[1]+"-"+module+getModuleCounter(label,term,"val"); // for getting items id
         var score = array[0]+"-score-"+array[1]+"-"+module+getModuleCounter(label,term,"val");
-
+        var colToDel = 0;
         var term_tag,newHeader,newItems,newScore;
         if (term == 'mid') term_tag = $('#table-midterm');
         else term_tag = $('#table-finals');
@@ -1965,7 +1963,8 @@ function del_column(parent)
             if ($(parentTag).attr('colspan') > 3)
             {
                 $(parentTag).attr('colspan',$(parentTag).attr('colspan')-1); //subtract one colspan to the module header
-                var newCount = getModuleCounter(label,term,"val") - 1;
+                colToDel = getModuleCounter(label,term,"val");
+                var newCount = colToDel - 1;
                 setModuleCounter(getModuleCounter(label,term,"name"),newCount);
 
                 $("tr th#"+header).remove();  //remove module names column e.g. lab3,quiz1 etc.
@@ -1974,7 +1973,6 @@ function del_column(parent)
             if ($(parentTag).attr('colspan') <= 3){
                 $("#"+parentId+"-button-del").css('display', 'none');         
             }
-            return;
         }
 
         if (module_type == "Lab")
@@ -1982,7 +1980,8 @@ function del_column(parent)
             if ($(parentTag).attr('colspan') > 3)
             {
                 $(parentTag).attr('colspan',$(parentTag).attr('colspan')-1); //subtract one colspan to the module header
-                var newCount = getModuleCounter(label,term,"val") - 1;
+                colToDel = getModuleCounter(label,term,"val");
+                var newCount = colToDel - 1;
                 setModuleCounter(getModuleCounter(label,term,"name"),newCount);
 
                 $(term_tag).attr('colspan',$(term_tag).attr('colspan')-1);  //subtract one colspan to the midterm or finals header
@@ -2003,7 +2002,8 @@ function del_column(parent)
             if ($(parentTag).attr('colspan') > 1)
             {
                 $(parentTag).attr('colspan',$(parentTag).attr('colspan')-1);
-                var newCount = getModuleCounter(label,term,"val") - 1;
+                colToDel = getModuleCounter(label,term,"val");
+                var newCount = colToDel - 1;
                 setModuleCounter(getModuleCounter(label,term,"name"),newCount);
 
                 if (term == "mid")
@@ -2042,6 +2042,19 @@ function del_column(parent)
                 $("#"+parentId+"-button-del").css('display', 'none');         
             }
         }
+        // ajax call to delete column need: classId, term, columnNum ,module type, label
+        // label for lec: Assign,Sw,Ex,Rec,Quiz,Le for lab: Lab,Prac,Proj for att:Att
+        $.ajax({
+            url: 'del_column',
+            type: "POST",
+            dataType: 'json',
+            data: {'classId':classId,'term':term,'colToDel':colToDel,'module_type':module_type, 'label':label },
+            cache: false,
+            success: function(res) {
+                console.log(res);
+                alert("Column has been deleted.");
+            }
+        })
     }
     cancel.onclick = function() {
         modal.style.display = "none";

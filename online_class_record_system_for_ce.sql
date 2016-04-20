@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2016 at 01:44 PM
+-- Generation Time: Apr 20, 2016 at 04:17 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.5.19
 
@@ -33,157 +33,85 @@ CREATE TABLE IF NOT EXISTS `assignment` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `assignment`
 --
 
 INSERT INTO `assignment` (`Id`, `StudId`, `AssignNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 20.00, NULL, 'Midterm'),
-(2, 2, 1, 10.00, NULL, 'Midterm'),
-(3, 3, 1, 3.00, NULL, 'Midterm'),
-(4, 4, 1, 4.00, NULL, 'Midterm'),
-(5, 5, 1, 5.00, NULL, 'Midterm'),
-(6, 6, 1, 0.00, NULL, 'Midterm'),
-(7, 7, 1, 0.00, NULL, 'Midterm'),
-(8, 8, 1, 0.00, NULL, 'Midterm'),
-(9, 9, 1, 0.00, NULL, 'Midterm'),
-(10, 10, 1, 0.00, NULL, 'Midterm'),
-(11, 11, 1, 0.00, NULL, 'Midterm'),
-(12, 12, 1, 0.00, NULL, 'Midterm'),
-(13, 13, 1, 0.00, NULL, 'Midterm'),
-(14, 14, 1, 0.00, NULL, 'Midterm'),
-(15, 15, 1, 0.00, NULL, 'Midterm'),
-(16, 16, 1, 0.00, NULL, 'Midterm'),
-(17, 17, 1, 0.00, NULL, 'Midterm'),
-(18, 18, 1, 0.00, NULL, 'Midterm'),
-(19, 19, 1, 0.00, NULL, 'Midterm'),
-(20, 20, 1, 0.00, NULL, 'Midterm'),
-(21, 21, 1, 0.00, NULL, 'Midterm'),
-(22, 22, 1, 0.00, NULL, 'Midterm'),
-(23, 23, 1, 0.00, NULL, 'Midterm'),
-(24, 24, 1, 0.00, NULL, 'Midterm'),
-(25, 25, 1, 0.00, NULL, 'Midterm'),
-(26, 26, 1, 0.00, NULL, 'Midterm'),
-(27, 27, 1, 0.00, NULL, 'Midterm'),
-(28, 28, 1, 0.00, NULL, 'Midterm'),
-(29, 29, 1, 0.00, NULL, 'Midterm'),
-(30, 30, 1, 0.00, NULL, 'Midterm'),
-(31, 31, 1, 0.00, NULL, 'Midterm'),
-(32, 32, 1, 0.00, NULL, 'Midterm'),
-(33, 33, 1, 0.00, NULL, 'Midterm'),
-(34, 34, 1, 0.00, NULL, 'Midterm'),
-(35, 35, 1, 0.00, NULL, 'Midterm'),
-(36, 36, 1, 0.00, NULL, 'Midterm'),
-(37, 1, 1, 1.00, NULL, 'Finals'),
-(38, 2, 1, 2.00, NULL, 'Finals'),
-(39, 3, 1, 3.00, NULL, 'Finals'),
-(40, 4, 1, 4.00, NULL, 'Finals'),
-(41, 5, 1, 5.00, NULL, 'Finals'),
-(42, 6, 1, 0.00, NULL, 'Finals'),
-(43, 7, 1, 0.00, NULL, 'Finals'),
-(44, 8, 1, 0.00, NULL, 'Finals'),
-(45, 9, 1, 0.00, NULL, 'Finals'),
-(46, 10, 1, 0.00, NULL, 'Finals'),
-(47, 11, 1, 0.00, NULL, 'Finals'),
-(48, 12, 1, 0.00, NULL, 'Finals'),
-(49, 13, 1, 0.00, NULL, 'Finals'),
-(50, 14, 1, 0.00, NULL, 'Finals'),
-(51, 15, 1, 0.00, NULL, 'Finals'),
-(52, 16, 1, 0.00, NULL, 'Finals'),
-(53, 17, 1, 0.00, NULL, 'Finals'),
-(54, 18, 1, 0.00, NULL, 'Finals'),
-(55, 19, 1, 0.00, NULL, 'Finals'),
-(56, 20, 1, 0.00, NULL, 'Finals'),
-(57, 21, 1, 0.00, NULL, 'Finals'),
-(58, 22, 1, 0.00, NULL, 'Finals'),
-(59, 23, 1, 0.00, NULL, 'Finals'),
-(60, 24, 1, 0.00, NULL, 'Finals'),
-(61, 25, 1, 0.00, NULL, 'Finals'),
-(62, 26, 1, 0.00, NULL, 'Finals'),
-(63, 27, 1, 0.00, NULL, 'Finals'),
-(64, 28, 1, 0.00, NULL, 'Finals'),
-(65, 29, 1, 0.00, NULL, 'Finals'),
-(66, 30, 1, 0.00, NULL, 'Finals'),
-(67, 31, 1, 0.00, NULL, 'Finals'),
-(68, 32, 1, 0.00, NULL, 'Finals'),
-(69, 33, 1, 0.00, NULL, 'Finals'),
-(70, 34, 1, 0.00, NULL, 'Finals'),
-(71, 35, 1, 0.00, NULL, 'Finals'),
-(72, 36, 1, 0.00, NULL, 'Finals'),
-(73, 1, 2, 10.00, NULL, 'Midterm'),
-(74, 2, 2, 0.00, NULL, 'Midterm'),
-(75, 3, 2, 0.00, NULL, 'Midterm'),
-(76, 4, 2, 0.00, NULL, 'Midterm'),
-(77, 5, 2, 0.00, NULL, 'Midterm'),
-(78, 6, 2, 0.00, NULL, 'Midterm'),
-(79, 7, 2, 0.00, NULL, 'Midterm'),
-(80, 8, 2, 0.00, NULL, 'Midterm'),
-(81, 9, 2, 0.00, NULL, 'Midterm'),
-(82, 10, 2, 0.00, NULL, 'Midterm'),
-(83, 11, 2, 0.00, NULL, 'Midterm'),
-(84, 12, 2, 0.00, NULL, 'Midterm'),
-(85, 13, 2, 0.00, NULL, 'Midterm'),
-(86, 14, 2, 0.00, NULL, 'Midterm'),
-(87, 15, 2, 0.00, NULL, 'Midterm'),
-(88, 16, 2, 0.00, NULL, 'Midterm'),
-(89, 17, 2, 0.00, NULL, 'Midterm'),
-(90, 18, 2, 0.00, NULL, 'Midterm'),
-(91, 19, 2, 0.00, NULL, 'Midterm'),
-(92, 20, 2, 0.00, NULL, 'Midterm'),
-(93, 21, 2, 0.00, NULL, 'Midterm'),
-(94, 22, 2, 0.00, NULL, 'Midterm'),
-(95, 23, 2, 0.00, NULL, 'Midterm'),
-(96, 24, 2, 0.00, NULL, 'Midterm'),
-(97, 25, 2, 0.00, NULL, 'Midterm'),
-(98, 26, 2, 0.00, NULL, 'Midterm'),
-(99, 27, 2, 0.00, NULL, 'Midterm'),
-(100, 28, 2, 0.00, NULL, 'Midterm'),
-(101, 29, 2, 0.00, NULL, 'Midterm'),
-(102, 30, 2, 0.00, NULL, 'Midterm'),
-(103, 31, 2, 0.00, NULL, 'Midterm'),
-(104, 32, 2, 0.00, NULL, 'Midterm'),
-(105, 33, 2, 0.00, NULL, 'Midterm'),
-(106, 34, 2, 0.00, NULL, 'Midterm'),
-(107, 35, 2, 0.00, NULL, 'Midterm'),
-(108, 36, 2, 0.00, NULL, 'Midterm'),
-(109, 1, 3, 10.00, NULL, 'Midterm'),
-(110, 2, 3, 0.00, NULL, 'Midterm'),
-(111, 3, 3, 0.00, NULL, 'Midterm'),
-(112, 4, 3, 0.00, NULL, 'Midterm'),
-(113, 5, 3, 0.00, NULL, 'Midterm'),
-(114, 6, 3, 0.00, NULL, 'Midterm'),
-(115, 7, 3, 0.00, NULL, 'Midterm'),
-(116, 8, 3, 0.00, NULL, 'Midterm'),
-(117, 9, 3, 0.00, NULL, 'Midterm'),
-(118, 10, 3, 0.00, NULL, 'Midterm'),
-(119, 11, 3, 0.00, NULL, 'Midterm'),
-(120, 12, 3, 0.00, NULL, 'Midterm'),
-(121, 13, 3, 0.00, NULL, 'Midterm'),
-(122, 14, 3, 0.00, NULL, 'Midterm'),
-(123, 15, 3, 0.00, NULL, 'Midterm'),
-(124, 16, 3, 0.00, NULL, 'Midterm'),
-(125, 17, 3, 0.00, NULL, 'Midterm'),
-(126, 18, 3, 0.00, NULL, 'Midterm'),
-(127, 19, 3, 0.00, NULL, 'Midterm'),
-(128, 20, 3, 0.00, NULL, 'Midterm'),
-(129, 21, 3, 0.00, NULL, 'Midterm'),
-(130, 22, 3, 0.00, NULL, 'Midterm'),
-(131, 23, 3, 0.00, NULL, 'Midterm'),
-(132, 24, 3, 0.00, NULL, 'Midterm'),
-(133, 25, 3, 0.00, NULL, 'Midterm'),
-(134, 26, 3, 0.00, NULL, 'Midterm'),
-(135, 27, 3, 0.00, NULL, 'Midterm'),
-(136, 28, 3, 0.00, NULL, 'Midterm'),
-(137, 29, 3, 0.00, NULL, 'Midterm'),
-(138, 30, 3, 0.00, NULL, 'Midterm'),
-(139, 31, 3, 0.00, NULL, 'Midterm'),
-(140, 32, 3, 0.00, NULL, 'Midterm'),
-(141, 33, 3, 0.00, NULL, 'Midterm'),
-(142, 34, 3, 0.00, NULL, 'Midterm'),
-(143, 35, 3, 0.00, NULL, 'Midterm'),
-(144, 36, 3, 0.00, NULL, 'Midterm');
+(1, 1, 1, 0.00, NULL, 'Midterm'),
+(2, 1, 1, 0.00, NULL, 'Finals'),
+(3, 2, 1, 0.00, NULL, 'Midterm'),
+(4, 2, 1, 0.00, NULL, 'Finals'),
+(5, 3, 1, 0.00, NULL, 'Midterm'),
+(6, 3, 1, 0.00, NULL, 'Finals'),
+(7, 4, 1, 0.00, NULL, 'Midterm'),
+(8, 4, 1, 0.00, NULL, 'Finals'),
+(9, 5, 1, 0.00, NULL, 'Midterm'),
+(10, 5, 1, 0.00, NULL, 'Finals'),
+(11, 6, 1, 0.00, NULL, 'Midterm'),
+(12, 6, 1, 0.00, NULL, 'Finals'),
+(13, 7, 1, 0.00, NULL, 'Midterm'),
+(14, 7, 1, 0.00, NULL, 'Finals'),
+(15, 8, 1, 0.00, NULL, 'Midterm'),
+(16, 8, 1, 0.00, NULL, 'Finals'),
+(17, 9, 1, 0.00, NULL, 'Midterm'),
+(18, 9, 1, 0.00, NULL, 'Finals'),
+(19, 10, 1, 0.00, NULL, 'Midterm'),
+(20, 10, 1, 0.00, NULL, 'Finals'),
+(21, 11, 1, 0.00, NULL, 'Midterm'),
+(22, 11, 1, 0.00, NULL, 'Finals'),
+(23, 12, 1, 0.00, NULL, 'Midterm'),
+(24, 12, 1, 0.00, NULL, 'Finals'),
+(25, 13, 1, 0.00, NULL, 'Midterm'),
+(26, 13, 1, 0.00, NULL, 'Finals'),
+(27, 14, 1, 0.00, NULL, 'Midterm'),
+(28, 14, 1, 0.00, NULL, 'Finals'),
+(29, 15, 1, 0.00, NULL, 'Midterm'),
+(30, 15, 1, 0.00, NULL, 'Finals'),
+(31, 16, 1, 0.00, NULL, 'Midterm'),
+(32, 16, 1, 0.00, NULL, 'Finals'),
+(33, 17, 1, 0.00, NULL, 'Midterm'),
+(34, 17, 1, 0.00, NULL, 'Finals'),
+(35, 18, 1, 0.00, NULL, 'Midterm'),
+(36, 18, 1, 0.00, NULL, 'Finals'),
+(37, 19, 1, 0.00, NULL, 'Midterm'),
+(38, 19, 1, 0.00, NULL, 'Finals'),
+(39, 20, 1, 0.00, NULL, 'Midterm'),
+(40, 20, 1, 0.00, NULL, 'Finals'),
+(41, 21, 1, 0.00, NULL, 'Midterm'),
+(42, 21, 1, 0.00, NULL, 'Finals'),
+(43, 22, 1, 0.00, NULL, 'Midterm'),
+(44, 22, 1, 0.00, NULL, 'Finals'),
+(45, 23, 1, 0.00, NULL, 'Midterm'),
+(46, 23, 1, 0.00, NULL, 'Finals'),
+(47, 24, 1, 0.00, NULL, 'Midterm'),
+(48, 24, 1, 0.00, NULL, 'Finals'),
+(49, 25, 1, 0.00, NULL, 'Midterm'),
+(50, 25, 1, 0.00, NULL, 'Finals'),
+(51, 26, 1, 0.00, NULL, 'Midterm'),
+(52, 26, 1, 0.00, NULL, 'Finals'),
+(53, 27, 1, 0.00, NULL, 'Midterm'),
+(54, 27, 1, 0.00, NULL, 'Finals'),
+(55, 28, 1, 0.00, NULL, 'Midterm'),
+(56, 28, 1, 0.00, NULL, 'Finals'),
+(57, 29, 1, 0.00, NULL, 'Midterm'),
+(58, 29, 1, 0.00, NULL, 'Finals'),
+(59, 30, 1, 0.00, NULL, 'Midterm'),
+(60, 30, 1, 0.00, NULL, 'Finals'),
+(61, 31, 1, 0.00, NULL, 'Midterm'),
+(62, 31, 1, 0.00, NULL, 'Finals'),
+(63, 32, 1, 0.00, NULL, 'Midterm'),
+(64, 32, 1, 0.00, NULL, 'Finals'),
+(65, 33, 1, 0.00, NULL, 'Midterm'),
+(66, 33, 1, 0.00, NULL, 'Finals'),
+(67, 34, 1, 0.00, NULL, 'Midterm'),
+(68, 34, 1, 0.00, NULL, 'Finals'),
+(69, 35, 1, 0.00, NULL, 'Midterm'),
+(70, 35, 1, 0.00, NULL, 'Finals'),
+(71, 36, 1, 0.00, NULL, 'Midterm'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -199,121 +127,85 @@ CREATE TABLE IF NOT EXISTS `attendance` (
   `Score` varchar(10) DEFAULT NULL,
   `Rating` float DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `attendance`
 --
 
 INSERT INTO `attendance` (`Id`, `StudId`, `AttNum`, `Status`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, NULL, 'p', NULL, 'Midterm'),
-(2, 2, 1, NULL, 'p', NULL, 'Midterm'),
-(3, 3, 1, NULL, 'p', NULL, 'Midterm'),
-(4, 4, 1, NULL, '', NULL, 'Midterm'),
-(5, 5, 1, NULL, '', NULL, 'Midterm'),
-(6, 6, 1, NULL, '', NULL, 'Midterm'),
-(7, 7, 1, NULL, '', NULL, 'Midterm'),
-(8, 8, 1, NULL, '', NULL, 'Midterm'),
-(9, 9, 1, NULL, '', NULL, 'Midterm'),
-(10, 10, 1, NULL, '', NULL, 'Midterm'),
-(11, 11, 1, NULL, '', NULL, 'Midterm'),
-(12, 12, 1, NULL, '', NULL, 'Midterm'),
-(13, 13, 1, NULL, '', NULL, 'Midterm'),
-(14, 14, 1, NULL, '', NULL, 'Midterm'),
-(15, 15, 1, NULL, '', NULL, 'Midterm'),
-(16, 16, 1, NULL, '', NULL, 'Midterm'),
-(17, 17, 1, NULL, '', NULL, 'Midterm'),
-(18, 18, 1, NULL, '', NULL, 'Midterm'),
-(19, 19, 1, NULL, '', NULL, 'Midterm'),
-(20, 20, 1, NULL, '', NULL, 'Midterm'),
-(21, 21, 1, NULL, '', NULL, 'Midterm'),
-(22, 22, 1, NULL, '', NULL, 'Midterm'),
-(23, 23, 1, NULL, '', NULL, 'Midterm'),
-(24, 24, 1, NULL, '', NULL, 'Midterm'),
-(25, 25, 1, NULL, '', NULL, 'Midterm'),
-(26, 26, 1, NULL, '', NULL, 'Midterm'),
-(27, 27, 1, NULL, '', NULL, 'Midterm'),
-(28, 28, 1, NULL, '', NULL, 'Midterm'),
-(29, 29, 1, NULL, '', NULL, 'Midterm'),
-(30, 30, 1, NULL, '', NULL, 'Midterm'),
-(31, 31, 1, NULL, '', NULL, 'Midterm'),
-(32, 32, 1, NULL, '', NULL, 'Midterm'),
-(33, 33, 1, NULL, '', NULL, 'Midterm'),
-(34, 34, 1, NULL, '', NULL, 'Midterm'),
-(35, 35, 1, NULL, '', NULL, 'Midterm'),
-(36, 36, 1, NULL, '', NULL, 'Midterm'),
-(37, 1, 2, NULL, 'l', NULL, 'Midterm'),
-(38, 2, 2, NULL, 'l', NULL, 'Midterm'),
-(39, 3, 2, NULL, 'p', NULL, 'Midterm'),
-(40, 4, 2, NULL, '', NULL, 'Midterm'),
-(41, 5, 2, NULL, '', NULL, 'Midterm'),
-(42, 6, 2, NULL, '', NULL, 'Midterm'),
-(43, 7, 2, NULL, '', NULL, 'Midterm'),
-(44, 8, 2, NULL, '', NULL, 'Midterm'),
-(45, 9, 2, NULL, '', NULL, 'Midterm'),
-(46, 10, 2, NULL, '', NULL, 'Midterm'),
-(47, 11, 2, NULL, '', NULL, 'Midterm'),
-(48, 12, 2, NULL, '', NULL, 'Midterm'),
-(49, 13, 2, NULL, '', NULL, 'Midterm'),
-(50, 14, 2, NULL, '', NULL, 'Midterm'),
-(51, 15, 2, NULL, '', NULL, 'Midterm'),
-(52, 16, 2, NULL, '', NULL, 'Midterm'),
-(53, 17, 2, NULL, '', NULL, 'Midterm'),
-(54, 18, 2, NULL, '', NULL, 'Midterm'),
-(55, 19, 2, NULL, '', NULL, 'Midterm'),
-(56, 20, 2, NULL, '', NULL, 'Midterm'),
-(57, 21, 2, NULL, '', NULL, 'Midterm'),
-(58, 22, 2, NULL, '', NULL, 'Midterm'),
-(59, 23, 2, NULL, '', NULL, 'Midterm'),
-(60, 24, 2, NULL, '', NULL, 'Midterm'),
-(61, 25, 2, NULL, '', NULL, 'Midterm'),
-(62, 26, 2, NULL, '', NULL, 'Midterm'),
-(63, 27, 2, NULL, '', NULL, 'Midterm'),
-(64, 28, 2, NULL, '', NULL, 'Midterm'),
-(65, 29, 2, NULL, '', NULL, 'Midterm'),
-(66, 30, 2, NULL, '', NULL, 'Midterm'),
-(67, 31, 2, NULL, '', NULL, 'Midterm'),
-(68, 32, 2, NULL, '', NULL, 'Midterm'),
-(69, 33, 2, NULL, '', NULL, 'Midterm'),
-(70, 34, 2, NULL, '', NULL, 'Midterm'),
-(71, 35, 2, NULL, '', NULL, 'Midterm'),
-(72, 36, 2, NULL, '', NULL, 'Midterm'),
-(73, 1, 1, NULL, 'p', NULL, 'Finals'),
-(74, 2, 1, NULL, 'p', NULL, 'Finals'),
-(75, 3, 1, NULL, 'a', NULL, 'Finals'),
-(76, 4, 1, NULL, '', NULL, 'Finals'),
-(77, 5, 1, NULL, '', NULL, 'Finals'),
-(78, 6, 1, NULL, '', NULL, 'Finals'),
-(79, 7, 1, NULL, '', NULL, 'Finals'),
-(80, 8, 1, NULL, '', NULL, 'Finals'),
-(81, 9, 1, NULL, '', NULL, 'Finals'),
-(82, 10, 1, NULL, '', NULL, 'Finals'),
-(83, 11, 1, NULL, '', NULL, 'Finals'),
-(84, 12, 1, NULL, '', NULL, 'Finals'),
-(85, 13, 1, NULL, '', NULL, 'Finals'),
-(86, 14, 1, NULL, '', NULL, 'Finals'),
-(87, 15, 1, NULL, '', NULL, 'Finals'),
-(88, 16, 1, NULL, '', NULL, 'Finals'),
-(89, 17, 1, NULL, '', NULL, 'Finals'),
-(90, 18, 1, NULL, '', NULL, 'Finals'),
-(91, 19, 1, NULL, '', NULL, 'Finals'),
-(92, 20, 1, NULL, '', NULL, 'Finals'),
-(93, 21, 1, NULL, '', NULL, 'Finals'),
-(94, 22, 1, NULL, '', NULL, 'Finals'),
-(95, 23, 1, NULL, '', NULL, 'Finals'),
-(96, 24, 1, NULL, '', NULL, 'Finals'),
-(97, 25, 1, NULL, '', NULL, 'Finals'),
-(98, 26, 1, NULL, '', NULL, 'Finals'),
-(99, 27, 1, NULL, '', NULL, 'Finals'),
-(100, 28, 1, NULL, '', NULL, 'Finals'),
-(101, 29, 1, NULL, '', NULL, 'Finals'),
-(102, 30, 1, NULL, '', NULL, 'Finals'),
-(103, 31, 1, NULL, '', NULL, 'Finals'),
-(104, 32, 1, NULL, '', NULL, 'Finals'),
-(105, 33, 1, NULL, '', NULL, 'Finals'),
-(106, 34, 1, NULL, '', NULL, 'Finals'),
-(107, 35, 1, NULL, '', NULL, 'Finals'),
-(108, 36, 1, NULL, '', NULL, 'Finals');
+(1, 1, 1, NULL, '0', NULL, 'Midterm'),
+(2, 1, 1, NULL, '0', NULL, 'Finals'),
+(3, 2, 1, NULL, '0', NULL, 'Midterm'),
+(4, 2, 1, NULL, '0', NULL, 'Finals'),
+(5, 3, 1, NULL, '0', NULL, 'Midterm'),
+(6, 3, 1, NULL, '0', NULL, 'Finals'),
+(7, 4, 1, NULL, '0', NULL, 'Midterm'),
+(8, 4, 1, NULL, '0', NULL, 'Finals'),
+(9, 5, 1, NULL, '0', NULL, 'Midterm'),
+(10, 5, 1, NULL, '0', NULL, 'Finals'),
+(11, 6, 1, NULL, '0', NULL, 'Midterm'),
+(12, 6, 1, NULL, '0', NULL, 'Finals'),
+(13, 7, 1, NULL, '0', NULL, 'Midterm'),
+(14, 7, 1, NULL, '0', NULL, 'Finals'),
+(15, 8, 1, NULL, '0', NULL, 'Midterm'),
+(16, 8, 1, NULL, '0', NULL, 'Finals'),
+(17, 9, 1, NULL, '0', NULL, 'Midterm'),
+(18, 9, 1, NULL, '0', NULL, 'Finals'),
+(19, 10, 1, NULL, '0', NULL, 'Midterm'),
+(20, 10, 1, NULL, '0', NULL, 'Finals'),
+(21, 11, 1, NULL, '0', NULL, 'Midterm'),
+(22, 11, 1, NULL, '0', NULL, 'Finals'),
+(23, 12, 1, NULL, '0', NULL, 'Midterm'),
+(24, 12, 1, NULL, '0', NULL, 'Finals'),
+(25, 13, 1, NULL, '0', NULL, 'Midterm'),
+(26, 13, 1, NULL, '0', NULL, 'Finals'),
+(27, 14, 1, NULL, '0', NULL, 'Midterm'),
+(28, 14, 1, NULL, '0', NULL, 'Finals'),
+(29, 15, 1, NULL, '0', NULL, 'Midterm'),
+(30, 15, 1, NULL, '0', NULL, 'Finals'),
+(31, 16, 1, NULL, '0', NULL, 'Midterm'),
+(32, 16, 1, NULL, '0', NULL, 'Finals'),
+(33, 17, 1, NULL, '0', NULL, 'Midterm'),
+(34, 17, 1, NULL, '0', NULL, 'Finals'),
+(35, 18, 1, NULL, '0', NULL, 'Midterm'),
+(36, 18, 1, NULL, '0', NULL, 'Finals'),
+(37, 19, 1, NULL, '0', NULL, 'Midterm'),
+(38, 19, 1, NULL, '0', NULL, 'Finals'),
+(39, 20, 1, NULL, '0', NULL, 'Midterm'),
+(40, 20, 1, NULL, '0', NULL, 'Finals'),
+(41, 21, 1, NULL, '0', NULL, 'Midterm'),
+(42, 21, 1, NULL, '0', NULL, 'Finals'),
+(43, 22, 1, NULL, '0', NULL, 'Midterm'),
+(44, 22, 1, NULL, '0', NULL, 'Finals'),
+(45, 23, 1, NULL, '0', NULL, 'Midterm'),
+(46, 23, 1, NULL, '0', NULL, 'Finals'),
+(47, 24, 1, NULL, '0', NULL, 'Midterm'),
+(48, 24, 1, NULL, '0', NULL, 'Finals'),
+(49, 25, 1, NULL, '0', NULL, 'Midterm'),
+(50, 25, 1, NULL, '0', NULL, 'Finals'),
+(51, 26, 1, NULL, '0', NULL, 'Midterm'),
+(52, 26, 1, NULL, '0', NULL, 'Finals'),
+(53, 27, 1, NULL, '0', NULL, 'Midterm'),
+(54, 27, 1, NULL, '0', NULL, 'Finals'),
+(55, 28, 1, NULL, '0', NULL, 'Midterm'),
+(56, 28, 1, NULL, '0', NULL, 'Finals'),
+(57, 29, 1, NULL, '0', NULL, 'Midterm'),
+(58, 29, 1, NULL, '0', NULL, 'Finals'),
+(59, 30, 1, NULL, '0', NULL, 'Midterm'),
+(60, 30, 1, NULL, '0', NULL, 'Finals'),
+(61, 31, 1, NULL, '0', NULL, 'Midterm'),
+(62, 31, 1, NULL, '0', NULL, 'Finals'),
+(63, 32, 1, NULL, '0', NULL, 'Midterm'),
+(64, 32, 1, NULL, '0', NULL, 'Finals'),
+(65, 33, 1, NULL, '0', NULL, 'Midterm'),
+(66, 33, 1, NULL, '0', NULL, 'Finals'),
+(67, 34, 1, NULL, '0', NULL, 'Midterm'),
+(68, 34, 1, NULL, '0', NULL, 'Finals'),
+(69, 35, 1, NULL, '0', NULL, 'Midterm'),
+(70, 35, 1, NULL, '0', NULL, 'Finals'),
+(71, 36, 1, NULL, '0', NULL, 'Midterm'),
+(72, 36, 1, NULL, '0', NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -353,8 +245,8 @@ CREATE TABLE IF NOT EXISTS `class` (
 --
 
 INSERT INTO `class` (`Id`, `SubjectId`, `ClassBlock`, `ModuleType`, `NumOfStudents`, `Passers`, `YrSem`, `Schedule`, `Filename`, `IsUploaded`, `DateUploaded`) VALUES
-(1, 1, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', 'BSCOE Elec4 Bscoe Elective 4__BSCOE 5-1__1__6.4.2016_1.11.xls', 1, '2016-04-05'),
-(2, 2, 'BSCOE 2-3', 'Lab', 45, NULL, 'Second Semester 2015-16', 'S/S 07:30AM-10:30AM/10:30AM-01:30PM', 'COEN 3054 Data Structures And Algorithm Analysis__BSCOE 2-3__2__6.4.2016_1.11.xls', 1, '2016-04-05');
+(1, 1, 'BSCOE 5-1', 'Lec', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', '', 0, '0000-00-00'),
+(2, 2, 'BSCOE 5-1', 'Lab', 36, NULL, 'Second Semester 2015-16', 'W 07:30AM-10:30AM', '', 0, '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -369,157 +261,85 @@ CREATE TABLE IF NOT EXISTS `exercises` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exercises`
 --
 
 INSERT INTO `exercises` (`Id`, `StudId`, `ExNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 12.00, NULL, 'Midterm'),
-(2, 2, 1, 30.00, NULL, 'Midterm'),
-(3, 3, 1, 3.00, NULL, 'Midterm'),
-(4, 4, 1, 4.00, NULL, 'Midterm'),
-(5, 5, 1, 5.00, NULL, 'Midterm'),
-(6, 6, 1, 0.00, NULL, 'Midterm'),
-(7, 7, 1, 0.00, NULL, 'Midterm'),
-(8, 8, 1, 0.00, NULL, 'Midterm'),
-(9, 9, 1, 0.00, NULL, 'Midterm'),
-(10, 10, 1, 0.00, NULL, 'Midterm'),
-(11, 11, 1, 0.00, NULL, 'Midterm'),
-(12, 12, 1, 0.00, NULL, 'Midterm'),
-(13, 13, 1, 0.00, NULL, 'Midterm'),
-(14, 14, 1, 0.00, NULL, 'Midterm'),
-(15, 15, 1, 0.00, NULL, 'Midterm'),
-(16, 16, 1, 0.00, NULL, 'Midterm'),
-(17, 17, 1, 0.00, NULL, 'Midterm'),
-(18, 18, 1, 0.00, NULL, 'Midterm'),
-(19, 19, 1, 0.00, NULL, 'Midterm'),
-(20, 20, 1, 0.00, NULL, 'Midterm'),
-(21, 21, 1, 0.00, NULL, 'Midterm'),
-(22, 22, 1, 0.00, NULL, 'Midterm'),
-(23, 23, 1, 0.00, NULL, 'Midterm'),
-(24, 24, 1, 0.00, NULL, 'Midterm'),
-(25, 25, 1, 0.00, NULL, 'Midterm'),
-(26, 26, 1, 0.00, NULL, 'Midterm'),
-(27, 27, 1, 0.00, NULL, 'Midterm'),
-(28, 28, 1, 0.00, NULL, 'Midterm'),
-(29, 29, 1, 0.00, NULL, 'Midterm'),
-(30, 30, 1, 0.00, NULL, 'Midterm'),
-(31, 31, 1, 0.00, NULL, 'Midterm'),
-(32, 32, 1, 0.00, NULL, 'Midterm'),
-(33, 33, 1, 0.00, NULL, 'Midterm'),
-(34, 34, 1, 0.00, NULL, 'Midterm'),
-(35, 35, 1, 0.00, NULL, 'Midterm'),
-(36, 36, 1, 0.00, NULL, 'Midterm'),
-(37, 1, 1, 1.00, NULL, 'Finals'),
-(38, 2, 1, 2.00, NULL, 'Finals'),
-(39, 3, 1, 3.00, NULL, 'Finals'),
-(40, 4, 1, 4.00, NULL, 'Finals'),
-(41, 5, 1, 5.00, NULL, 'Finals'),
-(42, 6, 1, 0.00, NULL, 'Finals'),
-(43, 7, 1, 0.00, NULL, 'Finals'),
-(44, 8, 1, 0.00, NULL, 'Finals'),
-(45, 9, 1, 0.00, NULL, 'Finals'),
-(46, 10, 1, 0.00, NULL, 'Finals'),
-(47, 11, 1, 0.00, NULL, 'Finals'),
-(48, 12, 1, 0.00, NULL, 'Finals'),
-(49, 13, 1, 0.00, NULL, 'Finals'),
-(50, 14, 1, 0.00, NULL, 'Finals'),
-(51, 15, 1, 0.00, NULL, 'Finals'),
-(52, 16, 1, 0.00, NULL, 'Finals'),
-(53, 17, 1, 0.00, NULL, 'Finals'),
-(54, 18, 1, 0.00, NULL, 'Finals'),
-(55, 19, 1, 0.00, NULL, 'Finals'),
-(56, 20, 1, 0.00, NULL, 'Finals'),
-(57, 21, 1, 0.00, NULL, 'Finals'),
-(58, 22, 1, 0.00, NULL, 'Finals'),
-(59, 23, 1, 0.00, NULL, 'Finals'),
-(60, 24, 1, 0.00, NULL, 'Finals'),
-(61, 25, 1, 0.00, NULL, 'Finals'),
-(62, 26, 1, 0.00, NULL, 'Finals'),
-(63, 27, 1, 0.00, NULL, 'Finals'),
-(64, 28, 1, 0.00, NULL, 'Finals'),
-(65, 29, 1, 0.00, NULL, 'Finals'),
-(66, 30, 1, 0.00, NULL, 'Finals'),
-(67, 31, 1, 0.00, NULL, 'Finals'),
-(68, 32, 1, 0.00, NULL, 'Finals'),
-(69, 33, 1, 0.00, NULL, 'Finals'),
-(70, 34, 1, 0.00, NULL, 'Finals'),
-(71, 35, 1, 0.00, NULL, 'Finals'),
-(72, 36, 1, 0.00, NULL, 'Finals'),
-(73, 1, 2, 5.00, NULL, 'Midterm'),
-(74, 2, 2, 0.00, NULL, 'Midterm'),
-(75, 3, 2, 0.00, NULL, 'Midterm'),
-(76, 4, 2, 0.00, NULL, 'Midterm'),
-(77, 5, 2, 0.00, NULL, 'Midterm'),
-(78, 6, 2, 0.00, NULL, 'Midterm'),
-(79, 7, 2, 0.00, NULL, 'Midterm'),
-(80, 8, 2, 0.00, NULL, 'Midterm'),
-(81, 9, 2, 0.00, NULL, 'Midterm'),
-(82, 10, 2, 0.00, NULL, 'Midterm'),
-(83, 11, 2, 0.00, NULL, 'Midterm'),
-(84, 12, 2, 0.00, NULL, 'Midterm'),
-(85, 13, 2, 0.00, NULL, 'Midterm'),
-(86, 14, 2, 0.00, NULL, 'Midterm'),
-(87, 15, 2, 0.00, NULL, 'Midterm'),
-(88, 16, 2, 0.00, NULL, 'Midterm'),
-(89, 17, 2, 0.00, NULL, 'Midterm'),
-(90, 18, 2, 0.00, NULL, 'Midterm'),
-(91, 19, 2, 0.00, NULL, 'Midterm'),
-(92, 20, 2, 0.00, NULL, 'Midterm'),
-(93, 21, 2, 0.00, NULL, 'Midterm'),
-(94, 22, 2, 0.00, NULL, 'Midterm'),
-(95, 23, 2, 0.00, NULL, 'Midterm'),
-(96, 24, 2, 0.00, NULL, 'Midterm'),
-(97, 25, 2, 0.00, NULL, 'Midterm'),
-(98, 26, 2, 0.00, NULL, 'Midterm'),
-(99, 27, 2, 0.00, NULL, 'Midterm'),
-(100, 28, 2, 0.00, NULL, 'Midterm'),
-(101, 29, 2, 0.00, NULL, 'Midterm'),
-(102, 30, 2, 0.00, NULL, 'Midterm'),
-(103, 31, 2, 0.00, NULL, 'Midterm'),
-(104, 32, 2, 0.00, NULL, 'Midterm'),
-(105, 33, 2, 0.00, NULL, 'Midterm'),
-(106, 34, 2, 0.00, NULL, 'Midterm'),
-(107, 35, 2, 0.00, NULL, 'Midterm'),
-(108, 36, 2, 0.00, NULL, 'Midterm'),
-(109, 1, 3, 3.00, NULL, 'Midterm'),
-(110, 2, 3, 0.00, NULL, 'Midterm'),
-(111, 3, 3, 0.00, NULL, 'Midterm'),
-(112, 4, 3, 0.00, NULL, 'Midterm'),
-(113, 5, 3, 0.00, NULL, 'Midterm'),
-(114, 6, 3, 0.00, NULL, 'Midterm'),
-(115, 7, 3, 0.00, NULL, 'Midterm'),
-(116, 8, 3, 0.00, NULL, 'Midterm'),
-(117, 9, 3, 0.00, NULL, 'Midterm'),
-(118, 10, 3, 0.00, NULL, 'Midterm'),
-(119, 11, 3, 0.00, NULL, 'Midterm'),
-(120, 12, 3, 0.00, NULL, 'Midterm'),
-(121, 13, 3, 0.00, NULL, 'Midterm'),
-(122, 14, 3, 0.00, NULL, 'Midterm'),
-(123, 15, 3, 0.00, NULL, 'Midterm'),
-(124, 16, 3, 0.00, NULL, 'Midterm'),
-(125, 17, 3, 0.00, NULL, 'Midterm'),
-(126, 18, 3, 0.00, NULL, 'Midterm'),
-(127, 19, 3, 0.00, NULL, 'Midterm'),
-(128, 20, 3, 0.00, NULL, 'Midterm'),
-(129, 21, 3, 0.00, NULL, 'Midterm'),
-(130, 22, 3, 0.00, NULL, 'Midterm'),
-(131, 23, 3, 0.00, NULL, 'Midterm'),
-(132, 24, 3, 0.00, NULL, 'Midterm'),
-(133, 25, 3, 0.00, NULL, 'Midterm'),
-(134, 26, 3, 0.00, NULL, 'Midterm'),
-(135, 27, 3, 0.00, NULL, 'Midterm'),
-(136, 28, 3, 0.00, NULL, 'Midterm'),
-(137, 29, 3, 0.00, NULL, 'Midterm'),
-(138, 30, 3, 0.00, NULL, 'Midterm'),
-(139, 31, 3, 0.00, NULL, 'Midterm'),
-(140, 32, 3, 0.00, NULL, 'Midterm'),
-(141, 33, 3, 0.00, NULL, 'Midterm'),
-(142, 34, 3, 0.00, NULL, 'Midterm'),
-(143, 35, 3, 0.00, NULL, 'Midterm'),
-(144, 36, 3, 0.00, NULL, 'Midterm');
+(1, 1, 1, 0.00, NULL, 'Midterm'),
+(2, 1, 1, 0.00, NULL, 'Finals'),
+(3, 2, 1, 0.00, NULL, 'Midterm'),
+(4, 2, 1, 0.00, NULL, 'Finals'),
+(5, 3, 1, 0.00, NULL, 'Midterm'),
+(6, 3, 1, 0.00, NULL, 'Finals'),
+(7, 4, 1, 0.00, NULL, 'Midterm'),
+(8, 4, 1, 0.00, NULL, 'Finals'),
+(9, 5, 1, 0.00, NULL, 'Midterm'),
+(10, 5, 1, 0.00, NULL, 'Finals'),
+(11, 6, 1, 0.00, NULL, 'Midterm'),
+(12, 6, 1, 0.00, NULL, 'Finals'),
+(13, 7, 1, 0.00, NULL, 'Midterm'),
+(14, 7, 1, 0.00, NULL, 'Finals'),
+(15, 8, 1, 0.00, NULL, 'Midterm'),
+(16, 8, 1, 0.00, NULL, 'Finals'),
+(17, 9, 1, 0.00, NULL, 'Midterm'),
+(18, 9, 1, 0.00, NULL, 'Finals'),
+(19, 10, 1, 0.00, NULL, 'Midterm'),
+(20, 10, 1, 0.00, NULL, 'Finals'),
+(21, 11, 1, 0.00, NULL, 'Midterm'),
+(22, 11, 1, 0.00, NULL, 'Finals'),
+(23, 12, 1, 0.00, NULL, 'Midterm'),
+(24, 12, 1, 0.00, NULL, 'Finals'),
+(25, 13, 1, 0.00, NULL, 'Midterm'),
+(26, 13, 1, 0.00, NULL, 'Finals'),
+(27, 14, 1, 0.00, NULL, 'Midterm'),
+(28, 14, 1, 0.00, NULL, 'Finals'),
+(29, 15, 1, 0.00, NULL, 'Midterm'),
+(30, 15, 1, 0.00, NULL, 'Finals'),
+(31, 16, 1, 0.00, NULL, 'Midterm'),
+(32, 16, 1, 0.00, NULL, 'Finals'),
+(33, 17, 1, 0.00, NULL, 'Midterm'),
+(34, 17, 1, 0.00, NULL, 'Finals'),
+(35, 18, 1, 0.00, NULL, 'Midterm'),
+(36, 18, 1, 0.00, NULL, 'Finals'),
+(37, 19, 1, 0.00, NULL, 'Midterm'),
+(38, 19, 1, 0.00, NULL, 'Finals'),
+(39, 20, 1, 0.00, NULL, 'Midterm'),
+(40, 20, 1, 0.00, NULL, 'Finals'),
+(41, 21, 1, 0.00, NULL, 'Midterm'),
+(42, 21, 1, 0.00, NULL, 'Finals'),
+(43, 22, 1, 0.00, NULL, 'Midterm'),
+(44, 22, 1, 0.00, NULL, 'Finals'),
+(45, 23, 1, 0.00, NULL, 'Midterm'),
+(46, 23, 1, 0.00, NULL, 'Finals'),
+(47, 24, 1, 0.00, NULL, 'Midterm'),
+(48, 24, 1, 0.00, NULL, 'Finals'),
+(49, 25, 1, 0.00, NULL, 'Midterm'),
+(50, 25, 1, 0.00, NULL, 'Finals'),
+(51, 26, 1, 0.00, NULL, 'Midterm'),
+(52, 26, 1, 0.00, NULL, 'Finals'),
+(53, 27, 1, 0.00, NULL, 'Midterm'),
+(54, 27, 1, 0.00, NULL, 'Finals'),
+(55, 28, 1, 0.00, NULL, 'Midterm'),
+(56, 28, 1, 0.00, NULL, 'Finals'),
+(57, 29, 1, 0.00, NULL, 'Midterm'),
+(58, 29, 1, 0.00, NULL, 'Finals'),
+(59, 30, 1, 0.00, NULL, 'Midterm'),
+(60, 30, 1, 0.00, NULL, 'Finals'),
+(61, 31, 1, 0.00, NULL, 'Midterm'),
+(62, 31, 1, 0.00, NULL, 'Finals'),
+(63, 32, 1, 0.00, NULL, 'Midterm'),
+(64, 32, 1, 0.00, NULL, 'Finals'),
+(65, 33, 1, 0.00, NULL, 'Midterm'),
+(66, 33, 1, 0.00, NULL, 'Finals'),
+(67, 34, 1, 0.00, NULL, 'Midterm'),
+(68, 34, 1, 0.00, NULL, 'Finals'),
+(69, 35, 1, 0.00, NULL, 'Midterm'),
+(70, 35, 1, 0.00, NULL, 'Finals'),
+(71, 36, 1, 0.00, NULL, 'Midterm'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -542,9 +362,7 @@ CREATE TABLE IF NOT EXISTS `faculty` (
 INSERT INTO `faculty` (`UserId`, `Background`, `FName`, `MName`, `LName`) VALUES
 (2, 'qweqwe', 'qweqweas', 'asdsad', 'qweqe'),
 (12, 'Cute', 'Remedios', 'Ggggg', 'Ado'),
-(13, 'Handsome', 'Arlene', 'Sssss', 'Canlas'),
-(14, 'Cutest', 'Pedrito Jr.', 'Nnnn', 'Tenerife'),
-(15, 'HANDSOME.. VERY VERY', 'Rolito', 'L', 'Mahaguay');
+(14, 'Cutest', 'Pedrito Jr.', 'Nnnn', 'Tenerife');
 
 -- --------------------------------------------------------
 
@@ -564,11 +382,11 @@ CREATE TABLE IF NOT EXISTS `final_exam` (
 --
 
 INSERT INTO `final_exam` (`Id`, `StudId`, `Score`, `Rating`) VALUES
-(1, 1, 1.00, NULL),
-(2, 2, 2.00, NULL),
-(3, 3, 3.00, NULL),
-(4, 4, 4.00, NULL),
-(5, 5, 5.00, NULL),
+(1, 1, 0.00, NULL),
+(2, 2, 0.00, NULL),
+(3, 3, 0.00, NULL),
+(4, 4, 0.00, NULL),
+(5, 5, 0.00, NULL),
 (6, 6, 0.00, NULL),
 (7, 7, 0.00, NULL),
 (8, 8, 0.00, NULL),
@@ -691,36 +509,7 @@ INSERT INTO `grades` (`StudId`, `MidTermGrade`, `FinalGrade`, `TotalGrade`, `Gra
 (69, 0, 0, 0, NULL),
 (70, 0, 0, 0, NULL),
 (71, 0, 0, 0, NULL),
-(72, 0, 0, 0, NULL),
-(73, 0, 0, 0, NULL),
-(74, 0, 0, 0, NULL),
-(75, 0, 0, 0, NULL),
-(76, 0, 0, 0, NULL),
-(77, 0, 0, 0, NULL),
-(78, 0, 0, 0, NULL),
-(79, 0, 0, 0, NULL),
-(80, 0, 0, 0, NULL),
-(81, 0, 0, 0, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `grading_system`
---
-
-CREATE TABLE IF NOT EXISTS `grading_system` (
-`Id` int(11) NOT NULL,
-  `1_00` varchar(10) NOT NULL,
-  `1_25` varchar(10) NOT NULL,
-  `1_50` varchar(10) NOT NULL,
-  `1_75` varchar(10) NOT NULL,
-  `2_00` varchar(10) NOT NULL,
-  `2_25` varchar(10) NOT NULL,
-  `2_50` varchar(10) NOT NULL,
-  `2_75` varchar(10) NOT NULL,
-  `3_00` varchar(10) NOT NULL,
-  `5_00` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+(72, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -755,238 +544,85 @@ CREATE TABLE IF NOT EXISTS `lab_act` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=226 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `lab_act`
 --
 
 INSERT INTO `lab_act` (`Id`, `StudId`, `LabNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 37, 1, 100.00, NULL, 'Midterm'),
-(2, 38, 1, 2.00, NULL, 'Midterm'),
-(3, 39, 1, 3.00, NULL, 'Midterm'),
-(4, 40, 1, 4.00, NULL, 'Midterm'),
-(5, 41, 1, 5.00, NULL, 'Midterm'),
-(6, 42, 1, 0.00, NULL, 'Midterm'),
-(7, 43, 1, 0.00, NULL, 'Midterm'),
-(8, 44, 1, 0.00, NULL, 'Midterm'),
-(9, 45, 1, 0.00, NULL, 'Midterm'),
-(10, 46, 1, 0.00, NULL, 'Midterm'),
-(11, 47, 1, 0.00, NULL, 'Midterm'),
-(12, 48, 1, 0.00, NULL, 'Midterm'),
-(13, 49, 1, 0.00, NULL, 'Midterm'),
-(14, 50, 1, 0.00, NULL, 'Midterm'),
-(15, 51, 1, 0.00, NULL, 'Midterm'),
-(16, 52, 1, 0.00, NULL, 'Midterm'),
-(17, 53, 1, 0.00, NULL, 'Midterm'),
-(18, 54, 1, 0.00, NULL, 'Midterm'),
-(19, 55, 1, 0.00, NULL, 'Midterm'),
-(20, 56, 1, 0.00, NULL, 'Midterm'),
-(21, 57, 1, 0.00, NULL, 'Midterm'),
-(22, 58, 1, 0.00, NULL, 'Midterm'),
-(23, 59, 1, 0.00, NULL, 'Midterm'),
-(24, 60, 1, 0.00, NULL, 'Midterm'),
-(25, 61, 1, 0.00, NULL, 'Midterm'),
-(26, 62, 1, 0.00, NULL, 'Midterm'),
-(27, 63, 1, 0.00, NULL, 'Midterm'),
-(28, 64, 1, 0.00, NULL, 'Midterm'),
-(29, 65, 1, 0.00, NULL, 'Midterm'),
-(30, 66, 1, 0.00, NULL, 'Midterm'),
-(31, 67, 1, 0.00, NULL, 'Midterm'),
-(32, 68, 1, 0.00, NULL, 'Midterm'),
-(33, 69, 1, 0.00, NULL, 'Midterm'),
-(34, 70, 1, 0.00, NULL, 'Midterm'),
-(35, 71, 1, 0.00, NULL, 'Midterm'),
-(36, 72, 1, 0.00, NULL, 'Midterm'),
-(37, 73, 1, 0.00, NULL, 'Midterm'),
-(38, 74, 1, 0.00, NULL, 'Midterm'),
-(39, 75, 1, 0.00, NULL, 'Midterm'),
-(40, 76, 1, 0.00, NULL, 'Midterm'),
-(41, 77, 1, 0.00, NULL, 'Midterm'),
-(42, 78, 1, 0.00, NULL, 'Midterm'),
-(43, 79, 1, 0.00, NULL, 'Midterm'),
-(44, 80, 1, 0.00, NULL, 'Midterm'),
-(45, 81, 1, 0.00, NULL, 'Midterm'),
-(46, 37, 1, 80.00, NULL, 'Finals'),
-(47, 38, 1, 2.00, NULL, 'Finals'),
-(48, 39, 1, 3.00, NULL, 'Finals'),
-(49, 40, 1, 4.00, NULL, 'Finals'),
-(50, 41, 1, 5.00, NULL, 'Finals'),
-(51, 42, 1, 0.00, NULL, 'Finals'),
-(52, 43, 1, 0.00, NULL, 'Finals'),
-(53, 44, 1, 0.00, NULL, 'Finals'),
-(54, 45, 1, 0.00, NULL, 'Finals'),
-(55, 46, 1, 0.00, NULL, 'Finals'),
-(56, 47, 1, 0.00, NULL, 'Finals'),
-(57, 48, 1, 0.00, NULL, 'Finals'),
-(58, 49, 1, 0.00, NULL, 'Finals'),
-(59, 50, 1, 0.00, NULL, 'Finals'),
-(60, 51, 1, 0.00, NULL, 'Finals'),
-(61, 52, 1, 0.00, NULL, 'Finals'),
-(62, 53, 1, 0.00, NULL, 'Finals'),
-(63, 54, 1, 0.00, NULL, 'Finals'),
-(64, 55, 1, 0.00, NULL, 'Finals'),
-(65, 56, 1, 0.00, NULL, 'Finals'),
-(66, 57, 1, 0.00, NULL, 'Finals'),
-(67, 58, 1, 0.00, NULL, 'Finals'),
-(68, 59, 1, 0.00, NULL, 'Finals'),
-(69, 60, 1, 0.00, NULL, 'Finals'),
-(70, 61, 1, 0.00, NULL, 'Finals'),
-(71, 62, 1, 0.00, NULL, 'Finals'),
-(72, 63, 1, 0.00, NULL, 'Finals'),
-(73, 64, 1, 0.00, NULL, 'Finals'),
-(74, 65, 1, 0.00, NULL, 'Finals'),
-(75, 66, 1, 0.00, NULL, 'Finals'),
-(76, 67, 1, 0.00, NULL, 'Finals'),
-(77, 68, 1, 0.00, NULL, 'Finals'),
-(78, 69, 1, 0.00, NULL, 'Finals'),
-(79, 70, 1, 0.00, NULL, 'Finals'),
-(80, 71, 1, 0.00, NULL, 'Finals'),
-(81, 72, 1, 0.00, NULL, 'Finals'),
-(82, 73, 1, 0.00, NULL, 'Finals'),
-(83, 74, 1, 0.00, NULL, 'Finals'),
-(84, 75, 1, 0.00, NULL, 'Finals'),
-(85, 76, 1, 0.00, NULL, 'Finals'),
-(86, 77, 1, 0.00, NULL, 'Finals'),
-(87, 78, 1, 0.00, NULL, 'Finals'),
-(88, 79, 1, 0.00, NULL, 'Finals'),
-(89, 80, 1, 0.00, NULL, 'Finals'),
-(90, 81, 1, 2.00, NULL, 'Finals'),
-(91, 37, 2, 100.00, NULL, 'Midterm'),
-(92, 38, 2, 2.00, NULL, 'Midterm'),
-(93, 39, 2, 3.00, NULL, 'Midterm'),
-(94, 40, 2, 4.00, NULL, 'Midterm'),
-(95, 41, 2, 5.00, NULL, 'Midterm'),
-(96, 42, 2, 0.00, NULL, 'Midterm'),
-(97, 43, 2, 0.00, NULL, 'Midterm'),
-(98, 44, 2, 0.00, NULL, 'Midterm'),
-(99, 45, 2, 0.00, NULL, 'Midterm'),
-(100, 46, 2, 0.00, NULL, 'Midterm'),
-(101, 47, 2, 0.00, NULL, 'Midterm'),
-(102, 48, 2, 0.00, NULL, 'Midterm'),
-(103, 49, 2, 0.00, NULL, 'Midterm'),
-(104, 50, 2, 0.00, NULL, 'Midterm'),
-(105, 51, 2, 0.00, NULL, 'Midterm'),
-(106, 52, 2, 0.00, NULL, 'Midterm'),
-(107, 53, 2, 0.00, NULL, 'Midterm'),
-(108, 54, 2, 0.00, NULL, 'Midterm'),
-(109, 55, 2, 0.00, NULL, 'Midterm'),
-(110, 56, 2, 0.00, NULL, 'Midterm'),
-(111, 57, 2, 0.00, NULL, 'Midterm'),
-(112, 58, 2, 0.00, NULL, 'Midterm'),
-(113, 59, 2, 0.00, NULL, 'Midterm'),
-(114, 60, 2, 0.00, NULL, 'Midterm'),
-(115, 61, 2, 0.00, NULL, 'Midterm'),
-(116, 62, 2, 0.00, NULL, 'Midterm'),
-(117, 63, 2, 0.00, NULL, 'Midterm'),
-(118, 64, 2, 0.00, NULL, 'Midterm'),
-(119, 65, 2, 0.00, NULL, 'Midterm'),
-(120, 66, 2, 0.00, NULL, 'Midterm'),
-(121, 67, 2, 0.00, NULL, 'Midterm'),
-(122, 68, 2, 0.00, NULL, 'Midterm'),
-(123, 69, 2, 0.00, NULL, 'Midterm'),
-(124, 70, 2, 0.00, NULL, 'Midterm'),
-(125, 71, 2, 0.00, NULL, 'Midterm'),
-(126, 72, 2, 0.00, NULL, 'Midterm'),
-(127, 73, 2, 0.00, NULL, 'Midterm'),
-(128, 74, 2, 0.00, NULL, 'Midterm'),
-(129, 75, 2, 0.00, NULL, 'Midterm'),
-(130, 76, 2, 0.00, NULL, 'Midterm'),
-(131, 77, 2, 0.00, NULL, 'Midterm'),
-(132, 78, 2, 0.00, NULL, 'Midterm'),
-(133, 79, 2, 0.00, NULL, 'Midterm'),
-(134, 80, 2, 0.00, NULL, 'Midterm'),
-(135, 81, 2, 0.00, NULL, 'Midterm'),
-(136, 37, 2, 50.00, NULL, 'Finals'),
-(137, 38, 2, 2.00, NULL, 'Finals'),
-(138, 39, 2, 3.00, NULL, 'Finals'),
-(139, 40, 2, 4.00, NULL, 'Finals'),
-(140, 41, 2, 5.00, NULL, 'Finals'),
-(141, 42, 2, 0.00, NULL, 'Finals'),
-(142, 43, 2, 0.00, NULL, 'Finals'),
-(143, 44, 2, 0.00, NULL, 'Finals'),
-(144, 45, 2, 0.00, NULL, 'Finals'),
-(145, 46, 2, 0.00, NULL, 'Finals'),
-(146, 47, 2, 0.00, NULL, 'Finals'),
-(147, 48, 2, 0.00, NULL, 'Finals'),
-(148, 49, 2, 0.00, NULL, 'Finals'),
-(149, 50, 2, 0.00, NULL, 'Finals'),
-(150, 51, 2, 0.00, NULL, 'Finals'),
-(151, 52, 2, 0.00, NULL, 'Finals'),
-(152, 53, 2, 0.00, NULL, 'Finals'),
-(153, 54, 2, 0.00, NULL, 'Finals'),
-(154, 55, 2, 0.00, NULL, 'Finals'),
-(155, 56, 2, 0.00, NULL, 'Finals'),
-(156, 57, 2, 0.00, NULL, 'Finals'),
-(157, 58, 2, 0.00, NULL, 'Finals'),
-(158, 59, 2, 0.00, NULL, 'Finals'),
-(159, 60, 2, 0.00, NULL, 'Finals'),
-(160, 61, 2, 0.00, NULL, 'Finals'),
-(161, 62, 2, 0.00, NULL, 'Finals'),
-(162, 63, 2, 0.00, NULL, 'Finals'),
-(163, 64, 2, 0.00, NULL, 'Finals'),
-(164, 65, 2, 0.00, NULL, 'Finals'),
-(165, 66, 2, 0.00, NULL, 'Finals'),
-(166, 67, 2, 0.00, NULL, 'Finals'),
-(167, 68, 2, 0.00, NULL, 'Finals'),
-(168, 69, 2, 0.00, NULL, 'Finals'),
-(169, 70, 2, 0.00, NULL, 'Finals'),
-(170, 71, 2, 0.00, NULL, 'Finals'),
-(171, 72, 2, 0.00, NULL, 'Finals'),
-(172, 73, 2, 0.00, NULL, 'Finals'),
-(173, 74, 2, 0.00, NULL, 'Finals'),
-(174, 75, 2, 0.00, NULL, 'Finals'),
-(175, 76, 2, 0.00, NULL, 'Finals'),
-(176, 77, 2, 0.00, NULL, 'Finals'),
-(177, 78, 2, 0.00, NULL, 'Finals'),
-(178, 79, 2, 0.00, NULL, 'Finals'),
-(179, 80, 2, 0.00, NULL, 'Finals'),
-(180, 81, 2, 0.00, NULL, 'Finals'),
-(181, 37, 3, 10.00, NULL, 'Midterm'),
-(182, 38, 3, 0.00, NULL, 'Midterm'),
-(183, 39, 3, 0.00, NULL, 'Midterm'),
-(184, 40, 3, 0.00, NULL, 'Midterm'),
-(185, 41, 3, 0.00, NULL, 'Midterm'),
-(186, 42, 3, 0.00, NULL, 'Midterm'),
-(187, 43, 3, 0.00, NULL, 'Midterm'),
-(188, 44, 3, 0.00, NULL, 'Midterm'),
-(189, 45, 3, 0.00, NULL, 'Midterm'),
-(190, 46, 3, 0.00, NULL, 'Midterm'),
-(191, 47, 3, 0.00, NULL, 'Midterm'),
-(192, 48, 3, 0.00, NULL, 'Midterm'),
-(193, 49, 3, 0.00, NULL, 'Midterm'),
-(194, 50, 3, 0.00, NULL, 'Midterm'),
-(195, 51, 3, 0.00, NULL, 'Midterm'),
-(196, 52, 3, 0.00, NULL, 'Midterm'),
-(197, 53, 3, 0.00, NULL, 'Midterm'),
-(198, 54, 3, 0.00, NULL, 'Midterm'),
-(199, 55, 3, 0.00, NULL, 'Midterm'),
-(200, 56, 3, 0.00, NULL, 'Midterm'),
-(201, 57, 3, 0.00, NULL, 'Midterm'),
-(202, 58, 3, 0.00, NULL, 'Midterm'),
-(203, 59, 3, 0.00, NULL, 'Midterm'),
-(204, 60, 3, 0.00, NULL, 'Midterm'),
-(205, 61, 3, 0.00, NULL, 'Midterm'),
-(206, 62, 3, 0.00, NULL, 'Midterm'),
-(207, 63, 3, 0.00, NULL, 'Midterm'),
-(208, 64, 3, 0.00, NULL, 'Midterm'),
-(209, 65, 3, 0.00, NULL, 'Midterm'),
-(210, 66, 3, 0.00, NULL, 'Midterm'),
-(211, 67, 3, 0.00, NULL, 'Midterm'),
-(212, 68, 3, 0.00, NULL, 'Midterm'),
-(213, 69, 3, 0.00, NULL, 'Midterm'),
-(214, 70, 3, 0.00, NULL, 'Midterm'),
-(215, 71, 3, 0.00, NULL, 'Midterm'),
-(216, 72, 3, 0.00, NULL, 'Midterm'),
-(217, 73, 3, 0.00, NULL, 'Midterm'),
-(218, 74, 3, 0.00, NULL, 'Midterm'),
-(219, 75, 3, 0.00, NULL, 'Midterm'),
-(220, 76, 3, 0.00, NULL, 'Midterm'),
-(221, 77, 3, 0.00, NULL, 'Midterm'),
-(222, 78, 3, 0.00, NULL, 'Midterm'),
-(223, 79, 3, 0.00, NULL, 'Midterm'),
-(224, 80, 3, 0.00, NULL, 'Midterm'),
-(225, 81, 3, 0.00, NULL, 'Midterm');
+(1, 37, 1, 0.00, NULL, 'Midterm'),
+(2, 37, 1, 0.00, NULL, 'Finals'),
+(3, 38, 1, 0.00, NULL, 'Midterm'),
+(4, 38, 1, 0.00, NULL, 'Finals'),
+(5, 39, 1, 0.00, NULL, 'Midterm'),
+(6, 39, 1, 0.00, NULL, 'Finals'),
+(7, 40, 1, 0.00, NULL, 'Midterm'),
+(8, 40, 1, 0.00, NULL, 'Finals'),
+(9, 41, 1, 0.00, NULL, 'Midterm'),
+(10, 41, 1, 0.00, NULL, 'Finals'),
+(11, 42, 1, 0.00, NULL, 'Midterm'),
+(12, 42, 1, 0.00, NULL, 'Finals'),
+(13, 43, 1, 0.00, NULL, 'Midterm'),
+(14, 43, 1, 0.00, NULL, 'Finals'),
+(15, 44, 1, 0.00, NULL, 'Midterm'),
+(16, 44, 1, 0.00, NULL, 'Finals'),
+(17, 45, 1, 0.00, NULL, 'Midterm'),
+(18, 45, 1, 0.00, NULL, 'Finals'),
+(19, 46, 1, 0.00, NULL, 'Midterm'),
+(20, 46, 1, 0.00, NULL, 'Finals'),
+(21, 47, 1, 0.00, NULL, 'Midterm'),
+(22, 47, 1, 0.00, NULL, 'Finals'),
+(23, 48, 1, 0.00, NULL, 'Midterm'),
+(24, 48, 1, 0.00, NULL, 'Finals'),
+(25, 49, 1, 0.00, NULL, 'Midterm'),
+(26, 49, 1, 0.00, NULL, 'Finals'),
+(27, 50, 1, 0.00, NULL, 'Midterm'),
+(28, 50, 1, 0.00, NULL, 'Finals'),
+(29, 51, 1, 0.00, NULL, 'Midterm'),
+(30, 51, 1, 0.00, NULL, 'Finals'),
+(31, 52, 1, 0.00, NULL, 'Midterm'),
+(32, 52, 1, 0.00, NULL, 'Finals'),
+(33, 53, 1, 0.00, NULL, 'Midterm'),
+(34, 53, 1, 0.00, NULL, 'Finals'),
+(35, 54, 1, 0.00, NULL, 'Midterm'),
+(36, 54, 1, 0.00, NULL, 'Finals'),
+(37, 55, 1, 0.00, NULL, 'Midterm'),
+(38, 55, 1, 0.00, NULL, 'Finals'),
+(39, 56, 1, 0.00, NULL, 'Midterm'),
+(40, 56, 1, 0.00, NULL, 'Finals'),
+(41, 57, 1, 0.00, NULL, 'Midterm'),
+(42, 57, 1, 0.00, NULL, 'Finals'),
+(43, 58, 1, 0.00, NULL, 'Midterm'),
+(44, 58, 1, 0.00, NULL, 'Finals'),
+(45, 59, 1, 0.00, NULL, 'Midterm'),
+(46, 59, 1, 0.00, NULL, 'Finals'),
+(47, 60, 1, 0.00, NULL, 'Midterm'),
+(48, 60, 1, 0.00, NULL, 'Finals'),
+(49, 61, 1, 0.00, NULL, 'Midterm'),
+(50, 61, 1, 0.00, NULL, 'Finals'),
+(51, 62, 1, 0.00, NULL, 'Midterm'),
+(52, 62, 1, 0.00, NULL, 'Finals'),
+(53, 63, 1, 0.00, NULL, 'Midterm'),
+(54, 63, 1, 0.00, NULL, 'Finals'),
+(55, 64, 1, 0.00, NULL, 'Midterm'),
+(56, 64, 1, 0.00, NULL, 'Finals'),
+(57, 65, 1, 0.00, NULL, 'Midterm'),
+(58, 65, 1, 0.00, NULL, 'Finals'),
+(59, 66, 1, 0.00, NULL, 'Midterm'),
+(60, 66, 1, 0.00, NULL, 'Finals'),
+(61, 67, 1, 0.00, NULL, 'Midterm'),
+(62, 67, 1, 0.00, NULL, 'Finals'),
+(63, 68, 1, 0.00, NULL, 'Midterm'),
+(64, 68, 1, 0.00, NULL, 'Finals'),
+(65, 69, 1, 0.00, NULL, 'Midterm'),
+(66, 69, 1, 0.00, NULL, 'Finals'),
+(67, 70, 1, 0.00, NULL, 'Midterm'),
+(68, 70, 1, 0.00, NULL, 'Finals'),
+(69, 71, 1, 0.00, NULL, 'Midterm'),
+(70, 71, 1, 0.00, NULL, 'Finals'),
+(71, 72, 1, 0.00, NULL, 'Midterm'),
+(72, 72, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -1029,77 +665,77 @@ CREATE TABLE IF NOT EXISTS `long_exam` (
 --
 
 INSERT INTO `long_exam` (`Id`, `StudId`, `LExamNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 50.00, NULL, 'Midterm'),
-(2, 2, 1, 20.00, NULL, 'Midterm'),
-(3, 3, 1, 3.00, NULL, 'Midterm'),
-(4, 4, 1, 4.00, NULL, 'Midterm'),
-(5, 5, 1, 5.00, NULL, 'Midterm'),
-(6, 6, 1, 0.00, NULL, 'Midterm'),
-(7, 7, 1, 0.00, NULL, 'Midterm'),
-(8, 8, 1, 0.00, NULL, 'Midterm'),
-(9, 9, 1, 0.00, NULL, 'Midterm'),
-(10, 10, 1, 0.00, NULL, 'Midterm'),
-(11, 11, 1, 0.00, NULL, 'Midterm'),
-(12, 12, 1, 0.00, NULL, 'Midterm'),
-(13, 13, 1, 0.00, NULL, 'Midterm'),
-(14, 14, 1, 0.00, NULL, 'Midterm'),
-(15, 15, 1, 0.00, NULL, 'Midterm'),
-(16, 16, 1, 0.00, NULL, 'Midterm'),
-(17, 17, 1, 0.00, NULL, 'Midterm'),
-(18, 18, 1, 0.00, NULL, 'Midterm'),
-(19, 19, 1, 0.00, NULL, 'Midterm'),
-(20, 20, 1, 0.00, NULL, 'Midterm'),
-(21, 21, 1, 0.00, NULL, 'Midterm'),
-(22, 22, 1, 0.00, NULL, 'Midterm'),
-(23, 23, 1, 0.00, NULL, 'Midterm'),
-(24, 24, 1, 0.00, NULL, 'Midterm'),
-(25, 25, 1, 0.00, NULL, 'Midterm'),
-(26, 26, 1, 0.00, NULL, 'Midterm'),
-(27, 27, 1, 0.00, NULL, 'Midterm'),
-(28, 28, 1, 0.00, NULL, 'Midterm'),
-(29, 29, 1, 0.00, NULL, 'Midterm'),
-(30, 30, 1, 0.00, NULL, 'Midterm'),
-(31, 31, 1, 0.00, NULL, 'Midterm'),
-(32, 32, 1, 0.00, NULL, 'Midterm'),
-(33, 33, 1, 0.00, NULL, 'Midterm'),
-(34, 34, 1, 0.00, NULL, 'Midterm'),
-(35, 35, 1, 0.00, NULL, 'Midterm'),
-(36, 36, 1, 0.00, NULL, 'Midterm'),
-(37, 1, 1, 1.00, NULL, 'Finals'),
-(38, 2, 1, 2.00, NULL, 'Finals'),
-(39, 3, 1, 3.00, NULL, 'Finals'),
-(40, 4, 1, 4.00, NULL, 'Finals'),
-(41, 5, 1, 5.00, NULL, 'Finals'),
-(42, 6, 1, 0.00, NULL, 'Finals'),
-(43, 7, 1, 0.00, NULL, 'Finals'),
-(44, 8, 1, 0.00, NULL, 'Finals'),
-(45, 9, 1, 0.00, NULL, 'Finals'),
-(46, 10, 1, 0.00, NULL, 'Finals'),
-(47, 11, 1, 0.00, NULL, 'Finals'),
-(48, 12, 1, 0.00, NULL, 'Finals'),
-(49, 13, 1, 0.00, NULL, 'Finals'),
-(50, 14, 1, 0.00, NULL, 'Finals'),
-(51, 15, 1, 0.00, NULL, 'Finals'),
-(52, 16, 1, 0.00, NULL, 'Finals'),
-(53, 17, 1, 0.00, NULL, 'Finals'),
-(54, 18, 1, 0.00, NULL, 'Finals'),
-(55, 19, 1, 0.00, NULL, 'Finals'),
-(56, 20, 1, 0.00, NULL, 'Finals'),
-(57, 21, 1, 0.00, NULL, 'Finals'),
-(58, 22, 1, 0.00, NULL, 'Finals'),
-(59, 23, 1, 0.00, NULL, 'Finals'),
-(60, 24, 1, 0.00, NULL, 'Finals'),
-(61, 25, 1, 0.00, NULL, 'Finals'),
-(62, 26, 1, 0.00, NULL, 'Finals'),
-(63, 27, 1, 0.00, NULL, 'Finals'),
-(64, 28, 1, 0.00, NULL, 'Finals'),
-(65, 29, 1, 0.00, NULL, 'Finals'),
-(66, 30, 1, 0.00, NULL, 'Finals'),
-(67, 31, 1, 0.00, NULL, 'Finals'),
-(68, 32, 1, 0.00, NULL, 'Finals'),
-(69, 33, 1, 0.00, NULL, 'Finals'),
-(70, 34, 1, 0.00, NULL, 'Finals'),
-(71, 35, 1, 0.00, NULL, 'Finals'),
+(1, 1, 1, 0.00, NULL, 'Midterm'),
+(2, 1, 1, 0.00, NULL, 'Finals'),
+(3, 2, 1, 0.00, NULL, 'Midterm'),
+(4, 2, 1, 0.00, NULL, 'Finals'),
+(5, 3, 1, 0.00, NULL, 'Midterm'),
+(6, 3, 1, 0.00, NULL, 'Finals'),
+(7, 4, 1, 0.00, NULL, 'Midterm'),
+(8, 4, 1, 0.00, NULL, 'Finals'),
+(9, 5, 1, 0.00, NULL, 'Midterm'),
+(10, 5, 1, 0.00, NULL, 'Finals'),
+(11, 6, 1, 0.00, NULL, 'Midterm'),
+(12, 6, 1, 0.00, NULL, 'Finals'),
+(13, 7, 1, 0.00, NULL, 'Midterm'),
+(14, 7, 1, 0.00, NULL, 'Finals'),
+(15, 8, 1, 0.00, NULL, 'Midterm'),
+(16, 8, 1, 0.00, NULL, 'Finals'),
+(17, 9, 1, 0.00, NULL, 'Midterm'),
+(18, 9, 1, 0.00, NULL, 'Finals'),
+(19, 10, 1, 0.00, NULL, 'Midterm'),
+(20, 10, 1, 0.00, NULL, 'Finals'),
+(21, 11, 1, 0.00, NULL, 'Midterm'),
+(22, 11, 1, 0.00, NULL, 'Finals'),
+(23, 12, 1, 0.00, NULL, 'Midterm'),
+(24, 12, 1, 0.00, NULL, 'Finals'),
+(25, 13, 1, 0.00, NULL, 'Midterm'),
+(26, 13, 1, 0.00, NULL, 'Finals'),
+(27, 14, 1, 0.00, NULL, 'Midterm'),
+(28, 14, 1, 0.00, NULL, 'Finals'),
+(29, 15, 1, 0.00, NULL, 'Midterm'),
+(30, 15, 1, 0.00, NULL, 'Finals'),
+(31, 16, 1, 0.00, NULL, 'Midterm'),
+(32, 16, 1, 0.00, NULL, 'Finals'),
+(33, 17, 1, 0.00, NULL, 'Midterm'),
+(34, 17, 1, 0.00, NULL, 'Finals'),
+(35, 18, 1, 0.00, NULL, 'Midterm'),
+(36, 18, 1, 0.00, NULL, 'Finals'),
+(37, 19, 1, 0.00, NULL, 'Midterm'),
+(38, 19, 1, 0.00, NULL, 'Finals'),
+(39, 20, 1, 0.00, NULL, 'Midterm'),
+(40, 20, 1, 0.00, NULL, 'Finals'),
+(41, 21, 1, 0.00, NULL, 'Midterm'),
+(42, 21, 1, 0.00, NULL, 'Finals'),
+(43, 22, 1, 0.00, NULL, 'Midterm'),
+(44, 22, 1, 0.00, NULL, 'Finals'),
+(45, 23, 1, 0.00, NULL, 'Midterm'),
+(46, 23, 1, 0.00, NULL, 'Finals'),
+(47, 24, 1, 0.00, NULL, 'Midterm'),
+(48, 24, 1, 0.00, NULL, 'Finals'),
+(49, 25, 1, 0.00, NULL, 'Midterm'),
+(50, 25, 1, 0.00, NULL, 'Finals'),
+(51, 26, 1, 0.00, NULL, 'Midterm'),
+(52, 26, 1, 0.00, NULL, 'Finals'),
+(53, 27, 1, 0.00, NULL, 'Midterm'),
+(54, 27, 1, 0.00, NULL, 'Finals'),
+(55, 28, 1, 0.00, NULL, 'Midterm'),
+(56, 28, 1, 0.00, NULL, 'Finals'),
+(57, 29, 1, 0.00, NULL, 'Midterm'),
+(58, 29, 1, 0.00, NULL, 'Finals'),
+(59, 30, 1, 0.00, NULL, 'Midterm'),
+(60, 30, 1, 0.00, NULL, 'Finals'),
+(61, 31, 1, 0.00, NULL, 'Midterm'),
+(62, 31, 1, 0.00, NULL, 'Finals'),
+(63, 32, 1, 0.00, NULL, 'Midterm'),
+(64, 32, 1, 0.00, NULL, 'Finals'),
+(65, 33, 1, 0.00, NULL, 'Midterm'),
+(66, 33, 1, 0.00, NULL, 'Finals'),
+(67, 34, 1, 0.00, NULL, 'Midterm'),
+(68, 34, 1, 0.00, NULL, 'Finals'),
+(69, 35, 1, 0.00, NULL, 'Midterm'),
+(70, 35, 1, 0.00, NULL, 'Finals'),
+(71, 36, 1, 0.00, NULL, 'Midterm'),
 (72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
@@ -1120,40 +756,40 @@ CREATE TABLE IF NOT EXISTS `midterm_exam` (
 --
 
 INSERT INTO `midterm_exam` (`Id`, `StudId`, `Score`, `Rating`) VALUES
-(1, 1, 50.00, NULL),
-(2, 2, 80.00, NULL),
-(3, 3, 40.00, NULL),
-(4, 4, 120.00, NULL),
-(5, 5, 40.00, NULL),
+(1, 1, 0.00, NULL),
+(2, 2, 0.00, NULL),
+(3, 3, 0.00, NULL),
+(4, 4, 0.00, NULL),
+(5, 5, 0.00, NULL),
 (6, 6, 0.00, NULL),
-(7, 7, 40.00, NULL),
+(7, 7, 0.00, NULL),
 (8, 8, 0.00, NULL),
-(9, 9, 80.00, NULL),
-(10, 10, 1.00, NULL),
-(11, 11, 40.00, NULL),
+(9, 9, 0.00, NULL),
+(10, 10, 0.00, NULL),
+(11, 11, 0.00, NULL),
 (12, 12, 0.00, NULL),
-(13, 13, 4.00, NULL),
+(13, 13, 0.00, NULL),
 (14, 14, 0.00, NULL),
 (15, 15, 0.00, NULL),
 (16, 16, 0.00, NULL),
-(17, 17, 5.00, NULL),
-(18, 18, 2.00, NULL),
+(17, 17, 0.00, NULL),
+(18, 18, 0.00, NULL),
 (19, 19, 0.00, NULL),
 (20, 20, 0.00, NULL),
-(21, 21, 10.00, NULL),
+(21, 21, 0.00, NULL),
 (22, 22, 0.00, NULL),
 (23, 23, 0.00, NULL),
 (24, 24, 0.00, NULL),
-(25, 25, 20.00, NULL),
-(26, 26, 0.10, NULL),
+(25, 25, 0.00, NULL),
+(26, 26, 0.00, NULL),
 (27, 27, 0.00, NULL),
 (28, 28, 0.00, NULL),
-(29, 29, 30.00, NULL),
+(29, 29, 0.00, NULL),
 (30, 30, 0.00, NULL),
 (31, 31, 0.00, NULL),
 (32, 32, 0.00, NULL),
 (33, 33, 0.00, NULL),
-(34, 34, 0.12, NULL),
+(34, 34, 0.00, NULL),
 (35, 35, 0.00, NULL),
 (36, 36, 0.00, NULL);
 
@@ -1169,17 +805,7 @@ CREATE TABLE IF NOT EXISTS `mod_assign` (
   `AssignNum` int(11) NOT NULL,
   `AssignItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_assign`
---
-
-INSERT INTO `mod_assign` (`Id`, `ClassId`, `AssignNum`, `AssignItems`, `Sem`) VALUES
-(1, 1, 1, 25, 'Midterm'),
-(2, 1, 1, 200, 'Finals'),
-(3, 1, 2, 20, 'Midterm'),
-(4, 1, 3, 10, 'Midterm');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1193,16 +819,7 @@ CREATE TABLE IF NOT EXISTS `mod_att` (
   `AttNum` int(11) NOT NULL,
   `AttDate` date NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_att`
---
-
-INSERT INTO `mod_att` (`Id`, `ClassId`, `AttNum`, `AttDate`, `Sem`) VALUES
-(1, 1, 1, '2016-04-08', 'Midterm'),
-(2, 1, 2, '2016-04-09', 'Midterm'),
-(3, 1, 1, '2016-04-10', 'Finals');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1216,17 +833,7 @@ CREATE TABLE IF NOT EXISTS `mod_ex` (
   `ExNum` int(11) NOT NULL,
   `ExItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_ex`
---
-
-INSERT INTO `mod_ex` (`Id`, `ClassId`, `ExNum`, `ExItems`, `Sem`) VALUES
-(1, 1, 1, 20, 'Midterm'),
-(2, 1, 1, 200, 'Finals'),
-(3, 1, 2, 5, 'Midterm'),
-(4, 1, 3, 5, 'Midterm');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1238,14 +845,7 @@ CREATE TABLE IF NOT EXISTS `mod_fe` (
 `Id` int(11) NOT NULL,
   `ClassId` int(11) NOT NULL,
   `FExamItems` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_fe`
---
-
-INSERT INTO `mod_fe` (`Id`, `ClassId`, `FExamItems`) VALUES
-(1, 1, 200);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1259,18 +859,7 @@ CREATE TABLE IF NOT EXISTS `mod_lab` (
   `LabNum` int(11) NOT NULL,
   `LabItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_lab`
---
-
-INSERT INTO `mod_lab` (`Id`, `ClassId`, `LabNum`, `LabItems`, `Sem`) VALUES
-(1, 2, 1, 100, 'Midterm'),
-(2, 2, 1, 100, 'Finals'),
-(3, 2, 2, 100, 'Midterm'),
-(4, 2, 2, 100, 'Finals'),
-(5, 2, 3, 50, 'Midterm');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1284,15 +873,7 @@ CREATE TABLE IF NOT EXISTS `mod_le` (
   `LExamNum` int(11) NOT NULL,
   `LExamItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_le`
---
-
-INSERT INTO `mod_le` (`Id`, `ClassId`, `LExamNum`, `LExamItems`, `Sem`) VALUES
-(1, 1, 1, 100, 'Midterm'),
-(2, 1, 1, 200, 'Finals');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1304,14 +885,7 @@ CREATE TABLE IF NOT EXISTS `mod_me` (
 `Id` int(11) NOT NULL,
   `ClassId` int(11) NOT NULL,
   `MExamItems` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_me`
---
-
-INSERT INTO `mod_me` (`Id`, `ClassId`, `MExamItems`) VALUES
-(1, 1, 100);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1325,17 +899,7 @@ CREATE TABLE IF NOT EXISTS `mod_prac` (
   `PracExamNum` int(11) NOT NULL,
   `PracExamItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_prac`
---
-
-INSERT INTO `mod_prac` (`Id`, `ClassId`, `PracExamNum`, `PracExamItems`, `Sem`) VALUES
-(1, 2, 1, 100, 'Midterm'),
-(2, 2, 1, 100, 'Finals'),
-(3, 2, 2, 100, 'Midterm'),
-(4, 2, 2, 100, 'Finals');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1349,17 +913,7 @@ CREATE TABLE IF NOT EXISTS `mod_proj` (
   `ProjNum` int(11) NOT NULL,
   `ProjItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_proj`
---
-
-INSERT INTO `mod_proj` (`Id`, `ClassId`, `ProjNum`, `ProjItems`, `Sem`) VALUES
-(1, 2, 1, 100, 'Midterm'),
-(2, 2, 1, 100, 'Finals'),
-(3, 2, 2, 100, 'Midterm'),
-(4, 2, 2, 50, 'Finals');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1373,16 +927,7 @@ CREATE TABLE IF NOT EXISTS `mod_quiz` (
   `QuizNum` int(11) NOT NULL,
   `QuizItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_quiz`
---
-
-INSERT INTO `mod_quiz` (`Id`, `ClassId`, `QuizNum`, `QuizItems`, `Sem`) VALUES
-(1, 1, 1, 100, 'Midterm'),
-(2, 1, 1, 200, 'Finals'),
-(3, 1, 2, 100, 'Midterm');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1396,17 +941,7 @@ CREATE TABLE IF NOT EXISTS `mod_rec` (
   `RecNum` int(11) NOT NULL,
   `RecItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_rec`
---
-
-INSERT INTO `mod_rec` (`Id`, `ClassId`, `RecNum`, `RecItems`, `Sem`) VALUES
-(1, 1, 1, 100, 'Midterm'),
-(2, 1, 1, 200, 'Finals'),
-(3, 1, 2, 100, 'Midterm'),
-(4, 1, 3, 100, 'Midterm');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1420,17 +955,7 @@ CREATE TABLE IF NOT EXISTS `mod_sw` (
   `SWNum` int(11) NOT NULL,
   `SWItems` int(11) NOT NULL,
   `Sem` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `mod_sw`
---
-
-INSERT INTO `mod_sw` (`Id`, `ClassId`, `SWNum`, `SWItems`, `Sem`) VALUES
-(1, 1, 1, 10, 'Midterm'),
-(2, 1, 1, 200, 'Finals'),
-(3, 1, 2, 15, 'Midterm'),
-(4, 1, 3, 15, 'Midterm');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1445,23 +970,23 @@ CREATE TABLE IF NOT EXISTS `prac_exam` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `prac_exam`
 --
 
 INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 37, 1, 10.00, NULL, 'Midterm'),
-(2, 37, 1, 40.00, NULL, 'Finals'),
-(3, 38, 1, 2.00, NULL, 'Midterm'),
-(4, 38, 1, 2.00, NULL, 'Finals'),
-(5, 39, 1, 3.00, NULL, 'Midterm'),
-(6, 39, 1, 3.00, NULL, 'Finals'),
-(7, 40, 1, 4.00, NULL, 'Midterm'),
-(8, 40, 1, 4.00, NULL, 'Finals'),
-(9, 41, 1, 5.00, NULL, 'Midterm'),
-(10, 41, 1, 5.00, NULL, 'Finals'),
+(1, 37, 1, 0.00, NULL, 'Midterm'),
+(2, 37, 1, 0.00, NULL, 'Finals'),
+(3, 38, 1, 0.00, NULL, 'Midterm'),
+(4, 38, 1, 0.00, NULL, 'Finals'),
+(5, 39, 1, 0.00, NULL, 'Midterm'),
+(6, 39, 1, 0.00, NULL, 'Finals'),
+(7, 40, 1, 0.00, NULL, 'Midterm'),
+(8, 40, 1, 0.00, NULL, 'Finals'),
+(9, 41, 1, 0.00, NULL, 'Midterm'),
+(10, 41, 1, 0.00, NULL, 'Finals'),
 (11, 42, 1, 0.00, NULL, 'Midterm'),
 (12, 42, 1, 0.00, NULL, 'Finals'),
 (13, 43, 1, 0.00, NULL, 'Midterm'),
@@ -1469,11 +994,11 @@ INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VA
 (15, 44, 1, 0.00, NULL, 'Midterm'),
 (16, 44, 1, 0.00, NULL, 'Finals'),
 (17, 45, 1, 0.00, NULL, 'Midterm'),
-(18, 45, 1, 5.00, NULL, 'Finals'),
+(18, 45, 1, 0.00, NULL, 'Finals'),
 (19, 46, 1, 0.00, NULL, 'Midterm'),
 (20, 46, 1, 0.00, NULL, 'Finals'),
 (21, 47, 1, 0.00, NULL, 'Midterm'),
-(22, 47, 1, 4.00, NULL, 'Finals'),
+(22, 47, 1, 0.00, NULL, 'Finals'),
 (23, 48, 1, 0.00, NULL, 'Midterm'),
 (24, 48, 1, 0.00, NULL, 'Finals'),
 (25, 49, 1, 0.00, NULL, 'Midterm'),
@@ -1481,7 +1006,7 @@ INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VA
 (27, 50, 1, 0.00, NULL, 'Midterm'),
 (28, 50, 1, 0.00, NULL, 'Finals'),
 (29, 51, 1, 0.00, NULL, 'Midterm'),
-(30, 51, 1, 4.00, NULL, 'Finals'),
+(30, 51, 1, 0.00, NULL, 'Finals'),
 (31, 52, 1, 0.00, NULL, 'Midterm'),
 (32, 52, 1, 0.00, NULL, 'Finals'),
 (33, 53, 1, 0.00, NULL, 'Midterm'),
@@ -1489,7 +1014,7 @@ INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VA
 (35, 54, 1, 0.00, NULL, 'Midterm'),
 (36, 54, 1, 0.00, NULL, 'Finals'),
 (37, 55, 1, 0.00, NULL, 'Midterm'),
-(38, 55, 1, 5.00, NULL, 'Finals'),
+(38, 55, 1, 0.00, NULL, 'Finals'),
 (39, 56, 1, 0.00, NULL, 'Midterm'),
 (40, 56, 1, 0.00, NULL, 'Finals'),
 (41, 57, 1, 0.00, NULL, 'Midterm'),
@@ -1497,7 +1022,7 @@ INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VA
 (43, 58, 1, 0.00, NULL, 'Midterm'),
 (44, 58, 1, 0.00, NULL, 'Finals'),
 (45, 59, 1, 0.00, NULL, 'Midterm'),
-(46, 59, 1, 4.00, NULL, 'Finals'),
+(46, 59, 1, 0.00, NULL, 'Finals'),
 (47, 60, 1, 0.00, NULL, 'Midterm'),
 (48, 60, 1, 0.00, NULL, 'Finals'),
 (49, 61, 1, 0.00, NULL, 'Midterm'),
@@ -1513,7 +1038,7 @@ INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VA
 (59, 66, 1, 0.00, NULL, 'Midterm'),
 (60, 66, 1, 0.00, NULL, 'Finals'),
 (61, 67, 1, 0.00, NULL, 'Midterm'),
-(62, 67, 1, 5.00, NULL, 'Finals'),
+(62, 67, 1, 0.00, NULL, 'Finals'),
 (63, 68, 1, 0.00, NULL, 'Midterm'),
 (64, 68, 1, 0.00, NULL, 'Finals'),
 (65, 69, 1, 0.00, NULL, 'Midterm'),
@@ -1523,115 +1048,7 @@ INSERT INTO `prac_exam` (`Id`, `StudId`, `PracNum`, `Score`, `Rating`, `Sem`) VA
 (69, 71, 1, 0.00, NULL, 'Midterm'),
 (70, 71, 1, 0.00, NULL, 'Finals'),
 (71, 72, 1, 0.00, NULL, 'Midterm'),
-(72, 72, 1, 0.00, NULL, 'Finals'),
-(73, 73, 1, 0.00, NULL, 'Midterm'),
-(74, 73, 1, 0.00, NULL, 'Finals'),
-(75, 74, 1, 0.00, NULL, 'Midterm'),
-(76, 74, 1, 0.00, NULL, 'Finals'),
-(77, 75, 1, 0.00, NULL, 'Midterm'),
-(78, 75, 1, 5.00, NULL, 'Finals'),
-(79, 76, 1, 0.00, NULL, 'Midterm'),
-(80, 76, 1, 0.00, NULL, 'Finals'),
-(81, 77, 1, 0.00, NULL, 'Midterm'),
-(82, 77, 1, 0.00, NULL, 'Finals'),
-(83, 78, 1, 0.00, NULL, 'Midterm'),
-(84, 78, 1, 0.00, NULL, 'Finals'),
-(85, 79, 1, 0.00, NULL, 'Midterm'),
-(86, 79, 1, 0.00, NULL, 'Finals'),
-(87, 80, 1, 0.00, NULL, 'Midterm'),
-(88, 80, 1, 0.00, NULL, 'Finals'),
-(89, 81, 1, 0.00, NULL, 'Midterm'),
-(90, 81, 1, 0.00, NULL, 'Finals'),
-(91, 37, 2, 10.00, NULL, 'Midterm'),
-(92, 38, 2, 2.00, NULL, 'Midterm'),
-(93, 39, 2, 3.00, NULL, 'Midterm'),
-(94, 40, 2, 4.00, NULL, 'Midterm'),
-(95, 41, 2, 5.00, NULL, 'Midterm'),
-(96, 42, 2, 0.00, NULL, 'Midterm'),
-(97, 43, 2, 0.00, NULL, 'Midterm'),
-(98, 44, 2, 0.00, NULL, 'Midterm'),
-(99, 45, 2, 0.00, NULL, 'Midterm'),
-(100, 46, 2, 0.00, NULL, 'Midterm'),
-(101, 47, 2, 0.00, NULL, 'Midterm'),
-(102, 48, 2, 0.00, NULL, 'Midterm'),
-(103, 49, 2, 0.00, NULL, 'Midterm'),
-(104, 50, 2, 0.00, NULL, 'Midterm'),
-(105, 51, 2, 0.00, NULL, 'Midterm'),
-(106, 52, 2, 0.00, NULL, 'Midterm'),
-(107, 53, 2, 0.00, NULL, 'Midterm'),
-(108, 54, 2, 0.00, NULL, 'Midterm'),
-(109, 55, 2, 0.00, NULL, 'Midterm'),
-(110, 56, 2, 0.00, NULL, 'Midterm'),
-(111, 57, 2, 0.00, NULL, 'Midterm'),
-(112, 58, 2, 0.00, NULL, 'Midterm'),
-(113, 59, 2, 0.00, NULL, 'Midterm'),
-(114, 60, 2, 0.00, NULL, 'Midterm'),
-(115, 61, 2, 0.00, NULL, 'Midterm'),
-(116, 62, 2, 0.00, NULL, 'Midterm'),
-(117, 63, 2, 0.00, NULL, 'Midterm'),
-(118, 64, 2, 0.00, NULL, 'Midterm'),
-(119, 65, 2, 0.00, NULL, 'Midterm'),
-(120, 66, 2, 0.00, NULL, 'Midterm'),
-(121, 67, 2, 0.00, NULL, 'Midterm'),
-(122, 68, 2, 0.00, NULL, 'Midterm'),
-(123, 69, 2, 0.00, NULL, 'Midterm'),
-(124, 70, 2, 0.00, NULL, 'Midterm'),
-(125, 71, 2, 0.00, NULL, 'Midterm'),
-(126, 72, 2, 0.00, NULL, 'Midterm'),
-(127, 73, 2, 0.00, NULL, 'Midterm'),
-(128, 74, 2, 0.00, NULL, 'Midterm'),
-(129, 75, 2, 0.00, NULL, 'Midterm'),
-(130, 76, 2, 0.00, NULL, 'Midterm'),
-(131, 77, 2, 0.00, NULL, 'Midterm'),
-(132, 78, 2, 0.00, NULL, 'Midterm'),
-(133, 79, 2, 0.00, NULL, 'Midterm'),
-(134, 80, 2, 0.00, NULL, 'Midterm'),
-(135, 81, 2, 0.00, NULL, 'Midterm'),
-(136, 37, 2, 40.00, NULL, 'Finals'),
-(137, 38, 2, 2.00, NULL, 'Finals'),
-(138, 39, 2, 3.00, NULL, 'Finals'),
-(139, 40, 2, 4.00, NULL, 'Finals'),
-(140, 41, 2, 5.00, NULL, 'Finals'),
-(141, 42, 2, 0.00, NULL, 'Finals'),
-(142, 43, 2, 0.00, NULL, 'Finals'),
-(143, 44, 2, 0.00, NULL, 'Finals'),
-(144, 45, 2, 0.00, NULL, 'Finals'),
-(145, 46, 2, 0.00, NULL, 'Finals'),
-(146, 47, 2, 0.00, NULL, 'Finals'),
-(147, 48, 2, 0.00, NULL, 'Finals'),
-(148, 49, 2, 0.00, NULL, 'Finals'),
-(149, 50, 2, 0.00, NULL, 'Finals'),
-(150, 51, 2, 0.00, NULL, 'Finals'),
-(151, 52, 2, 0.00, NULL, 'Finals'),
-(152, 53, 2, 0.00, NULL, 'Finals'),
-(153, 54, 2, 0.00, NULL, 'Finals'),
-(154, 55, 2, 0.00, NULL, 'Finals'),
-(155, 56, 2, 0.00, NULL, 'Finals'),
-(156, 57, 2, 0.00, NULL, 'Finals'),
-(157, 58, 2, 0.00, NULL, 'Finals'),
-(158, 59, 2, 0.00, NULL, 'Finals'),
-(159, 60, 2, 0.00, NULL, 'Finals'),
-(160, 61, 2, 0.00, NULL, 'Finals'),
-(161, 62, 2, 0.00, NULL, 'Finals'),
-(162, 63, 2, 0.00, NULL, 'Finals'),
-(163, 64, 2, 0.00, NULL, 'Finals'),
-(164, 65, 2, 0.00, NULL, 'Finals'),
-(165, 66, 2, 0.00, NULL, 'Finals'),
-(166, 67, 2, 0.00, NULL, 'Finals'),
-(167, 68, 2, 0.00, NULL, 'Finals'),
-(168, 69, 2, 0.00, NULL, 'Finals'),
-(169, 70, 2, 0.00, NULL, 'Finals'),
-(170, 71, 2, 0.00, NULL, 'Finals'),
-(171, 72, 2, 0.00, NULL, 'Finals'),
-(172, 73, 2, 0.00, NULL, 'Finals'),
-(173, 74, 2, 0.00, NULL, 'Finals'),
-(174, 75, 2, 0.00, NULL, 'Finals'),
-(175, 76, 2, 0.00, NULL, 'Finals'),
-(176, 77, 2, 0.00, NULL, 'Finals'),
-(177, 78, 2, 0.00, NULL, 'Finals'),
-(178, 79, 2, 0.00, NULL, 'Finals'),
-(179, 80, 2, 0.00, NULL, 'Finals'),
-(180, 81, 2, 0.00, NULL, 'Finals');
+(72, 72, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -1646,23 +1063,23 @@ CREATE TABLE IF NOT EXISTS `project` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=181 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `project`
 --
 
 INSERT INTO `project` (`Id`, `StudId`, `ProjNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 37, 1, 50.00, NULL, 'Midterm'),
-(2, 37, 1, 60.00, NULL, 'Finals'),
-(3, 38, 1, 2.00, NULL, 'Midterm'),
-(4, 38, 1, 2.00, NULL, 'Finals'),
-(5, 39, 1, 3.00, NULL, 'Midterm'),
-(6, 39, 1, 3.00, NULL, 'Finals'),
-(7, 40, 1, 4.00, NULL, 'Midterm'),
-(8, 40, 1, 4.00, NULL, 'Finals'),
-(9, 41, 1, 5.00, NULL, 'Midterm'),
-(10, 41, 1, 5.00, NULL, 'Finals'),
+(1, 37, 1, 0.00, NULL, 'Midterm'),
+(2, 37, 1, 0.00, NULL, 'Finals'),
+(3, 38, 1, 0.00, NULL, 'Midterm'),
+(4, 38, 1, 0.00, NULL, 'Finals'),
+(5, 39, 1, 0.00, NULL, 'Midterm'),
+(6, 39, 1, 0.00, NULL, 'Finals'),
+(7, 40, 1, 0.00, NULL, 'Midterm'),
+(8, 40, 1, 0.00, NULL, 'Finals'),
+(9, 41, 1, 0.00, NULL, 'Midterm'),
+(10, 41, 1, 0.00, NULL, 'Finals'),
 (11, 42, 1, 0.00, NULL, 'Midterm'),
 (12, 42, 1, 0.00, NULL, 'Finals'),
 (13, 43, 1, 0.00, NULL, 'Midterm'),
@@ -1676,31 +1093,31 @@ INSERT INTO `project` (`Id`, `StudId`, `ProjNum`, `Score`, `Rating`, `Sem`) VALU
 (21, 47, 1, 0.00, NULL, 'Midterm'),
 (22, 47, 1, 0.00, NULL, 'Finals'),
 (23, 48, 1, 0.00, NULL, 'Midterm'),
-(24, 48, 1, 1.00, NULL, 'Finals'),
+(24, 48, 1, 0.00, NULL, 'Finals'),
 (25, 49, 1, 0.00, NULL, 'Midterm'),
 (26, 49, 1, 0.00, NULL, 'Finals'),
 (27, 50, 1, 0.00, NULL, 'Midterm'),
-(28, 50, 1, 3.00, NULL, 'Finals'),
+(28, 50, 1, 0.00, NULL, 'Finals'),
 (29, 51, 1, 0.00, NULL, 'Midterm'),
 (30, 51, 1, 0.00, NULL, 'Finals'),
 (31, 52, 1, 0.00, NULL, 'Midterm'),
-(32, 52, 1, 1.00, NULL, 'Finals'),
+(32, 52, 1, 0.00, NULL, 'Finals'),
 (33, 53, 1, 0.00, NULL, 'Midterm'),
 (34, 53, 1, 0.00, NULL, 'Finals'),
 (35, 54, 1, 0.00, NULL, 'Midterm'),
-(36, 54, 1, 4.00, NULL, 'Finals'),
+(36, 54, 1, 0.00, NULL, 'Finals'),
 (37, 55, 1, 0.00, NULL, 'Midterm'),
 (38, 55, 1, 0.00, NULL, 'Finals'),
 (39, 56, 1, 0.00, NULL, 'Midterm'),
-(40, 56, 1, 2.00, NULL, 'Finals'),
+(40, 56, 1, 0.00, NULL, 'Finals'),
 (41, 57, 1, 0.00, NULL, 'Midterm'),
 (42, 57, 1, 0.00, NULL, 'Finals'),
 (43, 58, 1, 0.00, NULL, 'Midterm'),
-(44, 58, 1, 5.00, NULL, 'Finals'),
+(44, 58, 1, 0.00, NULL, 'Finals'),
 (45, 59, 1, 0.00, NULL, 'Midterm'),
 (46, 59, 1, 0.00, NULL, 'Finals'),
 (47, 60, 1, 0.00, NULL, 'Midterm'),
-(48, 60, 1, 1.00, NULL, 'Finals'),
+(48, 60, 1, 0.00, NULL, 'Finals'),
 (49, 61, 1, 0.00, NULL, 'Midterm'),
 (50, 61, 1, 0.00, NULL, 'Finals'),
 (51, 62, 1, 0.00, NULL, 'Midterm'),
@@ -1708,7 +1125,7 @@ INSERT INTO `project` (`Id`, `StudId`, `ProjNum`, `Score`, `Rating`, `Sem`) VALU
 (53, 63, 1, 0.00, NULL, 'Midterm'),
 (54, 63, 1, 0.00, NULL, 'Finals'),
 (55, 64, 1, 0.00, NULL, 'Midterm'),
-(56, 64, 1, 3.00, NULL, 'Finals'),
+(56, 64, 1, 0.00, NULL, 'Finals'),
 (57, 65, 1, 0.00, NULL, 'Midterm'),
 (58, 65, 1, 0.00, NULL, 'Finals'),
 (59, 66, 1, 0.00, NULL, 'Midterm'),
@@ -1716,7 +1133,7 @@ INSERT INTO `project` (`Id`, `StudId`, `ProjNum`, `Score`, `Rating`, `Sem`) VALU
 (61, 67, 1, 0.00, NULL, 'Midterm'),
 (62, 67, 1, 0.00, NULL, 'Finals'),
 (63, 68, 1, 0.00, NULL, 'Midterm'),
-(64, 68, 1, 2.00, NULL, 'Finals'),
+(64, 68, 1, 0.00, NULL, 'Finals'),
 (65, 69, 1, 0.00, NULL, 'Midterm'),
 (66, 69, 1, 0.00, NULL, 'Finals'),
 (67, 70, 1, 0.00, NULL, 'Midterm'),
@@ -1724,115 +1141,7 @@ INSERT INTO `project` (`Id`, `StudId`, `ProjNum`, `Score`, `Rating`, `Sem`) VALU
 (69, 71, 1, 0.00, NULL, 'Midterm'),
 (70, 71, 1, 0.00, NULL, 'Finals'),
 (71, 72, 1, 0.00, NULL, 'Midterm'),
-(72, 72, 1, 4.00, NULL, 'Finals'),
-(73, 73, 1, 0.00, NULL, 'Midterm'),
-(74, 73, 1, 0.00, NULL, 'Finals'),
-(75, 74, 1, 0.00, NULL, 'Midterm'),
-(76, 74, 1, 0.00, NULL, 'Finals'),
-(77, 75, 1, 0.00, NULL, 'Midterm'),
-(78, 75, 1, 0.00, NULL, 'Finals'),
-(79, 76, 1, 0.00, NULL, 'Midterm'),
-(80, 76, 1, 2.00, NULL, 'Finals'),
-(81, 77, 1, 0.00, NULL, 'Midterm'),
-(82, 77, 1, 0.00, NULL, 'Finals'),
-(83, 78, 1, 0.00, NULL, 'Midterm'),
-(84, 78, 1, 0.00, NULL, 'Finals'),
-(85, 79, 1, 0.00, NULL, 'Midterm'),
-(86, 79, 1, 0.00, NULL, 'Finals'),
-(87, 80, 1, 0.00, NULL, 'Midterm'),
-(88, 80, 1, 5.00, NULL, 'Finals'),
-(89, 81, 1, 0.00, NULL, 'Midterm'),
-(90, 81, 1, 0.00, NULL, 'Finals'),
-(91, 37, 2, 50.00, NULL, 'Midterm'),
-(92, 38, 2, 2.00, NULL, 'Midterm'),
-(93, 39, 2, 3.00, NULL, 'Midterm'),
-(94, 40, 2, 4.00, NULL, 'Midterm'),
-(95, 41, 2, 5.00, NULL, 'Midterm'),
-(96, 42, 2, 0.00, NULL, 'Midterm'),
-(97, 43, 2, 0.00, NULL, 'Midterm'),
-(98, 44, 2, 0.00, NULL, 'Midterm'),
-(99, 45, 2, 0.00, NULL, 'Midterm'),
-(100, 46, 2, 0.00, NULL, 'Midterm'),
-(101, 47, 2, 0.00, NULL, 'Midterm'),
-(102, 48, 2, 0.00, NULL, 'Midterm'),
-(103, 49, 2, 0.00, NULL, 'Midterm'),
-(104, 50, 2, 0.00, NULL, 'Midterm'),
-(105, 51, 2, 0.00, NULL, 'Midterm'),
-(106, 52, 2, 0.00, NULL, 'Midterm'),
-(107, 53, 2, 0.00, NULL, 'Midterm'),
-(108, 54, 2, 0.00, NULL, 'Midterm'),
-(109, 55, 2, 0.00, NULL, 'Midterm'),
-(110, 56, 2, 0.00, NULL, 'Midterm'),
-(111, 57, 2, 0.00, NULL, 'Midterm'),
-(112, 58, 2, 0.00, NULL, 'Midterm'),
-(113, 59, 2, 0.00, NULL, 'Midterm'),
-(114, 60, 2, 0.00, NULL, 'Midterm'),
-(115, 61, 2, 0.00, NULL, 'Midterm'),
-(116, 62, 2, 0.00, NULL, 'Midterm'),
-(117, 63, 2, 0.00, NULL, 'Midterm'),
-(118, 64, 2, 0.00, NULL, 'Midterm'),
-(119, 65, 2, 0.00, NULL, 'Midterm'),
-(120, 66, 2, 0.00, NULL, 'Midterm'),
-(121, 67, 2, 0.00, NULL, 'Midterm'),
-(122, 68, 2, 0.00, NULL, 'Midterm'),
-(123, 69, 2, 0.00, NULL, 'Midterm'),
-(124, 70, 2, 0.00, NULL, 'Midterm'),
-(125, 71, 2, 0.00, NULL, 'Midterm'),
-(126, 72, 2, 0.00, NULL, 'Midterm'),
-(127, 73, 2, 0.00, NULL, 'Midterm'),
-(128, 74, 2, 0.00, NULL, 'Midterm'),
-(129, 75, 2, 0.00, NULL, 'Midterm'),
-(130, 76, 2, 0.00, NULL, 'Midterm'),
-(131, 77, 2, 0.00, NULL, 'Midterm'),
-(132, 78, 2, 0.00, NULL, 'Midterm'),
-(133, 79, 2, 0.00, NULL, 'Midterm'),
-(134, 80, 2, 0.00, NULL, 'Midterm'),
-(135, 81, 2, 0.00, NULL, 'Midterm'),
-(136, 37, 2, 10.00, NULL, 'Finals'),
-(137, 38, 2, 2.00, NULL, 'Finals'),
-(138, 39, 2, 3.00, NULL, 'Finals'),
-(139, 40, 2, 4.00, NULL, 'Finals'),
-(140, 41, 2, 5.00, NULL, 'Finals'),
-(141, 42, 2, 0.00, NULL, 'Finals'),
-(142, 43, 2, 0.00, NULL, 'Finals'),
-(143, 44, 2, 0.00, NULL, 'Finals'),
-(144, 45, 2, 0.00, NULL, 'Finals'),
-(145, 46, 2, 0.00, NULL, 'Finals'),
-(146, 47, 2, 0.00, NULL, 'Finals'),
-(147, 48, 2, 0.00, NULL, 'Finals'),
-(148, 49, 2, 0.00, NULL, 'Finals'),
-(149, 50, 2, 0.00, NULL, 'Finals'),
-(150, 51, 2, 0.00, NULL, 'Finals'),
-(151, 52, 2, 0.00, NULL, 'Finals'),
-(152, 53, 2, 0.00, NULL, 'Finals'),
-(153, 54, 2, 0.00, NULL, 'Finals'),
-(154, 55, 2, 0.00, NULL, 'Finals'),
-(155, 56, 2, 0.00, NULL, 'Finals'),
-(156, 57, 2, 0.00, NULL, 'Finals'),
-(157, 58, 2, 0.00, NULL, 'Finals'),
-(158, 59, 2, 0.00, NULL, 'Finals'),
-(159, 60, 2, 0.00, NULL, 'Finals'),
-(160, 61, 2, 0.00, NULL, 'Finals'),
-(161, 62, 2, 0.00, NULL, 'Finals'),
-(162, 63, 2, 0.00, NULL, 'Finals'),
-(163, 64, 2, 0.00, NULL, 'Finals'),
-(164, 65, 2, 0.00, NULL, 'Finals'),
-(165, 66, 2, 0.00, NULL, 'Finals'),
-(166, 67, 2, 0.00, NULL, 'Finals'),
-(167, 68, 2, 0.00, NULL, 'Finals'),
-(168, 69, 2, 0.00, NULL, 'Finals'),
-(169, 70, 2, 0.00, NULL, 'Finals'),
-(170, 71, 2, 0.00, NULL, 'Finals'),
-(171, 72, 2, 0.00, NULL, 'Finals'),
-(172, 73, 2, 0.00, NULL, 'Finals'),
-(173, 74, 2, 0.00, NULL, 'Finals'),
-(174, 75, 2, 0.00, NULL, 'Finals'),
-(175, 76, 2, 0.00, NULL, 'Finals'),
-(176, 77, 2, 0.00, NULL, 'Finals'),
-(177, 78, 2, 0.00, NULL, 'Finals'),
-(178, 79, 2, 0.00, NULL, 'Finals'),
-(179, 80, 2, 0.00, NULL, 'Finals'),
-(180, 81, 2, 0.00, NULL, 'Finals');
+(72, 72, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -1847,121 +1156,85 @@ CREATE TABLE IF NOT EXISTS `quizzes` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=109 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `quizzes`
 --
 
 INSERT INTO `quizzes` (`Id`, `StudId`, `QuizNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 50.00, NULL, 'Midterm'),
-(2, 2, 1, 20.00, NULL, 'Midterm'),
-(3, 3, 1, 3.00, NULL, 'Midterm'),
-(4, 4, 1, 4.00, NULL, 'Midterm'),
-(5, 5, 1, 5.00, NULL, 'Midterm'),
-(6, 6, 1, 0.00, NULL, 'Midterm'),
-(7, 7, 1, 0.00, NULL, 'Midterm'),
-(8, 8, 1, 0.00, NULL, 'Midterm'),
-(9, 9, 1, 0.00, NULL, 'Midterm'),
-(10, 10, 1, 0.00, NULL, 'Midterm'),
-(11, 11, 1, 0.00, NULL, 'Midterm'),
-(12, 12, 1, 0.00, NULL, 'Midterm'),
-(13, 13, 1, 0.00, NULL, 'Midterm'),
-(14, 14, 1, 0.00, NULL, 'Midterm'),
-(15, 15, 1, 0.00, NULL, 'Midterm'),
-(16, 16, 1, 0.00, NULL, 'Midterm'),
-(17, 17, 1, 0.00, NULL, 'Midterm'),
-(18, 18, 1, 0.00, NULL, 'Midterm'),
-(19, 19, 1, 0.00, NULL, 'Midterm'),
-(20, 20, 1, 0.00, NULL, 'Midterm'),
-(21, 21, 1, 0.00, NULL, 'Midterm'),
-(22, 22, 1, 0.00, NULL, 'Midterm'),
-(23, 23, 1, 0.00, NULL, 'Midterm'),
-(24, 24, 1, 0.00, NULL, 'Midterm'),
-(25, 25, 1, 0.00, NULL, 'Midterm'),
-(26, 26, 1, 0.00, NULL, 'Midterm'),
-(27, 27, 1, 0.00, NULL, 'Midterm'),
-(28, 28, 1, 0.00, NULL, 'Midterm'),
-(29, 29, 1, 0.00, NULL, 'Midterm'),
-(30, 30, 1, 0.00, NULL, 'Midterm'),
-(31, 31, 1, 0.00, NULL, 'Midterm'),
-(32, 32, 1, 0.00, NULL, 'Midterm'),
-(33, 33, 1, 0.00, NULL, 'Midterm'),
-(34, 34, 1, 0.00, NULL, 'Midterm'),
-(35, 35, 1, 0.00, NULL, 'Midterm'),
-(36, 36, 1, 0.00, NULL, 'Midterm'),
-(37, 1, 1, 1.00, NULL, 'Finals'),
-(38, 2, 1, 2.00, NULL, 'Finals'),
-(39, 3, 1, 3.00, NULL, 'Finals'),
-(40, 4, 1, 4.00, NULL, 'Finals'),
-(41, 5, 1, 5.00, NULL, 'Finals'),
-(42, 6, 1, 0.00, NULL, 'Finals'),
-(43, 7, 1, 0.00, NULL, 'Finals'),
-(44, 8, 1, 0.00, NULL, 'Finals'),
-(45, 9, 1, 0.00, NULL, 'Finals'),
-(46, 10, 1, 0.00, NULL, 'Finals'),
-(47, 11, 1, 0.00, NULL, 'Finals'),
-(48, 12, 1, 0.00, NULL, 'Finals'),
-(49, 13, 1, 0.00, NULL, 'Finals'),
-(50, 14, 1, 0.00, NULL, 'Finals'),
-(51, 15, 1, 0.00, NULL, 'Finals'),
-(52, 16, 1, 0.00, NULL, 'Finals'),
-(53, 17, 1, 0.00, NULL, 'Finals'),
-(54, 18, 1, 0.00, NULL, 'Finals'),
-(55, 19, 1, 0.00, NULL, 'Finals'),
-(56, 20, 1, 0.00, NULL, 'Finals'),
-(57, 21, 1, 0.00, NULL, 'Finals'),
-(58, 22, 1, 0.00, NULL, 'Finals'),
-(59, 23, 1, 0.00, NULL, 'Finals'),
-(60, 24, 1, 0.00, NULL, 'Finals'),
-(61, 25, 1, 0.00, NULL, 'Finals'),
-(62, 26, 1, 0.00, NULL, 'Finals'),
-(63, 27, 1, 0.00, NULL, 'Finals'),
-(64, 28, 1, 0.00, NULL, 'Finals'),
-(65, 29, 1, 0.00, NULL, 'Finals'),
-(66, 30, 1, 0.00, NULL, 'Finals'),
-(67, 31, 1, 0.00, NULL, 'Finals'),
-(68, 32, 1, 0.00, NULL, 'Finals'),
-(69, 33, 1, 0.00, NULL, 'Finals'),
-(70, 34, 1, 0.00, NULL, 'Finals'),
-(71, 35, 1, 0.00, NULL, 'Finals'),
-(72, 36, 1, 0.00, NULL, 'Finals'),
-(73, 1, 2, 50.00, NULL, 'Midterm'),
-(74, 2, 2, 10.00, NULL, 'Midterm'),
-(75, 3, 2, 0.00, NULL, 'Midterm'),
-(76, 4, 2, 0.00, NULL, 'Midterm'),
-(77, 5, 2, 0.00, NULL, 'Midterm'),
-(78, 6, 2, 0.00, NULL, 'Midterm'),
-(79, 7, 2, 0.00, NULL, 'Midterm'),
-(80, 8, 2, 0.00, NULL, 'Midterm'),
-(81, 9, 2, 0.00, NULL, 'Midterm'),
-(82, 10, 2, 0.00, NULL, 'Midterm'),
-(83, 11, 2, 0.00, NULL, 'Midterm'),
-(84, 12, 2, 0.00, NULL, 'Midterm'),
-(85, 13, 2, 0.00, NULL, 'Midterm'),
-(86, 14, 2, 0.00, NULL, 'Midterm'),
-(87, 15, 2, 0.00, NULL, 'Midterm'),
-(88, 16, 2, 0.00, NULL, 'Midterm'),
-(89, 17, 2, 0.00, NULL, 'Midterm'),
-(90, 18, 2, 0.00, NULL, 'Midterm'),
-(91, 19, 2, 0.00, NULL, 'Midterm'),
-(92, 20, 2, 0.00, NULL, 'Midterm'),
-(93, 21, 2, 0.00, NULL, 'Midterm'),
-(94, 22, 2, 0.00, NULL, 'Midterm'),
-(95, 23, 2, 0.00, NULL, 'Midterm'),
-(96, 24, 2, 0.00, NULL, 'Midterm'),
-(97, 25, 2, 0.00, NULL, 'Midterm'),
-(98, 26, 2, 0.00, NULL, 'Midterm'),
-(99, 27, 2, 0.00, NULL, 'Midterm'),
-(100, 28, 2, 0.00, NULL, 'Midterm'),
-(101, 29, 2, 0.00, NULL, 'Midterm'),
-(102, 30, 2, 0.00, NULL, 'Midterm'),
-(103, 31, 2, 0.00, NULL, 'Midterm'),
-(104, 32, 2, 0.00, NULL, 'Midterm'),
-(105, 33, 2, 0.00, NULL, 'Midterm'),
-(106, 34, 2, 0.00, NULL, 'Midterm'),
-(107, 35, 2, 0.00, NULL, 'Midterm'),
-(108, 36, 2, 0.00, NULL, 'Midterm');
+(1, 1, 1, 0.00, NULL, 'Midterm'),
+(2, 1, 1, 0.00, NULL, 'Finals'),
+(3, 2, 1, 0.00, NULL, 'Midterm'),
+(4, 2, 1, 0.00, NULL, 'Finals'),
+(5, 3, 1, 0.00, NULL, 'Midterm'),
+(6, 3, 1, 0.00, NULL, 'Finals'),
+(7, 4, 1, 0.00, NULL, 'Midterm'),
+(8, 4, 1, 0.00, NULL, 'Finals'),
+(9, 5, 1, 0.00, NULL, 'Midterm'),
+(10, 5, 1, 0.00, NULL, 'Finals'),
+(11, 6, 1, 0.00, NULL, 'Midterm'),
+(12, 6, 1, 0.00, NULL, 'Finals'),
+(13, 7, 1, 0.00, NULL, 'Midterm'),
+(14, 7, 1, 0.00, NULL, 'Finals'),
+(15, 8, 1, 0.00, NULL, 'Midterm'),
+(16, 8, 1, 0.00, NULL, 'Finals'),
+(17, 9, 1, 0.00, NULL, 'Midterm'),
+(18, 9, 1, 0.00, NULL, 'Finals'),
+(19, 10, 1, 0.00, NULL, 'Midterm'),
+(20, 10, 1, 0.00, NULL, 'Finals'),
+(21, 11, 1, 0.00, NULL, 'Midterm'),
+(22, 11, 1, 0.00, NULL, 'Finals'),
+(23, 12, 1, 0.00, NULL, 'Midterm'),
+(24, 12, 1, 0.00, NULL, 'Finals'),
+(25, 13, 1, 0.00, NULL, 'Midterm'),
+(26, 13, 1, 0.00, NULL, 'Finals'),
+(27, 14, 1, 0.00, NULL, 'Midterm'),
+(28, 14, 1, 0.00, NULL, 'Finals'),
+(29, 15, 1, 0.00, NULL, 'Midterm'),
+(30, 15, 1, 0.00, NULL, 'Finals'),
+(31, 16, 1, 0.00, NULL, 'Midterm'),
+(32, 16, 1, 0.00, NULL, 'Finals'),
+(33, 17, 1, 0.00, NULL, 'Midterm'),
+(34, 17, 1, 0.00, NULL, 'Finals'),
+(35, 18, 1, 0.00, NULL, 'Midterm'),
+(36, 18, 1, 0.00, NULL, 'Finals'),
+(37, 19, 1, 0.00, NULL, 'Midterm'),
+(38, 19, 1, 0.00, NULL, 'Finals'),
+(39, 20, 1, 0.00, NULL, 'Midterm'),
+(40, 20, 1, 0.00, NULL, 'Finals'),
+(41, 21, 1, 0.00, NULL, 'Midterm'),
+(42, 21, 1, 0.00, NULL, 'Finals'),
+(43, 22, 1, 0.00, NULL, 'Midterm'),
+(44, 22, 1, 0.00, NULL, 'Finals'),
+(45, 23, 1, 0.00, NULL, 'Midterm'),
+(46, 23, 1, 0.00, NULL, 'Finals'),
+(47, 24, 1, 0.00, NULL, 'Midterm'),
+(48, 24, 1, 0.00, NULL, 'Finals'),
+(49, 25, 1, 0.00, NULL, 'Midterm'),
+(50, 25, 1, 0.00, NULL, 'Finals'),
+(51, 26, 1, 0.00, NULL, 'Midterm'),
+(52, 26, 1, 0.00, NULL, 'Finals'),
+(53, 27, 1, 0.00, NULL, 'Midterm'),
+(54, 27, 1, 0.00, NULL, 'Finals'),
+(55, 28, 1, 0.00, NULL, 'Midterm'),
+(56, 28, 1, 0.00, NULL, 'Finals'),
+(57, 29, 1, 0.00, NULL, 'Midterm'),
+(58, 29, 1, 0.00, NULL, 'Finals'),
+(59, 30, 1, 0.00, NULL, 'Midterm'),
+(60, 30, 1, 0.00, NULL, 'Finals'),
+(61, 31, 1, 0.00, NULL, 'Midterm'),
+(62, 31, 1, 0.00, NULL, 'Finals'),
+(63, 32, 1, 0.00, NULL, 'Midterm'),
+(64, 32, 1, 0.00, NULL, 'Finals'),
+(65, 33, 1, 0.00, NULL, 'Midterm'),
+(66, 33, 1, 0.00, NULL, 'Finals'),
+(67, 34, 1, 0.00, NULL, 'Midterm'),
+(68, 34, 1, 0.00, NULL, 'Finals'),
+(69, 35, 1, 0.00, NULL, 'Midterm'),
+(70, 35, 1, 0.00, NULL, 'Finals'),
+(71, 36, 1, 0.00, NULL, 'Midterm'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -1976,157 +1249,85 @@ CREATE TABLE IF NOT EXISTS `recitation` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `recitation`
 --
 
 INSERT INTO `recitation` (`Id`, `StudId`, `RecNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 80.00, NULL, 'Midterm'),
-(2, 2, 1, 40.00, NULL, 'Midterm'),
-(3, 3, 1, 3.00, NULL, 'Midterm'),
-(4, 4, 1, 4.00, NULL, 'Midterm'),
-(5, 5, 1, 5.00, NULL, 'Midterm'),
-(6, 6, 1, 0.00, NULL, 'Midterm'),
-(7, 7, 1, 0.00, NULL, 'Midterm'),
-(8, 8, 1, 0.00, NULL, 'Midterm'),
-(9, 9, 1, 0.00, NULL, 'Midterm'),
-(10, 10, 1, 0.00, NULL, 'Midterm'),
-(11, 11, 1, 0.00, NULL, 'Midterm'),
-(12, 12, 1, 0.00, NULL, 'Midterm'),
-(13, 13, 1, 0.00, NULL, 'Midterm'),
-(14, 14, 1, 0.00, NULL, 'Midterm'),
-(15, 15, 1, 0.00, NULL, 'Midterm'),
-(16, 16, 1, 0.00, NULL, 'Midterm'),
-(17, 17, 1, 0.00, NULL, 'Midterm'),
-(18, 18, 1, 0.00, NULL, 'Midterm'),
-(19, 19, 1, 0.00, NULL, 'Midterm'),
-(20, 20, 1, 0.00, NULL, 'Midterm'),
-(21, 21, 1, 0.00, NULL, 'Midterm'),
-(22, 22, 1, 0.00, NULL, 'Midterm'),
-(23, 23, 1, 0.00, NULL, 'Midterm'),
-(24, 24, 1, 0.00, NULL, 'Midterm'),
-(25, 25, 1, 0.00, NULL, 'Midterm'),
-(26, 26, 1, 0.00, NULL, 'Midterm'),
-(27, 27, 1, 0.00, NULL, 'Midterm'),
-(28, 28, 1, 0.00, NULL, 'Midterm'),
-(29, 29, 1, 0.00, NULL, 'Midterm'),
-(30, 30, 1, 0.00, NULL, 'Midterm'),
-(31, 31, 1, 0.00, NULL, 'Midterm'),
-(32, 32, 1, 0.00, NULL, 'Midterm'),
-(33, 33, 1, 0.00, NULL, 'Midterm'),
-(34, 34, 1, 0.00, NULL, 'Midterm'),
-(35, 35, 1, 0.00, NULL, 'Midterm'),
-(36, 36, 1, 0.00, NULL, 'Midterm'),
-(37, 1, 1, 1.00, NULL, 'Finals'),
-(38, 2, 1, 2.00, NULL, 'Finals'),
-(39, 3, 1, 3.00, NULL, 'Finals'),
-(40, 4, 1, 4.00, NULL, 'Finals'),
-(41, 5, 1, 5.00, NULL, 'Finals'),
-(42, 6, 1, 0.00, NULL, 'Finals'),
-(43, 7, 1, 0.00, NULL, 'Finals'),
-(44, 8, 1, 0.00, NULL, 'Finals'),
-(45, 9, 1, 0.00, NULL, 'Finals'),
-(46, 10, 1, 0.00, NULL, 'Finals'),
-(47, 11, 1, 0.00, NULL, 'Finals'),
-(48, 12, 1, 0.00, NULL, 'Finals'),
-(49, 13, 1, 0.00, NULL, 'Finals'),
-(50, 14, 1, 0.00, NULL, 'Finals'),
-(51, 15, 1, 0.00, NULL, 'Finals'),
-(52, 16, 1, 0.00, NULL, 'Finals'),
-(53, 17, 1, 0.00, NULL, 'Finals'),
-(54, 18, 1, 0.00, NULL, 'Finals'),
-(55, 19, 1, 0.00, NULL, 'Finals'),
-(56, 20, 1, 0.00, NULL, 'Finals'),
-(57, 21, 1, 0.00, NULL, 'Finals'),
-(58, 22, 1, 0.00, NULL, 'Finals'),
-(59, 23, 1, 0.00, NULL, 'Finals'),
-(60, 24, 1, 0.00, NULL, 'Finals'),
-(61, 25, 1, 0.00, NULL, 'Finals'),
-(62, 26, 1, 0.00, NULL, 'Finals'),
-(63, 27, 1, 0.00, NULL, 'Finals'),
-(64, 28, 1, 0.00, NULL, 'Finals'),
-(65, 29, 1, 0.00, NULL, 'Finals'),
-(66, 30, 1, 0.00, NULL, 'Finals'),
-(67, 31, 1, 0.00, NULL, 'Finals'),
-(68, 32, 1, 0.00, NULL, 'Finals'),
-(69, 33, 1, 0.00, NULL, 'Finals'),
-(70, 34, 1, 0.00, NULL, 'Finals'),
-(71, 35, 1, 0.00, NULL, 'Finals'),
-(72, 36, 1, 0.00, NULL, 'Finals'),
-(73, 1, 2, 60.00, NULL, 'Midterm'),
-(74, 2, 2, 0.00, NULL, 'Midterm'),
-(75, 3, 2, 0.00, NULL, 'Midterm'),
-(76, 4, 2, 0.00, NULL, 'Midterm'),
-(77, 5, 2, 0.00, NULL, 'Midterm'),
-(78, 6, 2, 0.00, NULL, 'Midterm'),
-(79, 7, 2, 0.00, NULL, 'Midterm'),
-(80, 8, 2, 0.00, NULL, 'Midterm'),
-(81, 9, 2, 0.00, NULL, 'Midterm'),
-(82, 10, 2, 0.00, NULL, 'Midterm'),
-(83, 11, 2, 0.00, NULL, 'Midterm'),
-(84, 12, 2, 0.00, NULL, 'Midterm'),
-(85, 13, 2, 0.00, NULL, 'Midterm'),
-(86, 14, 2, 0.00, NULL, 'Midterm'),
-(87, 15, 2, 0.00, NULL, 'Midterm'),
-(88, 16, 2, 0.00, NULL, 'Midterm'),
-(89, 17, 2, 0.00, NULL, 'Midterm'),
-(90, 18, 2, 0.00, NULL, 'Midterm'),
-(91, 19, 2, 0.00, NULL, 'Midterm'),
-(92, 20, 2, 0.00, NULL, 'Midterm'),
-(93, 21, 2, 0.00, NULL, 'Midterm'),
-(94, 22, 2, 0.00, NULL, 'Midterm'),
-(95, 23, 2, 0.00, NULL, 'Midterm'),
-(96, 24, 2, 0.00, NULL, 'Midterm'),
-(97, 25, 2, 0.00, NULL, 'Midterm'),
-(98, 26, 2, 0.00, NULL, 'Midterm'),
-(99, 27, 2, 0.00, NULL, 'Midterm'),
-(100, 28, 2, 0.00, NULL, 'Midterm'),
-(101, 29, 2, 0.00, NULL, 'Midterm'),
-(102, 30, 2, 0.00, NULL, 'Midterm'),
-(103, 31, 2, 0.00, NULL, 'Midterm'),
-(104, 32, 2, 0.00, NULL, 'Midterm'),
-(105, 33, 2, 0.00, NULL, 'Midterm'),
-(106, 34, 2, 0.00, NULL, 'Midterm'),
-(107, 35, 2, 0.00, NULL, 'Midterm'),
-(108, 36, 2, 0.00, NULL, 'Midterm'),
-(109, 1, 3, 50.00, NULL, 'Midterm'),
-(110, 2, 3, 0.00, NULL, 'Midterm'),
-(111, 3, 3, 0.00, NULL, 'Midterm'),
-(112, 4, 3, 0.00, NULL, 'Midterm'),
-(113, 5, 3, 0.00, NULL, 'Midterm'),
-(114, 6, 3, 0.00, NULL, 'Midterm'),
-(115, 7, 3, 0.00, NULL, 'Midterm'),
-(116, 8, 3, 0.00, NULL, 'Midterm'),
-(117, 9, 3, 0.00, NULL, 'Midterm'),
-(118, 10, 3, 0.00, NULL, 'Midterm'),
-(119, 11, 3, 0.00, NULL, 'Midterm'),
-(120, 12, 3, 0.00, NULL, 'Midterm'),
-(121, 13, 3, 0.00, NULL, 'Midterm'),
-(122, 14, 3, 0.00, NULL, 'Midterm'),
-(123, 15, 3, 0.00, NULL, 'Midterm'),
-(124, 16, 3, 0.00, NULL, 'Midterm'),
-(125, 17, 3, 0.00, NULL, 'Midterm'),
-(126, 18, 3, 0.00, NULL, 'Midterm'),
-(127, 19, 3, 0.00, NULL, 'Midterm'),
-(128, 20, 3, 0.00, NULL, 'Midterm'),
-(129, 21, 3, 0.00, NULL, 'Midterm'),
-(130, 22, 3, 0.00, NULL, 'Midterm'),
-(131, 23, 3, 0.00, NULL, 'Midterm'),
-(132, 24, 3, 0.00, NULL, 'Midterm'),
-(133, 25, 3, 0.00, NULL, 'Midterm'),
-(134, 26, 3, 0.00, NULL, 'Midterm'),
-(135, 27, 3, 0.00, NULL, 'Midterm'),
-(136, 28, 3, 0.00, NULL, 'Midterm'),
-(137, 29, 3, 0.00, NULL, 'Midterm'),
-(138, 30, 3, 0.00, NULL, 'Midterm'),
-(139, 31, 3, 0.00, NULL, 'Midterm'),
-(140, 32, 3, 0.00, NULL, 'Midterm'),
-(141, 33, 3, 0.00, NULL, 'Midterm'),
-(142, 34, 3, 0.00, NULL, 'Midterm'),
-(143, 35, 3, 0.00, NULL, 'Midterm'),
-(144, 36, 3, 0.00, NULL, 'Midterm');
+(1, 1, 1, 0.00, NULL, 'Midterm'),
+(2, 1, 1, 0.00, NULL, 'Finals'),
+(3, 2, 1, 0.00, NULL, 'Midterm'),
+(4, 2, 1, 0.00, NULL, 'Finals'),
+(5, 3, 1, 0.00, NULL, 'Midterm'),
+(6, 3, 1, 0.00, NULL, 'Finals'),
+(7, 4, 1, 0.00, NULL, 'Midterm'),
+(8, 4, 1, 0.00, NULL, 'Finals'),
+(9, 5, 1, 0.00, NULL, 'Midterm'),
+(10, 5, 1, 0.00, NULL, 'Finals'),
+(11, 6, 1, 0.00, NULL, 'Midterm'),
+(12, 6, 1, 0.00, NULL, 'Finals'),
+(13, 7, 1, 0.00, NULL, 'Midterm'),
+(14, 7, 1, 0.00, NULL, 'Finals'),
+(15, 8, 1, 0.00, NULL, 'Midterm'),
+(16, 8, 1, 0.00, NULL, 'Finals'),
+(17, 9, 1, 0.00, NULL, 'Midterm'),
+(18, 9, 1, 0.00, NULL, 'Finals'),
+(19, 10, 1, 0.00, NULL, 'Midterm'),
+(20, 10, 1, 0.00, NULL, 'Finals'),
+(21, 11, 1, 0.00, NULL, 'Midterm'),
+(22, 11, 1, 0.00, NULL, 'Finals'),
+(23, 12, 1, 0.00, NULL, 'Midterm'),
+(24, 12, 1, 0.00, NULL, 'Finals'),
+(25, 13, 1, 0.00, NULL, 'Midterm'),
+(26, 13, 1, 0.00, NULL, 'Finals'),
+(27, 14, 1, 0.00, NULL, 'Midterm'),
+(28, 14, 1, 0.00, NULL, 'Finals'),
+(29, 15, 1, 0.00, NULL, 'Midterm'),
+(30, 15, 1, 0.00, NULL, 'Finals'),
+(31, 16, 1, 0.00, NULL, 'Midterm'),
+(32, 16, 1, 0.00, NULL, 'Finals'),
+(33, 17, 1, 0.00, NULL, 'Midterm'),
+(34, 17, 1, 0.00, NULL, 'Finals'),
+(35, 18, 1, 0.00, NULL, 'Midterm'),
+(36, 18, 1, 0.00, NULL, 'Finals'),
+(37, 19, 1, 0.00, NULL, 'Midterm'),
+(38, 19, 1, 0.00, NULL, 'Finals'),
+(39, 20, 1, 0.00, NULL, 'Midterm'),
+(40, 20, 1, 0.00, NULL, 'Finals'),
+(41, 21, 1, 0.00, NULL, 'Midterm'),
+(42, 21, 1, 0.00, NULL, 'Finals'),
+(43, 22, 1, 0.00, NULL, 'Midterm'),
+(44, 22, 1, 0.00, NULL, 'Finals'),
+(45, 23, 1, 0.00, NULL, 'Midterm'),
+(46, 23, 1, 0.00, NULL, 'Finals'),
+(47, 24, 1, 0.00, NULL, 'Midterm'),
+(48, 24, 1, 0.00, NULL, 'Finals'),
+(49, 25, 1, 0.00, NULL, 'Midterm'),
+(50, 25, 1, 0.00, NULL, 'Finals'),
+(51, 26, 1, 0.00, NULL, 'Midterm'),
+(52, 26, 1, 0.00, NULL, 'Finals'),
+(53, 27, 1, 0.00, NULL, 'Midterm'),
+(54, 27, 1, 0.00, NULL, 'Finals'),
+(55, 28, 1, 0.00, NULL, 'Midterm'),
+(56, 28, 1, 0.00, NULL, 'Finals'),
+(57, 29, 1, 0.00, NULL, 'Midterm'),
+(58, 29, 1, 0.00, NULL, 'Finals'),
+(59, 30, 1, 0.00, NULL, 'Midterm'),
+(60, 30, 1, 0.00, NULL, 'Finals'),
+(61, 31, 1, 0.00, NULL, 'Midterm'),
+(62, 31, 1, 0.00, NULL, 'Finals'),
+(63, 32, 1, 0.00, NULL, 'Midterm'),
+(64, 32, 1, 0.00, NULL, 'Finals'),
+(65, 33, 1, 0.00, NULL, 'Midterm'),
+(66, 33, 1, 0.00, NULL, 'Finals'),
+(67, 34, 1, 0.00, NULL, 'Midterm'),
+(68, 34, 1, 0.00, NULL, 'Finals'),
+(69, 35, 1, 0.00, NULL, 'Midterm'),
+(70, 35, 1, 0.00, NULL, 'Finals'),
+(71, 36, 1, 0.00, NULL, 'Midterm'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -2141,157 +1342,85 @@ CREATE TABLE IF NOT EXISTS `seatwork` (
   `Score` float(5,2) NOT NULL,
   `Rating` float(5,2) DEFAULT NULL,
   `Sem` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `seatwork`
 --
 
 INSERT INTO `seatwork` (`Id`, `StudId`, `SWNum`, `Score`, `Rating`, `Sem`) VALUES
-(1, 1, 1, 10.00, NULL, 'Midterm'),
-(2, 2, 1, 20.00, NULL, 'Midterm'),
-(3, 3, 1, 3.00, NULL, 'Midterm'),
-(4, 4, 1, 4.00, NULL, 'Midterm'),
-(5, 5, 1, 5.00, NULL, 'Midterm'),
-(6, 6, 1, 0.00, NULL, 'Midterm'),
-(7, 7, 1, 0.00, NULL, 'Midterm'),
-(8, 8, 1, 0.00, NULL, 'Midterm'),
-(9, 9, 1, 0.00, NULL, 'Midterm'),
-(10, 10, 1, 0.00, NULL, 'Midterm'),
-(11, 11, 1, 0.00, NULL, 'Midterm'),
-(12, 12, 1, 0.00, NULL, 'Midterm'),
-(13, 13, 1, 0.00, NULL, 'Midterm'),
-(14, 14, 1, 0.00, NULL, 'Midterm'),
-(15, 15, 1, 0.00, NULL, 'Midterm'),
-(16, 16, 1, 0.00, NULL, 'Midterm'),
-(17, 17, 1, 0.00, NULL, 'Midterm'),
-(18, 18, 1, 0.00, NULL, 'Midterm'),
-(19, 19, 1, 0.00, NULL, 'Midterm'),
-(20, 20, 1, 0.00, NULL, 'Midterm'),
-(21, 21, 1, 0.00, NULL, 'Midterm'),
-(22, 22, 1, 0.00, NULL, 'Midterm'),
-(23, 23, 1, 0.00, NULL, 'Midterm'),
-(24, 24, 1, 0.00, NULL, 'Midterm'),
-(25, 25, 1, 0.00, NULL, 'Midterm'),
-(26, 26, 1, 0.00, NULL, 'Midterm'),
-(27, 27, 1, 0.00, NULL, 'Midterm'),
-(28, 28, 1, 0.00, NULL, 'Midterm'),
-(29, 29, 1, 0.00, NULL, 'Midterm'),
-(30, 30, 1, 0.00, NULL, 'Midterm'),
-(31, 31, 1, 0.00, NULL, 'Midterm'),
-(32, 32, 1, 0.00, NULL, 'Midterm'),
-(33, 33, 1, 0.00, NULL, 'Midterm'),
-(34, 34, 1, 0.00, NULL, 'Midterm'),
-(35, 35, 1, 0.00, NULL, 'Midterm'),
-(36, 36, 1, 0.00, NULL, 'Midterm'),
-(37, 1, 1, 1.00, NULL, 'Finals'),
-(38, 2, 1, 2.00, NULL, 'Finals'),
-(39, 3, 1, 3.00, NULL, 'Finals'),
-(40, 4, 1, 4.00, NULL, 'Finals'),
-(41, 5, 1, 5.00, NULL, 'Finals'),
-(42, 6, 1, 0.00, NULL, 'Finals'),
-(43, 7, 1, 0.00, NULL, 'Finals'),
-(44, 8, 1, 0.00, NULL, 'Finals'),
-(45, 9, 1, 0.00, NULL, 'Finals'),
-(46, 10, 1, 0.00, NULL, 'Finals'),
-(47, 11, 1, 0.00, NULL, 'Finals'),
-(48, 12, 1, 0.00, NULL, 'Finals'),
-(49, 13, 1, 0.00, NULL, 'Finals'),
-(50, 14, 1, 0.00, NULL, 'Finals'),
-(51, 15, 1, 0.00, NULL, 'Finals'),
-(52, 16, 1, 0.00, NULL, 'Finals'),
-(53, 17, 1, 0.00, NULL, 'Finals'),
-(54, 18, 1, 0.00, NULL, 'Finals'),
-(55, 19, 1, 0.00, NULL, 'Finals'),
-(56, 20, 1, 0.00, NULL, 'Finals'),
-(57, 21, 1, 0.00, NULL, 'Finals'),
-(58, 22, 1, 0.00, NULL, 'Finals'),
-(59, 23, 1, 0.00, NULL, 'Finals'),
-(60, 24, 1, 0.00, NULL, 'Finals'),
-(61, 25, 1, 0.00, NULL, 'Finals'),
-(62, 26, 1, 0.00, NULL, 'Finals'),
-(63, 27, 1, 0.00, NULL, 'Finals'),
-(64, 28, 1, 0.00, NULL, 'Finals'),
-(65, 29, 1, 0.00, NULL, 'Finals'),
-(66, 30, 1, 0.00, NULL, 'Finals'),
-(67, 31, 1, 0.00, NULL, 'Finals'),
-(68, 32, 1, 0.00, NULL, 'Finals'),
-(69, 33, 1, 0.00, NULL, 'Finals'),
-(70, 34, 1, 0.00, NULL, 'Finals'),
-(71, 35, 1, 0.00, NULL, 'Finals'),
-(72, 36, 1, 0.00, NULL, 'Finals'),
-(73, 1, 2, 12.00, NULL, 'Midterm'),
-(74, 2, 2, 0.00, NULL, 'Midterm'),
-(75, 3, 2, 0.00, NULL, 'Midterm'),
-(76, 4, 2, 0.00, NULL, 'Midterm'),
-(77, 5, 2, 0.00, NULL, 'Midterm'),
-(78, 6, 2, 0.00, NULL, 'Midterm'),
-(79, 7, 2, 0.00, NULL, 'Midterm'),
-(80, 8, 2, 0.00, NULL, 'Midterm'),
-(81, 9, 2, 0.00, NULL, 'Midterm'),
-(82, 10, 2, 0.00, NULL, 'Midterm'),
-(83, 11, 2, 0.00, NULL, 'Midterm'),
-(84, 12, 2, 0.00, NULL, 'Midterm'),
-(85, 13, 2, 0.00, NULL, 'Midterm'),
-(86, 14, 2, 0.00, NULL, 'Midterm'),
-(87, 15, 2, 0.00, NULL, 'Midterm'),
-(88, 16, 2, 0.00, NULL, 'Midterm'),
-(89, 17, 2, 0.00, NULL, 'Midterm'),
-(90, 18, 2, 0.00, NULL, 'Midterm'),
-(91, 19, 2, 0.00, NULL, 'Midterm'),
-(92, 20, 2, 0.00, NULL, 'Midterm'),
-(93, 21, 2, 0.00, NULL, 'Midterm'),
-(94, 22, 2, 0.00, NULL, 'Midterm'),
-(95, 23, 2, 0.00, NULL, 'Midterm'),
-(96, 24, 2, 0.00, NULL, 'Midterm'),
-(97, 25, 2, 0.00, NULL, 'Midterm'),
-(98, 26, 2, 0.00, NULL, 'Midterm'),
-(99, 27, 2, 0.00, NULL, 'Midterm'),
-(100, 28, 2, 0.00, NULL, 'Midterm'),
-(101, 29, 2, 0.00, NULL, 'Midterm'),
-(102, 30, 2, 0.00, NULL, 'Midterm'),
-(103, 31, 2, 0.00, NULL, 'Midterm'),
-(104, 32, 2, 0.00, NULL, 'Midterm'),
-(105, 33, 2, 0.00, NULL, 'Midterm'),
-(106, 34, 2, 0.00, NULL, 'Midterm'),
-(107, 35, 2, 0.00, NULL, 'Midterm'),
-(108, 36, 2, 0.00, NULL, 'Midterm'),
-(109, 1, 3, 12.00, NULL, 'Midterm'),
-(110, 2, 3, 0.00, NULL, 'Midterm'),
-(111, 3, 3, 0.00, NULL, 'Midterm'),
-(112, 4, 3, 0.00, NULL, 'Midterm'),
-(113, 5, 3, 0.00, NULL, 'Midterm'),
-(114, 6, 3, 0.00, NULL, 'Midterm'),
-(115, 7, 3, 0.00, NULL, 'Midterm'),
-(116, 8, 3, 0.00, NULL, 'Midterm'),
-(117, 9, 3, 0.00, NULL, 'Midterm'),
-(118, 10, 3, 0.00, NULL, 'Midterm'),
-(119, 11, 3, 0.00, NULL, 'Midterm'),
-(120, 12, 3, 0.00, NULL, 'Midterm'),
-(121, 13, 3, 0.00, NULL, 'Midterm'),
-(122, 14, 3, 0.00, NULL, 'Midterm'),
-(123, 15, 3, 0.00, NULL, 'Midterm'),
-(124, 16, 3, 0.00, NULL, 'Midterm'),
-(125, 17, 3, 0.00, NULL, 'Midterm'),
-(126, 18, 3, 0.00, NULL, 'Midterm'),
-(127, 19, 3, 0.00, NULL, 'Midterm'),
-(128, 20, 3, 0.00, NULL, 'Midterm'),
-(129, 21, 3, 0.00, NULL, 'Midterm'),
-(130, 22, 3, 0.00, NULL, 'Midterm'),
-(131, 23, 3, 0.00, NULL, 'Midterm'),
-(132, 24, 3, 0.00, NULL, 'Midterm'),
-(133, 25, 3, 0.00, NULL, 'Midterm'),
-(134, 26, 3, 0.00, NULL, 'Midterm'),
-(135, 27, 3, 0.00, NULL, 'Midterm'),
-(136, 28, 3, 0.00, NULL, 'Midterm'),
-(137, 29, 3, 0.00, NULL, 'Midterm'),
-(138, 30, 3, 0.00, NULL, 'Midterm'),
-(139, 31, 3, 0.00, NULL, 'Midterm'),
-(140, 32, 3, 0.00, NULL, 'Midterm'),
-(141, 33, 3, 0.00, NULL, 'Midterm'),
-(142, 34, 3, 0.00, NULL, 'Midterm'),
-(143, 35, 3, 0.00, NULL, 'Midterm'),
-(144, 36, 3, 0.00, NULL, 'Midterm');
+(1, 1, 1, 0.00, NULL, 'Midterm'),
+(2, 1, 1, 0.00, NULL, 'Finals'),
+(3, 2, 1, 0.00, NULL, 'Midterm'),
+(4, 2, 1, 0.00, NULL, 'Finals'),
+(5, 3, 1, 0.00, NULL, 'Midterm'),
+(6, 3, 1, 0.00, NULL, 'Finals'),
+(7, 4, 1, 0.00, NULL, 'Midterm'),
+(8, 4, 1, 0.00, NULL, 'Finals'),
+(9, 5, 1, 0.00, NULL, 'Midterm'),
+(10, 5, 1, 0.00, NULL, 'Finals'),
+(11, 6, 1, 0.00, NULL, 'Midterm'),
+(12, 6, 1, 0.00, NULL, 'Finals'),
+(13, 7, 1, 0.00, NULL, 'Midterm'),
+(14, 7, 1, 0.00, NULL, 'Finals'),
+(15, 8, 1, 0.00, NULL, 'Midterm'),
+(16, 8, 1, 0.00, NULL, 'Finals'),
+(17, 9, 1, 0.00, NULL, 'Midterm'),
+(18, 9, 1, 0.00, NULL, 'Finals'),
+(19, 10, 1, 0.00, NULL, 'Midterm'),
+(20, 10, 1, 0.00, NULL, 'Finals'),
+(21, 11, 1, 0.00, NULL, 'Midterm'),
+(22, 11, 1, 0.00, NULL, 'Finals'),
+(23, 12, 1, 0.00, NULL, 'Midterm'),
+(24, 12, 1, 0.00, NULL, 'Finals'),
+(25, 13, 1, 0.00, NULL, 'Midterm'),
+(26, 13, 1, 0.00, NULL, 'Finals'),
+(27, 14, 1, 0.00, NULL, 'Midterm'),
+(28, 14, 1, 0.00, NULL, 'Finals'),
+(29, 15, 1, 0.00, NULL, 'Midterm'),
+(30, 15, 1, 0.00, NULL, 'Finals'),
+(31, 16, 1, 0.00, NULL, 'Midterm'),
+(32, 16, 1, 0.00, NULL, 'Finals'),
+(33, 17, 1, 0.00, NULL, 'Midterm'),
+(34, 17, 1, 0.00, NULL, 'Finals'),
+(35, 18, 1, 0.00, NULL, 'Midterm'),
+(36, 18, 1, 0.00, NULL, 'Finals'),
+(37, 19, 1, 0.00, NULL, 'Midterm'),
+(38, 19, 1, 0.00, NULL, 'Finals'),
+(39, 20, 1, 0.00, NULL, 'Midterm'),
+(40, 20, 1, 0.00, NULL, 'Finals'),
+(41, 21, 1, 0.00, NULL, 'Midterm'),
+(42, 21, 1, 0.00, NULL, 'Finals'),
+(43, 22, 1, 0.00, NULL, 'Midterm'),
+(44, 22, 1, 0.00, NULL, 'Finals'),
+(45, 23, 1, 0.00, NULL, 'Midterm'),
+(46, 23, 1, 0.00, NULL, 'Finals'),
+(47, 24, 1, 0.00, NULL, 'Midterm'),
+(48, 24, 1, 0.00, NULL, 'Finals'),
+(49, 25, 1, 0.00, NULL, 'Midterm'),
+(50, 25, 1, 0.00, NULL, 'Finals'),
+(51, 26, 1, 0.00, NULL, 'Midterm'),
+(52, 26, 1, 0.00, NULL, 'Finals'),
+(53, 27, 1, 0.00, NULL, 'Midterm'),
+(54, 27, 1, 0.00, NULL, 'Finals'),
+(55, 28, 1, 0.00, NULL, 'Midterm'),
+(56, 28, 1, 0.00, NULL, 'Finals'),
+(57, 29, 1, 0.00, NULL, 'Midterm'),
+(58, 29, 1, 0.00, NULL, 'Finals'),
+(59, 30, 1, 0.00, NULL, 'Midterm'),
+(60, 30, 1, 0.00, NULL, 'Finals'),
+(61, 31, 1, 0.00, NULL, 'Midterm'),
+(62, 31, 1, 0.00, NULL, 'Finals'),
+(63, 32, 1, 0.00, NULL, 'Midterm'),
+(64, 32, 1, 0.00, NULL, 'Finals'),
+(65, 33, 1, 0.00, NULL, 'Midterm'),
+(66, 33, 1, 0.00, NULL, 'Finals'),
+(67, 34, 1, 0.00, NULL, 'Midterm'),
+(68, 34, 1, 0.00, NULL, 'Finals'),
+(69, 35, 1, 0.00, NULL, 'Midterm'),
+(70, 35, 1, 0.00, NULL, 'Finals'),
+(71, 36, 1, 0.00, NULL, 'Midterm'),
+(72, 36, 1, 0.00, NULL, 'Finals');
 
 -- --------------------------------------------------------
 
@@ -2306,7 +1435,7 @@ CREATE TABLE IF NOT EXISTS `students` (
   `MName` varchar(100) NOT NULL,
   `LName` varchar(100) NOT NULL,
   `StudentNumber` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
@@ -2349,51 +1478,42 @@ INSERT INTO `students` (`Id`, `ClassId`, `FName`, `MName`, `LName`, `StudentNumb
 (34, 1, 'luisito jr. ', 'nebab', 'tamone', '2011-04053-MN-0'),
 (35, 1, 'ramil ', 'lucot', 'villanueva', '2011-02005-MN-0'),
 (36, 1, 'wilfredo ', 'panis', 'villanueva iii', '2011-01971-MN-0'),
-(37, 2, 'marrynel ', 'maglasang', 'abonalla', '2014-02145-MN-0'),
-(38, 2, 'john paul ', 'flores', 'avila', '2014-00767-MN-0'),
-(39, 2, 'mitzi ', 'pascual', 'balbaboco', '2014-07793-MN-0'),
-(40, 2, 'jasmine jaya ', 'sesbreño', 'belo', '2014-00681-MN-0'),
-(41, 2, 'jonnel ', 'exclamado', 'bernal', '2014-01498-MN-0'),
-(42, 2, 'rexc paul ', 'delmoro', 'bordeos', '2014-01916-MN-0'),
-(43, 2, 'roma bethany ', 'cantila', 'callora', '2014-02750-MN-0'),
-(44, 2, 'venmar ', 'cayangyang', 'cantilado', '2014-03737-MN-0'),
-(45, 2, 'john lawrence ', 'aguilar', 'cernal', '2014-02285-MN-0'),
-(46, 2, 'christine joyce ', 'beltran', 'cillo', '2014-03594-MN-0'),
-(47, 2, 'jerome ', 'cerbito', 'colapo', '2014-03201-MN-0'),
-(48, 2, 'james rowel ', 'bautista', 'corpuz', '2014-01339-MN-0'),
-(49, 2, 'chelsea kaitlyn ', 'cruz', 'cruz', '2014-03263-MN-0'),
-(50, 2, 'ma. aubrey ', 'alvaran', 'danga', '2014-02196-MN-0'),
-(51, 2, 'niño ', 'pineda', 'diaz', '2014-00570-MN-0'),
-(52, 2, 'james angelo ', 'suarez', 'ergina', '2014-06233-MN-0'),
-(53, 2, 'christian alvin ', 'fontarum', 'fadera', '2014-07577-MN-0'),
-(54, 2, 'mark julius ', 'fernando', 'galauran', '2014-00572-MN-0'),
-(55, 2, 'stephanie lorraine ', 'torres', 'garcia', '2014-04513-MN-0'),
-(56, 2, 'ernest philip ', 'aguilar', 'guevara', '2014-03951-MN-0'),
-(57, 2, 'vicheartzel rose ', 'linguis', 'jayson', '2014-02878-MN-0'),
-(58, 2, 'jonathan ', 'ente', 'jimenez', '2014-00637-MN-0'),
-(59, 2, 'justine lloyd ', 'salva', 'jose', '2014-02838-MN-0'),
-(60, 2, 'patrick ', 'bueno', 'lara', '2014-01836-MN-0'),
-(61, 2, 'bryan keith ', 'parreño', 'layderos', '2014-03628-MN-0'),
-(62, 2, 'maria geneda ', 'lascano', 'layno', '2014-03116-MN-0'),
-(63, 2, 'angelo joshua ', 'nibut', 'lomboy', '2014-03979-MN-0'),
-(64, 2, 'john benedict ', 'aguirre', 'maculada', '2014-00640-MN-0'),
-(65, 2, 'trixie shane ', 'gabriel', 'maningding', '2014-00396-MN-0'),
-(66, 2, 'rex cedric ', 'sagat', 'manuel', '2014-06525-MN-0'),
-(67, 2, 'joshua ', 'reyes', 'medina', '2014-03877-MN-0'),
-(68, 2, 'james ', 'soliva', 'mendoza', '2014-06111-MN-0'),
-(69, 2, 'jared ', 'barrameda', 'ochoa', '2014-00232-MN-0'),
-(70, 2, 'marco ', 'realuyo', 'orencia', '2013-05811-MN-0'),
-(71, 2, 'elaiza mae ', 'diaz', 'ortega', '2014-01909-MN-0'),
-(72, 2, 'al rey ', 'gutierrez', 'panilagao', '2014-00380-MN-0'),
-(73, 2, 'christian ', 'nesta', 'paralejas', '2014-02728-MN-0'),
-(74, 2, 'aldwin ', 'cadusale', 'pelayo', '2014-00842-MN-0'),
-(75, 2, 'ernest nicole ', 'villaro', 'penales', '2014-07591-MN-0'),
-(76, 2, 'halen dave ', 'untalan', 'perez', '2014-05798-MN-0'),
-(77, 2, 'rusell jane ', 'sacdalan', 'quitain', '2014-01701-MN-0'),
-(78, 2, 'steven joe ', 'lomeda', 'rebullido', '2014-01078-MN-0'),
-(79, 2, 'clarisse ann ', 'sending', 'temporosa', '2014-02062-MN-0'),
-(80, 2, 'ryan jasper ', 'villapando', 'tupaz', '2014-01306-MN-0'),
-(81, 2, 'philip nathan ', 'paler', 'yaun', '2014-03599-MN-0');
+(37, 2, 'marcelo ', 'ragay', 'anzano', '2011-00255-MN-0'),
+(38, 2, 'lorenzo ', 'sabadlan', 'arcinue', '2011-03709-MN-0'),
+(39, 2, 'joeden ', 'gonzales', 'asuncion', '2011-03478-MN-0'),
+(40, 2, 'julius ', 'parnay', 'balais', '2011-02830-MN-0'),
+(41, 2, 'angelica mae ', 'aquino', 'banaag', '2011-03161-MN-0'),
+(42, 2, 'mark oliver ', 'esteban', 'cahinde', '2011-00064-MN-0'),
+(43, 2, 'noel ', 'almaden', 'cambel jr.', '2011-00616-MN-0'),
+(44, 2, 'jess ', 'jonilas', 'canaway', '2011-00245-MN-0'),
+(45, 2, 'claire ', 'tumbaga', 'capio', '2011-01989-MN-0'),
+(46, 2, 'jherick ', 'bacagan', 'daso', '2011-06816-MN-0'),
+(47, 2, 'rhia joyce ', 'ortiz', 'eden', '2011-03796-MN-0'),
+(48, 2, 'lara mae ', 'domingo', 'edles', '2011-01918-MN-0'),
+(49, 2, 'joanna marie ', 'abule', 'ellarina', '2011-01858-MN-0'),
+(50, 2, 'carol shanti ', 'garcia', 'estolas', '2011-02357-MN-0'),
+(51, 2, 'justin ', 'cornelio', 'flores', '2011-00090-MN-0'),
+(52, 2, 'micah mariel ', 'visto', 'garcia', '2011-04453-MN-0'),
+(53, 2, 'athanasios ', 'sabado', 'go', '2008-00242-MN-0'),
+(54, 2, 'romulo ', 'baltazar', 'jaravata jr.', '2011-01709-MN-0'),
+(55, 2, 'genesis yeshua ', 'carreon', 'lim', '2011-02165-MN-0'),
+(56, 2, 'ralph ', 'tadia', 'llaguno', '2011-03127-MN-0'),
+(57, 2, 'romelia ', 'agustin', 'lutrania', '2012-11229-MN-1'),
+(58, 2, 'jose mari ', 'cruz', 'manio', '2011-05187-MN-0'),
+(59, 2, 'christine ', 'rubante', 'manrique', '2011-00049-MN-0'),
+(60, 2, 'karolyn ', 'amaya', 'maquilan', '2011-04515-MN-0'),
+(61, 2, 'john paul ', 'veral', 'mayo', '2011-03256-MN-0'),
+(62, 2, 'arian ', 'sario', 'nolasco', '2011-01115-MN-0'),
+(63, 2, 'john michael ', 'gonzales', 'nolasco', '2011-00043-MN-0'),
+(64, 2, 'jerome ', 'laserna', 'olavario', '2011-05554-MN-0'),
+(65, 2, 'gellie ', 'tiburcio', 'quiatchon', '2011-01241-MN-0'),
+(66, 2, 'beatrice nicole ', 'ramos', 'quindoyos', '2011-03262-MN-0'),
+(67, 2, 'lee arvi ', 'banaag', 'real', '2011-00045-MN-0'),
+(68, 2, 'john paul ', 'cruz', 'resuello', '2011-00046-MN-0'),
+(69, 2, 'rafael john ', 'boltron', 'surnet', '2011-05609-MN-0'),
+(70, 2, 'luisito jr. ', 'nebab', 'tamone', '2011-04053-MN-0'),
+(71, 2, 'ramil ', 'lucot', 'villanueva', '2011-02005-MN-0'),
+(72, 2, 'wilfredo ', 'panis', 'villanueva iii', '2011-01971-MN-0');
 
 -- --------------------------------------------------------
 
@@ -2413,7 +1533,7 @@ CREATE TABLE IF NOT EXISTS `subjects` (
 
 INSERT INTO `subjects` (`Id`, `UserId`, `SubjectTitle`) VALUES
 (1, 12, 'BSCOE Elec4 Bscoe Elective 4'),
-(2, 12, 'COEN 3054 Data Structures And Algorithm Analysis');
+(2, 12, 'BSCOE Elec4 Bscoe Elective 4');
 
 -- --------------------------------------------------------
 
@@ -2428,18 +1548,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `UserType` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `UserDept` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `LoginHist` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`Id`, `Username`, `Password`, `UserType`, `UserDept`, `LoginHist`) VALUES
-(2, 'administrator', '200ceb26807d6bf99fd6f4f0d1ca54d4', 'Administrator', 'CpE', '0000-00-00 00:00:00'),
+(2, 'administrator', '200ceb26807d6bf99fd6f4f0d1ca54d4', 'Administrator', 'Computer Engineering', '0000-00-00 00:00:00'),
 (12, 'faculty', 'd561c7c03c1f2831904823a95835ff5f', 'Faculty', 'Computer Engineering', '0000-00-00 00:00:00'),
-(13, 'faculty2', '9095a17ed07b9a53cd951db509606a70', 'Faculty', 'Computer Engineering', '0000-00-00 00:00:00'),
-(14, 'chairperson', '37cc87d2e99db3a0535f891ba0d3f1e9', 'Chairperson', 'Computer Engineering', '0000-00-00 00:00:00'),
-(15, 'rolitomahaguay@pup.edu.ph', '9344eec7771342ee0c44ac5c01d4bbef', 'Faculty', 'Computer Engineering', '0000-00-00 00:00:00');
+(14, 'chairperson', '37cc87d2e99db3a0535f891ba0d3f1e9', 'Chairperson', 'Computer Engineering', '0000-00-00 00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -2485,12 +1603,6 @@ ALTER TABLE `faculty`
 -- Indexes for table `final_exam`
 --
 ALTER TABLE `final_exam`
- ADD PRIMARY KEY (`Id`);
-
---
--- Indexes for table `grading_system`
---
-ALTER TABLE `grading_system`
  ADD PRIMARY KEY (`Id`);
 
 --
@@ -2639,12 +1751,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=145;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=109;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `calendar`
 --
@@ -2659,22 +1771,17 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `exercises`
 --
 ALTER TABLE `exercises`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=145;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `final_exam`
 --
 ALTER TABLE `final_exam`
 MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 --
--- AUTO_INCREMENT for table `grading_system`
---
-ALTER TABLE `grading_system`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `lab_act`
 --
 ALTER TABLE `lab_act`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=226;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `long_exam`
 --
@@ -2689,92 +1796,92 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=37;
 -- AUTO_INCREMENT for table `mod_assign`
 --
 ALTER TABLE `mod_assign`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_att`
 --
 ALTER TABLE `mod_att`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_ex`
 --
 ALTER TABLE `mod_ex`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_fe`
 --
 ALTER TABLE `mod_fe`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_lab`
 --
 ALTER TABLE `mod_lab`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_le`
 --
 ALTER TABLE `mod_le`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_me`
 --
 ALTER TABLE `mod_me`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_prac`
 --
 ALTER TABLE `mod_prac`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_proj`
 --
 ALTER TABLE `mod_proj`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_quiz`
 --
 ALTER TABLE `mod_quiz`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_rec`
 --
 ALTER TABLE `mod_rec`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `mod_sw`
 --
 ALTER TABLE `mod_sw`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `prac_exam`
 --
 ALTER TABLE `prac_exam`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=181;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=181;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=109;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `recitation`
 --
 ALTER TABLE `recitation`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=145;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `seatwork`
 --
 ALTER TABLE `seatwork`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=145;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `students`
 --
 ALTER TABLE `students`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=82;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=73;
 --
 -- AUTO_INCREMENT for table `subjects`
 --
@@ -2784,7 +1891,7 @@ MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
