@@ -11,10 +11,10 @@
                         if (isset($subj))
                         {
                             $hrefId = 0;
-                            foreach ($subj as $data) :
+                            foreach ($subj as $name => $data) :
                                 $hrefId++;
                                 echo "<li id='sidebar-subMenu' class='accordion-section'>";
-                                echo   "<a class='accordion-section-title hideOverflow' href='#accordion-".$hrefId."'>".$data['title']."<span class='arrow-left'></span></a>";
+                                echo   "<a class='accordion-section-title hideOverflow' href='#accordion-".$hrefId."'>".$name."<span class='arrow-left'></span></a>";
                                 echo    "<div id='accordion-".$hrefId."' class='accordion-section-content'>";
                                 if (isset($data['class']))
                                 {

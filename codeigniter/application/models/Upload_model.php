@@ -14,17 +14,16 @@ class Upload_model extends CI_Model {
 		$name = $file["classlist"]["name"];
 		$temp = $file["classlist"]["tmp_name"];
 
-		if (file_exists('resources/uploads/'. $name) || $file["classlist"]["type"] != "application/pdf")
+		if ($file["classlist"]["type"] != "application/pdf")
 		{
-			return "PDF has not been uploaded. Invalid file type or file already exists.";
+			return "PDF has not been uploaded. Invalid file type.";
 		}
-		move_uploaded_file($temp, "resources/uploads/".$name);
 
 		include(APPPATH.'libraries/pdfparse.php');
 		//create new instance of class pdfparse
 		$pdfdata = new PDFparse();
 		//just set the path of the file
-		$pdfdata->setFilename('resources/uploads/'. $name);
+		$pdfdata->setFilename($temp);
 		//it will get the infos like subj,sect,schedule and stud number/name
 		$pdfdata->decodePDF();
 		//convert into array
@@ -46,6 +45,27 @@ class Upload_model extends CI_Model {
 		$class_yr_sem = $data["info"][1]; //yr and sem
 		$class_schedule = $data["info"][7]; // schedule
 
+		//---check if pdf is invalid for upload---//
+		$this->db->where('SubjectTitle',$subj_title);
+		$query_exist_subj = $this->db->get('subjects');
+		if ($query_exist_subj->num_rows() > 0)
+		{
+			foreach ($query_exist_subj->result() as $check_subj) 
+			{
+				//now find if same class exists within same school year
+				$this->db->where('SubjectId',$check_subj->Id);
+				$this->db->where('ClassBlock',$class_block);
+				$this->db->where('ModuleType',$module);
+				$this->db->where('YrSem',$class_yr_sem);
+				$validate_class = $this->db->get('class');
+				
+				if ($validate_class->num_rows() > 0)
+				{
+					return "PDF of same school year has already been uploaded.";
+				}
+			}
+		}
+		
 		//save each information consecutively
 		//---save subject---//
 		$subject = array(

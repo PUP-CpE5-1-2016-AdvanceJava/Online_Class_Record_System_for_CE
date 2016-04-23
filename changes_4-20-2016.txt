@@ -1,0 +1,17 @@
+updates:
+--delete data completely upon deleting column 
+--system does not need to upload the class pdfs on resources folder anymore ... to avoid acquiring more space on server storage
+--yet system has upload error checking... now can upload same subjs of different module(lab/lec)
+--remove some tables in sql (reimport sql if using locally)
+--hostname 'pupx.dx' changed to 'pupocr.com'
+	If want to use locally
+	-xampp\apache\conf\extra\httpd-vhosts.conf
+	change serveradmin and servername
+	-Windows\System32\drivers\etc\hosts
+	rename also ur hostname to pupocr.com
+
+points to consider:
+-format for attendance header is (M d, yyyy) wrong format may result on wrong date label
+-reports (xls) filename must not be changed for it is to be uploaded in system for archive
+
+

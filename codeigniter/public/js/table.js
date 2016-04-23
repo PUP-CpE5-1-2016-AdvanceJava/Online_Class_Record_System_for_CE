@@ -188,7 +188,7 @@ $(document).ready(function(){
 			cache: false,
     		// contentType: "application/jsonrequest; charset=utf-8",
 			success: function(res) {
-				alert("Table has been saved.")
+				alert("Table has been saved.");
 			}
 		})
 	})

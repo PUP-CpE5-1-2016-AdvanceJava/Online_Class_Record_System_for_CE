@@ -64,12 +64,10 @@ class User_model extends CI_Model
 		$query = $this->db->get();
 		
 		if (!$query->num_rows() > 0) {
-        	// die("There are no subjects in the database.");
         	return;
     	}
     	$res = $query->row();
     	$subjs = array();
-    	$subjs[$res->SubjectTitle]['user_id'] = $userId;
     	foreach ($query->result() as $row) 
     	{
     		//fetch sections based on SubjectId in database
@@ -83,6 +81,7 @@ class User_model extends CI_Model
     		
     		foreach ($queryClass->result() as $rowClass) 
     		{
+    			$mod = $rowClass->ModuleType;
     			$class[$i] = array(
     				'c_block' => $rowClass->ClassBlock,
     				'c_id' => $rowClass->Id,
@@ -120,9 +119,9 @@ class User_model extends CI_Model
     			$i++;
     			$j++;
     		}
-        	$subjs[$row->SubjectTitle]['title'] = $row->SubjectTitle;
-        	$subjs[$row->SubjectTitle]['class'] = $class;
-        	$subjs[$row->SubjectTitle]['modules'] = $modules;
+        	$subjs[$row->SubjectTitle."-".$mod]['title'] = $row->SubjectTitle;
+        	$subjs[$row->SubjectTitle."-".$mod]['class'] = $class;
+        	$subjs[$row->SubjectTitle."-".$mod]['modules'] = $modules;
     	}
     	return $subjs;
 	}

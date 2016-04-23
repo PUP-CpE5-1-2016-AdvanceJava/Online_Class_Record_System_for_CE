@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'pupx.dx',
+	'hostname' => 'pupocr.com',
 	'username' => 'root',
 	'password' => '99083915',
 	'database' => 'online_class_record_system_for_ce',

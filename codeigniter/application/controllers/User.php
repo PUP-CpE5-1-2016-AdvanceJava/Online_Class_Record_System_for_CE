@@ -45,7 +45,6 @@ class User extends CI_Controller
     		if ($this->session->userdata('UserType') == "Faculty")
     		{
 				//get the subjects taken
-
 				$data['subj'] = $this->User_model->getUserSubjs($userId);
 				//call the pages and include variables
 				$this->load->view('templates/header',$user);
@@ -457,6 +456,16 @@ class User extends CI_Controller
 		{
 			$this->load->view("pages/login_view");
 		}
+	}
+
+	public function del_column()
+	{
+		$this->load->model('Table_model');
+		$data["info"] = $this->Table_model->del_column($this->input->post());
+		$this->Table_model->del_items($this->input->post());
+		$data["status"] = "OK";
+		header('Content-Type: application/json');
+	    echo json_encode($data);
 	}
 
 	public function logout()

@@ -1188,5 +1188,114 @@ class Table_model extends CI_Model {
         }
         return "";
     }
+
+    function del_column($data)
+    {
+        // get sem
+        $sem = "";
+        $label = "";
+        $label2 = "";
+        if ($data["term"] == "mid") $sem = "Midterm";
+        else $sem = "Finals";
+        // get label
+        if ($data["label"] == "Assign") $label = "assignment";
+        else if ($data["label"] == "Sw") $label = "seatwork";
+        else if ($data["label"] == "Ex") $label = "exercises";
+        else if ($data["label"] == "Rec") $label = "recitation";
+        else if ($data["label"] == "Quiz") $label = "quizzes";
+        else if ($data["label"] == "Le") $label = "long_exam";
+        else if ($data["label"] == "Lab") $label = "lab_act";
+        else if ($data["label"] == "Prac") $label = "prac_exam";
+        else if ($data["label"] == "Proj") $label = "project";
+        else if ($data["label"] == "Att") $label = "attendance";
+        // get array of StudId from ClassId
+        $this->db->select('Id')->from('students')->where('ClassId',$data["classId"]);
+        $query = $this->db->get();
+        // convert to query to array
+        $arr = $query->result_array();
+
+        if ($data["module_type"] == "attendance")
+        {
+            $obj = array(
+                'AttNum' => $data["colToDel"],
+                'Sem' => $sem
+            );
+            $this->db->where_in('StudId',$arr['Id']);
+            $this->db->delete($label, $obj);
+        }
+        else
+        {
+            if ($label == "assignment") $label2 = "AssignNum";
+            else if ($label == "seatwork") $label2 = "SWNum"; 
+            else if ($label == "exercises") $label2 = "ExNum";
+            else if ($label == "recitation") $label2 = "RecNum";
+            else if ($label == "quizzes") $label2 = "QuizNum";
+            else if ($label == "long_exam") $label2 = "LExamNum";
+            else if ($label == "lab_act") $label2 = "LabNum";
+            else if ($label == "prac_exam") $label2 = "PracNum";
+            else if ($label == "project") $label2 = "ProjNum";
+            $obj = array(
+                $label2 => $data["colToDel"],
+                'Sem' => $sem
+            );
+            $this->db->where_in('StudId',$arr['Id']);
+            $this->db->delete($label, $obj);
+        }
+        return;
+    }
+    // $names = array(4,5);
+    // $this->db->where_in('id', $names);
+    // $this->db->delete('mytable');
+
+    function del_items($data)
+    {
+        // get sem
+        $sem = "";
+        $label = "";
+        $label2 = "";
+        if ($data["term"] == "mid") $sem = "Midterm";
+        else $sem = "Finals";
+        // get label
+        if ($data["label"] == "Assign") $label = "mod_assign";
+        else if ($data["label"] == "Sw") $label = "mod_sw";
+        else if ($data["label"] == "Ex") $label = "mod_ex";
+        else if ($data["label"] == "Rec") $label = "mod_rec";
+        else if ($data["label"] == "Quiz") $label = "mod_quiz";
+        else if ($data["label"] == "Le") $label = "mod_le";
+        else if ($data["label"] == "Lab") $label = "mod_lab";
+        else if ($data["label"] == "Prac") $label = "mod_prac";
+        else if ($data["label"] == "Proj") $label = "mod_proj";
+        else if ($data["label"] == "Att") $label = "mod_att";
+
+        if ($data["module_type"] == "attendance")
+        {
+            $obj = array(
+                'ClassId' => $data["classId"],
+                'AttNum' => $data["colToDel"],
+                'Sem' => $sem
+            );
+            $this->db->delete($label, $obj);
+        }
+        else
+        {
+            if ($label == "mod_assign") $label2 = "AssignNum";
+            else if ($label == "mod_sw") $label2 = "SwNum"; 
+            else if ($label == "mod_ex") $label2 = "ExNum";
+            else if ($label == "mod_rec") $label2 = "RecNum";
+            else if ($label == "mod_quiz") $label2 = "QuizNum";
+            else if ($label == "mod_le") $label2 = "LExamNum";
+            else if ($label == "mod_lab") $label2 = "LabNum";
+            else if ($label == "mod_prac") $label2 = "PracExamNum";
+            else if ($label == "mod_proj") $label2 = "ProjNum";
+
+            $obj = array(
+                'ClassId' => $data["classId"],
+                $label2 => $data["colToDel"],
+                'Sem' => $sem
+            );
+            $this->db->delete($label, $obj);
+        }
+        return;
+    }
 }
 ?>
