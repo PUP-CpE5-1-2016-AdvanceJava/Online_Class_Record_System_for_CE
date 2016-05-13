@@ -196,7 +196,6 @@
         </div> <!-- container -->
     </div> <!-- container-fluid -->
     
-    <script type="text/javascript" src="<?php base_url(); ?>/js/script.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/settings.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/js/chosen.jquery.min.js"></script>
     <script type="text/javascript" src="<?php base_url(); ?>/plugins/bootstrap/js/bootstrap.min.js"></script>

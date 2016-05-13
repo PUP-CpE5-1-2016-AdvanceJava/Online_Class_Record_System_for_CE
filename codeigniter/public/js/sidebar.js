@@ -202,7 +202,7 @@ function get_class_table(link)
                 mid_assign_cols = 1;
                 assignCounter1 = 1;
             }
-            
+
             if (mid_assign_cols > 0)
             {
                 for (var i = 0; i <  mid_assign_cols; i++) 
@@ -222,7 +222,7 @@ function get_class_table(link)
             {
                 mid_assign_items_str = "<td data-container='body' data-toggle='tooltip' title='ASSIGN 1<br>Number of Items' data-html='true' data-placement='bottom' contenteditable='true' class='table-items-assign-mid' id='table-items-mid-assign1'></td>";
             }
-
+    
             if (response['assign_mid_score'].length > 0)
             {
                 var x_assign_mid = 0;

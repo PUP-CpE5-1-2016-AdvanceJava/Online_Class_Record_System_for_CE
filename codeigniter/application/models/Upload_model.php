@@ -129,45 +129,81 @@ class Upload_model extends CI_Model {
 			if ($module == 'Lec')
 			{
 				if ($init_att == false)
+				{
 					//insert att
 					$init_att = $this->Grades_model->init_att($stud_id,$num_students);
+					$init_mod_att = $this->Grades_model->init_mod_att($ClassId);
+				}
 				if ($init_assign == false)
+				{
 					//insert assign
 					$init_assign = $this->Grades_model->init_assign($stud_id,$num_students);
+					$init_mod_assign = $this->Grades_model->init_mod_assign($ClassId);
+				}
 				if ($init_sw == false)
+				{
 					//insert sw
 					$init_sw = $this->Grades_model->init_sw($stud_id,$num_students);
+					$init_mod_sw = $this->Grades_model->init_mod_sw($ClassId);
+				}
 				if ($init_ex == false)
+				{
 					//insert ex
 					$init_ex = $this->Grades_model->init_ex($stud_id,$num_students);
+					$init_mod_ex = $this->Grades_model->init_mod_ex($ClassId);
+				}
 				if ($init_rec == false)
+				{
 					//insert rec
 					$init_rec = $this->Grades_model->init_rec($stud_id,$num_students);
+					$init_mod_rec = $this->Grades_model->init_mod_rec($ClassId);
+				}
 				if ($init_quiz == false)
+				{
 					//insert quiz
 					$init_quiz = $this->Grades_model->init_quiz($stud_id,$num_students);
+					$init_mod_quiz = $this->Grades_model->init_mod_quiz($ClassId);
+				}
 				if ($init_le == false)
+				{
 					//insert le
 					$init_le = $this->Grades_model->init_le($stud_id,$num_students);
+					$init_mod_le = $this->Grades_model->init_mod_le($ClassId);
+				}
 				if ($init_mexam == false)
+				{
 					//insert midterm exam
 					$init_mexam = $this->Grades_model->init_mexam($stud_id,$num_students);
+					$init_mod_me = $this->Grades_model->init_mod_me($ClassId);
+				}
 				if ($init_fexam == false)
+				{
 					//insert final exam
 					$init_fexam = $this->Grades_model->init_fexam($stud_id,$num_students);
+					$init_mod_fe = $this->Grades_model->init_mod_fe($ClassId);
+				}
 			}
 			//else 'Lab'
 			else
 			{
 				if ($init_lab == false)
+				{
 					//insert lab/machine ex
 					$init_lab = $this->Grades_model->init_lab($stud_id,$num_students);
+					$init_mod_lab = $this->Grades_model->init_mod_lab($ClassId);
+				}
 				if ($init_prac == false)
+				{
 					//insert prac exam
 					$init_prac = $this->Grades_model->init_prac($stud_id,$num_students);
+					$init_mod_prac = $this->Grades_model->init_mod_prac($ClassId);
+				}
 				if ($init_proj == false)
+				{	
 					//insert proj
 					$init_proj = $this->Grades_model->init_proj($stud_id,$num_students);
+					$init_mod_proj = $this->Grades_model->init_mod_proj($ClassId);
+				}
 			}
 				
 		}

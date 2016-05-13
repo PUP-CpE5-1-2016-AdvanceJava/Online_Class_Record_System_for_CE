@@ -27,20 +27,37 @@ class Grades_model extends CI_Model {
 			$att[$i] = array(
 				'StudId' => $stud_id,
 				'AttNum' => 1,
-				'Score' => 0,
+				'Score' => '',
 				'Sem' => 'Midterm'
 			);
 
 			$att[$i+1] = array(
 				'StudId' => $stud_id,
 				'AttNum' => 1,
-				'Score' => 0,
+				'Score' => '',
 				'Sem' => 'Finals'
 			);
 			$stud_id++;
 		}
 
 		$this->db->insert_batch('attendance', $att);
+		return true;
+	}
+
+	function init_mod_att($ClassId)
+	{
+		
+		$att[0] = array(
+			'ClassId' => $ClassId,
+			'AttNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$att[1] = array(
+			'ClassId' => $ClassId,
+			'AttNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_att', $att);
 		return true;
 	}
 
@@ -70,6 +87,23 @@ class Grades_model extends CI_Model {
 		return true;
 	}
 
+	function init_mod_assign($ClassId)
+	{
+		
+		$assign[0] = array(
+			'ClassId' => $ClassId,
+			'AssignNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$assign[1] = array(
+			'ClassId' => $ClassId,
+			'AssignNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_assign', $assign);
+		return true;
+	}
+
 	function init_sw($stud_id,$num_students)
 	{
 		$length = $stud_id + $num_students*2;
@@ -93,6 +127,23 @@ class Grades_model extends CI_Model {
 		}
 
 		$this->db->insert_batch('seatwork', $sw);
+		return true;
+	}
+
+	function init_mod_sw($ClassId)
+	{
+		
+		$sw[0] = array(
+			'ClassId' => $ClassId,
+			'SWNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$sw[1] = array(
+			'ClassId' => $ClassId,
+			'SWNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_sw', $sw);
 		return true;
 	}
 
@@ -122,6 +173,23 @@ class Grades_model extends CI_Model {
 		return true;
 	}
 
+	function init_mod_ex($ClassId)
+	{
+		
+		$ex[0] = array(
+			'ClassId' => $ClassId,
+			'ExNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$ex[1] = array(
+			'ClassId' => $ClassId,
+			'ExNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_ex', $ex);
+		return true;
+	}
+
 	function init_rec($stud_id,$num_students)
 	{
 		$length = $stud_id + $num_students*2;
@@ -146,7 +214,24 @@ class Grades_model extends CI_Model {
 
 		$this->db->insert_batch('recitation', $rec);
 		return true;
-	}	
+	}
+
+	function init_mod_rec($ClassId)
+	{
+		
+		$rec[0] = array(
+			'ClassId' => $ClassId,
+			'RecNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$rec[1] = array(
+			'ClassId' => $ClassId,
+			'RecNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_rec', $rec);
+		return true;
+	}
 
 	function init_quiz($stud_id,$num_students)
 	{
@@ -171,6 +256,23 @@ class Grades_model extends CI_Model {
 		}
 
 		$this->db->insert_batch('quizzes', $quiz);
+		return true;
+	}
+
+	function init_mod_quiz($ClassId)
+	{
+		
+		$quiz[0] = array(
+			'ClassId' => $ClassId,
+			'QuizNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$quiz[1] = array(
+			'ClassId' => $ClassId,
+			'QuizNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_quiz', $quiz);
 		return true;
 	}
 
@@ -200,6 +302,23 @@ class Grades_model extends CI_Model {
 		return true;
 	}
 
+	function init_mod_le($ClassId)
+	{
+		
+		$le[0] = array(
+			'ClassId' => $ClassId,
+			'LExamNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$le[1] = array(
+			'ClassId' => $ClassId,
+			'LExamNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_le', $le);
+		return true;
+	}
+
 	function init_lab($stud_id,$num_students)
 	{
 		$length = $stud_id + $num_students*2;
@@ -223,6 +342,23 @@ class Grades_model extends CI_Model {
 		}
 
 		$this->db->insert_batch('lab_act', $lab);
+		return true;
+	}
+
+	function init_mod_lab($ClassId)
+	{
+		
+		$lab[0] = array(
+			'ClassId' => $ClassId,
+			'LabNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$lab[1] = array(
+			'ClassId' => $ClassId,
+			'LabNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_lab', $lab);
 		return true;
 	}
 
@@ -252,6 +388,23 @@ class Grades_model extends CI_Model {
 		return true;
 	}
 
+	function init_mod_prac($ClassId)
+	{
+		
+		$prac[0] = array(
+			'ClassId' => $ClassId,
+			'PracExamNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$prac[1] = array(
+			'ClassId' => $ClassId,
+			'PracExamNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_prac', $prac);
+		return true;
+	}
+
 	function init_proj($stud_id,$num_students)
 	{
 		$length = $stud_id + $num_students*2;
@@ -278,6 +431,23 @@ class Grades_model extends CI_Model {
 		return true;
 	}
 
+	function init_mod_proj($ClassId)
+	{
+		
+		$proj[0] = array(
+			'ClassId' => $ClassId,
+			'ProjNum' => 1,
+			'Sem' => 'Midterm' 
+		);
+		$proj[1] = array(
+			'ClassId' => $ClassId,
+			'ProjNum' => 1,
+			'Sem' => 'Finals' 
+		);
+		$this->db->insert_batch('mod_proj', $proj);
+		return true;
+	}
+
 	function init_mexam($stud_id,$num_students)
 	{
 		$length = $stud_id + $num_students;
@@ -294,6 +464,16 @@ class Grades_model extends CI_Model {
 		return true;
 	}
 
+	function init_mod_me($ClassId)
+	{
+		
+		$me = array(
+			'ClassId' => $ClassId,
+		);
+		$this->db->insert('mod_me', $me);
+		return true;
+	}
+
 	function init_fexam($stud_id,$num_students)
 	{
 		$length = $stud_id + $num_students;
@@ -307,6 +487,16 @@ class Grades_model extends CI_Model {
 		}
 
 		$this->db->insert_batch('final_exam', $fexam);
+		return true;
+	}
+
+	function init_mod_fe($ClassId)
+	{
+		
+		$fe = array(
+			'ClassId' => $ClassId,
+		);
+		$this->db->insert('mod_fe', $fe);
 		return true;
 	}
 	

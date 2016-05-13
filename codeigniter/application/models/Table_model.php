@@ -117,7 +117,7 @@ class Table_model extends CI_Model {
                 }
                 else
                 {
-                    $att_mid_rating[$i] = "0.00";
+                    $att_mid_rating[$i] = " ";
                 }
                     //finals
                 $this->db->where('StudId',$row->Id);
@@ -131,7 +131,7 @@ class Table_model extends CI_Model {
                 }
                 else
                 {
-                    $att_final_rating[$i] = "0.00";
+                    $att_final_rating[$i] = " ";
                 }
 
     			//---assign_mid ---//
