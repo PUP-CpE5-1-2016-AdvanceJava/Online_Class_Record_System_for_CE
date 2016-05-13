@@ -1329,8 +1329,8 @@ function get_class_table(link)
         {
             // 'Attendance table' please edit classes for responsive //
             var midterm_cols = 2,final_cols = 2;
-            var mid_att_header_str = "",mid_att_score_str = [];
-            var final_att_header_str = "",final_att_score_str = [];
+            var mid_att_header_str = "",mid_att_table_score_str = [];
+            var final_att_header_str = "",final_att_table_score_str = [];
 
             /*att MIDTERM STRING INITIALIZATION*/
             if (response['att_mid_num'] > 0)
@@ -1362,7 +1362,7 @@ function get_class_table(link)
                 response.att_mid_score.forEach(function(att){
                     for (var i = 0; i <  midterm_cols-2; i++) 
                     {
-                        mid_att_score_str[x_att_mid] += "<td class='fixed-width' contenteditable='true' id='table-score-mid-att"+(i+1)+"'>"+att[i]+"</td>";
+                        mid_att_table_score_str[x_att_mid] += "<td class='fixed-width' contenteditable='true' id='table-score-mid-att"+(i+1)+"'>"+att[i]+"</td>";
                     }
                     x_att_mid++;
                 });
@@ -1398,7 +1398,7 @@ function get_class_table(link)
                 response.att_final_score.forEach(function(att){
                     for (var i = 0; i <  final_cols-2; i++) 
                     {
-                        final_att_score_str[x_att_final] += "<td class='fixed-width' contenteditable='true' id='table-score-final-att"+(i+1)+"'>"+att[i]+"</td>";
+                        final_att_table_score_str[x_att_final] += "<td class='fixed-width' contenteditable='true' id='table-score-final-att"+(i+1)+"'>"+att[i]+"</td>";
                     }
                     x_att_final++;
                 });
@@ -1445,9 +1445,9 @@ function get_class_table(link)
             var ctr_module = 0;
             response.Student.forEach(function(stud){
               $('table tbody').append("  <tr><td id='table-stud-num' class='border-left' name='stud-num'>"+stud.stud_num+"</td>\
-                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_att_score_str[ctr_module]+"\
+                                            <td id='border-bold' name='stud-name'>"+stud.full_name+"</td>"+mid_att_table_score_str[ctr_module]+"\
                                             <td contenteditable='false' id='table-scr-mid-att-total'></td>\
-                                            <td contenteditable='false' id='table-scr-mid-att-rating'></td>"+final_att_score_str[ctr_module]+"\
+                                            <td contenteditable='false' id='table-scr-mid-att-rating'></td>"+final_att_table_score_str[ctr_module]+"\
                                             <td contenteditable='false' id='table-scr-final-att-total'></td>\
                                             <td contenteditable='false' id='table-scr-final-att-rating'></td></tr>");
             ctr_module++;
@@ -1536,9 +1536,9 @@ function get_class_table(link)
       {
         console.log(link);
       }
-        var end = new Date().getTime();
-        var time = end - start;
-        console.log('Execution Time: ' + time);
+        // var end = new Date().getTime();
+        // var time = end - start;
+        // console.log('Execution Time: ' + time);
     })
   return false;
 }
@@ -1790,9 +1790,9 @@ function add_column(parent)
                 newHeader = array[0]+"-header-"+array[1]+"-"+module+counter;
                 newScore = array[0]+"-score-"+array[1]+"-"+module+counter;
             });
-            console.log(header);
-            console.log(score);
-            console.log(label_num);
+            // console.log(header);
+            // console.log(score);
+            // console.log(label_num);
 
             $("#"+parentId+"-button-del").css('display', 'inline-block');
             $("tr th#"+header).after($("<th style='text-align:center' id='"+newHeader+"' contenteditable='true'>"+ label +" "+ label_num + "</th>"));
@@ -2051,7 +2051,7 @@ function del_column(parent)
             data: {'classId':classId,'term':term,'colToDel':colToDel,'module_type':module_type, 'label':label },
             cache: false,
             success: function(res) {
-                console.log(res);
+                // console.log(res);
                 alert("Column has been deleted.");
             }
         })

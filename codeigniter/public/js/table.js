@@ -25,7 +25,7 @@ $(document).ready(function(){
 		var midterm_mid_data = [], finals_final_data = [];
 		var cells = Array.prototype.slice.call(document.getElementById("table-wrapper").getElementsByTagName("td"));
 		var module = get_module_type();
-		console.log(module);
+		// console.log(module);
 		var classId = get_class_id();
 		if (module == "Lec")
 		{
@@ -179,7 +179,6 @@ $(document).ready(function(){
 				'att_final_num':att_final_num,
 			}
 		}
-		console.log(data);
 		$.ajax({
 			url: 'save_table',
 			type: "POST",
@@ -188,7 +187,7 @@ $(document).ready(function(){
 			cache: false,
     		// contentType: "application/jsonrequest; charset=utf-8",
 			success: function(res) {
-				alert("Table has been saved.");
+				alert("Table has been saved.")
 			}
 		})
 	})
@@ -236,7 +235,7 @@ $(document).ready(function(){
 
 function computeGrade()
 {
-	console.log("compute");
+	// console.log("compute");
 	var assign_mid_num,sw_mid_num,ex_mid_num,rec_mid_num,quiz_mid_num,le_mid_num;
 	var assign_final_num,sw_final_num,ex_final_num,rec_final_num,quiz_final_num,le_final_num;
 	var lab_mid_num,prac_mid_num,proj_mid_num;
